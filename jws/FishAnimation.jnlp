@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<jnlp spec="0.2 1.0" codebase="http://www.cs.ucsb.edu/~lkhuu/cs56/S11/issues/0000355/jws" href="FishAnimation.jnlp">
+ <information>
+   <title>UCSB CS56 S11 issue 0000355  *Lawrence Khuu* FishAnimation</title>
+   <vendor>UCSB CS56</vendor>
+   <homepage href="." />
+   <description>An Animation Program</description>
+  <icon href="cs56.png" />
+  <offline-allowed />
+ </information>
+ <resources>
+  <j2se version="1.3+" />
+  <jar href="cs56_S11_0000355.jar"/>
+ </resources>
+ <application-desc main-class="edu.ucsb.cs56.S11.lkhuu.issue0000355.FishAnimation"/>
+</jnlp>

@@ -1,0 +1,153 @@
+<?xml version="1.0" encoding="utf-8" ?> 
+<project default="compile">
+  <!--  build.xml for Mantis issue 0000355
+       name: Lawrence Khuu for CS56, S11 
+  --> 
+  
+  <property environment="env" /> 
+  <!--  load the environment variables 
+  -->   
+  <property name="webRoot" value="${env.HOME}/public_html/" /> 
+  <property name="webBaseUrl" value="http://www.cs.ucsb.edu/~${env.USER}/" /> 
+  <property name="course" value="cs56" /> 
+  <property name="quarter" value="S11" /> 
+  <property name="issueNum" value="0000355" /> 
+  <property name="fullPkg" value="edu.ucsb.cs56.S11.lkhuu.issue0000355"/>
+  <property name="projectName" value="${course}_${quarter}_${issueNum}" /> 
+  <property name="projectPath" value="${course}/${quarter}/issues/${issueNum}" /> 
+  <property name="javadocDest" value="${webRoot}/${projectPath}/javadoc" /> 
+  <property name="javadocURL" value="${webBaseUrl}/${projectPath}/javadoc" /> 
+  <property name="jwsDest" value="${webRoot}/${projectPath}/jws"/>
+  <property name="mainClass" value="${fullPkg}/FishAnimation" />
+
+  <path id="project.class.path">
+    <pathelement location="build"/>
+    <pathelement location="/cs/faculty/pconrad/public_html/cs56/lib/junit-4.8.2.jar"/>
+  </path>
+
+  <target name="run" depends="compile" description="runs FishAnimation">
+    <java classname="${mainClass}" fork="true">
+      <classpath refid="project.class.path"/>
+    </java>
+  </target>
+  
+  <target name="compile" description="compiles my code">
+    <mkdir dir="build" /> 
+    <javac srcdir="src" destdir="build" debug="true" debuglevel="lines,source">
+      <classpath>
+	<pathelement location="build" /> 
+	<pathelement location="/cs/faculty/pconrad/public_html/cs56/lib/junit-4.8.2.jar" /> 
+      </classpath>
+    </javac>
+  </target>
+  
+  <target name="clean" description="removes unnessessary files">
+    <delete failonerror="false" verbose="true">
+      <fileset dir="build" includes="*.class" /> 
+    </delete>
+    <delete dir="javadoc" quiet="true" /> 
+    <delete dir="dist" quiet="true" /> 
+    <delete dir="download" quiet="true" /> 
+    <delete dir="temp" quiet="true" /> 
+  </target>
+  
+<!--  <target name="test" depends="compile" description="tests classes">
+    <junit haltonerror="no" haltonfailure="no">
+      <classpath>
+	<pathelement location="/cs/faculty/pconrad/public_html/cs56/lib/junit-4.8.2.jar" /> 
+	<pathelement location="build" /> 
+      </classpath>
+      <batchtest fork="yes">
+	<fileset dir="src">
+	  <include name="**/*Test.java" /> 
+	</fileset>
+      </batchtest>
+      <formatter type="plain" usefile="false" /> 
+    </junit>
+  </target>
+-->
+  
+  <target name="javadoc" depends="compile" description="posts descriptions of classes online">
+    <delete dir="javadoc" quiet="true" /> 
+    <javadoc destdir="javadoc" author="true" version="true" use="true">
+      <fileset dir="src" includes="**/*.java" /> 
+      <classpath>
+	<pathelement location="/cs/faculty/pconrad/public_html/cs56/lib/junit-4.8.2.jar" /> 
+      </classpath>
+    </javadoc>
+    <!--  delete the old javadoc 
+    --> 
+    <delete quiet="true" dir="${javadocDest}" /> 
+    <!--  copy everything you just made to the javadoc destination, and then make it readable 
+    --> 
+    <copy todir="${javadocDest}">
+      <fileset dir="javadoc" /> 
+    </copy>
+    <!--  Note: this only does the chmod command on the 
+	 javadoc subdirectory and its contents.  You MIGHT have to
+	 MANUALLY do the chmod on the parent directories.  However,
+	 you should only need to do that once. 
+    --> 
+    <chmod dir="${javadocDest}" perm="755" type="dir" includes="**" /> 
+    <chmod dir="${javadocDest}" perm="755" type="file" includes="**/*" /> 
+    <echo>Javadoc deployed to ${javadocURL}</echo> 
+  </target>
+  
+  <target name="jar" depends="compile" description="puts code into a jar file">
+    <mkdir dir="dist" /> 
+    <jar destfile="dist/${projectName}.jar" basedir="build">
+    </jar>
+  </target>
+  
+  <target name="download" description="puts the tar files online for download">
+    <delete quiet="true">
+      <fileset dir="temp" includes="**/*" /> 
+      <fileset dir="download" includes="**/*" /> 
+    </delete>
+    <mkdir dir="download" /> 
+    <mkdir dir="temp" /> 
+    <mkdir dir="temp/${projectName}" /> 
+    <copy todir="temp/${projectName}">
+      <fileset dir="." excludes="build/**, javadoc/**, **/*~, temp/**, dist/**, download/**" /> 
+    </copy>
+    <tar destfile="temp/${projectName}.tar" basedir="temp" includes="${projectName}/**" /> 
+    <gzip zipfile="download/${projectName}.tgz" src="temp/${projectName}.tar" /> 
+    <zip destfile="download/${projectName}.zip" basedir="temp" includes="${projectName}/**" /> 
+    <delete quiet="true">
+      <fileset dir="temp" includes="**/*" /> 
+    </delete>
+  </target>
+  
+  <target name="jws" depends="compile,jar" description="allows users to download and run the program locally">
+    <delete dir="${webRoot}/${projectPath}/jws"/>
+    <mkdir dir="${webRoot}/${projectPath}/jws"/>
+    <copy todir="${jwsDest}" file="dist/${projectName}.jar"/>
+    <copy todir="${jwsDest}">
+      <fileset dir="jws" includes="*.html"/>
+      <fileset dir="jws" includes="*.jnlp"/>
+      <fileset dir="jws" includes="*.png"/>
+      <fileset dir="jws" includes=".htaccess"/>
+    </copy>
+    <echo>Java web start at ${jwsURL}
+    </echo>
+  </target>
+
+  <target name="publish" depends="jar,javadoc,download,jws" description="publishes the code, java web start, and javadoc online">
+    <mkdir dir="${webRoot}/${projectPath}" /> 
+    <delete dir="${webRoot}/${projectPath}/browse" /> 
+    <mkdir dir="${webRoot}/${projectPath}/browse" /> 
+    <delete dir="${webRoot}/${projectPath}/download" /> 
+    <mkdir dir="${webRoot}/${projectPath}/download" /> 
+    <copy file="html/index.html" todir="${webRoot}/${projectPath}" /> 
+    <copy todir="${webRoot}/${projectPath}/download">
+      <fileset dir="download" /> 
+      <fileset dir="dist" /> 
+    </copy>
+    <copy file="build.xml" todir="${webRoot}/${projectPath}/browse" /> 
+    <copy todir="${webRoot}/${projectPath}/browse/src">
+      <fileset dir="src" /> 
+    </copy>
+    <chmod dir="${webRoot}/${projectPath}" perm="755" type="both" includes="**/*" /> 
+    <echo>Project published to ${webBaseUrl}${projectPath}</echo> 
+  </target>
+</project>
