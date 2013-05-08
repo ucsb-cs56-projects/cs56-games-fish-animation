@@ -44,7 +44,7 @@ public class Fish extends GeneralPathWrapper implements Shape
 	this.yPos = y;
 	this.width = width;
 	this.height = height;
-	GeneralPath wholeFish = this.get();
+	GeneralPath wholeFihs = this.get();
 	double currentX = x-(width/2);
 	double currentY = y;
 	double nextX = 0;
