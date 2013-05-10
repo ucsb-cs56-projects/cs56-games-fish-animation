@@ -59,7 +59,7 @@ public class FishAnimation extends JFrame{
 	    g2.setColor(Color.BLUE);
 	    g2.fillRect(0,0,this.getWidth(),this.getHeight());
 	    // this.add(label1);
-	    g.drawImage(image, 100, 100, this);
+	    g.drawImage(image, this.getWidth(), this.getHeight(), this);
 	    g2.setColor(Color.YELLOW);
 	    for(int i=0; i<fishArray.size(); i++){
 		g2.draw(fishArray.get(i));
