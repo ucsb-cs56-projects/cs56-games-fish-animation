@@ -19,6 +19,7 @@ public class FishAnimation extends JFrame{
     int maxX = 250;
     int maxY = 250;
     int maxWidth = 100;
+    int boatX = maxX;
     int numFish = 10+(int)(Math.random()*40);
     int numBubbles = 10+(int)(Math.random()*10);
     ArrayList<Fish> fishArray = new ArrayList<Fish>();
@@ -71,14 +72,17 @@ public class FishAnimation extends JFrame{
 	public void paintComponent(Graphics g){
 	    Graphics2D g2 = (Graphics2D) g;
 	    Image image = new ImageIcon("Seaweed.jpg").getImage();
-	    //    JLabel label1 = new JLabel();
-	    //	    label1.setIcon(image);
+	    Image boat = new ImageIcon("cartoon-boat.jpg").getImage();
 	    g2.setColor(Color.BLUE);
 	    g2.fillRect(0,0,this.getWidth(),this.getHeight());
-	    // this.add(label1);
 	    for ( int i=0; i < this.getWidth()-125; i+=125 ) {
 		g.drawImage(image, i, this.getHeight()-83, this);
 	    }
+	    
+	    g.drawImage(boat, boatX, -135, this);
+	    boatX-=1;
+	    if(boatX == -250)
+	    boatX = this.getWidth();
 	    Color b = new Color(127, 255, 212);
 	    g.setColor(b);
 	    //	    g.drawOval(100, 100, 50, 50);
