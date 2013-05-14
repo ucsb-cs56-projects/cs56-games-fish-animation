@@ -27,6 +27,7 @@ public class FishAnimation extends JFrame{
 	fishArray.add(fish);
     }
 
+
     private Fish createRandomFish(int xBound, int yBound, int maxWidth){
 	int randomX = (int)(Math.random()*xBound);
 	int randomY = (int)(Math.random()*yBound);
