@@ -66,5 +66,20 @@ public class Shark extends GeneralPathWrapper implements Shape{
     public int getYPos(){
         return yPos;
     }
-
+    
+    /**
+		sets the xLocation of the shark
+		@return set the x position of the shark
+	**/
+	public void setX(int x){
+		xPos = x;
+	}
+	
+	/**
+		sets the yLocation of the shark
+		@return set the y position of the shark
+	**/
+	public void setY(int y){
+		yPos = y;
+	}
 }
