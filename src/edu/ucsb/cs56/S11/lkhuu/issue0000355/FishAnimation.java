@@ -8,15 +8,17 @@ import java.util.ArrayList;
 /**
    Creates a JFrame that animates Fish
    @author Lawrence Khuu
-   @version for CS56, lab08, Spring 2011
+   @author Casey Barbello
+   @author Daryl Pham
+   @version for CS56, proj01, Spring 2013, UCSB
 **/
 
 
 public class FishAnimation extends JFrame{
     Thread animate;
     DrawingPanel fishPanel = new DrawingPanel();
-    int maxX = 250;
-    int maxY = 250;
+    int maxX = 1000;
+    int maxY = 750;
     int maxWidth = 100;
     int numFish = 10+(int)(Math.random()*40);
     ArrayList<Fish> fishArray = new ArrayList<Fish>();    
@@ -59,6 +61,9 @@ public class FishAnimation extends JFrame{
 	    for(int i=0; i<fishArray.size(); i++){
 		g2.draw(fishArray.get(i));
 	    }
+	    Image shark = new ImageIcon("shark.jpg").getImage();
+	    Shark s = new Shark(25, 250);
+	    g2.drawImage(shark, s.getXPos(), s.getYPos(), this);
 	}
     }//end DrawingPanel
 
