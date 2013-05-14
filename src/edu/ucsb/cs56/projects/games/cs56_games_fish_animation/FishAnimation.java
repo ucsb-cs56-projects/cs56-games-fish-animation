@@ -1,4 +1,4 @@
-package edu.ucsb.cs56.S11.lkhuu.issue0000355;
+package edu.ucsb.cs56.projects.games.cs56_games_fish_animation;
 
 import javax.swing.*;
 import java.awt.*;
