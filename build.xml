@@ -37,7 +37,7 @@
     <javac srcdir="src" destdir="build" debug="true" debuglevel="lines,source">
       <classpath>
 	<pathelement location="build" /> 
-	<pathelement location="/cs/faculty/pconrad/public_html/cs56/lib/junit-4.8.2.jar" /> 
+	<pathelement location="lib/junit-4.8.2.jar" /> 
       </classpath>
     </javac>
   </target>
