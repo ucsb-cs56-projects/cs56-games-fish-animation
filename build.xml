@@ -4,16 +4,14 @@
        name: Lawrence Khuu for CS56, S11 
   --> 
   
-  <property environment="env" /> 
-  <!--  load the environment variables 
-  -->   
+  <property environment="env" /> <!--  load the environment variables -->   
   <property name="webRoot" value="${env.HOME}/public_html/" /> 
   <property name="webBaseUrl" value="http://www.cs.ucsb.edu/~${env.USER}/" /> 
   <property name="course" value="cs56" /> 
   <property name="quarter" value="S11" /> 
   <property name="issueNum" value="0000355" /> 
-  <property name="fullPkg1" value="edu.ucsb.cs56.games.fish_animation" />
-  <property name="fullPkg" value="edu.ucsb.cs56.S11.lkhuu.issue0000355"/>
+  <property name="fullPkg" value="edu.ucsb.cs56.games.fish_animation" />
+  <property name="fullPkg1" value="edu.ucsb.cs56.S11.lkhuu.issue0000355"/>
   <property name="projectName" value="${course}_${quarter}_${issueNum}" /> 
   <property name="projectPath" value="${course}/${quarter}/issues/${issueNum}" /> 
   <property name="javadocDest" value="${webRoot}/${projectPath}/javadoc" /> 
@@ -23,7 +21,7 @@
 
   <path id="project.class.path">
     <pathelement location="build"/>
-    <pathelement location="/cs/faculty/pconrad/public_html/cs56/lib/junit-4.8.2.jar"/>
+    <pathelement location="lib/junit-4.8.2.jar"/>
   </path>
 
   <target name="run" depends="compile" description="runs FishAnimation">
@@ -37,7 +35,7 @@
     <javac srcdir="src" destdir="build" debug="true" debuglevel="lines,source">
       <classpath>
 	<pathelement location="build" /> 
-	<pathelement location="/cs/faculty/pconrad/public_html/cs56/lib/junit-4.8.2.jar" /> 
+	<pathelement location="lib/junit-4.8.2.jar" /> 
       </classpath>
     </javac>
   </target>
@@ -55,7 +53,7 @@
 <!--  <target name="test" depends="compile" description="tests classes">
     <junit haltonerror="no" haltonfailure="no">
       <classpath>
-	<pathelement location="/cs/faculty/pconrad/public_html/cs56/lib/junit-4.8.2.jar" /> 
+	<pathelement location="lib/junit-4.8.2.jar" /> 
 	<pathelement location="build" /> 
       </classpath>
       <batchtest fork="yes">
@@ -68,19 +66,18 @@
   </target>
 -->
   
-  <target name="javadoc" depends="compile" description="posts descriptions of classes online">
+  <target name="javadoc" depends="compile" 
+	  description="posts descriptions of classes online" >
     <delete dir="javadoc" quiet="true" /> 
     <javadoc destdir="javadoc" author="true" version="true" use="true">
       <fileset dir="src" includes="**/*.java" /> 
       <classpath>
-	<pathelement location="/cs/faculty/pconrad/public_html/cs56/lib/junit-4.8.2.jar" /> 
+	<pathelement location="lib/junit-4.8.2.jar" /> 
       </classpath>
     </javadoc>
-    <!--  delete the old javadoc 
-    --> 
+    <!--  delete the old javadoc --> 
     <delete quiet="true" dir="${javadocDest}" /> 
-    <!--  copy everything you just made to the javadoc destination, and then make it readable 
-    --> 
+    <!--  copy everything you just made to the javadoc destination, and then make it readable --> 
     <copy todir="${javadocDest}">
       <fileset dir="javadoc" /> 
     </copy>
