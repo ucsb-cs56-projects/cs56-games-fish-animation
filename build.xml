@@ -7,16 +7,11 @@
   <property environment="env" /> <!--  load the environment variables -->   
   <property name="webRoot" value="${env.HOME}/public_html/" /> 
   <property name="webBaseUrl" value="http://www.cs.ucsb.edu/~${env.USER}/" /> 
-  <property name="course" value="cs56" /> 
-  <property name="quarter" value="S11" /> 
-  <property name="issueNum" value="0000355" /> 
-  <property name="fullPkg" value="edu.ucsb.cs56.games.fish_animation" />
-  <property name="fullPkg1" value="edu.ucsb.cs56.S11.lkhuu.issue0000355"/>
-  <property name="projectName" value="${course}_${quarter}_${issueNum}" /> 
-  <property name="projectPath" value="${course}/${quarter}/issues/${issueNum}" /> 
+  <property name="fullPkg" value="edu.ucsb.cs56.projects.games.fish_animation"/>
+  <property name="projectName" value="fish_animation" />
+  <property name="projectPath" value="edu/ucsb/projects/games/fish_animation" />
   <property name="javadocDest" value="${webRoot}/${projectPath}/javadoc" /> 
   <property name="javadocURL" value="${webBaseUrl}/${projectPath}/javadoc" /> 
-<!--  <property name="jwsDest" value="${webRoot}/${projectPath}/jws"/> -->
   <property name="mainClass" value="${fullPkg}/FishAnimation" />
 
   <path id="project.class.path">
