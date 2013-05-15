@@ -32,7 +32,6 @@ public class Shark extends GeneralPathWrapper implements Shape{
 
     int xPos;
     int yPos;
-    Image shark;
 
     /**
        draws the shark
@@ -40,15 +39,6 @@ public class Shark extends GeneralPathWrapper implements Shape{
     public Shark(int x, int y) {
 	this.xPos = x;
 	this.yPos = y;
-	this.shark = new ImageIcon("Shark.jpg").getImage();
-    }
-
-    /**
-       gets the image of the shark
-       @return the shark image
-    **/
-    public Image getSharkImage(){
-	return shark;
     }
 
     /**
@@ -68,17 +58,17 @@ public class Shark extends GeneralPathWrapper implements Shape{
     }
     
     /**
-		sets the xLocation of the shark
-		@return set the x position of the shark
-	**/
+       sets the xLocation of the shark
+       @return set the x position of the shark
+    **/
 	public void setX(int x){
 		xPos = x;
 	}
 	
-	/**
-		sets the yLocation of the shark
-		@return set the y position of the shark
-	**/
+    /**
+       sets the yLocation of the shark
+       @return set the y position of the shark
+    **/
 	public void setY(int y){
 		yPos = y;
 	}

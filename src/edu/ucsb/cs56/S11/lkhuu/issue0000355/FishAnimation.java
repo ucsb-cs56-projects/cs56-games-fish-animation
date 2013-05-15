@@ -21,45 +21,43 @@ public class FishAnimation extends JFrame{
     DrawingPanel fishPanel = new DrawingPanel();
     int maxX = 1000;
     int maxY = 750;
-	int posX, posY;
+    int posX = 500, posY = 375;
     int maxWidth = 100;
-    int numFish = 10+(int)(Math.random()*40);
+    int numFish = 40+(int)(Math.random()*40);
     ArrayList<Fish> fishArray = new ArrayList<Fish>();    
   
-  public class MouseHandler implements MouseListener, MouseMotionListener{
+    /**
+       class to handle mouse events. Some methods are present but not defined
+       because every method of the implemented class must be present to avoid
+       compiler error
+    **/
+    public class MouseHandler implements MouseListener, MouseMotionListener{
+				
+      public void mouseClicked(MouseEvent e){
+	  posX = e.getX();
+	  posY = e.getY();
+      }
+      
+      public void mousePressed(MouseEvent e){
+      }
 		
-		
-		
-		public void mouseClicked(MouseEvent e){
-			posX = e.getX();
-			posY = e.getY();
-		}
-		
-		public void mousePressed(MouseEvent e){
-			}
-		
-        public void mouseEntered(MouseEvent e){
-			}
+      public void mouseEntered(MouseEvent e){
+      }
         
-        public void mouseExited(MouseEvent e){
-			}
-        
-		
-		public void mouseReleased(MouseEvent e){
-			posX = e.getX();
-			posY = e.getY();
-		}
-		
-		public void mouseMoved(MouseEvent e){
-			posX = e.getX();
-			posY = e.getY();
-		}
-		
-		public void mouseDragged(MouseEvent e){
-			
-		}
-		
-	}
+      public void mouseExited(MouseEvent e){
+      }
+        		
+      public void mouseReleased(MouseEvent e){
+      }
+      
+      public void mouseMoved(MouseEvent e){
+      }
+      
+      public void mouseDragged(MouseEvent e){
+	  posX = e.getX();
+	  posY = e.getY();
+      }		
+  }
 	
     private void addNewFish(Fish fish){
 	fishArray.add(fish);
@@ -145,7 +143,13 @@ public class FishAnimation extends JFrame{
 	    ArrayList<FishInfo> info = new ArrayList<FishInfo>();
 
 	    for(int i=0; i<fishArray.size();i++){
+		//check if fish is at sharks mouth and remove from screen if true
+		if ((fishArray.get(i).getXPos() > posX-40 && fishArray.get(i).getXPos() < posX+40) && (fishArray.get(i).getYPos() > posY-25 && fishArray.get(i).getYPos() < posY+25)){
+		    info.add(new FishInfo(maxX,Math.random()*maxY,fishArray.get(i).getWidth(),fishArray.get(i).getHeight()));
+	      	}
+		else{
 		info.add(new FishInfo(fishArray.get(i).getXPos(),fishArray.get(i).getYPos(),fishArray.get(i).getWidth(),fishArray.get(i).getHeight()));
+		}
 	    }
 	    fishArray.clear();
 
