@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8" ?> 
 <project default="compile">
   <!--  build.xml for Mantis issue 0000355
-       name: Lawrence Khuu for CS56, S11 
+       name(s): Daryl Pham & Casey Barbello for CS56, S13 
   --> 
   
   <property environment="env" /> 

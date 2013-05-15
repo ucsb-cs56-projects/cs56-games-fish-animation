@@ -8,7 +8,9 @@ import java.util.ArrayList;
 import java.util.*;
 
 /**
-   Creates a JFrame that animates Fish
+   Creates a JFrame that animates Fish and allows for a shark
+   to eat the fish. Tracks the amount of fish eaten with an
+   elapsed amount of time.
    @author Lawrence Khuu
    @author Casey Barbello
    @author Daryl Pham
@@ -73,7 +75,8 @@ public class FishAnimation extends JFrame{
     }
     
     /**
-       Constructor for FishAnimation. Creates a JFrame and a Jpanel that is placed inside of it. Animation is done on the JPanel
+       Constructor for FishAnimation. Creates a JFrame and a Jpanel that 
+       is placed inside of it. Animation is done on the JPanel
     **/
     public FishAnimation(){//constructor
 	for(int i=0; i<numFish; i++){
@@ -88,7 +91,10 @@ public class FishAnimation extends JFrame{
     }//end constructor
     
     /**
-       Innerclass for a custom Jpanel for animation
+       Innerclass for a custom Jpanel for animation.  Draws out the 
+       background and the in-game components including a timer, 
+       the score, the shark, and the fish.
+       
     **/
     class DrawingPanel extends JPanel{
 	public void paintComponent(Graphics g){
@@ -105,6 +111,7 @@ public class FishAnimation extends JFrame{
 	    Image shark = new ImageIcon("shark.jpg").getImage();
 	    Shark s = new Shark(posX, posY);
 	    g2.drawImage(shark, s.getXPos()-160, s.getYPos()-130, this);
+	    
 	    
 	    //displays the number of fish eaten
 	    g.setFont(new Font("ComicSans", Font.PLAIN, 35));
@@ -150,7 +157,8 @@ public class FishAnimation extends JFrame{
 	}	   
 	
 	/**
-	   Creates each frame
+	   Creates each frame and also checks if the fish have been eaten.  
+	   Removes fish and creates a new fish if it has been eaten.
 	**/
 	void display(int delay) 
 	    throws InterruptedException{

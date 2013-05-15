@@ -34,7 +34,7 @@ public class Shark extends GeneralPathWrapper implements Shape{
     int yPos;
 
     /**
-       draws the shark
+       Holds the shark's position on the Panel
     **/
     public Shark(int x, int y) {
 	this.xPos = x;
