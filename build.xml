@@ -6,12 +6,14 @@
   
   <property environment="env" /> <!--  load the environment variables -->   
   <property name="webRoot" value="${env.HOME}/public_html/" /> 
-  <property name="webBaseUrl" value="http://www.cs.ucsb.edu/~${env.USER}/" /> 
+  <property name="webBaseUrl" value="http://www.cs.ucsb.edu/~${env.USER}" /> 
   <property name="fullPkg" value="edu.ucsb.cs56.projects.games.fish_animation"/>
   <property name="projectName" value="fish_animation" />
+  <property name="javadocPath" value="cs56/13S/jdum66/cs56-games-fish-animation" />
   <property name="projectPath" value="edu/ucsb/projects/games/fish_animation" />
-  <property name="javadocDest" value="${webRoot}/${projectPath}/javadoc" /> 
-  <property name="javadocURL" value="${webBaseUrl}/${projectPath}/javadoc" /> 
+  <property name="javadocDest1" value="${webRoot}/${projectPath}/javadoc" />
+  <property name="javadocDest" value="${webRoot}/${javadocPath}/javadoc" />
+  <property name="javadocURL" value="${webBaseUrl}/${javadocPath}/javadoc" /> 
   <property name="mainClass" value="${fullPkg}/FishAnimation" />
 
   <path id="project.class.path">
