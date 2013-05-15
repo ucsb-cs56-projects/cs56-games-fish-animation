@@ -23,56 +23,57 @@ public class FishAnimation extends JFrame{
     int maxY = 750;
     int posX = 500, posY = 375;
     int maxWidth = 100;
+    int eaten = 0;//number of fish eaten
     int numFish = 40+(int)(Math.random()*40);
     ArrayList<Fish> fishArray = new ArrayList<Fish>();    
-  
+    
     /**
        class to handle mouse events. Some methods are present but not defined
        because every method of the implemented class must be present to avoid
        compiler error
     **/
     public class MouseHandler implements MouseListener, MouseMotionListener{
-				
-      public void mouseClicked(MouseEvent e){
-	  posX = e.getX();
-	  posY = e.getY();
-      }
-      
-      public void mousePressed(MouseEvent e){
-      }
-		
-      public void mouseEntered(MouseEvent e){
+	
+	public void mouseClicked(MouseEvent e){
+	    posX = e.getX();
+	    posY = e.getY();
+	}
+	
+	public void mousePressed(MouseEvent e){
+	}
+	
+	public void mouseEntered(MouseEvent e){
       }
         
       public void mouseExited(MouseEvent e){
       }
-        		
-      public void mouseReleased(MouseEvent e){
-      }
-      
-      public void mouseMoved(MouseEvent e){
-      }
-      
-      public void mouseDragged(MouseEvent e){
-	  posX = e.getX();
-	  posY = e.getY();
-      }		
-  }
 	
+	public void mouseReleased(MouseEvent e){
+	}
+	
+	public void mouseMoved(MouseEvent e){
+	}
+	
+	public void mouseDragged(MouseEvent e){
+	    posX = e.getX();
+	    posY = e.getY();
+	}		
+    }
+    
     private void addNewFish(Fish fish){
 	fishArray.add(fish);
     }
-
+    
     private Fish createRandomFish(int xBound, int yBound, int maxWidth){
 	int randomX = (int)(Math.random()*xBound);
 	int randomY = (int)(Math.random()*yBound);
 	int randomWidth = 10 + (int)(Math.random()*(maxWidth-10));
 	return new Fish(randomX,randomY,randomWidth,randomWidth/5);
     }
-   
+    
     /**
        Constructor for FishAnimation. Creates a JFrame and a Jpanel that is placed inside of it. Animation is done on the JPanel
-     **/
+    **/
     public FishAnimation(){//constructor
 	for(int i=0; i<numFish; i++){
 	    addNewFish(createRandomFish(maxX,maxY,maxWidth));
@@ -84,7 +85,7 @@ public class FishAnimation extends JFrame{
 	setSize(maxX,maxY);
 	setVisible(true);
     }//end constructor
- 
+    
     /**
        Innerclass for a custom Jpanel for animation
     **/
@@ -98,14 +99,20 @@ public class FishAnimation extends JFrame{
 		g2.draw(fishArray.get(i));
 	    }
 	    MouseHandler handler = new MouseHandler();
-		fishPanel.addMouseListener(handler);
-		fishPanel.addMouseMotionListener(handler);
+	    fishPanel.addMouseListener(handler);
+	    fishPanel.addMouseMotionListener(handler);
 	    Image shark = new ImageIcon("shark.jpg").getImage();
 	    Shark s = new Shark(posX, posY);
 	    g2.drawImage(shark, s.getXPos()-160, s.getYPos()-130, this);
+	    
+	    //displays the number of fish eaten
+	    g.setFont(new Font("ComicSans", Font.PLAIN, 35));
+	    g.setColor(Color.RED);
+	    String str = "Fish Eaten: " + eaten + "!";
+	    g.drawString(str,0,35);
 	}
     }//end DrawingPanel
-
+    
     class Animate extends Thread{
 	public void run(){//begin run method
 	    try{
@@ -120,7 +127,7 @@ public class FishAnimation extends JFrame{
 		}//end else
 	    }//end catch
 	}//end run
-
+	
 	class FishInfo{
 	    double x,y,width,height;
 	    FishInfo(double x, double y, double width, double height){
@@ -134,25 +141,28 @@ public class FishAnimation extends JFrame{
 	    double getWidth(){return width;}
 	    double getHeight(){return height;}
 	}	   
-
+	
 	/**
 	   Creates each frame
 	**/
 	void display(int delay) 
 	    throws InterruptedException{
 	    ArrayList<FishInfo> info = new ArrayList<FishInfo>();
-
+	    
 	    for(int i=0; i<fishArray.size();i++){
-		//check if fish is at sharks mouth and remove from screen if true
+		/*check if fish is at sharks mouth and remove from screen and
+		 increment eaten if true
+		*/
 		if ((fishArray.get(i).getXPos() > posX-40 && fishArray.get(i).getXPos() < posX+40) && (fishArray.get(i).getYPos() > posY-25 && fishArray.get(i).getYPos() < posY+25)){
 		    info.add(new FishInfo(maxX,Math.random()*maxY,fishArray.get(i).getWidth(),fishArray.get(i).getHeight()));
+	      	eaten++;
 	      	}
 		else{
-		info.add(new FishInfo(fishArray.get(i).getXPos(),fishArray.get(i).getYPos(),fishArray.get(i).getWidth(),fishArray.get(i).getHeight()));
+		    info.add(new FishInfo(fishArray.get(i).getXPos(),fishArray.get(i).getYPos(),fishArray.get(i).getWidth(),fishArray.get(i).getHeight()));
 		}
 	    }
 	    fishArray.clear();
-
+	    
 	    double currentSpeed = (numFish%10)+1;
 	    for(int i=0; i<info.size();i++){
 		if((currentSpeed-1)<2)
@@ -167,19 +177,19 @@ public class FishAnimation extends JFrame{
 		    addNewFish(new Fish(newX,info.get(i).getY(),info.get(i).getWidth(),info.get(i).getHeight()));
             }
 	    fishPanel.repaint();
-
+	    
 	    if(Thread.currentThread().interrupted())
 		throw(new InterruptedException());
 	    Thread.currentThread().sleep(delay);
 	}//end display method
     }//end inner class named Animate
-
+    
     /**
        Main class for running FishAnimation
     **/
     public static void main(String[] args){
         new FishAnimation();
     }//end main
-
-
+    
+    
 }//end class Animate
