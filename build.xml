@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="utf-8" ?> 
 <project default="compile">
   <!--  build.xml for Mantis issue 0000355
-       name: Lawrence Khuu for CS56, S11 
+       name: Lawrence Khuu for CS56, S11
+       name: Christina Morris, Mathew Glodack for CS56, S13
   --> 
   
   <property environment="env" /> 
@@ -18,7 +19,7 @@
 	    value="edu.ucsb.cs56.projects.games.cs56_games_fish_animation"/>
   <property name="projectName" value="${course}_${projects}_${categoryname}" /> 
   <property name="projectPath" value="${course}/${projects}/${categoryname}" /> 
-  <property name="javadocDest" value="${webRoot}/${projectName}/javadoc" />
+  <property name="javadocDest" value="${webRoot}/S13/cmmorris/${projectName}/javadoc" />
   <property name="javadocURL" value="${webBaseURL}/${projectName}/javadoc" /> 
   <property name="mainClass" value="${fullPkg}/FishAnimation" />
  
