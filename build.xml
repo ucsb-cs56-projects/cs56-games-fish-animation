@@ -8,15 +8,16 @@
   <!--  load the environment variables 
   -->   
   <property name="webRoot" value="${env.HOME}/public_html/" /> 
-  <property name="webBaseUrl" value="http://www.cs.ucsb.edu/~${env.USER}/" /> 
+  <property name="webBaseUrl" value="http://www.cs.ucsb.edu/~/public_html/cs56/13S/${env.USER}" /> 
   <property name="course" value="cs56" /> 
-  <property name="quarter" value="S11" /> 
-  <property name="issueNum" value="0000355" /> 
-  <property name="fullPkg" value="edu.ucsb.cs56.S11.lkhuu.issue0000355"/>
-  <property name="projectName" value="${course}_${quarter}_${issueNum}" /> 
-  <property name="projectPath" value="${course}/${quarter}/issues/${issueNum}" /> 
+  <property name="projects" value="projects" /> 
+  <property name="categoryname" value="games" />
+  <property name="reponame" value="cs56_games_fish_animation" /> 
+  <property name="fullPkg" value="edu.ucsb.cs56.projects.games.cs56_games_fish_animation"/>
+  <property name="projectName" value="${course}_${projects}_${categoryname}_${reponame}" /> 
+  <property name="projectPath" value="${course}/${projects}/games/${reponame}" /> 
   <property name="javadocDest" value="${webRoot}/${projectPath}/javadoc" /> 
-  <property name="javadocURL" value="${webBaseUrl}/${projectPath}/javadoc" /> 
+  <property name="javadocURL" value="${webBaseUrl}/${reponame}" /> 
   <property name="jwsDest" value="${webRoot}/${projectPath}/jws"/>
   <property name="mainClass" value="${fullPkg}/FishAnimation" />
 
@@ -72,7 +73,7 @@
     <javadoc destdir="javadoc" author="true" version="true" use="true">
       <fileset dir="src" includes="**/*.java" /> 
       <classpath>
-	<pathelement location="/cs/faculty/pconrad/public_html/cs56/lib/junit-4.8.2.jar" /> 
+	<pathelement location="lib/junit-4.8.2.jar" /> 
       </classpath>
     </javadoc>
     <!--  delete the old javadoc 
