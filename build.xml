@@ -2,6 +2,7 @@
 <project default="compile">
   <!--  build.xml for Mantis issue 0000355
        name: Lawrence Khuu for CS56, S11 
+       name: Jake Dumont, CS56, S13
   --> 
   
   <property environment="env" /> <!--  load the environment variables -->   
@@ -11,7 +12,6 @@
   <property name="projectName" value="fish_animation" />
   <property name="javadocPath" value="cs56/13S/jdum66/cs56-games-fish-animation" />
   <property name="projectPath" value="edu/ucsb/projects/games/fish_animation" />
-  <property name="javadocDest1" value="${webRoot}/${projectPath}/javadoc" />
   <property name="javadocDest" value="${webRoot}/${javadocPath}/javadoc" />
   <property name="javadocURL" value="${webBaseUrl}/${javadocPath}/javadoc" /> 
   <property name="mainClass" value="${fullPkg}/FishAnimation" />
