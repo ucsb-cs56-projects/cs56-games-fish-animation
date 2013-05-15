@@ -23,6 +23,7 @@ public class FishAnimation extends JFrame{
     int maxY = 750;
     int posX = 500, posY = 375;
     int maxWidth = 100;
+    long time1 = System.nanoTime()/1000000000; //Timer to start counting when the game initiallizes
     int eaten = 0;//number of fish eaten
     int numFish = 40+(int)(Math.random()*40);
     ArrayList<Fish> fishArray = new ArrayList<Fish>();    
@@ -108,8 +109,14 @@ public class FishAnimation extends JFrame{
 	    //displays the number of fish eaten
 	    g.setFont(new Font("ComicSans", Font.PLAIN, 35));
 	    g.setColor(Color.RED);
-	    String str = "Fish Eaten: " + eaten + "!";
-	    g.drawString(str,0,35);
+	    String str1 = "Fish Eaten: " + eaten + "!";
+	    g.drawString(str1,0,35);
+	    
+	    //displays the current elapsed time of the game in seconds
+	    g.setFont(new Font("ComicSans", Font.PLAIN, 25));
+	    g.setColor(Color.RED);
+	    String str2 = "Seconds Elapsed: " + ((System.nanoTime()/1000000000) - time1);
+	    g.drawString(str2,0,65);
 	}
     }//end DrawingPanel
     
