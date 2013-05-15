@@ -1,4 +1,4 @@
-package edu.ucsb.cs56.S11.lkhuu.issue0000355;
+package edu.ucsb.cs56.projects.games.fish_animation;
 
 import java.awt.geom.GeneralPath; // combinations of lines and curves
 import java.awt.geom.AffineTransform; // translation, rotation, scale
