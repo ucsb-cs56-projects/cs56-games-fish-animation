@@ -52,21 +52,6 @@
     <delete dir="temp" quiet="true" /> 
   </target>
   
-<!--  <target name="test" depends="compile" description="tests classes">
-    <junit haltonerror="no" haltonfailure="no">
-      <classpath>
-	<pathelement location="/cs/faculty/pconrad/public_html/cs56/lib/junit-4.8.2.jar" /> 
-	<pathelement location="build" /> 
-      </classpath>
-      <batchtest fork="yes">
-	<fileset dir="src">
-	  <include name="**/*Test.java" /> 
-	</fileset>
-      </batchtest>
-      <formatter type="plain" usefile="false" /> 
-    </junit>
-  </target>
--->
   
   <target name="javadoc" depends="compile" description="posts descriptions of classes online">
     <delete dir="javadoc" quiet="true" /> 
@@ -119,36 +104,4 @@
     </delete>
   </target>
   
-  <target name="jws" depends="compile,jar" description="allows users to download and run the program locally">
-    <delete dir="${webRoot}/${projectPath}/jws"/>
-    <mkdir dir="${webRoot}/${projectPath}/jws"/>
-    <copy todir="${jwsDest}" file="dist/${projectName}.jar"/>
-    <copy todir="${jwsDest}">
-      <fileset dir="jws" includes="*.html"/>
-      <fileset dir="jws" includes="*.jnlp"/>
-      <fileset dir="jws" includes="*.png"/>
-      <fileset dir="jws" includes=".htaccess"/>
-    </copy>
-    <echo>Java web start at ${jwsURL}
-    </echo>
-  </target>
-
-  <target name="publish" depends="jar,javadoc,download,jws" description="publishes the code, java web start, and javadoc online">
-    <mkdir dir="${webRoot}/${projectPath}" /> 
-    <delete dir="${webRoot}/${projectPath}/browse" /> 
-    <mkdir dir="${webRoot}/${projectPath}/browse" /> 
-    <delete dir="${webRoot}/${projectPath}/download" /> 
-    <mkdir dir="${webRoot}/${projectPath}/download" /> 
-    <copy file="html/index.html" todir="${webRoot}/${projectPath}" /> 
-    <copy todir="${webRoot}/${projectPath}/download">
-      <fileset dir="download" /> 
-      <fileset dir="dist" /> 
-    </copy>
-    <copy file="build.xml" todir="${webRoot}/${projectPath}/browse" /> 
-    <copy todir="${webRoot}/${projectPath}/browse/src">
-      <fileset dir="src" /> 
-    </copy>
-    <chmod dir="${webRoot}/${projectPath}" perm="755" type="both" includes="**/*" /> 
-    <echo>Project published to ${webBaseUrl}${projectPath}</echo> 
-  </target>
 </project>
