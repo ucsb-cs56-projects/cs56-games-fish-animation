@@ -17,8 +17,8 @@ names:Casey Barbello, Daryl Pham for CS56, S13
 	    value="edu.ucsb.cs56.projects.games.cs56_games_fish_animation"/>
   <property name="projectName" value="${course}_games_fish_animation" />
   <property name="projectPath" value="${course}/${projects}/${categoryname}" />
-  <property name="javadocDest" value="${webBaseUrl}/S13/cbarbello/${projectName}/javadoc"/>
-  <property name="javadocURL" value="${webBaseUrl}/S13/cbarbello/${projectName}/javadoc" />
+  <property name="javadocDest" value="${webRoot}/S13/${projectName}/javadoc"/>
+  <property name="javadocURL" value="${webBaseUrl}/S13/${projectName}/javadoc" />
   <property name="mainClass" value="${fullPkg}/FishAnimation" />
 
   <path id="project.class.path">
