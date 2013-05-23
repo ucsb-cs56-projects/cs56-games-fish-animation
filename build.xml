@@ -1,8 +1,9 @@
-<?xml version="1.0" encoding="utf-8" ?> 
+<?xml version="1.0" encoding="utf-8" ?>
 <project default="compile">
   <!--  build.xml for Mantis issue 0000355
        name: Lawrence Khuu for CS56, S11
        name: Christina Morris, Mathew Glodack for CS56, S13
+       names:Casey Barbello, Daryl Pham for CS56, S13
   --> 
   
   <property environment="env" /> 
@@ -35,7 +36,7 @@
   </target>
   
   <target name="compile" description="compiles my code">
-    <mkdir dir="build" /> 
+    <mkdir dir="build" />
     <javac srcdir="src" destdir="build" debug="true" debuglevel="lines,source">
       <classpath>
 	<pathelement location="build" /> 
@@ -46,7 +47,7 @@
   
   <target name="clean" description="removes unnessessary files">
     <delete failonerror="false" verbose="true">
-      <fileset dir="build" includes="*.class" /> 
+      <fileset dir="build" includes="*.class" />
     </delete>
     <delete dir="javadoc" quiet="true" /> 
     <delete dir="dist" quiet="true" /> 
@@ -92,6 +93,9 @@
 	 chmod on the parent directories. However, you should only need to do
 	 that once.
     -->
+
+ 
+
     <chmod dir="${javadocDest}" perm="755" type="dir" includes="**" />
     <chmod dir="${javadocDest}" perm="755" type="file" includes="**/*" />
     <echo>Javadoc deployed to ${javadocURL}</echo>
