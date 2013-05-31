@@ -22,55 +22,22 @@ import java.util.*;
 public class FishAnimationEnvironment extends JFrame{
     Thread animate;
     DrawingPanel fishPanel = new DrawingPanel();
-    int maxX = 1000;//width of the panel
-    int maxY = 750;//height of the panel
-    int posX = maxX/2, posY = maxY/2;//used to position the shark at the origin
-    int maxWidth = 100;//max width of the fish
-    long time1 = System.nanoTime()/1000000000; //Timer
-    int eaten = 0;//number of fish eaten
-    int numFish = 75;//number of fish in environment
+    int maxX = 1000, maxY = 750; // Default height and width of the game at start
+    int posX = maxX/2, posY = maxY/2;  //used to position the shark at the origin
+    int maxWidth = 100; //max width of the fish
     int boatX = maxX;//hold the position of the boat
-    int maxD = 10;//holds the maximum diameter of the bubbles
-    int numBubbles = 10+(int)(Math.random()*20);//creates a random amount of bubbles
-    int numJellyFish;
+    int eaten = 0; //number of fish eaten
+    int numFish = 75; //number of fish in environment
+    int maxD = 10; //holds the maximum diameter of the bubbles
+    int numBubbles = 10+(int)(Math.random()*20); //creates a random amount of bubbles
+    int numJellyFish; //holds the number of Jellyfish to be created
+	long time1 = System.nanoTime()/1000000000; //Used to get the start time of the game
 
     //create ArrayLists for fish, bubbles, and jellyfish.
     ArrayList<Fish> fishArray = new ArrayList<Fish>();    
     ArrayList<Bubbles> bubblesArray = new ArrayList<Bubbles>();
     ArrayList<JellyFish> jellyfish = new ArrayList<JellyFish>();
 		
-    /**
-       Class to handle mouse events. Some methods are present but not defined
-       because every method of the implemented class must be present to avoid
-       compiler error
-    **/
-    public class MouseHandler implements MouseListener, MouseMotionListener{
-	
-	public void mouseClicked(MouseEvent e){
-	    posX = e.getX();
-	    posY = e.getY();
-	}
-	
-	public void mousePressed(MouseEvent e){
-	}
-	
-	public void mouseEntered(MouseEvent e){
-	}
-        
-	public void mouseExited(MouseEvent e){
-	}
-	
-	public void mouseReleased(MouseEvent e){
-	}
-	
-	public void mouseMoved(MouseEvent e){
-	}
-	
-	public void mouseDragged(MouseEvent e){
-	    posX = e.getX();
-	    posY = e.getY();
-	}		
-    }
     
     /** 
        Method addNewBubbles adds Bubbles to the ArrayList
@@ -117,6 +84,13 @@ public class FishAnimationEnvironment extends JFrame{
 	    addNewFish(createRandomFish(maxX,maxY,maxWidth));
 		}
 	}
+	
+	/**
+       Custom Constructor for FishAnimationEnvironment. Creates a JFrame and a Jpanel that 
+       is placed inside of it. Animation is done on the JPanel.  This Constructor takes
+       in input from the Menu GUI for the difficulty and creates Jellyfish based on the
+       selected difficulty.
+    **/
 	public FishAnimationEnvironment(String difficulty){
 		if(difficulty.equals("Easy")){
 			numJellyFish = 3;
@@ -127,6 +101,7 @@ public class FishAnimationEnvironment extends JFrame{
 		else{
 			numJellyFish = 14;
 		}
+	//Adds the fish into the Array that will hold the fish
 	for(int i=0; i<numFish; i++){
 	    addNewFish(createRandomFish(maxX,maxY,maxWidth));
 	}
@@ -135,7 +110,7 @@ public class FishAnimationEnvironment extends JFrame{
 	for(int i=0; i<numBubbles; i++){
 	    addNewBubbles(createBubbles(maxX,maxY,maxD));
 	}
-	
+	//Adds the Jellyfish into the game 
 	for(int i = 0; i<numJellyFish; i++){
 	    JellyFish j = new JellyFish((int)(Math.random()*12345)%maxX,maxY,(Math.random()*123)%50+15);
 	    jellyfish.add(j);
@@ -152,7 +127,8 @@ public class FishAnimationEnvironment extends JFrame{
     /**
        Innerclass for a custom Jpanel for animation.  Draws out the 
        background and the in-game components including a timer, 
-       the score, the shark, and the fish.     
+       the score, the shark, the fish, the jellyfish, the seaweed, 
+       the boat, and the bubbles.     
     **/
 
     class DrawingPanel extends JPanel{
@@ -176,11 +152,11 @@ public class FishAnimationEnvironment extends JFrame{
 		g.drawImage(image, i, this.getHeight()-83, this);
 	    }
 		
-	    //Draws the image of the boat
+	    //Draws the image of the boat and also animates it
 	    g.drawImage(boat, boatX, -135, this);
-	    boatX-=10;//Changes the X position of the boat
-	    if(boatX <= -250){//if boat reaches the end of the Frame
-	       	boatX = this.getWidth();//Set the Boat Position to the width of the frame
+	    boatX-=10;
+	    if(boatX <= -250){
+	       	boatX = this.getWidth();
 	    }
 				
 	    //Draws the fish based off the fish info array
@@ -246,6 +222,9 @@ public class FishAnimationEnvironment extends JFrame{
 	}
     }//end DrawingPanel
     
+    /**
+		Class that animates the game to get the fish and bubbles to move.
+		*/
     class Animate extends Thread{
 	public void run(){
 	    try{
@@ -261,6 +240,10 @@ public class FishAnimationEnvironment extends JFrame{
 	    }//end catch
 	}//end run
     
+    /** 
+        Class that holds the information for each separate fish in order to
+        animate the fish and know its whereabouts on the screen.
+        */
 	class FishInfo{
 	    double x,y,width,height;
 	    FishInfo(double x, double y, double width, double height){
@@ -380,5 +363,37 @@ public class FishAnimationEnvironment extends JFrame{
 	}//end display method
     }//end inner class named Animate
     
+        /**
+       Class to handle mouse events. Some methods are present but not defined
+       because every method of the implemented class must be present to avoid
+       compiler error
+    **/
+    public class MouseHandler implements MouseListener, MouseMotionListener{
+	
+	public void mouseClicked(MouseEvent e){
+	    posX = e.getX();
+	    posY = e.getY();
+	}
+	
+	public void mousePressed(MouseEvent e){
+	}
+	
+	public void mouseEntered(MouseEvent e){
+	}
+        
+	public void mouseExited(MouseEvent e){
+	}
+	
+	public void mouseReleased(MouseEvent e){
+	}
+	
+	public void mouseMoved(MouseEvent e){
+	}
+	
+	public void mouseDragged(MouseEvent e){
+	    posX = e.getX();
+	    posY = e.getY();
+	}		
+    }
    
 }//end class Animate
