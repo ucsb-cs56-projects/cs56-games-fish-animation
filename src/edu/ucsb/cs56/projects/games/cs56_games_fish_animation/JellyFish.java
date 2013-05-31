@@ -19,12 +19,16 @@ public class JellyFish
     int x, y;
     boolean move;
     int count;
-    JellyFish(int x, int y){
-	this.x = x;
-	this.y = y;
-	this.move = false;
-	count = 0;
+    double speed;
+    
+    JellyFish(int x, int y, double speed){
+		this.x = x;
+		this.y = y;
+		this.move = false;
+		this.speed = speed;
+		count = 0;
     }
+    
     /**Gets the X position of the JellyFish
      * @return X is the position of the JellyFish
      */
@@ -58,7 +62,7 @@ public class JellyFish
     /**Moves the positon of the JellyFish
      * @param m moves the Y position of the JellyFish
      */
-    void moveY(int m) { y-= m;}
+    void moveY(double m) { y-= m;}
 
     /**Sets the count of the JellyFish
      * Incrementer for count which is par of the JellyFish object
@@ -69,5 +73,10 @@ public class JellyFish
      * @return Count of the JellyFish
      */
     int getCount() {return count;}
+    
+    /**Gets the speed that each different Jellyfish moves at.  
+     * @return the speed of the Jellyfish
+     */
+    double getSpeed() {return speed;}
 }
 	
