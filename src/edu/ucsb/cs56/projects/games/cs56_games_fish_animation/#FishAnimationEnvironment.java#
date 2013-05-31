@@ -28,12 +28,11 @@ public class FishAnimationEnvironment extends JFrame{
     int maxWidth = 100;
     long time1 = System.nanoTime()/1000000000; //Timer to start counting when the game initiallizes
     int eaten = 0;//number of fish eaten
-    int numFish = 75;
+    int numFish = 50+(int)(Math.random()*40);
     int boatX = maxX;//hold the position of the boat
     int maxD = 10;//holds the maximum diameter of the bubbles
     int numBubbles = 10+(int)(Math.random()*20);//creates a random amount of bubbles
-    int numJellyFish;
-
+    
     //create ArrayLists for fish, bubbles, and jellyfish.
     ArrayList<Fish> fishArray = new ArrayList<Fish>();    
     ArrayList<Bubbles> bubblesArray = new ArrayList<Bubbles>();
@@ -115,31 +114,16 @@ public class FishAnimationEnvironment extends JFrame{
     public FishAnimationEnvironment(){
 	for(int i=0; i<numFish; i++){
 	    addNewFish(createRandomFish(maxX,maxY,maxWidth));
-		}
 	}
-	public FishAnimationEnvironment(String difficulty){
-		if(difficulty.equals("Easy")){
-			//numFish = 50;
-			numJellyFish = 3;
-		}
-		else if(difficulty.equals("Medium")){
-			//numFish = 37;
-			numJellyFish = 6;
-		}
-		else{
-			//numFish = 20;
-			numJellyFish = 10;
-		}
-	for(int i=0; i<numFish; i++){
-	    addNewFish(createRandomFish(maxX,maxY,maxWidth));
-	}
+
+
 	
 	//Adds the random amount of Bubbles into the ArrayList
 	for(int i=0; i<numBubbles; i++){
 	    addNewBubbles(createBubbles(maxX,maxY,maxD));
 	}
 		
-	
+
 	for(int i = 0; i<numJellyFish; i++){
 	    JellyFish j = new JellyFish((int)(Math.random()*12345)%maxX,maxY,(Math.random()*123)%50+15);
 	    jellyfish.add(j);
@@ -357,7 +341,7 @@ public class FishAnimationEnvironment extends JFrame{
 	  }
 	  
 	    //Speed of the fish moving across the screen
-	    double currentSpeed = numFish%6;
+	    double currentSpeed = (numFish%10)+3;
 	    for(int i=0; i<info.size();i++){
 		if((currentSpeed-1)<2){
 		    currentSpeed = (numFish%10)+1;
@@ -384,5 +368,10 @@ public class FishAnimationEnvironment extends JFrame{
 	}//end display method
     }//end inner class named Animate
     
-   
+    /**
+       Main class for running FishAnimationEnvironment
+    **/
+    public static void main(String[] args){
+        new FishAnimationEnvironment();
+    }//end main    
 }//end class Animate

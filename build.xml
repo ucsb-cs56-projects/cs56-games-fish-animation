@@ -22,7 +22,7 @@
   <property name="projectPath" value="${course}/${projects}/${categoryname}" /> 
   <property name="javadocDest" value="${webRoot}/S13/cmmorris/${projectName}/javadoc" />
   <property name="javadocURL" value="${webBaseURL}/${projectName}/javadoc" /> 
-  <property name="mainClass" value="${fullPkg}/FishAnimationEnvironment" />
+  <property name="mainClass" value="${fullPkg}/Menu" />
   <property name="envClass" value="${fullPkg}/FishEnvironment" />
   <path id="project.class.path">
     <pathelement location="build"/>
