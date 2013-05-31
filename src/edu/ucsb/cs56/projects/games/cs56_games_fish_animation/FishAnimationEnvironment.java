@@ -126,16 +126,6 @@ public class FishAnimationEnvironment extends JFrame{
 	    JellyFish j = new JellyFish((int)(Math.random()*12345)%maxX,maxY,(Math.random()*123)%50+15);
 	    jellyfish.add(j);
 	}
-    
-	/*
-	//Creates two JellyFish name mathew and christina
-	JellyFish mathew = new JellyFish((int)(Math.random()*12345)%maxX,maxY,(Math.random()*123)%50+15);
-	JellyFish christina = new JellyFish((int)(Math.random()*12345)%maxX,maxY,(Math.random()*123)%50+15);
-	
-	//Adds mathew and christina into the jellyfish ArrayList
-	jellyfish.add(mathew);
-	jellyfish.add(christina);
-	*/
 
 	getContentPane().add(fishPanel);
 	animate = new Animate();
