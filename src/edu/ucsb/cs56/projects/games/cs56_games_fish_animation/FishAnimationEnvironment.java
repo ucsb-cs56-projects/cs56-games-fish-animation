@@ -14,9 +14,10 @@ import java.util.*;
    @author Lawrence Khuu
    @author Casey Barbello
    @author Daryl Pham
+   @author Christina Morris
+   @author Mathew Glodack
    @version for CS56, proj01, Spring 2013, UCSB
 **/
-
 
 public class FishAnimationEnvironment extends JFrame{
     Thread animate;
@@ -27,23 +28,16 @@ public class FishAnimationEnvironment extends JFrame{
     int maxWidth = 100;
     long time1 = System.nanoTime()/1000000000; //Timer to start counting when the game initiallizes
     int eaten = 0;//number of fish eaten
-    int numFish = 40+(int)(Math.random()*40);
-	int boatX = maxX;//hold the position of the boat
+    int numFish = 50+(int)(Math.random()*40);
+    int boatX = maxX;//hold the position of the boat
     int maxD = 10;//holds the maximum diameter of the bubbles
     int numBubbles = 10+(int)(Math.random()*20);//creates a random amount of bubbles
+    
+    //create ArrayLists for fish, bubbles, and jellyfish.
     ArrayList<Fish> fishArray = new ArrayList<Fish>();    
-    //Creates an ArrayList of Bubbles to display
     ArrayList<Bubbles> bubblesArray = new ArrayList<Bubbles>();
-    //Creates an ArrayList of JellyFish to display
     ArrayList<JellyFish> jellyfish = new ArrayList<JellyFish>();
-	
-	 /**Method addNewBubbles adds Bubbles to the ArrayList
-     *@param bubble a Bubbles object
-     */
-    private void addNewBubbles(Bubbles bubble){
-	bubblesArray.add(bubble);
-    }
-	
+		
     /**
        Class to handle mouse events. Some methods are present but not defined
        because every method of the implemented class must be present to avoid
@@ -60,10 +54,10 @@ public class FishAnimationEnvironment extends JFrame{
 	}
 	
 	public void mouseEntered(MouseEvent e){
-    }
+	}
         
-    public void mouseExited(MouseEvent e){
-    }
+	public void mouseExited(MouseEvent e){
+	}
 	
 	public void mouseReleased(MouseEvent e){
 	}
@@ -77,6 +71,18 @@ public class FishAnimationEnvironment extends JFrame{
 	}		
     }
     
+    /** 
+       Method addNewBubbles adds Bubbles to the ArrayList
+       @param bubble a Bubbles object
+    **/
+    private void addNewBubbles(Bubbles bubble){
+	bubblesArray.add(bubble);
+    }
+  
+    /** 
+       Method addNewFish add Fish to the ArrayList
+       @param fish a Fish object
+    **/
     private void addNewFish(Fish fish){
 	fishArray.add(fish);
     }
@@ -87,13 +93,14 @@ public class FishAnimationEnvironment extends JFrame{
 	int randomWidth = 10 + (int)(Math.random()*(maxWidth-10));
 	return new Fish(randomX,randomY,randomWidth,randomWidth/5);
     }
-    
-	/** Method createsBubbles
-     * @param x for the x position 
-     * @param y for the y position
-     * @param diameter for the diameter of the bubble
-     */
-	private Bubbles createBubbles( int x, int y, int diameter){
+
+    /** 
+	Method createsBubbles
+	@param x for the x position 
+	@param y for the y position
+	@param diameter for the diameter of the bubble
+    **/
+    private Bubbles createBubbles( int x, int y, int diameter){
 	int randomX = (int)(Math.random()*x);
 	int randomY = (int)(Math.random()*y);
 	int randomD = (int)(Math.random()*diameter);
@@ -104,7 +111,7 @@ public class FishAnimationEnvironment extends JFrame{
        Constructor for FishAnimationEnvironment. Creates a JFrame and a Jpanel that 
        is placed inside of it. Animation is done on the JPanel
     **/
-    public FishAnimationEnvironment(){//constructor
+    public FishAnimationEnvironment(){
 	for(int i=0; i<numFish; i++){
 	    addNewFish(createRandomFish(maxX,maxY,maxWidth));
 	}
@@ -113,7 +120,14 @@ public class FishAnimationEnvironment extends JFrame{
 	for(int i=0; i<numBubbles; i++){
 	    addNewBubbles(createBubbles(maxX,maxY,maxD));
 	}
-	
+		
+	int numJellyFish = 3;
+	for(int i = 0; i<numJellyFish; i++){
+	    JellyFish j = new JellyFish((int)(Math.random()*12345)%maxX,maxY,(Math.random()*123)%50+15);
+	    jellyfish.add(j);
+	}
+    
+	/*
 	//Creates two JellyFish name mathew and christina
 	JellyFish mathew = new JellyFish((int)(Math.random()*12345)%maxX,maxY,(Math.random()*123)%50+15);
 	JellyFish christina = new JellyFish((int)(Math.random()*12345)%maxX,maxY,(Math.random()*123)%50+15);
@@ -121,7 +135,8 @@ public class FishAnimationEnvironment extends JFrame{
 	//Adds mathew and christina into the jellyfish ArrayList
 	jellyfish.add(mathew);
 	jellyfish.add(christina);
-	
+	*/
+
 	getContentPane().add(fishPanel);
 	animate = new Animate();
 	animate.start();
@@ -149,10 +164,10 @@ public class FishAnimationEnvironment extends JFrame{
 		
 	    //Images in the game
 	    Image shark = new ImageIcon("shark.jpg").getImage();
-	    Image image = new ImageIcon("Seaweed.jpg").getImage();//Gets the Seaweed.jpg and names it image
-	    Image boat = new ImageIcon("cartoon-boat.jpg").getImage();//Gets the cartoon-boat.jpg and names it boat
+	    Image image = new ImageIcon("Seaweed.jpg").getImage();
+	    Image boat = new ImageIcon("cartoon-boat.jpg").getImage();
 		
-		//Draws the seaweed at the specified points
+	    //Draws the seaweed at the specified points
 	    for ( int i=0; i < this.getWidth()+125; i+=125 ) {
 		g.drawImage(image, i, this.getHeight()-83, this);
 	    }
@@ -161,12 +176,11 @@ public class FishAnimationEnvironment extends JFrame{
 	    g.drawImage(boat, boatX, -135, this);
 	    boatX-=10;//Changes the X position of the boat
 	    if(boatX <= -250){//if boat reaches the end of the Frame
-			boatX = this.getWidth();//Set the Boat Position to the width of the frame
-		}
-		
-		
-		//Draws the fish based off the fish info array
-		g2.setColor(Color.YELLOW);
+	       	boatX = this.getWidth();//Set the Boat Position to the width of the frame
+	    }
+				
+	    //Draws the fish based off the fish info array
+	    g2.setColor(Color.YELLOW);
 	    for(int i=0; i<fishArray.size(); i++){
 		g2.draw(fishArray.get(i));
 	    }
@@ -175,7 +189,7 @@ public class FishAnimationEnvironment extends JFrame{
 	    Shark s = new Shark(posX, posY);
 	    g2.drawImage(shark, s.getXPos()-160, s.getYPos()-130, this);
 	    
-		//Draws the bubbles with the blue gradient
+	    //Draws the bubbles with the blue gradient
 	    Color b = new Color(127, 255, 212);
 	    for(int i=0; i<bubblesArray.size(); i++){
 		int BubblesY = bubblesArray.get(i).getY()-bubblesArray.get(i).getDiameter()/2;
@@ -187,33 +201,37 @@ public class FishAnimationEnvironment extends JFrame{
 		//Sets the paint to the gradient color
 		g2.setPaint(gradient);
 		//Draws a Bubbles object onto the screen
-		g2.fillOval(bubblesArray.get(i).getX(), bubblesArray.get(i).getY(), bubblesArray.get(i).getDiameter(), bubblesArray.get(i).getDiameter());
+		int xb = bubblesArray.get(i).getX(); 
+		int yb = bubblesArray.get(i).getY();
+		int db = bubblesArray.get(i).getDiameter();
+		g2.fillOval(xb, yb, db, db);
 	    }
 		
 	    //Sets the Color to PINK for the jellyfish
 	    g2.setColor(Color.PINK);
 	    for(int i = 0; i<jellyfish.size(); i++){
-		if(jellyfish.get(i).CheckJellyFish()==true){
+		if(jellyfish.get(i).CheckJellyFish()==true){		    		    
 		    //Draws the Body of the JellyFish
 		    g2.fillArc(jellyfish.get(i).getX(),jellyfish.get(i).getY(),50,40,0,180);
-		    for(int j = jellyfish.get(i).getX()+5;j<jellyfish.get(i).getX()+50;j+=5){
+     		    for(int j = jellyfish.get(i).getX()+5;j<jellyfish.get(i).getX()+50;j+=5){	 		
 			//Draws the Tentacles of the JellyFish
 			g2.drawLine(j,jellyfish.get(i).getY()+75,j,jellyfish.get(i).getY()+10);}
 		}
 		else{
 		    //Draws the Body of the JellyFish
 		    g2.fillArc(jellyfish.get(i).getX()+5,jellyfish.get(i).getY(),40,50,0,180); 
+		    
 		    for(int j = jellyfish.get(i).getX()+10;j<jellyfish.get(i).getX()+45;j+=5){
+			
 			//Draws the Tentacles of the JellyFish
 			g2.drawLine(j,jellyfish.get(i).getY()+95,j,jellyfish.get(i).getY()+10);}
 		}	    
 	    }
-	    
-		
-	    //displays the number of fish eaten
+	    	
+	    //displays the number of points
 	    g.setFont(new Font("Verdana", Font.PLAIN, 35));
 	    g.setColor(Color.RED);
-	    String str1 = "Fish Eaten: " + eaten + "!";
+	    String str1 = "Points: " + eaten + "!";
 	    g.drawString(str1,0,35);
 	    
 	    //displays the current elapsed time of the game in seconds
@@ -225,7 +243,7 @@ public class FishAnimationEnvironment extends JFrame{
     }//end DrawingPanel
     
     class Animate extends Thread{
-	public void run(){//begin run method
+	public void run(){
 	    try{
 		while(true){
 		    display(40);
@@ -238,7 +256,7 @@ public class FishAnimationEnvironment extends JFrame{
 		}//end else
 	    }//end catch
 	}//end run
-	
+    
 	class FishInfo{
 	    double x,y,width,height;
 	    FishInfo(double x, double y, double width, double height){
@@ -261,9 +279,6 @@ public class FishAnimationEnvironment extends JFrame{
 	    throws InterruptedException{
 	    ArrayList<FishInfo> info = new ArrayList<FishInfo>();
 	 
-		/*check if each fish is at sharks mouth and remove from screen and
-		 increment eaten if true
-		*/   
 	    for(int i=0; i<fishArray.size(); i++){
 
 		//get x position, y position, width, and height of fish
@@ -271,7 +286,10 @@ public class FishAnimationEnvironment extends JFrame{
 		int yf = (int)fishArray.get(i).getYPos();
 		int wf = (int)fishArray.get(i).getWidth();
 		int hf = (int)fishArray.get(i).getHeight();
-
+		
+		/*check if each fish is at sharks mouth and remove from screen and
+		  increment eaten if true*/
+		 
 		if ((xf > posX-40 && xf < posX+40) && (yf > posY-25 && yf < posY+25)){
 		    info.add(new FishInfo(fishPanel.getWidth(), Math.random()*maxY, wf, hf));    
 		    eaten++;
@@ -296,10 +314,8 @@ public class FishAnimationEnvironment extends JFrame{
 		    jellyfish.get(i).setY((int)fishPanel.getHeight());
 		}
 	    } 
-
-
-
 	    fishArray.clear();
+
 	    //Displays the Bubbles of the bubblesArray ArrayList
 	    for(int i=0; i<bubblesArray.size();i++){
 		if ( bubblesArray.get(i).getY() <= -20){
@@ -319,36 +335,39 @@ public class FishAnimationEnvironment extends JFrame{
 	 		}
 
 	      //If the jellyfish is true it moves 10 pixels and setMove to false
-		if(jellyfish.get(i).CheckJellyFish()==true){
-		  if ( jellyfish.get(i).getCount()%20 == 0 )
-		      {
+	      if(jellyfish.get(i).CheckJellyFish()==true){
+		  if ( jellyfish.get(i).getCount()%20 == 0){
 			  jellyfish.get(i).moveY(jellyfish.get(i).getSpeed());
 			  jellyfish.get(i).setMove(false);
-		      }
+		  }
 	      }
-
 		//Sets move from false to true
-	      if (jellyfish.get(i).getCount()%20 == 10 )
-		      jellyfish.get(i).setMove(true);
-		  jellyfish.get(i).setCount();
+	      if (jellyfish.get(i).getCount()%20 == 10){
+		  jellyfish.get(i).setMove(true);
+	      }
+	      jellyfish.get(i).setCount();
 	  }
 	  
-		//Speed of the fish moving across the screen
-	    double currentSpeed = (numFish%10)+1;
+	    //Speed of the fish moving across the screen
+	    double currentSpeed = (numFish%10)+3;
 	    for(int i=0; i<info.size();i++){
-		if((currentSpeed-1)<2)
+		if((currentSpeed-1)<2){
 		    currentSpeed = (numFish%10)+1;
+		}
 		else{
 		    currentSpeed--;
-		}	
+		}
 		double newX = info.get(i).getX()-currentSpeed;
-		if(newX<-50)
+		int wp = fishPanel.getWidth();
+		int hp = fishPanel.getHeight();
 
-		    addNewFish(new Fish(fishPanel.getWidth(),((Math.random()*fishPanel.getHeight())%fishPanel.getHeight()),info.get(i).getWidth(),info.get(i).getHeight()));
-	
-		else
+		if(newX<-50){
+		    addNewFish(new Fish(wp,((Math.random()*hp)%hp),info.get(i).getWidth(),info.get(i).getHeight()));
+		}
+		else{
 		    addNewFish(new Fish(newX,info.get(i).getY(),info.get(i).getWidth(),info.get(i).getHeight()));
-            }
+		}
+	    }
 	    fishPanel.repaint();
 	    
 	    if(Thread.currentThread().interrupted())
@@ -362,7 +381,5 @@ public class FishAnimationEnvironment extends JFrame{
     **/
     public static void main(String[] args){
         new FishAnimationEnvironment();
-    }//end main
-    
-    
+    }//end main    
 }//end class Animate
