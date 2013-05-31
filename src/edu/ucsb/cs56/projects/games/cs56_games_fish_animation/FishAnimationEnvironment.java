@@ -16,19 +16,19 @@ import java.util.*;
    @author Daryl Pham
    @author Christina Morris
    @author Mathew Glodack
-   @version for CS56, proj01, Spring 2013, UCSB
+   @version for CS56, proj02, Spring 2013, UCSB
 **/
 
 public class FishAnimationEnvironment extends JFrame{
     Thread animate;
     DrawingPanel fishPanel = new DrawingPanel();
-    int maxX = 1000;
-    int maxY = 750;
-    int posX = maxX/2, posY = maxY/2;
-    int maxWidth = 100;
-    long time1 = System.nanoTime()/1000000000; //Timer to start counting when the game initiallizes
+    int maxX = 1000;//width of the panel
+    int maxY = 750;//height of the panel
+    int posX = maxX/2, posY = maxY/2;//used to position the shark at the origin
+    int maxWidth = 100;//max width of the fish
+    long time1 = System.nanoTime()/1000000000; //Timer
     int eaten = 0;//number of fish eaten
-    int numFish = 75;
+    int numFish = 75;//number of fish in environment
     int boatX = maxX;//hold the position of the boat
     int maxD = 10;//holds the maximum diameter of the bubbles
     int numBubbles = 10+(int)(Math.random()*20);//creates a random amount of bubbles
@@ -119,16 +119,13 @@ public class FishAnimationEnvironment extends JFrame{
 	}
 	public FishAnimationEnvironment(String difficulty){
 		if(difficulty.equals("Easy")){
-			//numFish = 50;
 			numJellyFish = 3;
 		}
 		else if(difficulty.equals("Medium")){
-			//numFish = 37;
-			numJellyFish = 6;
+			numJellyFish = 7;
 		}
 		else{
-			//numFish = 20;
-			numJellyFish = 10;
+			numJellyFish = 14;
 		}
 	for(int i=0; i<numFish; i++){
 	    addNewFish(createRandomFish(maxX,maxY,maxWidth));
@@ -138,7 +135,6 @@ public class FishAnimationEnvironment extends JFrame{
 	for(int i=0; i<numBubbles; i++){
 	    addNewBubbles(createBubbles(maxX,maxY,maxD));
 	}
-		
 	
 	for(int i = 0; i<numJellyFish; i++){
 	    JellyFish j = new JellyFish((int)(Math.random()*12345)%maxX,maxY,(Math.random()*123)%50+15);
@@ -164,7 +160,7 @@ public class FishAnimationEnvironment extends JFrame{
 	    Graphics2D g2 = (Graphics2D) g;
 	    g2.setColor(Color.BLUE);
 	    g2.fillRect(0,0,this.getWidth(),this.getHeight());	    		
-		
+     
 	    //Starts the Action listener to listen for mouse events in the panel
 	    MouseHandler handler = new MouseHandler();
 	    fishPanel.addMouseListener(handler);
@@ -340,7 +336,7 @@ public class FishAnimationEnvironment extends JFrame{
 	      if(jellyfish.get(i).getY()<=-100){
 		    jellyfish.get(i).setX(((int)((Math.random()*12345)%fishPanel.getWidth())));
 		    jellyfish.get(i).setY((int)fishPanel.getHeight());	    
-	 		}
+	      }
 
 	      //If the jellyfish is true it moves 10 pixels and setMove to false
 	      if(jellyfish.get(i).CheckJellyFish()==true){

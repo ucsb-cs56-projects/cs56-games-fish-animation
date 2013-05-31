@@ -7,6 +7,14 @@ import java.awt.event.ActionListener;
 import java.util.ArrayList;
 import java.util.*;
 
+/**
+   Implements a GUI that allows the user to choose diffculty,
+   find instructions, or exit the menu.
+   @author Casey Barbello
+   @author Daryl Pham
+   @version for CS56, proj02, Spring 2013, UCSB
+**/
+
 class Menu implements ActionListener {
 	JButton Play, Instruction, Exit, Easy, Medium, Hard, Back;
 	JFrame frame;
