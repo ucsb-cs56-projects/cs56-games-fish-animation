@@ -19,7 +19,7 @@ import java.util.*;
    @version for CS56, proj02, Spring 2013, UCSB
 **/
 
-public class FishAnimationEnvironment extends JFrame{
+public class FishAnimationEnvironment extends JFrame implements java.io.Serializable{
     Thread animate;
     DrawingPanel fishPanel = new DrawingPanel();
     int maxX = 1000, maxY = 750; // Default height and width of the game at start
@@ -32,6 +32,7 @@ public class FishAnimationEnvironment extends JFrame{
     int numBubbles = 10+(int)(Math.random()*20); //creates a random amount of bubbles
     int numJellyFish; //holds the number of Jellyfish to be created
 	long time1 = System.nanoTime()/1000000000; //Used to get the start time of the game
+	int delay = 20; // The pause button delay
 
     //create ArrayLists for fish, bubbles, and jellyfish.
     ArrayList<Fish> fishArray = new ArrayList<Fish>();    
@@ -146,6 +147,8 @@ public class FishAnimationEnvironment extends JFrame{
 	    Image shark = new ImageIcon("shark.jpg").getImage();
 	    Image image = new ImageIcon("Seaweed.jpg").getImage();
 	    Image boat = new ImageIcon("cartoon-boat.jpg").getImage();
+	    Image pause = new ImageIcon("PauseButton.jpg").getImage();
+	    JButton Pause = new JButton(pause);
 		
 	    //Draws the seaweed at the specified points
 	    for ( int i=0; i < this.getWidth()+125; i+=125 ) {
@@ -219,6 +222,11 @@ public class FishAnimationEnvironment extends JFrame{
 	    g.setColor(Color.RED);
 	    String str2 = "Seconds Elapsed: " + ((System.nanoTime()/1000000000) - time1);
 	    g.drawString(str2,0,65);
+	    
+	    //Draws the image of the Pause button
+	    g2.drawImage(pause, (fishPanel.getWidth() - 64), 0, this);
+	    
+	    
 	}
     }//end DrawingPanel
     
@@ -229,7 +237,7 @@ public class FishAnimationEnvironment extends JFrame{
 	public void run(){
 	    try{
 		while(true){
-		    display(40);
+		    display(delay);
 		}//end while loop
 	    }catch(Exception ex){
 		if(ex instanceof InterruptedException){}
@@ -356,9 +364,9 @@ public class FishAnimationEnvironment extends JFrame{
 		}
 	    }
 	    fishPanel.repaint();
-	    
 	    if(Thread.currentThread().interrupted())
 		throw(new InterruptedException());
+		
 	    Thread.currentThread().sleep(delay);
 	}//end display method
     }//end inner class named Animate
