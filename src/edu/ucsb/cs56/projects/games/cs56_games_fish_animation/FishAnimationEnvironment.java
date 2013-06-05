@@ -148,7 +148,7 @@ public class FishAnimationEnvironment extends JFrame implements java.io.Serializ
 	    Image image = new ImageIcon("Seaweed.jpg").getImage();
 	    Image boat = new ImageIcon("cartoon-boat.jpg").getImage();
 	    Image pause = new ImageIcon("PauseButton.jpg").getImage();
-	    JButton Pause = new JButton(pause);
+	    //JButton Pause = new JButton(pause);
 		
 	    //Draws the seaweed at the specified points
 	    for ( int i=0; i < this.getWidth()+125; i+=125 ) {
@@ -379,8 +379,10 @@ public class FishAnimationEnvironment extends JFrame implements java.io.Serializ
     public class MouseHandler implements MouseListener, MouseMotionListener{
 	
 	public void mouseClicked(MouseEvent e){
-	    posX = e.getX();
-	    posY = e.getY();
+	    /*  if((e.getX() > posX-200 && e.getX() < posX+40) && (e.getY() > posY-60 && e.getY() < posY+25)){*/
+		posX = e.getX();
+		posY = e.getY();
+		//}    
 	}
 	
 	public void mousePressed(MouseEvent e){
@@ -399,8 +401,10 @@ public class FishAnimationEnvironment extends JFrame implements java.io.Serializ
 	}
 	
 	public void mouseDragged(MouseEvent e){
-	    posX = e.getX();
-	    posY = e.getY();
+	    /* if((e.getX() > posX-200 && e.getX() < posX+40) && (e.getY() > posY-60 && e.getY() < posY+25)){*/
+		posX = e.getX();
+		posY = e.getY();
+		//  }
 	}		
     }
    
