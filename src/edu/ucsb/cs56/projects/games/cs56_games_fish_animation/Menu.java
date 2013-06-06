@@ -16,9 +16,9 @@ import java.util.*;
 **/
 
 class Menu implements ActionListener {
-    JButton Play, Instruction, Exit, Easy, Medium, Hard, Back;
+    JButton Play, Instruction, Exit, Resume, Easy, Medium, Hard, Back;
     JFrame frame, instruct;
-    String type;
+    int type;
     JTextArea text;
     
     public static void main (String[] args) {
@@ -38,22 +38,25 @@ class Menu implements ActionListener {
 	Play = new JButton("Play Game");
 	Instruction = new JButton("Instructions");
 	Exit = new JButton("Exit");
-	
+	Resume = new JButton("Resume");
+
 		Play.setPreferredSize(new Dimension(200,75));
 		Instruction.setPreferredSize(new Dimension(200,75));
 		Exit.setPreferredSize(new Dimension(200, 75));
+		Resume.setPreferredSize(new Dimension(200, 75));
 		
 		Play.addActionListener(this);
 		Instruction.addActionListener(this);
 		Exit.addActionListener(this);
+		Resume.addActionListener(this);
 		
 		//MyDrawPanel drawpanel = new MyDrawPanel();
 		
 		frame.getContentPane().add(BorderLayout.WEST, Play);
 		frame.getContentPane().add(BorderLayout.CENTER, Instruction);
 		frame.getContentPane().add(BorderLayout.EAST, Exit);
-		//GUI.getContentPane().add(BorderLayout.CENTER, drawpanel);
-		frame.setSize(600,75);
+		frame.getContentPane().add(BorderLayout.SOUTH, Resume);
+		frame.setSize(600,150);
 		frame.setVisible(true);
     }
     
@@ -114,35 +117,42 @@ class Menu implements ActionListener {
 		
     public void actionPerformed(ActionEvent event){
 	if(event.getSource() == Easy){
-	    type = "Easy";
 	    frame.setVisible(false);
-	    FishAnimationEnvironment f = new FishAnimationEnvironment(type);
+	    FishAnimationEnvironment f = new FishAnimationEnvironment(3, false);
 	}
 	if(event.getSource() == Medium){
-	    type = "Medium";
 	    frame.setVisible(false);
-	    FishAnimationEnvironment f = new FishAnimationEnvironment(type);
+	    FishAnimationEnvironment f = new FishAnimationEnvironment(7, false);
 	}
 	if(event.getSource() == Hard){
-	    type = "Hard";
 	    frame.setVisible(false);
-	    FishAnimationEnvironment f = new FishAnimationEnvironment(type);
+	    FishAnimationEnvironment f = new FishAnimationEnvironment(14, false);
 	}
 	if(event.getSource() == Play){
 	    frame.remove(Play);
 	    frame.remove(Instruction);
 	    frame.remove(Exit);
+	    frame.remove(Resume);
 	    setDifficulty();
 	}
 	if(event.getSource() == Exit){
 	    System.exit(0);
 	}
 	if(event.getSource() == Instruction){
-		frame.remove(Play);
+	    frame.remove(Play);
 	    frame.remove(Instruction);
 	    frame.remove(Exit);
+	    frame.remove(Resume);
 	    frame.setVisible(false);
 	    HowToPlay();
+	}
+	if(event.getSource() == Resume){
+	    frame.remove(Play);
+	    frame.remove(Instruction);
+	    frame.remove(Exit);
+	    frame.remove(Resume);
+	    frame.setVisible(false);
+	    FishAnimationEnvironment f = new FishAnimationEnvironment(1, true);
 	}
 	if(event.getSource() == Back){
 		instruct.remove(Back);

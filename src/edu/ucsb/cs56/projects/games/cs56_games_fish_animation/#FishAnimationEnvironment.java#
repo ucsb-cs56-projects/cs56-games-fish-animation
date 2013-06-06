@@ -460,7 +460,7 @@ public class FishAnimationEnvironment extends JFrame implements Serializable {
 		 try{
 		     FileOutputStream fs = new FileOutputStream("saved.ser");
 		     ObjectOutputStream os = new ObjectOutputStream(fs);
-		     os.flush();
+		     os.reset();
 		     os.write(eaten);
 		     os.write(numJellyFish);
 		     os.close();
