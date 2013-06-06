@@ -45,13 +45,13 @@ class Menu implements ActionListener {
 		Exit.setPreferredSize(new Dimension(200, 75));
 		Resume.setPreferredSize(new Dimension(200, 75));
 		
+		//Adds the action listeners to the buttons
 		Play.addActionListener(this);
 		Instruction.addActionListener(this);
 		Exit.addActionListener(this);
 		Resume.addActionListener(this);
 		
-		//MyDrawPanel drawpanel = new MyDrawPanel();
-		
+		//Sets up the layout of the GUI
 		frame.getContentPane().add(BorderLayout.WEST, Play);
 		frame.getContentPane().add(BorderLayout.CENTER, Instruction);
 		frame.getContentPane().add(BorderLayout.EAST, Exit);
