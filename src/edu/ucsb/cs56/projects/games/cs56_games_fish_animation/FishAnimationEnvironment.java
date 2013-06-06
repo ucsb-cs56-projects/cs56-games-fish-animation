@@ -6,6 +6,7 @@ import java.awt.event.*;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
 import java.util.*;
+import java.io.*;
 
 /**
    Creates a JFrame that animates Fish and allows for a shark
@@ -19,7 +20,7 @@ import java.util.*;
    @version for CS56, proj02, Spring 2013, UCSB
 **/
 
-public class FishAnimationEnvironment extends JFrame {//implements ActionListener{
+public class FishAnimationEnvironment extends JFrame implements Serializable {
     Thread animate;
     DrawingPanel fishPanel = new DrawingPanel();
     int maxX = 1000, maxY = 750; // Default height and width of the game at start
@@ -31,17 +32,44 @@ public class FishAnimationEnvironment extends JFrame {//implements ActionListene
     int maxD = 10; //holds the maximum diameter of the bubbles
     int numBubbles = 10+(int)(Math.random()*20); //creates a random amount of bubbles
     int numJellyFish; //holds the number of Jellyfish to be created
-	long time1 = System.nanoTime()/1000000000; //Used to get the start time of the game
-	int delay = 20; // The pause button delay
-	JFrame animation = new JFrame();
-	boolean stop = false;
+    long time1 = System.nanoTime()/1000000000; //Used to get the start time of the game
+    int delay = 20; // The pause button delay
+    JFrame animation = new JFrame();
+    boolean stop = false;
 	
     //create ArrayLists for fish, bubbles, and jellyfish.
     ArrayList<Fish> fishArray = new ArrayList<Fish>();    
     ArrayList<Bubbles> bubblesArray = new ArrayList<Bubbles>();
     ArrayList<JellyFish> jellyfish = new ArrayList<JellyFish>();
-		
-		
+    /*
+    public class Score implements Serializable{
+	public int eaten=0;
+	
+	public void read(){	
+	    try{
+		FileInputStream fileStream = new FileInputStream("saved.ser");
+		ObjectInputStream os = new ObjectInputStream(fileStream);
+		Object saved = os.readObject();
+		Score score = (Score) saved;
+	    }catch(Exception ex) { 
+		ex.printStackTrace();
+	    }
+      	}
+	
+	public void save(){
+	    try{
+		FileOutputStream fs = new FileOutputStream("saved.ser");
+		ObjectOutputStream os = new ObjectOutputStream(fs);
+		os.writeObject(score);
+		os.close();
+	    }
+	    catch(Exception ex) {
+		ex.printStackTrace();
+	    }
+	}
+    }
+    */
+
     /** 
        Method addNewBubbles adds Bubbles to the ArrayList
        @param bubble a Bubbles object
@@ -138,6 +166,7 @@ public class FishAnimationEnvironment extends JFrame {//implements ActionListene
 
     class DrawingPanel extends JPanel{
 	public void paintComponent(Graphics g){
+	    
 	    Graphics2D g2 = (Graphics2D) g;
 	    g2.setColor(Color.BLUE);
 	    g2.fillRect(0,0,this.getWidth(),this.getHeight());	    		
@@ -230,10 +259,18 @@ public class FishAnimationEnvironment extends JFrame {//implements ActionListene
     }//end DrawingPanel
     
     /**
-		Class that animates the game to get the fish and bubbles to move.
-		*/
+       Class that animates the game to get the fish and bubbles to move.
+    */
     class Animate extends Thread{
 	public void run(){
+	    //deserialize the score
+	    try{
+		FileInputStream fileStream = new FileInputStream("saved.ser");
+		ObjectInputStream os = new ObjectInputStream(fileStream);
+		eaten = os.read();
+	    }catch(Exception ex) { 
+		ex.printStackTrace();
+	    }
 	    try{
 		while(true){
 		    display(delay);
@@ -250,7 +287,7 @@ public class FishAnimationEnvironment extends JFrame {//implements ActionListene
     /** 
         Class that holds the information for each separate fish in order to
         animate the fish and know its whereabouts on the screen.
-        */
+    */
 	class FishInfo{
 	    double x,y,width,height;
 	    FishInfo(double x, double y, double width, double height){
@@ -415,42 +452,52 @@ public class FishAnimationEnvironment extends JFrame {//implements ActionListene
 	/** Class that creates an in game menu in order to Pause, 
 	 resume, and save the game.
 	 */
-	class GameMenu implements ActionListener {
-    JButton Pause;
+    class GameMenu implements ActionListener {
+	JButton Pause, Save;
 	ImageIcon pause = new ImageIcon("PauseButton.jpg");
 	
-    
-    public void main (String[] args) {
-	GameMenu menu = new GameMenu();
-	menu.makemenu();
-    }
-    
-    /**Main GUI interface for the first section of the Menu.  
-		Allows for user to select exit, play, or instruction.
-	*/
-    public void makemenu(){
-	
-	
-	Pause = new JButton(pause);
-	
-		
-		Pause.addActionListener(this);
-		
-		//MyDrawPanel drawpanel = new MyDrawPanel();
-		
-		animation.getContentPane().add(BorderLayout.NORTH, Pause);
-		animation.setVisible(true);
-    }
-     public void actionPerformed(ActionEvent event){
-	if(event.getSource() == Pause){
-	   if(stop == false){
-		   stop = true;
-	   }
-	   else{
-		   stop = false;
-	   }
+	public void main (String[] args) {
+	    GameMenu menu = new GameMenu();
+	    menu.makemenu();
 	}
-}
-} 
-   
+	
+	/**Main GUI interface for the first section of the Menu.  
+	   Allows for user to select exit, play, or instruction.
+	*/
+	public void makemenu(){
+	    
+	    Pause = new JButton(pause);
+	    Pause.addActionListener(this);
+
+	    Save = new JButton("Save & Exit");
+	    Save.addActionListener(this);
+	    	    
+	    animation.getContentPane().add(BorderLayout.NORTH, Pause);
+	    animation.getContentPane().add(BorderLayout.SOUTH, Save);
+	    animation.setVisible(true);
+	}
+	public void actionPerformed(ActionEvent event){
+	    if(event.getSource() == Pause){
+		if(stop == false){
+		    stop = true;
+		}
+		else{
+		    stop = false;
+		}
+	    }
+	     if(event.getSource() == Save){
+		 try{
+		     FileOutputStream fs = new FileOutputStream("saved.ser");
+		     ObjectOutputStream os = new ObjectOutputStream(fs);
+		     os.write(eaten);
+		     os.close();
+		 }
+		 catch(Exception ex) {
+		     ex.printStackTrace();
+		 }
+		 System.exit(0);
+	     }
+	}
+    }
+    
 }//end class Animate

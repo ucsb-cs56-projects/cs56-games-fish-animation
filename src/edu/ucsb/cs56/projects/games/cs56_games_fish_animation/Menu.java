@@ -116,17 +116,17 @@ class Menu implements ActionListener {
 	if(event.getSource() == Easy){
 	    type = "Easy";
 	    frame.setVisible(false);
-	    new FishAnimationEnvironment(type);
+	    FishAnimationEnvironment f = new FishAnimationEnvironment(type);
 	}
 	if(event.getSource() == Medium){
 	    type = "Medium";
 	    frame.setVisible(false);
-	    new FishAnimationEnvironment(type);
+	    FishAnimationEnvironment f = new FishAnimationEnvironment(type);
 	}
 	if(event.getSource() == Hard){
 	    type = "Hard";
 	    frame.setVisible(false);
-	    new FishAnimationEnvironment(type);
+	    FishAnimationEnvironment f = new FishAnimationEnvironment(type);
 	}
 	if(event.getSource() == Play){
 	    frame.remove(Play);
