@@ -19,7 +19,7 @@ import java.util.*;
    @version for CS56, proj02, Spring 2013, UCSB
 **/
 
-public class FishAnimationEnvironment extends JFrame implements java.io.Serializable{
+public class FishAnimationEnvironment extends JFrame {//implements ActionListener{
     Thread animate;
     DrawingPanel fishPanel = new DrawingPanel();
     int maxX = 1000, maxY = 750; // Default height and width of the game at start
@@ -33,13 +33,15 @@ public class FishAnimationEnvironment extends JFrame implements java.io.Serializ
     int numJellyFish; //holds the number of Jellyfish to be created
 	long time1 = System.nanoTime()/1000000000; //Used to get the start time of the game
 	int delay = 20; // The pause button delay
-
+	JFrame animation = new JFrame();
+	boolean stop = false;
+	
     //create ArrayLists for fish, bubbles, and jellyfish.
     ArrayList<Fish> fishArray = new ArrayList<Fish>();    
     ArrayList<Bubbles> bubblesArray = new ArrayList<Bubbles>();
     ArrayList<JellyFish> jellyfish = new ArrayList<JellyFish>();
 		
-    
+		
     /** 
        Method addNewBubbles adds Bubbles to the ArrayList
        @param bubble a Bubbles object
@@ -116,13 +118,15 @@ public class FishAnimationEnvironment extends JFrame implements java.io.Serializ
 	    JellyFish j = new JellyFish((int)(Math.random()*12345)%maxX,maxY,(Math.random()*123)%50+15);
 	    jellyfish.add(j);
 	}
-
-	getContentPane().add(fishPanel);
+	
+	animation.getContentPane().add(BorderLayout.CENTER, fishPanel);
 	animate = new Animate();
 	animate.start();
-	setDefaultCloseOperation(EXIT_ON_CLOSE);    
-	setSize(maxX,maxY);
-	setVisible(true);
+	animation.setDefaultCloseOperation(EXIT_ON_CLOSE);    
+	animation.setSize(maxX,maxY);
+	animation.setVisible(true);
+	GameMenu game = new GameMenu();
+	game.makemenu();
     }//end constructor
     
     /**
@@ -147,8 +151,7 @@ public class FishAnimationEnvironment extends JFrame implements java.io.Serializ
 	    Image shark = new ImageIcon("shark.jpg").getImage();
 	    Image image = new ImageIcon("Seaweed.jpg").getImage();
 	    Image boat = new ImageIcon("cartoon-boat.jpg").getImage();
-	    Image pause = new ImageIcon("PauseButton.jpg").getImage();
-	    //JButton Pause = new JButton(pause);
+	    
 		
 	    //Draws the seaweed at the specified points
 	    for ( int i=0; i < this.getWidth()+125; i+=125 ) {
@@ -223,10 +226,6 @@ public class FishAnimationEnvironment extends JFrame implements java.io.Serializ
 	    String str2 = "Seconds Elapsed: " + ((System.nanoTime()/1000000000) - time1);
 	    g.drawString(str2,0,65);
 	    
-	    //Draws the image of the Pause button
-	    g2.drawImage(pause, (fishPanel.getWidth() - 64), 0, this);
-	    
-	    
 	}
     }//end DrawingPanel
     
@@ -271,7 +270,9 @@ public class FishAnimationEnvironment extends JFrame implements java.io.Serializ
 	   Removes fish and creates a new fish if it has been eaten.
 	**/
 	void display(int delay) 
+	
 	    throws InterruptedException{
+			if(!stop){
 	    ArrayList<FishInfo> info = new ArrayList<FishInfo>();
 	 
 	    for(int i=0; i<fishArray.size(); i++){
@@ -363,13 +364,15 @@ public class FishAnimationEnvironment extends JFrame implements java.io.Serializ
 		    addNewFish(new Fish(newX,info.get(i).getY(),info.get(i).getWidth(),info.get(i).getHeight()));
 		}
 	    }
-	    fishPanel.repaint();
+	    if(!stop){
+		fishPanel.repaint();}
 	    if(Thread.currentThread().interrupted())
 		throw(new InterruptedException());
 		
 	    Thread.currentThread().sleep(delay);
 	}//end display method
     }//end inner class named Animate
+}
     
         /**
        Class to handle mouse events. Some methods are present but not defined
@@ -379,22 +382,20 @@ public class FishAnimationEnvironment extends JFrame implements java.io.Serializ
     public class MouseHandler implements MouseListener, MouseMotionListener{
 	
 	public void mouseClicked(MouseEvent e){
-	    /*  if((e.getX() > posX-200 && e.getX() < posX+40) && (e.getY() > posY-60 && e.getY() < posY+25)){*/
-		posX = e.getX();
-		posY = e.getY();
-		//}    
 	}
 	
 	public void mousePressed(MouseEvent e){
-	}
+	}	
 	
 	public void mouseEntered(MouseEvent e){
+
 	}
         
 	public void mouseExited(MouseEvent e){
 	}
 	
 	public void mouseReleased(MouseEvent e){
+    
 	}
 	
 	public void mouseMoved(MouseEvent e){
@@ -402,10 +403,54 @@ public class FishAnimationEnvironment extends JFrame implements java.io.Serializ
 	
 	public void mouseDragged(MouseEvent e){
 	    /* if((e.getX() > posX-200 && e.getX() < posX+40) && (e.getY() > posY-60 && e.getY() < posY+25)){*/
+		if (stop==false){
 		posX = e.getX();
 		posY = e.getY();
+		}
 		//  }
-	}		
+	}
+	
+	}
+	
+	/** Class that creates an in game menu in order to Pause, 
+	 resume, and save the game.
+	 */
+	class GameMenu implements ActionListener {
+    JButton Pause;
+	ImageIcon pause = new ImageIcon("PauseButton.jpg");
+	
+    
+    public void main (String[] args) {
+	GameMenu menu = new GameMenu();
+	menu.makemenu();
     }
+    
+    /**Main GUI interface for the first section of the Menu.  
+		Allows for user to select exit, play, or instruction.
+	*/
+    public void makemenu(){
+	
+	
+	Pause = new JButton(pause);
+	
+		
+		Pause.addActionListener(this);
+		
+		//MyDrawPanel drawpanel = new MyDrawPanel();
+		
+		animation.getContentPane().add(BorderLayout.NORTH, Pause);
+		animation.setVisible(true);
+    }
+     public void actionPerformed(ActionEvent event){
+	if(event.getSource() == Pause){
+	   if(stop == false){
+		   stop = true;
+	   }
+	   else{
+		   stop = false;
+	   }
+	}
+}
+} 
    
 }//end class Animate
