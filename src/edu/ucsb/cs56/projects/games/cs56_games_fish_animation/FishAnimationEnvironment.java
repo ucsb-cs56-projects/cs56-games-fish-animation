@@ -485,6 +485,7 @@ public class FishAnimationEnvironment extends JFrame implements Serializable {
 		    stop = false;
 		}
 	    }
+	    //serialize if save was clicked
 	     if(event.getSource() == Save){
 		 try{
 		     FileOutputStream fs = new FileOutputStream("saved.ser");
