@@ -28,7 +28,7 @@ public class FishAnimationEnvironment extends JFrame implements Serializable {
 	/*The different X and Y positions of different items in the animation
 	includng the shark and the boat.  Also includes the default window size,
 	the max width of the fish, and the diameter of the bubbles.*/
-    int maxX = 1000, maxY = 750; // Default height and width of the game at start
+    int maxX = 1366, maxY = 768; // Default height and width of the game at start
     int posX = maxX/2, posY = maxY/2;  //used to position the shark at the origin
     int maxWidth = 100; //max width of the fish
     int boatX = maxX;//hold the position of the boat
@@ -40,6 +40,7 @@ public class FishAnimationEnvironment extends JFrame implements Serializable {
     int numFish = 75; //number of fish in environment
     int numBubbles = 10+(int)(Math.random()*20); //creates a random amount of bubbles
     int numJellyFish; //holds the number of Jellyfish to be created
+    int Highscore;
     
 	/*Holds the start time of the game in order to keep the timer going, 
 	holds the delay time between frames for the animation, and the different
@@ -119,6 +120,15 @@ public class FishAnimationEnvironment extends JFrame implements Serializable {
 		    eaten = os.read();
 		    numJellyFish = os.read();
 		    timerload = os.read();
+		    if(load){
+				for(int i = 0; i<numJellyFish; i++){
+					int x = os.read();
+					int y = os.read();
+					double speed = os.read();
+					JellyFish j = new JellyFish(x,y,speed);
+					jellyfish.add(j);
+				}
+			} 
 		    os.close();
 		}catch(Exception ex) { 
 		    ex.printStackTrace();
@@ -135,9 +145,11 @@ public class FishAnimationEnvironment extends JFrame implements Serializable {
 	    addNewBubbles(createBubbles(maxX,maxY,maxD));
 	}
 	//Adds the Jellyfish into the game 
+	if(load == false){
 	for(int i = 0; i<numJellyFish; i++){
 	    JellyFish j = new JellyFish((int)(Math.random()*12345)%maxX,maxY,(Math.random()*123)%50+15);
 	    jellyfish.add(j);
+		}
 	}
 	animation.getContentPane().add(BorderLayout.CENTER, fishPanel);
 	animate = new Animate();
@@ -236,10 +248,6 @@ public class FishAnimationEnvironment extends JFrame implements Serializable {
 			g2.drawLine(j,jellyfish.get(i).getY()+95,j,jellyfish.get(i).getY()+10);}
 		}	    
 	    }		
-	    if(!stop){
-	    time2 = System.nanoTime()/1000000000 - pausetime;
-	    timer = (int)(time2 - time1) + timerload;
-	}
 			
 	    //displays the number of points
 	    g.setFont(new Font("Verdana", Font.PLAIN, 35));
@@ -394,6 +402,13 @@ public class FishAnimationEnvironment extends JFrame implements Serializable {
 		}
 	    }
 	    
+	    //Some math to calculate the real time minus the amount of time the game 
+	    //was paused in order to keep the game at the correct time always
+	    if(!stop){
+	    time2 = System.nanoTime()/1000000000 - pausetime;
+	    timer = (int)(time2 - time1) + timerload;
+		}
+	    
 		fishPanel.repaint();
 	    if(Thread.currentThread().interrupted())
 		throw(new InterruptedException());
@@ -434,6 +449,14 @@ public class FishAnimationEnvironment extends JFrame implements Serializable {
 		if (stop==false){
 		posX = e.getX();
 		posY = e.getY();
+		}
+		if (posX < 0 || posX > fishPanel.getWidth()){
+			posX = fishPanel.getWidth()/2;
+			posY = fishPanel.getHeight()/2;
+		}
+		if (posY < 0 || posY > fishPanel.getHeight()){
+			posY = fishPanel.getHeight()/2;
+			posX = fishPanel.getWidth()/2;
 		}
 		//  }
 	}
@@ -491,6 +514,11 @@ public class FishAnimationEnvironment extends JFrame implements Serializable {
 		     os.write(eaten);
 		     os.write(numJellyFish);
 		     os.write(timer);
+		     for(int i = 0; i<numJellyFish; i++){
+				os.write(jellyfish.get(i).getX());
+				os.write(jellyfish.get(i).getY());
+				os.write((int)jellyfish.get(i).getSpeed());
+			}
 		     os.close();
 		 }
 		 catch(Exception ex) {
