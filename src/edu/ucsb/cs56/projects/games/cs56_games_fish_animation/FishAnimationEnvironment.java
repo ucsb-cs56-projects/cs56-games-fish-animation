@@ -41,34 +41,6 @@ public class FishAnimationEnvironment extends JFrame implements Serializable {
     ArrayList<Fish> fishArray = new ArrayList<Fish>();    
     ArrayList<Bubbles> bubblesArray = new ArrayList<Bubbles>();
     ArrayList<JellyFish> jellyfish = new ArrayList<JellyFish>();
-    /*
-    public class Score implements Serializable{
-	public int eaten=0;
-	
-	public void read(){	
-	    try{
-		FileInputStream fileStream = new FileInputStream("saved.ser");
-		ObjectInputStream os = new ObjectInputStream(fileStream);
-		Object saved = os.readObject();
-		Score score = (Score) saved;
-	    }catch(Exception ex) { 
-		ex.printStackTrace();
-	    }
-      	}
-	
-	public void save(){
-	    try{
-		FileOutputStream fs = new FileOutputStream("saved.ser");
-		ObjectOutputStream os = new ObjectOutputStream(fs);
-		os.writeObject(score);
-		os.close();
-	    }
-	    catch(Exception ex) {
-		ex.printStackTrace();
-	    }
-	}
-    }
-    */
 
     /** 
        Method addNewBubbles adds Bubbles to the ArrayList
