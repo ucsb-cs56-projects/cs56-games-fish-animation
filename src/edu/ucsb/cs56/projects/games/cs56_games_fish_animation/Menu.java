@@ -34,12 +34,13 @@ class Menu implements ActionListener {
 	frame.setSize(600,75);
 	frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 	
-	
+	//Adds the different buttons to the menu
 	Play = new JButton("Play Game");
 	Instruction = new JButton("Instructions");
 	Exit = new JButton("Exit");
 	Resume = new JButton("Resume");
 
+		//Sets the size of the buttons
 		Play.setPreferredSize(new Dimension(200,75));
 		Instruction.setPreferredSize(new Dimension(200,75));
 		Exit.setPreferredSize(new Dimension(200, 75));
@@ -67,19 +68,22 @@ class Menu implements ActionListener {
 
 	frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 	
-	
+	//Adds the different difficulty buttons
 	Easy = new JButton("Easy");
 	Medium = new JButton("Medium");
 	Hard = new JButton("Hard");
 	
+	//Sets the size of the buttons
 	Easy.setPreferredSize(new Dimension(200,75));
 	Medium.setPreferredSize(new Dimension(200,75));
 	Hard.setPreferredSize(new Dimension(200, 75));
 	
+	//Gives the buttons actionlisteners
 	Easy.addActionListener(this);
 	Medium.addActionListener(this);
 	Hard.addActionListener(this);
 	
+	//Puts the buttons onto the frame in BorderLayout format
 	frame.getContentPane().add(BorderLayout.WEST, Easy);
 	frame.getContentPane().add(BorderLayout.CENTER, Medium);
 	frame.getContentPane().add(BorderLayout.EAST, Hard);
@@ -92,27 +96,32 @@ class Menu implements ActionListener {
     */
     public void HowToPlay(){
 		
+		//Creates new frame for the new menu that will pop up
 		instruct = new JFrame();
 		instruct.setSize(300,335);
 		
+		//Sets the font of the text in the instruction
 		instruct.setFont(new Font("Verdana", Font.PLAIN, 12));
-	    String str = "Hello!\n\n     This is our Shark game!  The point\n     of the game is to eat as many fish\n     as you can! But watch out! Jellyfish\n     are out to get you! Touch one of them,\n     and you'll lose points! To eat the\n     fish, just move your shark's mouth\n     to the fish. To move the shark, you\n     must click and hold the mouse button\n     and slide the mouse around the screen.\n     There are three different difficulties,\n     so test your skills on all of them!\n\n\t\tGood eating!";
-						
+	    String str = "Hello!\n\n     This is our Shark game!  The point\n     of the game is to eat as many fish\n     as you can! But watch out! Jellyfish\n     are out to get you! Touch one of them,\n     and you'll lose points! To eat the\n     fish, just move your shark's mouth\n     to the fish. To move the shark, you\n     must click and hold the mouse button\n     and slide the mouse around the screen.\n     There are three different difficulties,\n     so test your skills on all of them!\n\n\t\tGood eating!";				
 		text = new JTextArea(str);
 	    
+	    //Adds button to the instruction popup
 		Back = new JButton("Menu");
 		
+		//Adds action listener to the button to go back to the mainmenu
 		Back.addActionListener(this);
 		Back.setPreferredSize(new Dimension(150,75));
 		
+		//Adds the layout for the button and the textArea
 		instruct.getContentPane().add(BorderLayout.NORTH, text);
 		instruct.getContentPane().add(BorderLayout.SOUTH, Back);
 		instruct.setVisible(true);
 	}
     
     
-    /**Method that takes in Mouse actions and converts them into
-		actions that the program will perform.
+    /** Method that takes in Mouse actions and converts them into
+		actions that the program will perform. The actions performed 
+		will occur when any of the buttons are pressed.  
 	*/
 		
     public void actionPerformed(ActionEvent event){
@@ -152,7 +161,7 @@ class Menu implements ActionListener {
 	    frame.remove(Exit);
 	    frame.remove(Resume);
 	    frame.setVisible(false);
-	    FishAnimationEnvironment f = new FishAnimationEnvironment(1, true);
+	    FishAnimationEnvironment f = new FishAnimationEnvironment(0, true);
 	}
 	if(event.getSource() == Back){
 		instruct.remove(Back);
