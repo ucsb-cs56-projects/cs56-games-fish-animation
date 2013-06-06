@@ -32,7 +32,7 @@ public class FishAnimationEnvironment extends JFrame implements Serializable {
     int posX = maxX/2, posY = maxY/2;  //used to position the shark at the origin
     int maxWidth = 100; //max width of the fish
     int boatX = maxX;//hold the position of the boat
-	int maxD = 10; //holds the maximum diameter of the bubbles
+    int maxD = 10; //holds the maximum diameter of the bubbles
 	
 	/*This holds the number of fish, the number of bubbles, the number of 
 	Jellyfish, and the number of fish eaten*/
@@ -113,28 +113,28 @@ public class FishAnimationEnvironment extends JFrame implements Serializable {
 	numJellyFish = difficulty;
 	load = l;
 	if(load){
-		//deserialize the score
-		try{
-		    FileInputStream fileStream = new FileInputStream("saved.ser");
-		    ObjectInputStream os = new ObjectInputStream(fileStream);
-		    eaten = os.read();
-		    numJellyFish = os.read();
-		    timerload = os.read();
-		    if(load){
-				for(int i = 0; i<numJellyFish; i++){
-					int x = os.read();
-					int y = os.read();
-					double speed = os.read();
-					JellyFish j = new JellyFish(x,y,speed);
-					jellyfish.add(j);
-				}
-			} 
+	    //deserialize the score
+	    try{
+		FileInputStream fileStream = new FileInputStream("saved.ser");
+		ObjectInputStream os = new ObjectInputStream(fileStream);
+		eaten = os.readInt();
+		numJellyFish = os.read();
+		timerload = os.read();
+		if(load){
+		    for(int i = 0; i<numJellyFish; i++){
+			int x = os.read();
+			int y = os.read();
+			double speed = os.read();
+			JellyFish j = new JellyFish(x,y,speed);
+			jellyfish.add(j);
+		    }
+		} 
 		    os.close();
-		}catch(Exception ex) { 
-		    ex.printStackTrace();
-		}
+	    }catch(Exception ex) { 
+		ex.printStackTrace();
 	    }
-
+	}
+	
 	//Adds the fish into the Array that will hold the fish
 	for(int i=0; i<numFish; i++){
 	    addNewFish(createRandomFish(maxX,maxY,maxWidth));
@@ -445,23 +445,20 @@ public class FishAnimationEnvironment extends JFrame implements Serializable {
 	}
 	
 	public void mouseDragged(MouseEvent e){
-	    /* if((e.getX() > posX-200 && e.getX() < posX+40) && (e.getY() > posY-60 && e.getY() < posY+25)){*/
-		if (stop==false){
+	    if (stop==false){
 		posX = e.getX();
 		posY = e.getY();
-		}
-		if (posX < 0 || posX > fishPanel.getWidth()){
-			posX = fishPanel.getWidth()/2;
-			posY = fishPanel.getHeight()/2;
-		}
-		if (posY < 0 || posY > fishPanel.getHeight()){
-			posY = fishPanel.getHeight()/2;
-			posX = fishPanel.getWidth()/2;
-		}
-		//  }
-	}
-	
-	}
+	    }
+	    if (posX < 0 || posX > fishPanel.getWidth()){
+		posX = fishPanel.getWidth()/2;
+		posY = fishPanel.getHeight()/2;
+	    }
+	    if (posY < 0 || posY > fishPanel.getHeight()){
+		posY = fishPanel.getHeight()/2;
+		posX = fishPanel.getWidth()/2;
+	    }
+	}	
+    }
 	
 	/** Class that creates an in game menu in order to Pause, 
 	 resume, and save the game.
@@ -511,7 +508,7 @@ public class FishAnimationEnvironment extends JFrame implements Serializable {
 		     FileOutputStream fs = new FileOutputStream("saved.ser");
 		     ObjectOutputStream os = new ObjectOutputStream(fs);
 		     os.flush();
-		     os.write(eaten);
+		     os.writeInt(eaten);
 		     os.write(numJellyFish);
 		     os.write(timer);
 		     for(int i = 0; i<numJellyFish; i++){
