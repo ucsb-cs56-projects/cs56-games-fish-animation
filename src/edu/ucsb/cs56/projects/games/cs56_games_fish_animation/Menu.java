@@ -38,26 +38,22 @@ class Menu implements ActionListener {
 	Play = new JButton("Play Game");
 	Instruction = new JButton("Instructions");
 	Exit = new JButton("Exit");
-	Resume = new JButton("Resume");
 
 		//Sets the size of the buttons
 		Play.setPreferredSize(new Dimension(200,75));
 		Instruction.setPreferredSize(new Dimension(200,75));
 		Exit.setPreferredSize(new Dimension(200, 75));
-		Resume.setPreferredSize(new Dimension(200, 75));
 		
 		//Adds the action listeners to the buttons
 		Play.addActionListener(this);
 		Instruction.addActionListener(this);
 		Exit.addActionListener(this);
-		Resume.addActionListener(this);
 		
 		//Sets up the layout of the GUI
 		frame.getContentPane().add(BorderLayout.WEST, Play);
 		frame.getContentPane().add(BorderLayout.CENTER, Instruction);
 		frame.getContentPane().add(BorderLayout.EAST, Exit);
-		frame.getContentPane().add(BorderLayout.SOUTH, Resume);
-		frame.setSize(600,150);
+		frame.setSize(600,75);
 		frame.setVisible(true);
     }
     
@@ -72,22 +68,26 @@ class Menu implements ActionListener {
 	Easy = new JButton("Easy");
 	Medium = new JButton("Medium");
 	Hard = new JButton("Hard");
+	Resume = new JButton("Resume Game");
 	
 	//Sets the size of the buttons
 	Easy.setPreferredSize(new Dimension(200,75));
 	Medium.setPreferredSize(new Dimension(200,75));
 	Hard.setPreferredSize(new Dimension(200, 75));
+	Resume.setPreferredSize(new Dimension(200,75));
 	
 	//Gives the buttons actionlisteners
 	Easy.addActionListener(this);
 	Medium.addActionListener(this);
 	Hard.addActionListener(this);
-	
+	Resume.addActionListener(this);
+
 	//Puts the buttons onto the frame in BorderLayout format
 	frame.getContentPane().add(BorderLayout.WEST, Easy);
 	frame.getContentPane().add(BorderLayout.CENTER, Medium);
 	frame.getContentPane().add(BorderLayout.EAST, Hard);
-	frame.setSize(600,75);
+	frame.getContentPane().add(BorderLayout.SOUTH, Resume);
+	frame.setSize(600,150);
 	frame.setVisible(true);
     }
     
@@ -137,11 +137,14 @@ class Menu implements ActionListener {
 	    frame.setVisible(false);
 	    FishAnimationEnvironment f = new FishAnimationEnvironment(14, false);
 	}
+	if(event.getSource() == Resume){
+	    frame.setVisible(false);
+	    FishAnimationEnvironment f = new FishAnimationEnvironment(0, true);
+	}
 	if(event.getSource() == Play){
 	    frame.remove(Play);
 	    frame.remove(Instruction);
 	    frame.remove(Exit);
-	    frame.remove(Resume);
 	    setDifficulty();
 	}
 	if(event.getSource() == Exit){
@@ -151,24 +154,15 @@ class Menu implements ActionListener {
 	    frame.remove(Play);
 	    frame.remove(Instruction);
 	    frame.remove(Exit);
-	    frame.remove(Resume);
 	    frame.setVisible(false);
 	    HowToPlay();
-	}
-	if(event.getSource() == Resume){
-	    frame.remove(Play);
-	    frame.remove(Instruction);
-	    frame.remove(Exit);
-	    frame.remove(Resume);
-	    frame.setVisible(false);
-	    FishAnimationEnvironment f = new FishAnimationEnvironment(0, true);
 	}
 	if(event.getSource() == Back){
 		instruct.remove(Back);
 		instruct.remove(text);
 		instruct.setVisible(false);
 		makegui();
+	}
     }
-}
 }
 
