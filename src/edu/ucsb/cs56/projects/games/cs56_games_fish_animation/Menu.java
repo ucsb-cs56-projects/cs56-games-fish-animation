@@ -16,9 +16,9 @@ import java.util.*;
 **/
 
 class Menu implements ActionListener {
-    JButton Play, Instruction, Exit, Easy, Medium, Hard, Back;
+    JButton Play, Instruction, Exit, Resume, Easy, Medium, Hard, Back;
     JFrame frame, instruct;
-    String type;
+    int type;
     JTextArea text;
     
     public static void main (String[] args) {
@@ -34,25 +34,25 @@ class Menu implements ActionListener {
 	frame.setSize(600,75);
 	frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 	
-	
+	//Adds the different buttons to the menu
 	Play = new JButton("Play Game");
 	Instruction = new JButton("Instructions");
 	Exit = new JButton("Exit");
-	
+
+		//Sets the size of the buttons
 		Play.setPreferredSize(new Dimension(200,75));
 		Instruction.setPreferredSize(new Dimension(200,75));
 		Exit.setPreferredSize(new Dimension(200, 75));
 		
+		//Adds the action listeners to the buttons
 		Play.addActionListener(this);
 		Instruction.addActionListener(this);
 		Exit.addActionListener(this);
 		
-		//MyDrawPanel drawpanel = new MyDrawPanel();
-		
+		//Sets up the layout of the GUI
 		frame.getContentPane().add(BorderLayout.WEST, Play);
 		frame.getContentPane().add(BorderLayout.CENTER, Instruction);
 		frame.getContentPane().add(BorderLayout.EAST, Exit);
-		//GUI.getContentPane().add(BorderLayout.CENTER, drawpanel);
 		frame.setSize(600,75);
 		frame.setVisible(true);
     }
@@ -64,23 +64,30 @@ class Menu implements ActionListener {
 
 	frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 	
-	
+	//Adds the different difficulty buttons
 	Easy = new JButton("Easy");
 	Medium = new JButton("Medium");
 	Hard = new JButton("Hard");
+	Resume = new JButton("Resume Game");
 	
+	//Sets the size of the buttons
 	Easy.setPreferredSize(new Dimension(200,75));
 	Medium.setPreferredSize(new Dimension(200,75));
 	Hard.setPreferredSize(new Dimension(200, 75));
+	Resume.setPreferredSize(new Dimension(200,75));
 	
+	//Gives the buttons actionlisteners
 	Easy.addActionListener(this);
 	Medium.addActionListener(this);
 	Hard.addActionListener(this);
-	
+	Resume.addActionListener(this);
+
+	//Puts the buttons onto the frame in BorderLayout format
 	frame.getContentPane().add(BorderLayout.WEST, Easy);
 	frame.getContentPane().add(BorderLayout.CENTER, Medium);
 	frame.getContentPane().add(BorderLayout.EAST, Hard);
-	frame.setSize(600,75);
+	frame.getContentPane().add(BorderLayout.SOUTH, Resume);
+	frame.setSize(600,150);
 	frame.setVisible(true);
     }
     
@@ -89,44 +96,50 @@ class Menu implements ActionListener {
     */
     public void HowToPlay(){
 		
+		//Creates new frame for the new menu that will pop up
 		instruct = new JFrame();
 		instruct.setSize(300,335);
 		
+		//Sets the font of the text in the instruction
 		instruct.setFont(new Font("Verdana", Font.PLAIN, 12));
-	    String str = "Hello!\n\n     This is our Shark game!  The point\n     of the game is to eat as many fish\n     as you can! But watch out! Jellyfish\n     are out to get you! Touch one of them,\n     and you'll lose points! To eat the\n     fish, just move your shark's mouth\n     to the fish. To move the shark, you\n     must click and hold the mouse button\n     and slide the mouse around the screen.\n     There are three different difficulties,\n     so test your skills on all of them!\n\n\t\tGood eating!";
-						
+	    String str = "Hello!\n\n     This is our Shark game!  The point\n     of the game is to eat as many fish\n     as you can! But watch out! Jellyfish\n     are out to get you! Touch one of them,\n     and you'll lose points! To eat the\n     fish, just move your shark's mouth\n     to the fish. To move the shark, you\n     must click and hold the mouse button\n     and slide the mouse around the screen.\n     There are three different difficulties,\n     so test your skills on all of them!\n\n\t\tGood eating!";				
 		text = new JTextArea(str);
 	    
+	    //Adds button to the instruction popup
 		Back = new JButton("Menu");
 		
+		//Adds action listener to the button to go back to the mainmenu
 		Back.addActionListener(this);
 		Back.setPreferredSize(new Dimension(150,75));
 		
+		//Adds the layout for the button and the textArea
 		instruct.getContentPane().add(BorderLayout.NORTH, text);
 		instruct.getContentPane().add(BorderLayout.SOUTH, Back);
 		instruct.setVisible(true);
 	}
     
     
-    /**Method that takes in Mouse actions and converts them into
-		actions that the program will perform.
+    /** Method that takes in Mouse actions and converts them into
+		actions that the program will perform. The actions performed 
+		will occur when any of the buttons are pressed.  
 	*/
 		
     public void actionPerformed(ActionEvent event){
 	if(event.getSource() == Easy){
-	    type = "Easy";
 	    frame.setVisible(false);
-	    new FishAnimationEnvironment(type);
+	    FishAnimationEnvironment f = new FishAnimationEnvironment(3, false);
 	}
 	if(event.getSource() == Medium){
-	    type = "Medium";
 	    frame.setVisible(false);
-	    new FishAnimationEnvironment(type);
+	    FishAnimationEnvironment f = new FishAnimationEnvironment(7, false);
 	}
 	if(event.getSource() == Hard){
-	    type = "Hard";
 	    frame.setVisible(false);
-	    new FishAnimationEnvironment(type);
+	    FishAnimationEnvironment f = new FishAnimationEnvironment(14, false);
+	}
+	if(event.getSource() == Resume){
+	    frame.setVisible(false);
+	    FishAnimationEnvironment f = new FishAnimationEnvironment(0, true);
 	}
 	if(event.getSource() == Play){
 	    frame.remove(Play);
@@ -138,7 +151,7 @@ class Menu implements ActionListener {
 	    System.exit(0);
 	}
 	if(event.getSource() == Instruction){
-		frame.remove(Play);
+	    frame.remove(Play);
 	    frame.remove(Instruction);
 	    frame.remove(Exit);
 	    frame.setVisible(false);
@@ -149,7 +162,7 @@ class Menu implements ActionListener {
 		instruct.remove(text);
 		instruct.setVisible(false);
 		makegui();
+	}
     }
-}
 }
 
