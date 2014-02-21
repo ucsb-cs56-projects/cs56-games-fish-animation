@@ -1,30 +1,25 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <project default="compile">
-  <!--  build.xml for Mantis issue 0000355
-       name: Lawrence Khuu for CS56, S11
-       name: Christina Morris, Mathew Glodack for CS56, S13
-       names:Casey Barbello, Daryl Pham for CS56, S13
-       names:Jenna Cryan, Josephine Vo for CS56, W14
+  <!--  build.xml for github.com/UCSB-CS56-Projects/cs56-games-fish-animation
+       original author: Lawrence Khuu for CS56, S11
+       updated        : Christina Morris, Mathew Glodack for CS56, S13
+       updated        : Casey Barbello, Daryl Pham for CS56, S13
+       updated        : Jenna Cryan, Josephine Vo for CS56, W14
   --> 
   
   <property environment="env" /> 
   <!--  load the environment variables 
   -->   
   <property name="webRoot" value="${env.HOME}/public_html/cs56" />
-  <property name="webBaseURL" 
-	    value="http://www.cs.ucsb.edu/~${env.USER}/cs56" />
-  <property name="projectName" value="cs56_games_fish_animation" />
-  <property name="course" value="cs56" /> 
-  <property name="projects" value="projects" /> 
-  <property name="categoryname" value="games" /> 
+  <property name="webBaseURL" value="http://www.cs.ucsb.edu/~${env.USER}/cs56" />
+  <property name="project" value="cs56_games_fish_animation" />
   <property name="fullPkg" 
 	    value="edu.ucsb.cs56.projects.games.fish_animation"/>
-  <property name="projectName" value="${course}_${projects}_${categoryname}" /> 
-  <property name="projectPath" value="${course}/${projects}/${categoryname}" /> 
-  <property name="javadocDest" value="${webRoot}/W13/${env.USER}/${projectName}/javadoc" />
-  <property name="javadocURL" value="${webBaseURL}/${projectName}/javadoc" /> 
+  <property name="javadocDest" value="${webRoot/${project}/javadoc" />
+  <property name="javadocURL" value="${webBaseURL}/${project}/javadoc" /> 
   <property name="mainClass" value="${fullPkg}/Menu" />
   <property name="envClass" value="${fullPkg}/FishEnvironment" />
+ 
   <path id="project.class.path">
     <pathelement location="build"/>
     <pathelement location="lib/junit-4.8.2.jar"/>
@@ -57,9 +52,6 @@
       <fileset dir="build" includes="*.class" />
     </delete>
     <delete dir="javadoc" quiet="true" /> 
-    <delete dir="dist" quiet="true" /> 
-    <delete dir="download" quiet="true" /> 
-    <delete dir="temp" quiet="true" /> 
   </target>
   
   <!--  <target name="test" depends="compile" description="tests classes">
@@ -101,11 +93,12 @@
 	 that once.
     -->
 
- 
 
     <chmod dir="${javadocDest}" perm="755" type="dir" includes="**" />
     <chmod dir="${javadocDest}" perm="755" type="file" includes="**/*" />
-    <echo>Javadoc deployed to ${javadocURL}</echo>
+
+    <echo>Javadoc deployed to ${javadocURL} if on CSIL</echo>
+    <echo> or if not on CSIL, try file:///${javadocDest}/index.html</echo>
   </target>
 
 </project>
