@@ -8,7 +8,7 @@ import java.awt.geom.Line2D;
 import java.awt.geom.Rectangle2D;
 import java.awt.Rectangle;
 import java.awt.geom.PathIterator;
-import java.awt.geom.AffineTransform;.simple;
+import java.awt.geom.AffineTransform;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
@@ -22,7 +22,7 @@ import java.awt.event.*;
  * @version for CS56, proj01, Winter 2013, UCSB
 */
 
-public class ScumOfTheSea extends GeneralPathWrapper implements Shape{
+abstract public class ScumOfTheSea extends GeneralPathWrapper implements Shape{
   
     /**
        Constructor
@@ -40,36 +40,26 @@ public class ScumOfTheSea extends GeneralPathWrapper implements Shape{
     /**
     * Gets the xLocation of yar scurvy-dog
     **/
-    public int getXPos(){
-	;
-    }
+    public abstract int getXPos();
 
     /**
     *  Gets the yLocation of the sea-scum
     **/
-    public int getYPos(){
-	;
-    }
+    public abstract int getYPos();
 
     /**
     * Sets the xLocation of the sea-swine
     **/
-    public void setX(int x){
-	;
-    }
+    public abstract void setX(int x);
 
     /**
     * Sets the yLocation of the sea-wench
     **/
-    public void setY(int y){
-	;
-    }
+    public abstract void setY(int y);
   	
     /**
     * Moves the positon of the lily-livered kraken by m points
     */
-   void moveY(double m){
-	;
-   } 
+    abstract void moveY(double m);
 
 }
