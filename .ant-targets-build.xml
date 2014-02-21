@@ -1,8 +1,6 @@
 clean
 compile
-download
 jar
 javadoc
-jws
-publish
 run
+runEnv
