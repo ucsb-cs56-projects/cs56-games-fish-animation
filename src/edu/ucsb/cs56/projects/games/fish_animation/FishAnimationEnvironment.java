@@ -7,6 +7,7 @@ import java.awt.event.ActionListener;
 import java.util.ArrayList;
 import java.util.*;
 import java.io.*;
+import java.net.*;
 
 /**
    Creates a JFrame that animates Fish and allows for a shark
@@ -192,14 +193,17 @@ public class FishAnimationEnvironment extends JFrame implements Serializable {
 	    fishPanel.addMouseMotionListener(handler);
 		
 	    //Images in the game
-	    Image shark = new ImageIcon("shark.jpg").getImage();
-	    Image image = new ImageIcon("Seaweed.jpg").getImage();
-	    Image boat = new ImageIcon("cartoon-boat.jpg").getImage();
+	    URL sharkURL = getClass().getResource("/resources/shark.jpg");
+	    Image shark = new ImageIcon(sharkURL).getImage();
+	    URL seaweedURL = getClass().getResource("/resources/Seaweed.jpg");
+	    Image seaweed = new ImageIcon(seaweedURL).getImage();
+	    URL boatURL = getClass().getResource("/resources/cartoon-boat.jpg");
+	    Image boat = new ImageIcon(boatURL).getImage();
 	    
 		
 	    //Draws the seaweed at the specified points
 	    for ( int i=0; i < this.getWidth()+125; i+=125 ) {
-		g.drawImage(image, i, this.getHeight()-83, this);
+		g.drawImage(seaweed, i, this.getHeight()-83, this);
 	    }
 		
 	    //Draws the image of the boat and also animates it
