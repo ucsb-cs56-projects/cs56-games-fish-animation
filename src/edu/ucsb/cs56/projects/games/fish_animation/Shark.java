@@ -30,13 +30,13 @@ public class Shark extends ScumOfTheSea{
        @param yPos y coord of the middle of the Shark
     */
 
-    int xPos;
-    int yPos;
+    double xPos;
+    double yPos;
 
     /**
     * Holds the shark's position on the Panel
     **/
-    public Shark(int x, int y) {
+    public Shark(double x, double y) {
 	this.xPos = x;
 	this.yPos = y;
     }
@@ -45,7 +45,7 @@ public class Shark extends ScumOfTheSea{
     * Gets the xLocation of the shark
     * @return the x position of the shark
     **/
-    @Override public int getXPos(){
+    @Override public double getXPos(){
 	return xPos;
     }
 
@@ -53,7 +53,7 @@ public class Shark extends ScumOfTheSea{
     * Gets the yLocation of the shark
     * @return the y position of the shark
     **/
-    @Override public int getYPos(){
+    @Override public double getYPos(){
         return yPos;
     }
     
@@ -61,7 +61,7 @@ public class Shark extends ScumOfTheSea{
     * Sets the xLocation of the shark
     * @return set the x position of the shark
     **/
-    @Override public void setX(int x){
+    @Override public void setX(double x){
 	xPos = x;
     }
 	
@@ -69,7 +69,7 @@ public class Shark extends ScumOfTheSea{
     * Sets the yLocation of the shark
     * @return set the y position of the shark
     **/
-    @Override public void setY(int y){
+    @Override public void setY(double y){
 	yPos = y;
     }
     

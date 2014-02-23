@@ -30,8 +30,8 @@ abstract public class ScumOfTheSea extends GeneralPathWrapper implements Shape{
  	@param yPos y coord of the middle of the Shark
     */
 
-    int xPos;
-    int yPos;
+    double xPos;
+    double yPos;
 
     /**
     * Holds the sea-scum's position on the Panel
@@ -40,22 +40,22 @@ abstract public class ScumOfTheSea extends GeneralPathWrapper implements Shape{
     /**
     * Gets the xLocation of yar scurvy-dog
     **/
-    public abstract int getXPos();
+    public abstract double getXPos();
 
     /**
     *  Gets the yLocation of the sea-scum
     **/
-    public abstract int getYPos();
+    public abstract double getYPos();
 
     /**
     * Sets the xLocation of the sea-swine
     **/
-    public abstract void setX(int x);
+    public abstract void setX(double x);
 
     /**
     * Sets the yLocation of the sea-wench
     **/
-    public abstract void setY(int y);
+    public abstract void setY(double y);
   	
     /**
     * Moves the positon of the lily-livered kraken by m points

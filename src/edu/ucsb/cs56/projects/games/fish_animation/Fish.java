@@ -19,8 +19,7 @@ import java.awt.geom.AffineTransform;
    @version for CS56, Spring 11, UCSB
    
 */
-public class Fish extends GeneralPathWrapper implements Shape
-{
+public class Fish extends ScumOfTheSea{
     /**
        Constructor
 
@@ -88,16 +87,30 @@ public class Fish extends GeneralPathWrapper implements Shape
     /**
        gets the xLocation of the fish
     **/
-    public double getXPos(){
+    @Override public double getXPos(){
 	return xPos;
     }
 
     /**
        gets the yLocation of the fish
     **/
-    public double getYPos(){
+    @Override public double getYPos(){
         return yPos;
     }
+
+    /**
+       X is set in the constructor
+    **/
+    @Override public void setX(double x){
+	;
+    }
+    /**
+       Y is set in the constructor
+    **/
+    @Override public void setY(double y){
+	;
+    }
+
 
     /**
        gets the Width of the fish
@@ -111,5 +124,12 @@ public class Fish extends GeneralPathWrapper implements Shape
     **/
     public double getHeight(){
         return height;
+    }
+
+    /**
+       fish moves in constructor
+    **/
+    @Override void move(int m){
+	;
     }
 }

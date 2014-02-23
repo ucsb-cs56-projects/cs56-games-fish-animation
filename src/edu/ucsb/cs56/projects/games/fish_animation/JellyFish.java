@@ -14,14 +14,13 @@ import java.awt.geom.AffineTransform;
  * JellyFish object holds its x position and y position
  */
 
-public class JellyFish
-{
-    int x, y;
+public class JellyFish extends ScumOfTheSea{
+    double x, y;
     boolean move;
     int count;
     double speed;
     
-    JellyFish(int x, int y, double speed){
+    JellyFish(double x, double y, double speed){
 		this.x = x;
 		this.y = y;
 		this.move = false;
@@ -31,23 +30,23 @@ public class JellyFish
     
     /**Gets the X position of the JellyFish
      * @return X is the position of the JellyFish
-     */
-    int getX(){return x;}
+     */	
+    @Override public double getXPos(){return x;}
 
     /**Gets the Y position of the JellyFish
      * @return Y is the position of the JellyFish
      */
-    int getY(){return y;}
+    @Override public double getYPos(){return y;}
 
     /**Sets the X position of the JellyFish
      * @param X is the position of the JellyFish
      */
-    void setX(int x) { this.x = x;}
+    @Override public void setX(double x) { this.x = x;}
 
     /**Sets the Y position of the JellyFish
      * @param Y the position of the JellyFish
      */
-    void setY(int y) { this.y = y;}
+    @Override public void setY(double y) { this.y = y;}
     
     /**Sets the move of the JellyFish
      * @param Boolean b will set the state of the JellyFish
@@ -62,7 +61,7 @@ public class JellyFish
     /**Moves the positon of the JellyFish
      * @param m moves the Y position of the JellyFish
      */
-    void moveY(double m) { y-= m;}
+    @Override void move(int m) { y-= m;}
 
     /**Sets the count of the JellyFish
      * Incrementer for count which is par of the JellyFish object

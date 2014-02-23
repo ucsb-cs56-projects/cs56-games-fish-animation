@@ -21,14 +21,15 @@ import java.awt.geom.AffineTransform;
 
 public class Bubbles extends ScumOfTheSea
 {
-    int x, y, diameter;
+    double x, y; 
+    int diameter;
 
     /**Bubbles Constructor
      * @param x sets the x position
      * @param y sets the y position
      * @param diameter sets the diameter of the Bubble
      */
-    Bubbles(int x, int y, int diameter){
+    Bubbles(double x, double y, int diameter){
 	this.x = x;
 	this.y = y;
 	this.diameter = diameter;
@@ -36,14 +37,14 @@ public class Bubbles extends ScumOfTheSea
     /**Gets the X position of the Bubble
      * @return X the position of the Bubble
      */
-    @Override public int getXPos(){
+    @Override public double getXPos(){
 	return x;
     }
     
     /**Gets the Y position of the Bubble
      * @return Y the position of the Bubble
      */
-    @Override public int getYPos(){
+    @Override public double getYPos(){
 	return y;
     }
     
@@ -57,14 +58,14 @@ public class Bubbles extends ScumOfTheSea
     /**Sets the X position of the Bubbles object
      * @param x sets the X position of the Bubbles ojbect
      */
-    @Override public void setX(int x) {
+    @Override public void setX(double x) {
 	 this.x = x;
     }
     
     /**Sets the Y position of the Bubbles object
      * @param y sets the Y position of the Bubbles object
      */
-    @Override public void setY(int y) {
+    @Override public void setY(double y) {
 	this.y = y;
     }
     
