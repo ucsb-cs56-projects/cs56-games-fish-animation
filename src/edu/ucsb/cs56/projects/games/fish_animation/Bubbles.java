@@ -19,7 +19,7 @@ import java.awt.geom.AffineTransform;
  * Creates a Bubbles object to hold X position,Y position, and diamter of Bubble
  */
 
-public class Bubbles
+public class Bubbles extends ScumOfTheSea
 {
     int x, y, diameter;
 
@@ -36,31 +36,43 @@ public class Bubbles
     /**Gets the X position of the Bubble
      * @return X the position of the Bubble
      */
-    int getX(){return x;}
+    @Override public int getXPos(){
+	return x;
+    }
     
     /**Gets the Y position of the Bubble
      * @return Y the position of the Bubble
      */
-    int getY(){return y;}
+    @Override public int getYPos(){
+	return y;
+    }
     
     /**Gets the Diameter
      * @return Returns the diameter of the object
      */
-    int getDiameter(){return diameter;}
+    int getDiameter(){
+	return diameter;
+    }
     
     /**Sets the X position of the Bubbles object
      * @param x sets the X position of the Bubbles ojbect
      */
-void setX(int x) { this.x = x;}
+    @Override public void setX(int x) {
+	 this.x = x;
+    }
     
     /**Sets the Y position of the Bubbles object
      * @param y sets the Y position of the Bubbles object
      */
-    void setY(int y) { this.y = y;}
+    @Override public void setY(int y) {
+	this.y = y;
+    }
     
     /**Changes the position of the Bubble
      * @param m changes the position of the Bubbles object
      */
-    void move(int m) { y-= m;}
+    @Override void move(int m){
+	y-= m;
+    }
 }
 	

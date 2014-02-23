@@ -22,7 +22,7 @@ import java.awt.event.*;
    @author Daryl Pham
    @version for CS56, proj01, Spring 2013, UCSB
 */
-public class Shark extends GeneralPathWrapper implements Shape{
+public class Shark extends ScumOfTheSea{
     /**
        Constructor
 
@@ -34,7 +34,7 @@ public class Shark extends GeneralPathWrapper implements Shape{
     int yPos;
 
     /**
-       Holds the shark's position on the Panel
+    * Holds the shark's position on the Panel
     **/
     public Shark(int x, int y) {
 	this.xPos = x;
@@ -42,34 +42,43 @@ public class Shark extends GeneralPathWrapper implements Shape{
     }
 
     /**
-       Gets the xLocation of the shark
-       @return the x position of the shark
+    * Gets the xLocation of the shark
+    * @return the x position of the shark
     **/
-    public int getXPos(){
+    @Override public int getXPos(){
 	return xPos;
     }
 
     /**
-       Gets the yLocation of the shark
-       @return the y position of the shark
+    * Gets the yLocation of the shark
+    * @return the y position of the shark
     **/
-    public int getYPos(){
+    @Override public int getYPos(){
         return yPos;
     }
     
     /**
-       Sets the xLocation of the shark
-       @return set the x position of the shark
+    * Sets the xLocation of the shark
+    * @return set the x position of the shark
     **/
-	public void setX(int x){
-		xPos = x;
-	}
+    @Override public void setX(int x){
+	xPos = x;
+    }
 	
     /**
-       Sets the yLocation of the shark
-       @return set the y position of the shark
+    * Sets the yLocation of the shark
+    * @return set the y position of the shark
     **/
-	public void setY(int y){
-		yPos = y;
-	}
+    @Override public void setY(int y){
+	yPos = y;
+    }
+    
+    /**
+    * Override abstract method in ScumOfTheSea
+    * shark does mot move by calling this method,
+    * shark movement dictated by mouse events
+    */
+    @Override void move(int m){
+	;
+    }
 }

@@ -60,6 +60,6 @@ abstract public class ScumOfTheSea extends GeneralPathWrapper implements Shape{
     /**
     * Moves the positon of the lily-livered kraken by m points
     */
-    abstract void moveY(double m);
+    abstract void move(int m);
 
 }
