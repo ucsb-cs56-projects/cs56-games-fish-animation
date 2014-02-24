@@ -61,7 +61,7 @@ public class JellyFish extends ScumOfTheSea{
     /**Moves the positon of the JellyFish
      * @param m moves the Y position of the JellyFish
      */
-    @Override void move(int m) { y-= m;}
+    @Override void move(double m) { y-= m;}
 
     /**Sets the count of the JellyFish
      * Incrementer for count which is par of the JellyFish object

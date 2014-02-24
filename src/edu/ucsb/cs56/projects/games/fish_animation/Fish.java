@@ -129,7 +129,7 @@ public class Fish extends ScumOfTheSea{
     /**
        fish moves in constructor
     **/
-    @Override void move(int m){
+    @Override void move(double m){
 	;
     }
 }

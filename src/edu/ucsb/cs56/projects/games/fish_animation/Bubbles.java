@@ -72,7 +72,7 @@ public class Bubbles extends ScumOfTheSea
     /**Changes the position of the Bubble
      * @param m changes the position of the Bubbles object
      */
-    @Override void move(int m){
+    @Override void move(double m){
 	y-= m;
     }
 }

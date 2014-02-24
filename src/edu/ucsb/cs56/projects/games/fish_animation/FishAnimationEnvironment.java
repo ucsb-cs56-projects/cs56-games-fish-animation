@@ -203,79 +203,87 @@ public class FishAnimationEnvironment extends JFrame implements Serializable {
 		
 	    //Draws the seaweed at the specified points
 	    for ( int i=0; i < this.getWidth()+125; i+=125 ) {
-		g.drawImage(seaweed, i, this.getHeight()-83, this);
+			g.drawImage(seaweed, i, this.getHeight()-83, this);
 	    }
 		
 	    //Draws the image of the boat and also animates it
 	    g.drawImage(boat, boatX, -135, this);
 	    if(!stop){
-		boatX-=10;
-		if(boatX <= -250){
-		    boatX = this.getWidth();
-		}
+			boatX-=10;
+			if(boatX <= -250){
+		  	  boatX = this.getWidth();
+			}
 	    }
 				
 	    //Draws the fish based off the fish info array
 	    g2.setColor(Color.YELLOW);
 	    for(int i=0; i<fishArray.size(); i++){
-		g2.draw(fishArray.get(i));
+			g2.draw(fishArray.get(i));
 	    }
 	    
 	    //Draws the image of the Shark
 	    Shark s = new Shark(posX, posY);
-	    g2.drawImage(shark, s.getXPos()-160, s.getYPos()-130, this);
+		int newXPos = (int) s.getXPos()-160;
+		int newYPos = (int) s.getYPos()-130;
+	    g2.drawImage(shark, newXPos, newYPos, this);
 	    
 	    //Draws the bubbles with the blue gradient
 	    Color b = new Color(127, 255, 212);
 	    for(int i=0; i<bubblesArray.size(); i++){
-		int BubblesY = bubblesArray.get(i).getY()-bubblesArray.get(i).getDiameter()/2;
-		int BubblesY2 = bubblesArray.get(i).getY()+bubblesArray.get(i).getDiameter()/2;
-		int BubblesX = bubblesArray.get(i).getX()-bubblesArray.get(i).getDiameter()/2;
-		int BubblesX2 = bubblesArray.get(i).getX()+bubblesArray.get(i).getDiameter()/2;
-		//Creates a gradient color for the Bubble
-		GradientPaint gradient = new GradientPaint(BubblesX, BubblesY, Color.BLUE, BubblesX2, BubblesY2, b);
-		//Sets the paint to the gradient color
-		g2.setPaint(gradient);
-		//Draws a Bubbles object onto the screen
-		int xb = bubblesArray.get(i).getX(); 
-		int yb = bubblesArray.get(i).getY();
-		int db = bubblesArray.get(i).getDiameter();
-		g2.fillOval(xb, yb, db, db);
+	    	double yD = bubblesArray.get(i).getYPos();
+	    	int yI = (int) yD;
+	    	double xD = bubblesArray.get(i).getXPos();
+	    	int xI = (int) xD;
+			int BubblesY = yI - bubblesArray.get(i).getDiameter()/2;
+			int BubblesY2 = yI + bubblesArray.get(i).getDiameter()/2;
+			int BubblesX = xI - bubblesArray.get(i).getDiameter()/2;
+			int BubblesX2 = xI +bubblesArray.get(i).getDiameter()/2;
+			//Creates a gradient color for the Bubble
+			GradientPaint gradient = new GradientPaint(BubblesX, BubblesY, Color.BLUE, BubblesX2, BubblesY2, b);
+			//Sets the paint to the gradient color
+			g2.setPaint(gradient);
+			//Draws a Bubbles object onto the screen
+			int xb = (int) bubblesArray.get(i).getXPos(); 
+			int yb = (int) bubblesArray.get(i).getYPos();
+			int db = (int) bubblesArray.get(i).getDiameter();
+			g2.fillOval(xb, yb, db, db);
 	    }
 		
 	    //Sets the Color to PINK for the jellyfish
 	    g2.setColor(Color.PINK);
 	    for(int i = 0; i<jellyfish.size(); i++){
-		if(jellyfish.get(i).CheckJellyFish()==true){		    		    
+	    	int jNewXPos = (int) jellyfish.get(i).getXPos();
+		    int jNewYPos = (int) jellyfish.get(i).getYPos();
+			if(jellyfish.get(i).CheckJellyFish()==true){		    		    
+		    	//Draws the Body of the JellyFish
+		    	g2.fillArc(jNewXPos,jNewYPos,50,40,0,180);
+     		    for(int j = (int) jellyfish.get(i).getXPos()+5;j<jellyfish.get(i).getXPos()+50;j+=5){	 		
+				//Draws the Tentacles of the JellyFish
+				g2.drawLine(j,jNewYPos+75,j,jNewYPos+10);}
+			}
+			else{
 		    //Draws the Body of the JellyFish
-		    g2.fillArc(jellyfish.get(i).getX(),jellyfish.get(i).getY(),50,40,0,180);
-     		    for(int j = jellyfish.get(i).getX()+5;j<jellyfish.get(i).getX()+50;j+=5){	 		
-			//Draws the Tentacles of the JellyFish
-			g2.drawLine(j,jellyfish.get(i).getY()+75,j,jellyfish.get(i).getY()+10);}
-		}
-		else{
-		    //Draws the Body of the JellyFish
-		    g2.fillArc(jellyfish.get(i).getX()+5,jellyfish.get(i).getY(),40,50,0,180); 
+		    	g2.fillArc(jNewXPos+5,jNewYPos,40,50,0,180); 
 		    
-		    for(int j = jellyfish.get(i).getX()+10;j<jellyfish.get(i).getX()+45;j+=5){
+			    for(int j = (int) jellyfish.get(i).getXPos()+10;j<jellyfish.get(i).getXPos()+45;j+=5){
 			
-			//Draws the Tentacles of the JellyFish
-			g2.drawLine(j,jellyfish.get(i).getY()+95,j,jellyfish.get(i).getY()+10);}
-		}	    
-	    }		
+					//Draws the Tentacles of the JellyFish
+					g2.drawLine(j,jNewYPos+95,j,jNewYPos+10);}
+				}	    
+	    	}		
 			
-	    //displays the number of points
-	    g.setFont(new Font("Verdana", Font.PLAIN, 35));
-	    g.setColor(Color.RED);
-	    String str1 = "Points: " + eaten + "!";
-	    g.drawString(str1,0,35);
+	   	 	//displays the number of points
+	    	g.setFont(new Font("Verdana", Font.PLAIN, 35));
+	    	g.setColor(Color.RED);
+	    	String str1 = "Points: " + eaten + "!";
+	    	g.drawString(str1,0,35);
 	    
-	    //displays the current elapsed time of the game in seconds
-	    g.setFont(new Font("Verdana", Font.PLAIN, 25));
-	    g.setColor(Color.RED);
-	    String str2 = "Seconds Elapsed: " + timer;
-	    g.drawString(str2,0,65);
-	}
+	    	//displays the current elapsed time of the game in seconds
+	    	g.setFont(new Font("Verdana", Font.PLAIN, 25));
+	    	g.setColor(Color.RED);
+	    	String str2 = "Seconds Elapsed: " + timer;
+	    	g.drawString(str2,0,65);
+		}
 	
     }//end DrawingPanel
     
@@ -310,8 +318,8 @@ public class FishAnimationEnvironment extends JFrame implements Serializable {
 		this.width = width;
 		this.height = height;
 	    }
-	    double getX(){return x;}
-	    double getY(){return y;}
+	    double getXPos(){return x;}
+	    double getYPos(){return y;}
 	    double getWidth(){return width;}
 	    double getHeight(){return height;}
 	}	   
@@ -350,8 +358,8 @@ public class FishAnimationEnvironment extends JFrame implements Serializable {
 		for(int i=0; i<jellyfish.size(); i++){
 
 		    //get x and y positions of jellyfish
-		    int xj = jellyfish.get(i).getX();
-		    int yj = jellyfish.get(i).getY();
+		    int xj = (int) jellyfish.get(i).getXPos();
+		    int yj = (int) jellyfish.get(i).getYPos();
 
 		    //check if shark is touching a jellyfish and delete jellyfish and penalize if true
 		    if((xj-20 > posX-200 && xj+20 < posX+40) && (yj+60 > posY-60 && yj < posY+25)){
@@ -366,7 +374,7 @@ public class FishAnimationEnvironment extends JFrame implements Serializable {
 
 		//Displays the Bubbles of the bubblesArray ArrayList
 		for(int i=0; i<bubblesArray.size();i++){
-		    if ( bubblesArray.get(i).getY() <= -20){
+		    if ( bubblesArray.get(i).getYPos() <= -20){
 			bubblesArray.get(i).setX((int) (Math.random()*fishPanel.getWidth()));
 			bubblesArray.get(i).setY(fishPanel.getHeight());
 		    }
@@ -377,7 +385,7 @@ public class FishAnimationEnvironment extends JFrame implements Serializable {
 		}
 		//Displays the jellyfish ArrayList
 		for(int i=0; i<jellyfish.size();i++){
-		    if(jellyfish.get(i).getY()<=-100){
+		    if(jellyfish.get(i).getYPos()<=-100){
 			jellyfish.get(i).setX(((int)((Math.random()*12345)%fishPanel.getWidth())));
 			jellyfish.get(i).setY((int)fishPanel.getHeight());	    
 		    }
@@ -385,7 +393,7 @@ public class FishAnimationEnvironment extends JFrame implements Serializable {
 		    //If the jellyfish is true it moves 10 pixels and setMove to false
 		    if(jellyfish.get(i).CheckJellyFish()==true){
 			if ( jellyfish.get(i).getCount()%20 == 0){
-			    jellyfish.get(i).moveY(jellyfish.get(i).getSpeed());
+			    jellyfish.get(i).move(jellyfish.get(i).getSpeed());
 			    jellyfish.get(i).setMove(false);
 			}
 		    }
@@ -405,7 +413,7 @@ public class FishAnimationEnvironment extends JFrame implements Serializable {
 		    else{
 			currentSpeed--;
 		    }
-		    double newX = info.get(i).getX()-currentSpeed;
+		    double newX = info.get(i).getXPos()-currentSpeed;
 		    int wp = fishPanel.getWidth();
 		    int hp = fishPanel.getHeight();
 
@@ -413,7 +421,7 @@ public class FishAnimationEnvironment extends JFrame implements Serializable {
 			addNewFish(new Fish(wp,((Math.random()*hp)%hp),info.get(i).getWidth(),info.get(i).getHeight()));
 		    }
 		    else{
-			addNewFish(new Fish(newX,info.get(i).getY(),info.get(i).getWidth(),info.get(i).getHeight()));
+			addNewFish(new Fish(newX,info.get(i).getYPos(),info.get(i).getWidth(),info.get(i).getHeight()));
 		    }
 		}
 	    
@@ -530,8 +538,10 @@ public class FishAnimationEnvironment extends JFrame implements Serializable {
 			os.writeDouble(fishArray.get(k).getHeight());
 		    }
 		    for(int i = 0; i<numJellyFish; i++){
-			os.writeInt(jellyfish.get(i).getX());
-			os.writeInt(jellyfish.get(i).getY());
+		    int toWriteX = (int)jellyfish.get(i).getXPos();
+		    int toWriteY = (int)jellyfish.get(i).getYPos();
+			os.writeInt(toWriteX);
+			os.writeInt(toWriteY);
 			os.writeDouble(jellyfish.get(i).getSpeed());
 		    }
 		    os.close();

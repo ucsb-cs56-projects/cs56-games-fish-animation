@@ -78,7 +78,7 @@ public class Shark extends ScumOfTheSea{
     * shark does mot move by calling this method,
     * shark movement dictated by mouse events
     */
-    @Override void move(int m){
+    @Override void move(double m){
 	;
     }
 }
