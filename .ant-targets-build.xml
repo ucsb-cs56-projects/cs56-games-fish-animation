@@ -1,6 +1,5 @@
 clean
 compile
-jar
 javadoc
 run
 runEnv

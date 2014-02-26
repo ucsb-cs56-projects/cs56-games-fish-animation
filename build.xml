@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <project default="compile">
   <!--  build.xml for github.com/UCSB-CS56-Projects/cs56-games-fish-animation
-       original author: Lawrence Khuu for CS56, S11
-       updated        : Christina Morris, Mathew Glodack for CS56, S13
-       updated        : Casey Barbello, Daryl Pham for CS56, S13
-       updated        : Jenna Cryan, Josephine Vo for CS56, W14
+       original author : Lawrence Khuu for CS56, S11
+       updated         : Christina Morris, Mathew Glodack for CS56, S13
+       updated         : Casey Barbello, Daryl Pham for CS56, S13
+       updated         : Jenna Cryan, Josephine Vo for CS56, W14
   --> 
   
   <property environment="env" /> 
@@ -13,8 +13,7 @@
   <property name="webRoot" value="${env.HOME}/public_html/cs56" />
   <property name="webBaseURL" value="http://www.cs.ucsb.edu/~${env.USER}/cs56" />
   <property name="project" value="cs56_games_fish_animation" />
-  <property name="fullPkg" 
-	    value="edu.ucsb.cs56.projects.games.fish_animation"/>
+  <property name="fullPkg" value="edu.ucsb.cs56.projects.games.fish_animation"/>
   <property name="javadocDest" value="${webRoot/${project}/javadoc" />
   <property name="javadocURL" value="${webBaseURL}/${project}/javadoc" /> 
   <property name="mainClass" value="${fullPkg}/Menu" />
@@ -54,18 +53,28 @@
     <delete dir="javadoc" quiet="true" /> 
   </target>
 
-  <target name="jar" depends="compile" description="creates jar file">
+  <manifestclasspath property="jar.class.path" jarfile="build/dist/cs_56_fish_animation.jar">
+    <classpath refid="project.class.path"/>
+  </manifestclasspath>
+
+  <target name="jar" depends="compile">
     <mkdir dir="build/dist"/>
-    <jar destfile="build/dist/cs_56_fish_animation.jar" basedir="build" excludes="cs_56_fish_animation.jar">
+    <jar destfile="build/dist/cs_56_fish_animation.jar" basedir="build/edu">
+      <fileset dir="src">
+	<exclude name="**/*.java" />
+      </fileset>
       <manifest>
-	<attribute name="Main Class" value="${mainClass}"/>
+	<attribute name="Main-Class" value="${mainClass}"/>
+	<attribute name="Class-Path" value="${jar.class.path}"/>
       </manifest>
     </jar>
   </target>
   
   <target name="run-from-jar" depends="jar">
     <java fork="true" classname="${mainClass}">
-      <classpath path="build/dist/cs_56_fish_animation.jar"/>
+      <classpath>
+	<pathelement location="build/dist/cs_56_fish_animation.jar"/>
+      </classpath>
     </java>
   </target>
   
