@@ -27,7 +27,7 @@ public class FishAnimationEnvironment extends JFrame implements Serializable {
     Thread animate;
     DrawingPanel fishPanel = new DrawingPanel();
     JFrame animation = new JFrame();
-	
+    
     /*The different X and Y positions of different items in the animation
       includng the shark and the boat.  Also includes the default window size,
       the max width of the fish, and the diameter of the bubbles.*/
@@ -36,7 +36,7 @@ public class FishAnimationEnvironment extends JFrame implements Serializable {
     int maxWidth = 100; //max width of the fish
     int boatX = maxX;//hold the position of the boat
     int maxD = 10; //holds the maximum diameter of the bubbles
-	
+    
     /*This holds the number of fish, the number of bubbles, the number of 
       Jellyfish, and the number of fish eaten*/
     int eaten = 0; //number of fish eaten
@@ -82,7 +82,7 @@ public class FishAnimationEnvironment extends JFrame implements Serializable {
 	int randomWidth = 10 + (int)(Math.random()*(maxWidth-10));
 	return new Fish(randomX,randomY,randomWidth,randomWidth/5);
     }
-
+    
     /** 
 	Method createsBubbles
 	@param x for the x position 
@@ -282,6 +282,26 @@ public class FishAnimationEnvironment extends JFrame implements Serializable {
 	    g.setColor(Color.RED);
 	    String str2 = "Seconds Elapsed: " + timer;
 	    g.drawString(str2,0,65);
+
+	    if(eaten >= 50) {
+		stop = true;
+
+		g.setFont(new Font("Verdana", Font.PLAIN, 100));
+		g.setColor(Color.RED);
+		String win = "YOU WON!";
+		g.drawString(win,350,400);
+	    }
+	    else if(eaten <= -25) {
+		stop = true;
+
+		g.setFont(new Font("Verdana", Font.PLAIN, 100));
+		g.setColor(Color.RED);
+		String lose = "Game Over!";
+		String lose2 = "Better luck next time!";
+		g.drawString(lose,325,250);
+		g.drawString(lose2,140,400);
+	    }
+
 	}
 	
     }//end DrawingPanel
@@ -479,7 +499,8 @@ public class FishAnimationEnvironment extends JFrame implements Serializable {
     */
     class GameMenu implements ActionListener {
 	JButton Pause;
-	ImageIcon pause = new ImageIcon("PauseButton.jpg");
+	URL pauseURL = getClass().getResource("/resources/PauseButton.jpg");
+	ImageIcon pause = new ImageIcon(pauseURL);
 	JButton Save = new JButton("Save & Exit");
 	
 	public void main (String[] args) {
@@ -553,6 +574,7 @@ public class FishAnimationEnvironment extends JFrame implements Serializable {
 		System.exit(0);
 	    }
 	}
+	
     }
     
 }//end class Animate
