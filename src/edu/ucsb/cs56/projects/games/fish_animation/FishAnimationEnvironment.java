@@ -20,7 +20,7 @@ import java.net.*;
    @author Mathew Glodack
    @author Jenna Cryan
    @author Josephine Vo
-   @version for CS56, proj01, Winter 2013, UCSB
+   @version for CS56, proj01, Winter 2014, UCSB
 **/
 
 public class FishAnimationEnvironment extends JFrame implements Serializable {
@@ -203,28 +203,28 @@ public class FishAnimationEnvironment extends JFrame implements Serializable {
 		
 	    //Draws the seaweed at the specified points
 	    for ( int i=0; i < this.getWidth()+125; i+=125 ) {
-			g.drawImage(seaweed, i, this.getHeight()-83, this);
+		g.drawImage(seaweed, i, this.getHeight()-83, this);
 	    }
-		
+	    
 	    //Draws the image of the boat and also animates it
 	    g.drawImage(boat, boatX, -135, this);
 	    if(!stop){
-			boatX-=10;
-			if(boatX <= -250){
-		  	  boatX = this.getWidth();
-			}
+		boatX-=10;
+		if(boatX <= -250){
+		    boatX = this.getWidth();
+		}
 	    }
-				
+	    
 	    //Draws the fish based off the fish info array
 	    g2.setColor(Color.YELLOW);
 	    for(int i=0; i<fishArray.size(); i++){
-			g2.draw(fishArray.get(i));
+		g2.draw(fishArray.get(i));
 	    }
 	    
 	    //Draws the image of the Shark
 	    Shark s = new Shark(posX, posY);
-		int newXPos = (int) s.getXPos()-160;
-		int newYPos = (int) s.getYPos()-130;
+	    int newXPos = (int) s.getXPos()-160;
+	    int newYPos = (int) s.getYPos()-130;
 	    g2.drawImage(shark, newXPos, newYPos, this);
 	    
 	    //Draws the bubbles with the blue gradient
@@ -234,56 +234,55 @@ public class FishAnimationEnvironment extends JFrame implements Serializable {
 	    	int yI = (int) yD;
 	    	double xD = bubblesArray.get(i).getXPos();
 	    	int xI = (int) xD;
-			int BubblesY = yI - bubblesArray.get(i).getDiameter()/2;
-			int BubblesY2 = yI + bubblesArray.get(i).getDiameter()/2;
-			int BubblesX = xI - bubblesArray.get(i).getDiameter()/2;
-			int BubblesX2 = xI +bubblesArray.get(i).getDiameter()/2;
-			//Creates a gradient color for the Bubble
-			GradientPaint gradient = new GradientPaint(BubblesX, BubblesY, Color.BLUE, BubblesX2, BubblesY2, b);
-			//Sets the paint to the gradient color
-			g2.setPaint(gradient);
-			//Draws a Bubbles object onto the screen
-			int xb = (int) bubblesArray.get(i).getXPos(); 
-			int yb = (int) bubblesArray.get(i).getYPos();
-			int db = (int) bubblesArray.get(i).getDiameter();
-			g2.fillOval(xb, yb, db, db);
+		int BubblesY = yI - bubblesArray.get(i).getDiameter()/2;
+		int BubblesY2 = yI + bubblesArray.get(i).getDiameter()/2;
+		int BubblesX = xI - bubblesArray.get(i).getDiameter()/2;
+		int BubblesX2 = xI +bubblesArray.get(i).getDiameter()/2;
+		//Creates a gradient color for the Bubble
+		GradientPaint gradient = new GradientPaint(BubblesX, BubblesY, Color.BLUE, BubblesX2, BubblesY2, b);
+		//Sets the paint to the gradient color
+		g2.setPaint(gradient);
+		//Draws a Bubbles object onto the screen
+		int xb = (int) bubblesArray.get(i).getXPos(); 
+		int yb = (int) bubblesArray.get(i).getYPos();
+		int db = (int) bubblesArray.get(i).getDiameter();
+		g2.fillOval(xb, yb, db, db);
 	    }
-		
+	    
 	    //Sets the Color to PINK for the jellyfish
 	    g2.setColor(Color.PINK);
 	    for(int i = 0; i<jellyfish.size(); i++){
 	    	int jNewXPos = (int) jellyfish.get(i).getXPos();
-		    int jNewYPos = (int) jellyfish.get(i).getYPos();
-			if(jellyfish.get(i).CheckJellyFish()==true){		    		    
-		    	//Draws the Body of the JellyFish
-		    	g2.fillArc(jNewXPos,jNewYPos,50,40,0,180);
-     		    for(int j = (int) jellyfish.get(i).getXPos()+5;j<jellyfish.get(i).getXPos()+50;j+=5){	 		
-				//Draws the Tentacles of the JellyFish
-				g2.drawLine(j,jNewYPos+75,j,jNewYPos+10);}
-			}
-			else{
+		int jNewYPos = (int) jellyfish.get(i).getYPos();
+		if(jellyfish.get(i).CheckJellyFish()==true){		    		    
 		    //Draws the Body of the JellyFish
-		    	g2.fillArc(jNewXPos+5,jNewYPos,40,50,0,180); 
-		    
-			    for(int j = (int) jellyfish.get(i).getXPos()+10;j<jellyfish.get(i).getXPos()+45;j+=5){
-			
-					//Draws the Tentacles of the JellyFish
-					g2.drawLine(j,jNewYPos+95,j,jNewYPos+10);}
-				}	    
-	    	}		
-			
-	   	 	//displays the number of points
-	    	g.setFont(new Font("Verdana", Font.PLAIN, 35));
-	    	g.setColor(Color.RED);
-	    	String str1 = "Points: " + eaten + "!";
-	    	g.drawString(str1,0,35);
-	    
-	    	//displays the current elapsed time of the game in seconds
-	    	g.setFont(new Font("Verdana", Font.PLAIN, 25));
-	    	g.setColor(Color.RED);
-	    	String str2 = "Seconds Elapsed: " + timer;
-	    	g.drawString(str2,0,65);
+		    g2.fillArc(jNewXPos,jNewYPos,50,40,0,180);
+     		    for(int j = (int) jellyfish.get(i).getXPos()+5;j<jellyfish.get(i).getXPos()+50;j+=5){
+			//Draws the Tentacles of the JellyFish
+			g2.drawLine(j,jNewYPos+75,j,jNewYPos+10);}
 		}
+		else{
+		    //Draws the Body of the JellyFish
+		    g2.fillArc(jNewXPos+5,jNewYPos,40,50,0,180); 
+		    
+		    for(int j = (int) jellyfish.get(i).getXPos()+10;j<jellyfish.get(i).getXPos()+45;j+=5){
+			//Draws the Tentacles of the JellyFish
+			g2.drawLine(j,jNewYPos+95,j,jNewYPos+10);}
+		}	    
+	    }		
+	    
+	    //displays the number of points
+	    g.setFont(new Font("Verdana", Font.PLAIN, 35));
+	    g.setColor(Color.RED);
+	    String str1 = "Points: " + eaten + "!";
+	    g.drawString(str1,0,35);
+	    
+	    //displays the current elapsed time of the game in seconds
+	    g.setFont(new Font("Verdana", Font.PLAIN, 25));
+	    g.setColor(Color.RED);
+	    String str2 = "Seconds Elapsed: " + timer;
+	    g.drawString(str2,0,65);
+	}
 	
     }//end DrawingPanel
     
@@ -305,7 +304,7 @@ public class FishAnimationEnvironment extends JFrame implements Serializable {
 		}//end else
 	    }//end catch
 	}//end run
-    
+	
 	/** 
 	    Class that holds the information for each separate fish in order to
 	    animate the fish and know its whereabouts on the screen.
