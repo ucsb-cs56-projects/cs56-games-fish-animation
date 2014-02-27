@@ -53,12 +53,11 @@
     <delete dir="javadoc" quiet="true" /> 
   </target>
 
-  <manifestclasspath property="jar.class.path" jarfile="build/dist/cs_56_fish_animation.jar">
-    <classpath refid="project.class.path"/>
-  </manifestclasspath>
-
   <target name="jar" depends="compile">
     <mkdir dir="build/dist"/>
+    <manifestclasspath property="jar.class.path" jarfile="build/dist/cs_56_fish_animation.jar">
+      <classpath refid="project.class.path"/>
+    </manifestclasspath>
     <jar destfile="build/dist/cs_56_fish_animation.jar" basedir="build/edu">
       <fileset dir="src">
 	<exclude name="**/*.java" />
