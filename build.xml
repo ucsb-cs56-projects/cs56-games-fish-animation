@@ -77,22 +77,6 @@
     </java>
   </target>
   
-  <!--  <target name="test" depends="compile" description="tests classes">
-       <junit haltonerror="no" haltonfailure="no">
-       <classpath>
-       <pathelement location="/cs/faculty/pconrad/public_html/cs56/lib/junit-4.8.2.jar" /> 
-       <pathelement location="build" /> 
-       </classpath>
-       <batchtest fork="yes">
-       <fileset dir="src">
-       <include name="**/*Test.java" /> 
-       </fileset>
-       </batchtest>
-       <formatter type="plain" usefile="false" /> 
-       </junit>
-       </target>
-  -->
-  
   <target name="javadoc" depends="compile" description="publish javadoc">
     <delete dir="javadoc" quiet="true" />
     <javadoc destdir="javadoc" author="true" version="true" use="true" >
@@ -101,22 +85,12 @@
       
     </javadoc>
     
-    <!-- delete the old javadoc -->
     <delete quiet="true" dir="${javadocDest}" />
     
-    <!-- copy everything you just made to the javadoc destination,
-	 and then make it readable -->
     <copy todir="${javadocDest}" >
       <fileset dir="javadoc"/>
     </copy>
     
-    <!-- Note: this only does the chmod command on the javadoc
-	 subdirectory and its contents. You MIGHT have to MANUALLY do the
-	 chmod on the parent directories. However, you should only need to do
-	 that once.
-    -->
-
-
     <chmod dir="${javadocDest}" perm="755" type="dir" includes="**" />
     <chmod dir="${javadocDest}" perm="755" type="file" includes="**/*" />
 
