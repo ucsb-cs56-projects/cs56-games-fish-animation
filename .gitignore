@@ -4,3 +4,6 @@
 *.jar
 *.war
 *.ear
+
+*.ant-targets-build.xml
+**/build
