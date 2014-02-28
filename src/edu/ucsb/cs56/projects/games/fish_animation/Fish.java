@@ -16,120 +16,124 @@ import java.awt.geom.AffineTransform;
    rotated, scaled, etc.
       
    @author Lawrence Khuu
-   @version for CS56, Spring 11, UCSB
+   @author Josephine Vo
+   @author Jenna Cryan
+   @version for CS56, Winter 2014, UCSB
    
 */
 public class Fish extends ScumOfTheSea{
-    /**
-       Constructor
-
-       @param x x coord of the middle of the Fish
-       @param y y coord of the middle of the Fish
-       @param width of the Fish
-       @param height of the Fish
+    /** 
+	Constructor
+	@param x x coord of the middle of the Fish
+	@param y y coord of the middle of the Fish
+	@param width of the Fish
+	@param height of the Fish
     */
-
+    
     double xPos;
     double yPos;
     double width;
     double height;
-
+    
     /**
        draws the specified fish
-    **/
-    public Fish(double x, double y, double width, double height)
-    {
+    */
+    public Fish(double x, double y, double width, double height) {
 	this.xPos = x;
 	this.yPos = y;
 	this.width = width;
 	this.height = height;
 	GeneralPath wholeFish = this.get();
-	double currentX = x-(width/2);
+	double currentX = x - (width / 2);
 	double currentY = y;
 	double nextX = 0;
 	double nextY = 0;
 
-	for(double j=0;j<100;j+=1.0){
-	    nextX = currentX + (((3.0/4.0)*width)/100.0);
-	    nextY = currentY + ((height/2.0)*(Math.sin(Math.PI*((j+1.0)/100.0))-Math.sin(Math.PI*((j-1.0)/100.0))));
-	    wholeFish.append(new Line2D.Double(currentX,currentY,nextX,nextY),false);
+	for(double j = 0;j < 100; j += 1.0) { 
+	    nextX = currentX + (((3.0 / 4.0) * width) / 100.0);
+	    nextY = currentY + ((height / 2.0) * (Math.sin(Math.PI * ((j + 1.0) / 100.0)) - Math.sin(Math.PI * ((j - 1.0) / 100.0))));
+	    wholeFish.append(new Line2D.Double(currentX, currentY, nextX, nextY), false);
 	    currentX = nextX;
 	    currentY = nextY;
 	}
 
-	nextX = currentX + (1.0/4.0)*width;
-	nextY = y + (height/2.0);
-	wholeFish.append(new Line2D.Double(currentX,currentY,nextX,nextY),false);
+	nextX = currentX + (1.0 / 4.0) * width;
+	nextY = y + (height / 2.0);
+	wholeFish.append(new Line2D.Double(currentX, currentY, nextX, nextY), false);
 	currentX = nextX;
 	currentY = nextY;
 
-	nextY = y - (height/2.0);
-	wholeFish.append(new Line2D.Double(currentX,currentY,nextX,nextY),false);
+	nextY = y - (height / 2.0);
+	wholeFish.append(new Line2D.Double(currentX, currentY, nextX, nextY), false);
 	currentX = nextX;
 	currentY = nextY;
-
-	nextX = currentX - (1.0/4.0)*width;
+	
+	nextX = currentX - (1.0 / 4.0) * width;
 	nextY = y;
-	wholeFish.append(new Line2D.Double(currentX,currentY,nextX,nextY),false);
+	wholeFish.append(new Line2D.Double(currentX, currentY, nextX, nextY), false);
 	currentX = nextX;
 	currentY = nextY;
-
-        for(double j=0;j<100;j+=1.0){
-            nextX = currentX - (((3.0/4.0)*width)/100.0);
-            nextY = currentY - ((height/2.0)*(Math.sin(Math.PI*((j+1.0)/100.0))-Math.sin(Math.PI*((j-1.0)/100.0))));
-            wholeFish.append(new Line2D.Double(currentX,currentY,nextX,nextY),false);
+	
+        for(double j = 0; j < 100; j += 1.0) {
+            nextX = currentX - (((3.0 / 4.0) * width) / 100.0);
+            nextY = currentY - ((height / 2.0) * (Math.sin(Math.PI * ((j + 1.0) / 100.0)) - Math.sin(Math.PI * ((j - 1.0) / 100.0))));
+            wholeFish.append(new Line2D.Double(currentX, currentY, nextX, nextY), false);
             currentX = nextX;
             currentY = nextY;
         }
-
     }
-
+    
     /**
        gets the xLocation of the fish
-    **/
-    @Override public double getXPos(){
+    */
+    @Override 
+    public double getXPos() {
 	return xPos;
     }
-
+    
     /**
        gets the yLocation of the fish
-    **/
-    @Override public double getYPos(){
+    */
+    @Override 
+    public double getYPos() {
         return yPos;
     }
-
+    
     /**
        X is set in the constructor
-    **/
-    @Override public void setX(double x){
+    */
+    @Override 
+    public void setX(double x) {
 	;
     }
+
     /**
        Y is set in the constructor
-    **/
-    @Override public void setY(double y){
+    */
+    @Override 
+    public void setY(double y) {
 	;
     }
-
-
+    
     /**
        gets the Width of the fish
-    **/
-    public double getWidth(){
+    */
+    public double getWidth() {
         return width;
     }
-
+    
     /**
        gets the height of the fish
-    **/
-    public double getHeight(){
+    */
+    public double getHeight() {
         return height;
     }
 
     /**
        fish moves in constructor
-    **/
-    @Override void move(double m){
+    */
+    @Override 
+    void move(double m) {
 	;
     }
 }
