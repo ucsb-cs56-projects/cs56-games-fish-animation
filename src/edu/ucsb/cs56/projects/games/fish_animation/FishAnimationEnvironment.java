@@ -181,12 +181,17 @@ public class FishAnimationEnvironment extends JFrame implements Serializable {
     **/
 
     class DrawingPanel extends JPanel{
+    
 	public void paintComponent(Graphics g){
 	    
 	    Graphics2D g2 = (Graphics2D) g;
 	    g2.setColor(Color.BLUE);
-	    g2.fillRect(0,0,this.getWidth(),this.getHeight());	    		
-     
+	    g2.fillRect(0,0,this.getWidth(),this.getHeight());
+	    URL reefURL = getClass().getResource("/resources/CoralReef.jpg");
+		Image reef = new ImageIcon(reefURL).getImage();	   
+	    super.paintComponent(g); //replace current painting
+        g.drawImage(reef, 0, 0, this); 
+     	
 	    //Starts the Action listener to listen for mouse events in the panel
 	    MouseHandler handler = new MouseHandler();
 	    fishPanel.addMouseListener(handler);
@@ -272,13 +277,13 @@ public class FishAnimationEnvironment extends JFrame implements Serializable {
 	    }		
 	    
 	    //displays the number of points
-	    g.setFont(new Font("Verdana", Font.PLAIN, 35));
+	    g.setFont(new Font("Corsiva Hebrew", Font.PLAIN, 40));
 	    g.setColor(Color.RED);
 	    String str1 = "Points: " + eaten + "!";
 	    g.drawString(str1,0,35);
 	    
 	    //displays the current elapsed time of the game in seconds
-	    g.setFont(new Font("Verdana", Font.PLAIN, 25));
+	    g.setFont(new Font("Corsiva Hebrew", Font.PLAIN, 30));
 	    g.setColor(Color.RED);
 	    String str2 = "Seconds Elapsed: " + timer;
 	    g.drawString(str2,0,65);
@@ -286,7 +291,7 @@ public class FishAnimationEnvironment extends JFrame implements Serializable {
 	    if(eaten >= 50) {
 		stop = true;
 
-		g.setFont(new Font("Verdana", Font.PLAIN, 100));
+		g.setFont(new Font("Corsiva Hebrew", Font.PLAIN, 100));
 		g.setColor(Color.RED);
 		String win = "YOU WON!";
 		g.drawString(win,350,400);
@@ -294,7 +299,7 @@ public class FishAnimationEnvironment extends JFrame implements Serializable {
 	    else if(eaten <= -25) {
 		stop = true;
 
-		g.setFont(new Font("Verdana", Font.PLAIN, 100));
+		g.setFont(new Font("Corsiva Hebrew", Font.PLAIN, 100));
 		g.setColor(Color.RED);
 		String lose = "Game Over!";
 		String lose2 = "Better luck next time!";
@@ -502,6 +507,7 @@ public class FishAnimationEnvironment extends JFrame implements Serializable {
 	URL pauseURL = getClass().getResource("/resources/PauseButton.jpg");
 	ImageIcon pause = new ImageIcon(pauseURL);
 	JButton Save = new JButton("Save & Exit");
+	JButton Exit = new JButton("Exit");
 	
 	public void main (String[] args) {
 	    GameMenu menu = new GameMenu();
@@ -515,11 +521,14 @@ public class FishAnimationEnvironment extends JFrame implements Serializable {
 	
 	    Pause = new JButton(pause);
 	    Pause.addActionListener(this);
-		
 	    Save.addActionListener(this);
-	    	    
-	    animation.getContentPane().add(BorderLayout.NORTH, Pause);
-	    animation.getContentPane().add(BorderLayout.SOUTH, Save);
+	    Exit.addActionListener(this);
+	    
+	    JPanel allTheButtons = new JPanel(new BorderLayout());
+	    animation.getContentPane().add(BorderLayout.SOUTH, allTheButtons);
+	    allTheButtons.add(BorderLayout.EAST, Exit);
+	    allTheButtons.add(BorderLayout.CENTER, Save);
+	    allTheButtons.add(BorderLayout.WEST, Pause);
 	    animation.setVisible(true);
 	}
 	
@@ -573,6 +582,10 @@ public class FishAnimationEnvironment extends JFrame implements Serializable {
 		numJellyFish = 0;
 		System.exit(0);
 	    }
+		//If exit is clicked exits the game
+		if(event.getSource() == Exit){
+			System.exit(0);
+		}
 	}
 	
     }
