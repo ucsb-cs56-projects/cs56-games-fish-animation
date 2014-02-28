@@ -12,7 +12,9 @@ import java.util.*;
    find instructions, or exit the menu.
    @author Casey Barbello
    @author Daryl Pham
-   @version for CS56, proj02, Spring 2013, UCSB
+   @author Jenna Cryan
+   @author Josephine Vo
+   @version for CS56, proj01, W14, UCSB
 **/
 
 class Menu implements ActionListener {
@@ -98,11 +100,11 @@ class Menu implements ActionListener {
 		
 		//Creates new frame for the new menu that will pop up
 		instruct = new JFrame();
-		instruct.setSize(300,335);
+		instruct.setSize(320,300);
 		
 		//Sets the font of the text in the instruction
-		instruct.setFont(new Font("Verdana", Font.PLAIN, 12));
-	    String str = "Hello!\n\n     This is our Shark game!  The point\n     of the game is to eat as many fish\n     as you can! But watch out! Jellyfish\n     are out to get you! Touch one of them,\n     and you'll lose points! To eat the\n     fish, just move your shark's mouth\n     to the fish. To move the shark, you\n     must click and hold the mouse button\n     and slide the mouse around the screen.\n     There are three different difficulties,\n     so test your skills on all of them!\n\n\t\tGood eating!";				
+		instruct.setFont(new Font("Verdana", Font.PLAIN, 14));
+		String str = " Hello!\n\n    The goal of the game is to eat as many fish\n    as you can. There's no time limit, but watch\n    out! Jellyfish are out to get you! If you eat the\n    jellyfish, you'll lose points! If you get too\n    many negative points, you lose :( To eat the\n    fish, click on the shark and hold down the\n    mouse button to move your shark's mouth\n    to the fish. There are three different\n   difficulties, so test your skills on all of them!\n\n\t\tGood eating!";
 		text = new JTextArea(str);
 	    
 	    //Adds button to the instruction popup
