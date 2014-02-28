@@ -18,10 +18,11 @@ import java.util.*;
 **/
 
 class Menu implements ActionListener {
-    JButton Play, Instruction, Exit, Resume, Easy, Medium, Hard, Back;
+    JButton Play, Instruction, Exit, Resume, Easy, Medium, Hard, Back, Menu;
     JFrame frame, instruct;
     int type;
     JTextArea text;
+    JLabel textLabel;
     
     public static void main (String[] args) {
 	Menu menu = new Menu();
@@ -67,29 +68,33 @@ class Menu implements ActionListener {
 	frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 	
 	//Adds the different difficulty buttons
+	Menu = new JButton("Main Menu");
 	Easy = new JButton("Easy");
 	Medium = new JButton("Medium");
 	Hard = new JButton("Hard");
 	Resume = new JButton("Resume Game");
 	
 	//Sets the size of the buttons
+	Menu.setPreferredSize(new Dimension(200,75));
 	Easy.setPreferredSize(new Dimension(200,75));
 	Medium.setPreferredSize(new Dimension(200,75));
 	Hard.setPreferredSize(new Dimension(200, 75));
 	Resume.setPreferredSize(new Dimension(200,75));
 	
 	//Gives the buttons actionlisteners
+	Menu.addActionListener(this);
 	Easy.addActionListener(this);
 	Medium.addActionListener(this);
 	Hard.addActionListener(this);
 	Resume.addActionListener(this);
 
 	//Puts the buttons onto the frame in BorderLayout format
+	frame.getContentPane().add(BorderLayout.NORTH, Menu);
 	frame.getContentPane().add(BorderLayout.WEST, Easy);
 	frame.getContentPane().add(BorderLayout.CENTER, Medium);
 	frame.getContentPane().add(BorderLayout.EAST, Hard);
 	frame.getContentPane().add(BorderLayout.SOUTH, Resume);
-	frame.setSize(600,150);
+	frame.setSize(600,300);
 	frame.setVisible(true);
     }
     
@@ -100,14 +105,28 @@ class Menu implements ActionListener {
 		
 		//Creates new frame for the new menu that will pop up
 		instruct = new JFrame();
-		instruct.setSize(320,300);
-		
+		instruct.setSize(300,300);
+	
+		/**			
 		//Sets the font of the text in the instruction
 		instruct.setFont(new Font("Verdana", Font.PLAIN, 14));
-		String str = " Hello!\n\n    The goal of the game is to eat as many fish\n    as you can. There's no time limit, but watch\n    out! Jellyfish are out to get you! If you eat the\n    jellyfish, you'll lose points! If you get too\n    many negative points, you lose :( To eat the\n    fish, click on the shark and hold down the\n    mouse button to move your shark's mouth\n    to the fish. There are three different\n   difficulties, so test your skills on all of them!\n\n\t\tGood eating!";
+		String str = " Hello!\n\n    "
+		+ "The goal of the game is to eat as many fish\n    "
+		+ "as you can. There's no time limit, but watch\n    "
+		+ "out! Jellyfish are out to get you! If you eat the\n    "
+		+ "jellyfish, you'll lose points! If you get too\n    "
+		+ "many negative points, you lose :( To eat the\n    "
+		+ "fish, click on the shark and hold down the\n    "
+		+ "mouse button to move your shark's mouth\n    "
+		+ "to the fish. There are three different\n   "
+		+ "difficulties, so test your skills on all of them!\n\n\t\tGood eating!";
 		text = new JTextArea(str);
-	    
-	    //Adds button to the instruction popup
+		*/		
+		    
+		textLabel = new JLabel();
+		textLabel.setText("<html><p>Hello!\nThe goal of the game is to eat as many fish as you can. There's no time limit, but watch out! Jellyfish are out to get you! If you eat the jellyfish, you'll lose points! If you get too many negative points, you lose :( To eat the fish, click on the shark and hold down the mouse button to move your shark's mouth to the fish. There are three different difficulties, so test your skills on all of them!\n\n\t\tGood eating!\n</p></html>");
+
+		//Adds button to the instruction popup
 		Back = new JButton("Menu");
 		
 		//Adds action listener to the button to go back to the mainmenu
@@ -115,7 +134,7 @@ class Menu implements ActionListener {
 		Back.setPreferredSize(new Dimension(150,75));
 		
 		//Adds the layout for the button and the textArea
-		instruct.getContentPane().add(BorderLayout.NORTH, text);
+		instruct.getContentPane().add(BorderLayout.NORTH, textLabel);
 		instruct.getContentPane().add(BorderLayout.SOUTH, Back);
 		instruct.setVisible(true);
 	}
@@ -160,10 +179,19 @@ class Menu implements ActionListener {
 	    HowToPlay();
 	}
 	if(event.getSource() == Back){
-		instruct.remove(Back);
-		instruct.remove(text);
-		instruct.setVisible(false);
-		makegui();
+	    instruct.remove(Back);
+	    instruct.remove(textLabel);
+	    instruct.setVisible(false);
+	    makegui();
+	}
+	if(event.getSource() == Menu){
+	    frame.remove(Menu);
+	    frame.remove(Easy);
+	    frame.remove(Medium);
+	    frame.remove(Hard);
+	    frame.remove(Resume);
+	    frame.setVisible(false);
+	    makegui();
 	}
     }
 }

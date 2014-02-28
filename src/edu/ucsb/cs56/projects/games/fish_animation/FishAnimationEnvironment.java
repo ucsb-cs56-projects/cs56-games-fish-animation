@@ -184,19 +184,20 @@ public class FishAnimationEnvironment extends JFrame implements Serializable {
     
 	public void paintComponent(Graphics g){
 	    
+	    //Sets background color and adds background image
 	    Graphics2D g2 = (Graphics2D) g;
 	    g2.setColor(Color.BLUE);
 	    g2.fillRect(0,0,this.getWidth(),this.getHeight());
 	    URL reefURL = getClass().getResource("/resources/CoralReef.jpg");
-		Image reef = new ImageIcon(reefURL).getImage();	   
+	    Image reef = new ImageIcon(reefURL).getImage();	   
 	    super.paintComponent(g); //replace current painting
-        g.drawImage(reef, 0, 0, this); 
-     	
+	    g.drawImage(reef, 0, 0, this); 
+	    
 	    //Starts the Action listener to listen for mouse events in the panel
 	    MouseHandler handler = new MouseHandler();
 	    fishPanel.addMouseListener(handler);
 	    fishPanel.addMouseMotionListener(handler);
-		
+	    
 	    //Images in the game
 	    URL sharkURL = getClass().getResource("/resources/shark.jpg");
 	    Image shark = new ImageIcon(sharkURL).getImage();
@@ -290,7 +291,6 @@ public class FishAnimationEnvironment extends JFrame implements Serializable {
 
 	    if(eaten >= 50) {
 		stop = true;
-
 		g.setFont(new Font("Corsiva Hebrew", Font.PLAIN, 100));
 		g.setColor(Color.RED);
 		String win = "YOU WON!";
@@ -298,7 +298,6 @@ public class FishAnimationEnvironment extends JFrame implements Serializable {
 	    }
 	    else if(eaten <= -25) {
 		stop = true;
-
 		g.setFont(new Font("Corsiva Hebrew", Font.PLAIN, 100));
 		g.setColor(Color.RED);
 		String lose = "Game Over!";
