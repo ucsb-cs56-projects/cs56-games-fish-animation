@@ -1,4 +1,4 @@
-package edu.ucsb.cs56.projects.games.cs56_games_fish_animation;
+package edu.ucsb.cs56.projects.games.fish_animation;
 
 import java.awt.geom.GeneralPath; // combinations of lines and curves
 import java.awt.geom.AffineTransform; // translation, rotation, scale
@@ -20,23 +20,25 @@ import java.awt.event.*;
       
    @author Casey Barbello
    @author Daryl Pham
-   @version for CS56, proj01, Spring 2013, UCSB
+   @author Jenna Cryan
+   @author Josephine Vo
+   @version for CS56, Winter 2014, UCSB
 */
-public class Shark extends GeneralPathWrapper implements Shape{
+
+public class Shark extends ScumOfTheSea {
     /**
        Constructor
-
        @param xPos x coord of the middle of the Shark
        @param yPos y coord of the middle of the Shark
     */
 
-    int xPos;
-    int yPos;
+    double xPos;
+    double yPos;
 
     /**
        Holds the shark's position on the Panel
-    **/
-    public Shark(int x, int y) {
+    */
+    public Shark(double x, double y) {
 	this.xPos = x;
 	this.yPos = y;
     }
@@ -44,32 +46,46 @@ public class Shark extends GeneralPathWrapper implements Shape{
     /**
        Gets the xLocation of the shark
        @return the x position of the shark
-    **/
-    public int getXPos(){
+    */
+    @Override 
+    public double getXPos() {
 	return xPos;
     }
 
     /**
        Gets the yLocation of the shark
        @return the y position of the shark
-    **/
-    public int getYPos(){
+    */
+    @Override 
+    public double getYPos() {
         return yPos;
     }
     
     /**
        Sets the xLocation of the shark
        @return set the x position of the shark
-    **/
-	public void setX(int x){
-		xPos = x;
-	}
+    */
+    @Override 
+    public void setX(double x) {
+	xPos = x;
+    }
 	
     /**
        Sets the yLocation of the shark
        @return set the y position of the shark
-    **/
-	public void setY(int y){
-		yPos = y;
-	}
+    */
+    @Override 
+    public void setY(double y) {
+	yPos = y;
+    }
+    
+    /**
+       Override abstract method in ScumOfTheSea
+       shark does mot move by calling this method,
+       shark movement dictated by mouse events
+    */
+    @Override 
+    void move(double m){
+	;
+    }
 }

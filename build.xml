@@ -1,29 +1,24 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <project default="compile">
-  <!--  build.xml for Mantis issue 0000355
-       name: Lawrence Khuu for CS56, S11
-       name: Christina Morris, Mathew Glodack for CS56, S13
-       names:Casey Barbello, Daryl Pham for CS56, S13
+  <!--  build.xml for github.com/UCSB-CS56-Projects/cs56-games-fish-animation
+       original author : Lawrence Khuu for CS56, S11
+       updated         : Christina Morris, Mathew Glodack for CS56, S13
+       updated         : Casey Barbello, Daryl Pham for CS56, S13
+       updated         : Jenna Cryan, Josephine Vo for CS56, W14
   --> 
   
   <property environment="env" /> 
   <!--  load the environment variables 
   -->   
   <property name="webRoot" value="${env.HOME}/public_html/cs56" />
-  <property name="webBaseURL" 
-	    value="http://www.cs.ucsb.edu/~${env.USER}/cs56" />
-  <property name="projectName" value="cs56_games_fish_animation" />
-  <property name="course" value="cs56" /> 
-  <property name="projects" value="projects" /> 
-  <property name="categoryname" value="games" /> 
-  <property name="fullPkg" 
-	    value="edu.ucsb.cs56.projects.games.cs56_games_fish_animation"/>
-  <property name="projectName" value="${course}_${projects}_${categoryname}" /> 
-  <property name="projectPath" value="${course}/${projects}/${categoryname}" /> 
-  <property name="javadocDest" value="${webRoot}/S13/cmmorris/${projectName}/javadoc" />
-  <property name="javadocURL" value="${webBaseURL}/${projectName}/javadoc" /> 
+  <property name="webBaseURL" value="http://www.cs.ucsb.edu/~${env.USER}/cs56" />
+  <property name="project" value="cs56_games_fish_animation" />
+  <property name="fullPkg" value="edu.ucsb.cs56.projects.games.fish_animation"/>
+  <property name="javadocDest" value="${webRoot}/${project}/javadoc" />
+  <property name="javadocURL" value="${webBaseURL}/${project}/javadoc" /> 
   <property name="mainClass" value="${fullPkg}/Menu" />
   <property name="envClass" value="${fullPkg}/FishEnvironment" />
+ 
   <path id="project.class.path">
     <pathelement location="build"/>
     <pathelement location="lib/junit-4.8.2.jar"/>
@@ -44,11 +39,11 @@
   <target name="compile" description="compiles my code">
     <mkdir dir="build" />
     <javac srcdir="src" destdir="build" debug="true" debuglevel="lines,source">
-      <classpath>
-	<pathelement location="build" /> 
-	<pathelement location="lib/junit-4.8.2.jar" /> 
-      </classpath>
+      <classpath refid="project.class.path"/>
     </javac>
+    <copy todir="build/resources">
+      <fileset dir="resources" includes="*.jpg"/>
+    </copy>
   </target>
   
   <target name="clean" description="removes unnessessary files">
@@ -56,26 +51,31 @@
       <fileset dir="build" includes="*.class" />
     </delete>
     <delete dir="javadoc" quiet="true" /> 
-    <delete dir="dist" quiet="true" /> 
-    <delete dir="download" quiet="true" /> 
-    <delete dir="temp" quiet="true" /> 
+  </target>
+
+  <target name="jar" depends="compile">
+    <mkdir dir="build/dist"/>
+    <manifestclasspath property="jar.class.path" jarfile="build/dist/cs_56_fish_animation.jar">
+      <classpath refid="project.class.path"/>
+    </manifestclasspath>
+    <jar destfile="build/dist/cs_56_fish_animation.jar" basedir="build/edu">
+      <fileset dir="src">
+	<exclude name="**/*.java" />
+      </fileset>
+      <manifest>
+	<attribute name="Main-Class" value="${mainClass}"/>
+	<attribute name="Class-Path" value="${jar.class.path}"/>
+      </manifest>
+    </jar>
   </target>
   
-  <!--  <target name="test" depends="compile" description="tests classes">
-       <junit haltonerror="no" haltonfailure="no">
-       <classpath>
-       <pathelement location="/cs/faculty/pconrad/public_html/cs56/lib/junit-4.8.2.jar" /> 
-       <pathelement location="build" /> 
-       </classpath>
-       <batchtest fork="yes">
-       <fileset dir="src">
-       <include name="**/*Test.java" /> 
-       </fileset>
-       </batchtest>
-       <formatter type="plain" usefile="false" /> 
-       </junit>
-       </target>
-  -->
+  <target name="run-from-jar" depends="jar">
+    <java fork="true" classname="${mainClass}">
+      <classpath>
+	<pathelement location="build/dist/cs_56_fish_animation.jar"/>
+      </classpath>
+    </java>
+  </target>
   
   <target name="javadoc" depends="compile" description="publish javadoc">
     <delete dir="javadoc" quiet="true" />
@@ -85,26 +85,17 @@
       
     </javadoc>
     
-    <!-- delete the old javadoc -->
     <delete quiet="true" dir="${javadocDest}" />
     
-    <!-- copy everything you just made to the javadoc destination,
-	 and then make it readable -->
     <copy todir="${javadocDest}" >
       <fileset dir="javadoc"/>
     </copy>
     
-    <!-- Note: this only does the chmod command on the javadoc
-	 subdirectory and its contents. You MIGHT have to MANUALLY do the
-	 chmod on the parent directories. However, you should only need to do
-	 that once.
-    -->
-
- 
-
     <chmod dir="${javadocDest}" perm="755" type="dir" includes="**" />
     <chmod dir="${javadocDest}" perm="755" type="file" includes="**/*" />
-    <echo>Javadoc deployed to ${javadocURL}</echo>
+
+    <echo>Javadoc deployed to ${javadocURL} if on CSIL</echo>
+    <echo> or if not on CSIL, try file:///${javadocDest}/index.html</echo>
   </target>
 
 </project>
