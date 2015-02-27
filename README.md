@@ -1,7 +1,7 @@
-cs56-fish-animation
-===================
+#cs56-fish-animation game
+========================
 
-A fish animation
+A fish animation game
 
 project history
 ===============
@@ -11,8 +11,11 @@ YES | mastergberry | jovo123, jcryan | A fish animation
 ```
  W14 | jcneally 5pm | jovo123, jcryan | A fish animation
 ```
+```
+ W15 | jcryan 4pm | mochele15, shadeebarzin | A fish animation game
+```
 
--__Navigation__:
+__Navigation__:
    - [Introduction](https://github.com/mochele15/cs56-games-fish-animation#introduction)
    - [Main Menu](https://github.com/mochele15/cs56-games-fish-animation#main-menu)
    - [Starting the Game](https://github.com/mochele15/cs56-games-fish-animation#starting-the-game)
