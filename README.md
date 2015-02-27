@@ -20,3 +20,16 @@ The goal of this game is for the user, playing as a shark, to eat as many fish a
 The game opens with a menu with three options: Play Game, Instructions, and Exit.
 
 ![](https://raw.githubusercontent.com/mochele15/cs56-games-fish-animation/master/screenshots/MainMenu.png)
+
+##Starting the Game
+The user selects Play Game, and a window that looks like this appears so the user can choose the difficulty or load a previous game.
+
+![](https://raw.githubusercontent.com/mochele15/cs56-games-fish-animation/master/screenshots/Menu.png)
+
+##Game Play
+When the game is started from the beginning, the background and characters will be displayed similarly to this.
+
+![](https://raw.githubusercontent.com/mochele15/cs56-games-fish-animation/master/screenshots/Normal_game.png)
+
+##Link to Javadoc
+The javadoc for this game can be found here: www.cs.ucsb.edu/~michelehaque/cs56/cs56_games_fish_animation/javadoc/
