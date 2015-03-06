@@ -29,12 +29,6 @@
       <classpath refid="project.class.path"/>
     </java>
   </target>
-
-<!--  <target name="runEnv" depends="compile" description="runs FishEnvironment">
-    <java classname="${envClass}" fork="true">
-      <classpath refid="project.class.path"/>
-    </java>
-  </target>-->
   
   <target name="compile" description="compiles my code">
     <mkdir dir="build" />
