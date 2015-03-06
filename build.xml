@@ -29,16 +29,10 @@
       <classpath refid="project.class.path"/>
     </java>
   </target>
-
-  <target name="runEnv" depends="compile" description="runs FishEnvironment">
-    <java classname="${envClass}" fork="true">
-      <classpath refid="project.class.path"/>
-    </java>
-  </target>
   
   <target name="compile" description="compiles my code">
     <mkdir dir="build" />
-    <javac srcdir="src" destdir="build" debug="true" debuglevel="lines,source">
+    <javac includeantruntime="false" srcdir="src" destdir="build" debug="true" debuglevel="lines,source">
       <classpath refid="project.class.path"/>
     </javac>
     <copy todir="build/resources">
@@ -46,9 +40,9 @@
     </copy>
   </target>
   
-  <target name="clean" description="removes unnessessary files">
-    <delete failonerror="false" verbose="true">
-      <fileset dir="build" includes="*.class" />
+  <target name="clean" description="removes unnecessary files">
+    <delete failonerror="false" verbose="true" dir ="build" quiet="true">
+      <!--<fileset dir="build" includes="*.class" />-->
     </delete>
     <delete dir="javadoc" quiet="true" /> 
   </target>
