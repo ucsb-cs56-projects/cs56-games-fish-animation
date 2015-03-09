@@ -18,7 +18,9 @@ import java.awt.geom.AffineTransform;
    @author Lawrence Khuu
    @author Josephine Vo
    @author Jenna Cryan
-   @version for CS56, Winter 2014, UCSB
+   @author Felicia Truong
+   @author Jazarie Thach
+   @version for CS56, Winter 2015, UCSB
    
 */
 public class Fish extends ScumOfTheSea{

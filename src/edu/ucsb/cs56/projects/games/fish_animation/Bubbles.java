@@ -18,7 +18,9 @@ import java.awt.geom.AffineTransform;
    @author Mathew Glodack
    @author Josephine Vo
    @author Jenna Cryan
-   @version CS56, Winter 2014, UCSB
+   @author Felicia Truong
+   @author Jazarie Thach
+   @version CS56, Winter 2015, UCSB
  */
 
 

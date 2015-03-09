@@ -20,6 +20,8 @@ import java.awt.event.*;
    
    @author Josephine Vo
    @author Jennifer Cryan
+   @author Jazarie Thach
+   @author Felicia Truong
    @version for CS56, Winter 2014, UCSB
 */
 

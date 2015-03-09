@@ -21,7 +21,9 @@ import java.net.*;
    @author Mathew Glodack
    @author Jenna Cryan
    @author Josephine Vo
-   @version for CS56, Winter 2014, UCSB
+   @author Felicia Truong
+   @author Jazarie Thach
+   @version for CS56, Winter 2015, UCSB
 */
 
 public class FishAnimationEnvironment extends JFrame implements Serializable {
@@ -201,7 +203,8 @@ public class FishAnimationEnvironment extends JFrame implements Serializable {
 	    Image seaweed = new ImageIcon(seaweedURL).getImage();
 	    URL boatURL = getClass().getResource("/resources/cartoon-boat.jpg");
 	    Image boat = new ImageIcon(boatURL).getImage();
-	    
+	    URL fishURL = getClass().getResource("/resources/fish.png");
+	    Image fish = new ImageIcon(fishURL).getImage();
 	    
 	    //Draws the seaweed at the specified points
 	    for (int i = 0; i < this.getWidth() + 125; i += 125) {
@@ -220,9 +223,9 @@ public class FishAnimationEnvironment extends JFrame implements Serializable {
 	    //Draws the fish based off the fish info array
 	    g2.setColor(Color.YELLOW);
 	    for(int i = 0; i < fishArray.size(); i++) {
-		g2.draw(fishArray.get(i));
+		g2.drawImage(fish, (int)fishArray.get(i).getXPos(), (int)fishArray.get(i).getYPos(), this);
 	    }
-	    
+
 	    //Draws the image of the Shark
 	    Shark s = new Shark(posX, posY);
 	    int newXPos = (int) s.getXPos() - 160;

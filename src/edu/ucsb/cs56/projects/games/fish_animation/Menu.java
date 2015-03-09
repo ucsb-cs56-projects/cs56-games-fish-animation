@@ -15,6 +15,8 @@ import java.util.*;
    @author Daryl Pham
    @author Jenna Cryan
    @author Josephine Vo
+   @author Felicia Truong
+   @author Jazarie Thach
    @version for CS56, Winter 14, UCSB
 */
 
