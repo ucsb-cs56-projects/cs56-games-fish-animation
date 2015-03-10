@@ -28,6 +28,7 @@ import java.net.*;
 
 public class FishAnimationEnvironment extends JFrame implements Serializable {
     Thread animate;
+    //EndGamePanel endGamePanel = new EndGamePanel();
     DrawingPanel fishPanel = new DrawingPanel();
     JFrame animation = new JFrame();
     
@@ -90,6 +91,46 @@ public class FishAnimationEnvironment extends JFrame implements Serializable {
 	int randomD = (int) (Math.random() * diameter);
 	return new Bubbles(randomX, randomY, randomD);
     }
+
+    /**
+       Method pauseGame. Creates a option pane that allows reset game and 
+
+     */
+    private void pauseGame() {
+	String[] choices = {"Exit", "Resume Game", "Main Menu"};
+	ImageIcon pauseIcon = new ImageIcon(getClass().getResource("resouces/fish.png"));
+       
+            int choice = JOptionPane.showOptionDialog(null,
+                                                      "Continue playing?",
+                                                      "GAME PAUSED",
+                                                      JOptionPane.YES_NO_OPTION,
+                                                      JOptionPane.PLAIN_MESSAGE,
+                                                      pauseIcon,
+                                                      choices,
+                                                      choices[1]);
+            switch(choice) {
+	    case 0 :
+		stop = true;
+		//	timer.stop();
+		System.exit(0);
+	    case 1 :
+		pausetime += (System.nanoTime() / 1000000000 - pausestart);
+		//pause = false;
+		stop = false;
+		break;
+	    case 2 :
+		stop = true;
+		//timer.stop();
+		animation.dispose();
+		//MainEnvironment mainEnv = new MainEnvironment();
+		//FishAnimationEnvironment fishEnv = new FishAnimationEnvironment();
+		Menu menu = new Menu();
+		break;
+            }
+    }
+
+
+
 	
     /**
        Constructor for FishAnimationEnvironment. Creates a JFrame and a Jpanel that 
@@ -168,7 +209,7 @@ public class FishAnimationEnvironment extends JFrame implements Serializable {
 	animation.setSize(maxX, maxY);
 	animation.setVisible(true);
 	GameMenu game = new GameMenu();
-	game.makemenu();
+	//game.makemenu();
     }//end constructor
     
     /**
@@ -186,8 +227,9 @@ public class FishAnimationEnvironment extends JFrame implements Serializable {
 	    Graphics2D g2 = (Graphics2D) g;
 	    g2.setColor(Color.BLUE);
 	    g2.fillRect(0, 0, this.getWidth(), this.getHeight());
-	    URL reefURL = getClass().getResource("/resources/CoralReef.jpg");
+	    URL reefURL = getClass().getResource("/resources/background.png");
 	    Image reef = new ImageIcon(reefURL).getImage();	   
+	    //update to background
 	    super.paintComponent(g); //replace current painting
 	    g.drawImage(reef, 0, 0, this); 
 	    
@@ -293,6 +335,8 @@ public class FishAnimationEnvironment extends JFrame implements Serializable {
 	    g.drawString(str2, 0, 65);
 
 	    if(eaten >= 50) {
+
+		//popup? for new game or back to menu
 		stop = true;
 		g.setFont(new Font("Corsiva Hebrew", Font.PLAIN, 100));
 		g.setColor(Color.RED);
@@ -300,6 +344,8 @@ public class FishAnimationEnvironment extends JFrame implements Serializable {
 		g.drawString(win, 350, 400);
 	    }
 	    else if(eaten <= -25) {
+		//popup? for new game or back to menu
+
 		stop = true;
 		g.setFont(new Font("Corsiva Hebrew", Font.PLAIN, 100));
 		g.setColor(Color.RED);
@@ -518,14 +564,14 @@ public class FishAnimationEnvironment extends JFrame implements Serializable {
 	
 	public void main (String[] args) {
 	    GameMenu menu = new GameMenu();
-	    menu.makemenu();
+	    //	    menu.makemenu();
 	}
 	
 	/**
 	   Main GUI interface for the in-Game GUI. This menu 
 	   allows for user to select pause, resume, or save&exit.
 	*/
-	public void makemenu() {
+	public GameMenu() {
 	
 	    Pause = new JButton(pause);
 	    Pause.addActionListener(this);
@@ -549,6 +595,7 @@ public class FishAnimationEnvironment extends JFrame implements Serializable {
 		if(stop == false) {
 		    stop = true;
 		    pausestart = System.nanoTime() / 1000000000;
+		    pauseGame();
 		}
 		else {
 		    stop = false;

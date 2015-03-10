@@ -29,14 +29,14 @@ class Menu implements ActionListener {
     
     public static void main (String[] args) {
 	Menu menu = new Menu();
-	menu.makegui();
+	//menu.makegui();
     }
     
     /**
        Main GUI interface for the first section of the Menu.  
        Allows for user to select exit, play, or instruction.
     */
-    public void makegui () {
+    public Menu() {
 	frame = new JFrame();
 	frame.setSize(600, 75);
 	frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -179,7 +179,8 @@ class Menu implements ActionListener {
 	    instruct.remove(Back);
 	    instruct.remove(textLabel);
 	    instruct.setVisible(false);
-	    makegui();
+	    instruct.dispose();
+	    Menu menu = new Menu();
 	}
 	if(event.getSource() == Menu) {
 	    frame.remove(Menu);
@@ -188,7 +189,9 @@ class Menu implements ActionListener {
 	    frame.remove(Hard);
 	    frame.remove(Resume);
 	    frame.setVisible(false);
-	    makegui();
+	    //	    makegui();
+	    frame.dispose();
+	    Menu menu = new Menu();
 	}
     }
 }
