@@ -44,6 +44,9 @@
     <copy todir="build/resources">
       <fileset dir="resources" includes="*.jpg"/>
     </copy>
+    <copy todir="build/resources">
+      <fileset dir="resources" includes="*.png"/>
+    </copy>
   </target>
   
   <target name="clean" description="removes unnessessary files">
