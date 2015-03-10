@@ -21,7 +21,9 @@ import java.net.*;
    @author Mathew Glodack
    @author Jenna Cryan
    @author Josephine Vo
-   @version for CS56, Winter 2014, UCSB
+   @author Michele Haque
+   @author Shadee Barzin
+   @version for CS56, Winter 2015, UCSB
 */
 
 public class FishAnimationEnvironment extends JFrame implements Serializable {
