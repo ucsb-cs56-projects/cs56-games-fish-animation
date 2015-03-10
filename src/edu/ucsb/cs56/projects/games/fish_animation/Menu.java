@@ -23,7 +23,7 @@ import java.net.*;
 */
 
 class Menu implements ActionListener {
-    JButton Play, Instruction, Exit, Jessica, Martha, Teresa, Resume, Easy, Medium, Hard, Back, Menu;
+    JButton Play, Instruction, Exit, Character, Selection, Jessica, Martha, Teresa, Resume, Easy, Medium, Hard, Back, Menu;
     JFrame frame, instruct;
     int type;
     JTextArea text;
@@ -131,28 +131,28 @@ class Menu implements ActionListener {
 	//frame.setLayout(new BorderLayout());
 	
 	//Adds the different difficulty buttons
-	Menu = new JButton("Main Menu");
+	Selection = new JButton("Back");
 	Easy = new JButton("Easy");
 	Medium = new JButton("Medium");
 	Hard = new JButton("Hard");
 	Resume = new JButton("Resume Game");
 	
 	//Sets the size of the buttons
-	frame.getContentPane().add(Menu);
+	frame.getContentPane().add(Selection);
 	frame.getContentPane().add(Easy);
 	frame.getContentPane().add(Medium);
 	frame.getContentPane().add(Hard);
 	frame.getContentPane().add(Resume);
 	
 	//Gives the buttons actionlisteners
-	Menu.addActionListener(this);
+	Selection.addActionListener(this);
 	Easy.addActionListener(this);
 	Medium.addActionListener(this);
 	Hard.addActionListener(this);
 	Resume.addActionListener(this);
 
 	//Puts the buttons onto the frame in BorderLayout format
-	frame.getContentPane().add(Menu);
+	frame.getContentPane().add(Selection);
 	frame.getContentPane().add(Easy);
 	frame.getContentPane().add(Medium);
 	frame.getContentPane().add(Hard);
@@ -240,14 +240,21 @@ class Menu implements ActionListener {
 	    instruct.setVisible(false);
 	    makegui();
 	}
-	if(event.getSource() == Menu) {
-	    frame.remove(Menu);
+	if(event.getSource() == Selection) {
+	    frame.remove(Selection);
 	    frame.remove(Easy);
 	    frame.remove(Medium);
 	    frame.remove(Hard);
 	    frame.remove(Resume);
 	    frame.setVisible(false);
-	    makegui();
+	    setCharacter();
+	}
+	if(event.getSource() == Character) {
+	   	frame.remove(Jessica);
+		frame.remove(Martha);
+		frame.remove(Teresa);
+		frame.setVisible(false);
+	   	setCharacter();
 	}
 	if(event.getSource() == Jessica){
 		frame.remove(Jessica);
