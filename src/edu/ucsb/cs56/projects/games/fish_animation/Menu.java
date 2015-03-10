@@ -25,6 +25,7 @@ import java.net.*;
 class Menu implements ActionListener {
     JButton Play, Instruction, Exit, Character, Selection, Jessica, Martha, Teresa, Resume, Easy, Medium, Hard, Back, Menu;
     JFrame frame, instruct;
+    JPanel panel = new JPanel();
     int type;
     JTextArea text;
     JLabel textLabel;
@@ -128,34 +129,19 @@ class Menu implements ActionListener {
     public void setDifficulty () {
 
 	frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-	// Box box = Box.createVerticalBox();
-	
-	//frame.setLayout(new GridBagLayout());
-	frame.setSize(800, 600);
-	JPanel backPanel = new JPanel();
-	backPanel.setLayout(new GridBagLayout());
-	backPanel.setPreferredSize(new Dimension(300, 300));
-	JPanel panel = new JPanel();
+	frame.setLayout(new GridBagLayout());
 	
 	panel.setLayout(new GridLayout(5,1));
-	//panel.setSize(new Dimension(100, 300));
-	panel.setPreferredSize(new Dimension(300, 300));
-	panel.setBackground(Color.BLACK);
+	panel.setPreferredSize(new Dimension(100, 150));
+	panel.setOpaque(false);
+	
 	//Adds the different difficulty buttons
 	Selection = new JButton("Back");
 	Easy = new JButton("Easy");
 	Medium = new JButton("Medium");
 	Hard = new JButton("Hard");
 	Resume = new JButton("Resume Game");
-	frame.setLayout(new BorderLayout());
-	
-	//Sets the size of the buttons
-// 		Selection.setPreferredSize(new Dimension(200, 75));
-// 		Easy.setPreferredSize(new Dimension(200, 75));
-// 		Medium.setPreferredSize(new Dimension(200, 75));
-// 		Hard.setPreferredSize(new Dimension(200, 75));
-// 		Resume.setPreferredSize(new Dimension(200, 75));
-	
+
 	//Gives the buttons actionlisteners
 	Selection.addActionListener(this);
 	Easy.addActionListener(this);
@@ -163,22 +149,16 @@ class Menu implements ActionListener {
 	Hard.addActionListener(this);
 	Resume.addActionListener(this);
 
-	//Puts the buttons onto the frame in BorderLayout format
-// 	box.add(Selection);
-// 	box.add(Easy);
-// 	box.add(Medium);
-// 	box.add(Hard);
-// 	box.add(Resume);
-// 	frame.add(box, BorderLayout.CENTER);
 	panel.add(Selection);
 	panel.add(Easy);
 	panel.add(Medium);
 	panel.add(Hard);
 	panel.add(Resume);
-	backPanel.add(panel);
-	frame.add(backPanel);
+	
+	frame.add(panel);
 	frame.setResizable(false);
 	frame.pack();
+	frame.setSize(800, 600);
 	frame.setVisible(true);
     }
     
@@ -259,12 +239,12 @@ class Menu implements ActionListener {
 	    makegui();
 	}
 	if(event.getSource() == Selection) {
-	    frame.remove(Selection);
-	    frame.remove(Easy);
-	    frame.remove(Medium);
-	    frame.remove(Hard);
-	    frame.remove(Resume);
-	    frame.setVisible(false);
+	    panel.remove(Selection);
+	    panel.remove(Easy);
+	    panel.remove(Medium);
+	    panel.remove(Hard);
+	    panel.remove(Resume);
+	    frame.remove(panel);
 	    setCharacter();
 	}
 	if(event.getSource() == Character) {
