@@ -178,6 +178,9 @@ public class FishAnimationEnvironment extends JFrame implements Serializable {
 
     class DrawingPanel extends JPanel {
     
+    	boolean buttonAdded = false;
+    	JButton playAgain;
+    
 	public void paintComponent(Graphics g){ 
 	    
 	    //Sets background color and adds background image
@@ -302,10 +305,33 @@ public class FishAnimationEnvironment extends JFrame implements Serializable {
 		g.setColor(Color.RED);
 		String lose = "Game Over!";
 		String lose2 = "Better luck next time!";
+		if(!buttonAdded){
+			playAgain = new JButton("Play Again?");
+			playAgain.setLocation(325, 500);
+			playAgain.addActionListener(actionlistener);
+			this.add(playAgain);
+			buttonAdded = true;
+		}
 		g.drawString(lose, 325, 250);
 		g.drawString(lose2, 140, 400);
-	    }   
+	     }   
 	}
+		
+	ActionListener actionlistener = new ActionListener(){
+
+		@Override
+		public void actionPerformed(ActionEvent e) {
+			// TODO Auto-generated method stub
+			JButton b = (JButton) e.getSource();
+			if(b.equals(playAgain)){
+				Menu m = new Menu();
+				m.makegui();
+				animation.dispose();
+			}
+		}
+			
+	};
+
     } //end DrawingPanel
     
     /**
