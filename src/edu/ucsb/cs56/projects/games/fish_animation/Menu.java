@@ -25,9 +25,9 @@ import java.net.*;
 class Menu implements ActionListener {
     JButton Play, Instruction, Exit, Replay, Character, Selection, Jessica, Martha, Teresa, Resume, Easy, Medium, Hard, Back, Menu;
     JFrame frame, instruct;
-    JPanel panel = new JPanel();
+    JPanel panel, textPanel, buttonPanel;
     int type;
-    JTextArea text;
+    JTextArea textArea;
     JLabel textLabel;
 	int sharkType;    
 	
@@ -129,6 +129,7 @@ class Menu implements ActionListener {
     public void setDifficulty () {
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.setLayout(new GridBagLayout());
+		panel = new JPanel();
 		panel.setLayout(new GridLayout(5,1));
 		panel.setPreferredSize(new Dimension(150, 125));
 		panel.setOpaque(false);
@@ -173,27 +174,51 @@ class Menu implements ActionListener {
     */
 	 public void HowToPlay() {
 	//Creates new frame for the new menu that will pop up
-		instruct = new JFrame();
-		instruct.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		instruct.setSize(300, 300);
+		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		//frame.setLayout(new GridBagLayout());
+		frame.setSize(800, 600);
+		textPanel = new JPanel();
+		textPanel.setPreferredSize(new Dimension(250, 300));
+		//textPanel.setLayout(new GridLayout(1,1));
+		
+
 		//Creates text label for instructions
-		textLabel = new JLabel();
-		textLabel.setText("<html><p>Hello! The goal of the game is to eat as many fish as you can. "
-		+ "There's no time limit, but watch out! Jellyfish are out to get you! "
+		textArea = new JTextArea("Hello! The goal of the game is to eat as many fish as you can. "
+		+ "There is no time limit, but watch out! Jellyfish are out to get you! "
 		+ "If you eat the jellyfish, you'll lose points! "
-		+ "If you get too many negative points, you lose :( "
+		+ "If you get too many negative points, you lose! :( "
 		+ "To eat the fish, click on the shark and hold down the mouse button to move your shark's mouth to the fish. "
-		+ "There are three different difficulties, so test your skills on all of them! Good eating!</p></html>");
+		+ "There are three different difficulties, so test your skills on all of them! Good eating!");
+		textArea.setFont(new Font("Serif", Font.PLAIN, 16));
+		textArea.setLineWrap(true);
+		textArea.setWrapStyleWord(true);
+		
+		JScrollPane areaScrollPane = new JScrollPane(textArea);
+		areaScrollPane.setVerticalScrollBarPolicy(
+        JScrollPane.VERTICAL_SCROLLBAR_ALWAYS);
+		areaScrollPane.setPreferredSize(new Dimension(250, 250));
+		 areaScrollPane.setBorder(
+            BorderFactory.createCompoundBorder(
+                BorderFactory.createCompoundBorder(
+                                BorderFactory.createTitledBorder("Instructions"),
+                                BorderFactory.createEmptyBorder(5,5,5,5)),
+                areaScrollPane.getBorder()));
 		//Adds button to the instruction popup
-		Back = new JButton("Menu");
+		
+		Back = new JButton("Back to Menu");
+
 		//Adds action listener to the button to go back to the mainmenu
+
 		Back.addActionListener(this);
-		Back.setPreferredSize(new Dimension(150, 75));
-		//Adds the layout for the button and the textArea
-		instruct.getContentPane().add(BorderLayout.NORTH, textLabel);
-		instruct.getContentPane().add(BorderLayout.SOUTH, Back);
-		instruct.setResizable(false);
-		instruct.setVisible(true);
+	
+		Back.setPreferredSize(new Dimension(150, 40));
+
+		textPanel.add(areaScrollPane);
+		textPanel.add(Back);
+		textPanel.setOpaque(false);
+		frame.getContentPane().add(textPanel);
+		frame.pack();
+		frame.setVisible(true);
 	}
     
     
@@ -239,9 +264,10 @@ class Menu implements ActionListener {
 	    HowToPlay();
 	}
 	if(event.getSource() == Back) {
-	    instruct.remove(Back);
-	    instruct.remove(textLabel);
-	    instruct.setVisible(false);
+	    frame.remove(Back);
+	    //frame.remove(textLabel);
+	    frame.remove(textPanel);
+	    frame.setVisible(false);
 	    makegui();
 	}
 	if(event.getSource() == Character) {

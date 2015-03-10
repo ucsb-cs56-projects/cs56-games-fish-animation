@@ -599,9 +599,9 @@ public class FishAnimationEnvironment extends JFrame implements Serializable {
 	   allows for user to select pause, resume, or save&exit.
 	*/
 	public GameMenu() {
-		Menu.setFont(new Font("Corsiva Hebrew", Font.BOLD, 20));
-		Exit.setFont(new Font("Corsiva Hebrew", Font.BOLD, 20));
-		Save.setFont(new Font("Corsiva Hebrew", Font.BOLD, 20));
+		Menu.setFont(new Font("Corsiva Hebrew", Font.PLAIN, 20));
+		Exit.setFont(new Font("Corsiva Hebrew", Font.PLAIN, 20));
+		Save.setFont(new Font("Corsiva Hebrew", Font.PLAIN, 20));
 	    Pause = new JButton(pause);
 	    Menu.addActionListener(this);
 	    Pause.addActionListener(this);
