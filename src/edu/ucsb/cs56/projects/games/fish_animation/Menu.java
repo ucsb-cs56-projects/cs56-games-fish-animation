@@ -23,7 +23,7 @@ import java.net.*;
 */
 
 class Menu implements ActionListener {
-    JButton Play, Instruction, Exit, Character, Selection, Jessica, Martha, Teresa, Resume, Easy, Medium, Hard, Back, Menu;
+    JButton Play, Instruction, Exit, Replay, Character, Selection, Jessica, Martha, Teresa, Resume, Easy, Medium, Hard, Back, Menu;
     JFrame frame, instruct;
     JPanel panel = new JPanel();
     int type;
@@ -75,100 +75,96 @@ class Menu implements ActionListener {
     }
     
     public void setCharacter () {
-    frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-    
-    URL jessicaURL = getClass().getResource("/resources/1.png");
-	ImageIcon jessicaIM = new ImageIcon(new ImageIcon(jessicaURL).getImage());
-    
-    URL marthaURL = getClass().getResource("/resources/2.png");
-	ImageIcon marthaIM = new ImageIcon(new ImageIcon(marthaURL).getImage());
+		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 	
-	URL teresaURL = getClass().getResource("/resources/3.png");
-	ImageIcon teresaIM = new ImageIcon(new ImageIcon(teresaURL).getImage());
+		URL jessicaURL = getClass().getResource("/resources/1.png");
+		ImageIcon jessicaIM = new ImageIcon(new ImageIcon(jessicaURL).getImage());
 	
-	Jessica = new JButton();
-	Martha = new JButton();
-	Teresa = new JButton();
+		URL marthaURL = getClass().getResource("/resources/2.png");
+		ImageIcon marthaIM = new ImageIcon(new ImageIcon(marthaURL).getImage());
 	
-	Jessica.setIcon(jessicaIM);
-	Martha.setIcon(marthaIM);
-	Teresa.setIcon(teresaIM);
+		URL teresaURL = getClass().getResource("/resources/3.png");
+		ImageIcon teresaIM = new ImageIcon(new ImageIcon(teresaURL).getImage());
+		
+		Jessica = new JButton();
+		Martha = new JButton();
+		Teresa = new JButton();
 	
-	Jessica.setText("Jessica");
-	Martha.setText("Martha");
-	Teresa.setText("Teresa");
-	Jessica.setPreferredSize(new Dimension(225, 250));
-	Martha.setPreferredSize(new Dimension(225, 250));
-	Teresa.setPreferredSize(new Dimension(225, 250));
+		Jessica.setIcon(jessicaIM);
+		Martha.setIcon(marthaIM);
+		Teresa.setIcon(teresaIM);
 	
-	Jessica.addActionListener(this);
-	Martha.addActionListener(this);
-	Teresa.addActionListener(this);
+		Jessica.setText("Jessica");
+		Martha.setText("Martha");
+		Teresa.setText("Teresa");
+		Jessica.setPreferredSize(new Dimension(225, 250));
+		Martha.setPreferredSize(new Dimension(225, 250));
+		Teresa.setPreferredSize(new Dimension(225, 250));
 	
-	Jessica.setHorizontalTextPosition(JButton.CENTER);
-	Martha.setHorizontalTextPosition(JButton.CENTER);
-	Teresa.setHorizontalTextPosition(JButton.CENTER);
+		Jessica.addActionListener(this);
+		Martha.addActionListener(this);
+		Teresa.addActionListener(this);
 	
-	Jessica.setVerticalTextPosition(JButton.BOTTOM);
-	Martha.setVerticalTextPosition(JButton.BOTTOM);
-	Teresa.setVerticalTextPosition(JButton.BOTTOM);
+		Jessica.setHorizontalTextPosition(JButton.CENTER);
+		Martha.setHorizontalTextPosition(JButton.CENTER);
+		Teresa.setHorizontalTextPosition(JButton.CENTER);
 	
-	Jessica.setFont(new Font("Corsiva Hebrew", Font.BOLD, 20));
-	Martha.setFont(new Font("Corsiva Hebrew", Font.BOLD, 20));
-	Teresa.setFont(new Font("Corsiva Hebrew", Font.BOLD, 20));
-    frame.getContentPane().add(Jessica);
-    frame.getContentPane().add(Martha);
-    frame.getContentPane().add(Teresa);
-    frame.setSize(800, 600);
-    frame.setResizable(false);
-	frame.setVisible(true);
+		Jessica.setVerticalTextPosition(JButton.BOTTOM);
+		Martha.setVerticalTextPosition(JButton.BOTTOM);
+		Teresa.setVerticalTextPosition(JButton.BOTTOM);
+	
+		Jessica.setFont(new Font("Corsiva Hebrew", Font.BOLD, 20));
+		Martha.setFont(new Font("Corsiva Hebrew", Font.BOLD, 20));
+		Teresa.setFont(new Font("Corsiva Hebrew", Font.BOLD, 20));
+		frame.getContentPane().add(Jessica);
+		frame.getContentPane().add(Martha);
+		frame.getContentPane().add(Teresa);
+		frame.setSize(800, 600);
+		frame.setResizable(false);
+		frame.setVisible(true);
     }
     /**
        GUI section that allows for user to select difficulty level
      */
     public void setDifficulty () {
-	frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-	frame.setLayout(new GridBagLayout());
-	panel.setLayout(new GridLayout(5,1));
-	panel.setPreferredSize(new Dimension(150, 125));
-	panel.setOpaque(false);
+		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		frame.setLayout(new GridBagLayout());
+		panel.setLayout(new GridLayout(5,1));
+		panel.setPreferredSize(new Dimension(150, 125));
+		panel.setOpaque(false);
 	
-	//Adds the different difficulty buttons
-// 	Selection = new JButton("Back");
-	Easy = new JButton("Easy");
-	Medium = new JButton("Medium");
-	Hard = new JButton("Hard");
-	Resume = new JButton("Resume Game");
-	Menu = new JButton("Main Menu");
+		//Adds the different difficulty buttons
+		Easy = new JButton("Easy");
+		Medium = new JButton("Medium");
+		Hard = new JButton("Hard");
+		Resume = new JButton("Resume Game");
+		Menu = new JButton("Main Menu");
 	
-	//Selection.setBackground(new Color(0xCC99FF));
-	Easy.setBackground(new Color(0xCC99FF));
-	Medium.setBackground(new Color(0xCC99FF));
-	Hard.setBackground(new Color(0xCC99FF));
-	Resume.setBackground(new Color(0xCC99FF));
-	Menu.setBackground(new Color(0xCC99FF));
+		Easy.setBackground(new Color(0xCC99FF));
+		Medium.setBackground(new Color(0xCC99FF));
+		Hard.setBackground(new Color(0xCC99FF));
+		Resume.setBackground(new Color(0xCC99FF));
+		Menu.setBackground(new Color(0xCC99FF));
 
-	//Gives the buttons actionlisteners
-// 	Selection.addActionListener(this);
-	Easy.addActionListener(this);
-	Medium.addActionListener(this);
-	Hard.addActionListener(this);
-	Resume.addActionListener(this);
-	Menu.addActionListener(this);
+		//Gives the buttons actionlisteners
+		Easy.addActionListener(this);
+		Medium.addActionListener(this);
+		Hard.addActionListener(this);
+		Resume.addActionListener(this);
+		Menu.addActionListener(this);
 
-// 	panel.add(Selection);
-	panel.add(Easy);
-	panel.add(Medium);
-	panel.add(Hard);
-	panel.add(Resume);
-	panel.add(Menu);
+		panel.add(Easy);
+		panel.add(Medium);
+		panel.add(Hard);
+		panel.add(Resume);
+		panel.add(Menu);
 	
-	frame.add(panel);
-	frame.setResizable(false);
-	frame.pack();
-	frame.setSize(800, 600);
-	panel.setVisible(true);
-	frame.setVisible(true);
+		frame.add(panel);
+		frame.setResizable(false);
+		frame.pack();
+		frame.setSize(800, 600);
+		panel.setVisible(true);
+		frame.setVisible(true);
     }
     
     /**
@@ -228,6 +224,7 @@ class Menu implements ActionListener {
 	    frame.remove(Play);
 	    frame.remove(Instruction);
 	    frame.remove(Exit);
+	    frame.setVisible(false);
 	    setCharacter();
 	    
 	}
@@ -247,17 +244,6 @@ class Menu implements ActionListener {
 	    instruct.setVisible(false);
 	    makegui();
 	}
-// 	if(event.getSource() == Selection) {
-// 	    panel.remove(Selection);
-// 	    panel.remove(Easy);
-// 	    panel.remove(Medium);
-// 	    panel.remove(Hard);
-// 	    panel.remove(Resume);
-// 	    panel.remove(Menu);
-// 	    frame.remove(panel);
-// 	   	frame.setVisible(false);
-// 	    setCharacter();
-// 	}
 	if(event.getSource() == Character) {
 	   	frame.remove(Jessica);
 		frame.remove(Martha);
@@ -290,7 +276,6 @@ class Menu implements ActionListener {
 		setDifficulty();
     }
     if(event.getSource() == Menu) {
-	   // panel.remove(Selection);
 	    panel.remove(Easy);
 	    panel.remove(Medium);
 	    panel.remove(Hard);
