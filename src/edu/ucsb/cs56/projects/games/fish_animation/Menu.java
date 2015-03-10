@@ -12,7 +12,6 @@ import java.net.*;
 /**
    Implements a GUI that allows the user to choose diffculty,
    find instructions, or exit the menu.
-
    @author Casey Barbello
    @author Daryl Pham
    @author Jenna Cryan
@@ -23,7 +22,7 @@ import java.net.*;
 */
 
 class Menu implements ActionListener {
-    JButton Play, Instruction, Exit, Character, Jessica, Martha, Teresa, Resume, Easy, Medium, Hard, Back, Menu;
+    JButton Play, Instruction, Exit, Jessica, Martha, Teresa, Resume, Easy, Medium, Hard, Back, Menu;
     JFrame frame, instruct;
     int type;
     JTextArea text;
@@ -40,33 +39,30 @@ class Menu implements ActionListener {
     */
     public void makegui () {
 	frame = new JFrame();
-	frame.setSize(600, 150);
+	frame.setSize(600, 75);
 	frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 	
 	//Adds the different buttons to the menu
 	Play = new JButton("Play Game");
 	Instruction = new JButton("Instructions");
 	Exit = new JButton("Exit");
-	Character = new JButton("Character Selection");
 	
 	//Sets the size of the buttons
 	Play.setPreferredSize(new Dimension(200, 75));
 	Instruction.setPreferredSize(new Dimension(200, 75));
 	Exit.setPreferredSize(new Dimension(200, 75));
-	Character.setPreferredSize(new Dimension(200, 75));
 	
 	//Adds the action listeners to the buttons
 	Play.addActionListener(this);
 	Instruction.addActionListener(this);
 	Exit.addActionListener(this);
-	Character.addActionListener(this);
 	
 	//Sets up the layout of the GUI
 	frame.getContentPane().add(BorderLayout.WEST, Play);
 	frame.getContentPane().add(BorderLayout.CENTER, Instruction);
 	frame.getContentPane().add(BorderLayout.EAST, Exit);
-	frame.getContentPane().add(BorderLayout.SOUTH, Character);
-	frame.setSize(600, 150);
+	//frame.getContentPane().add(BorderLayout.SOUTH, Character);
+	frame.setSize(600, 75);
 	frame.setVisible(true);
     }
     
@@ -216,7 +212,6 @@ class Menu implements ActionListener {
 	    frame.remove(Play);
 	    frame.remove(Instruction);
 	    frame.remove(Exit);
-	    frame.remove(Character);
 	    setCharacter();
 	    
 	}
@@ -227,7 +222,6 @@ class Menu implements ActionListener {
 	    frame.remove(Play);
 	    frame.remove(Instruction);
 	    frame.remove(Exit);
-	    frame.remove(Character);
 	    frame.setVisible(false);
 	    HowToPlay();
 	}
@@ -245,13 +239,6 @@ class Menu implements ActionListener {
 	    frame.remove(Resume);
 	    frame.setVisible(false);
 	    makegui();
-	}
-	if(event.getSource() == Character){
-		frame.remove(Play);
-	    frame.remove(Instruction);
-	    frame.remove(Exit);
-	    frame.remove(Character);
-	    setCharacter();
 	}
 	if(event.getSource() == Jessica){
 		frame.remove(Jessica);
@@ -276,4 +263,3 @@ class Menu implements ActionListener {
     }
 }
 }
-
