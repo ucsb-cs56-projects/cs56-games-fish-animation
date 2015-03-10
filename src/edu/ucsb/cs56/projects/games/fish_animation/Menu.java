@@ -175,12 +175,8 @@ class Menu implements ActionListener {
 	 public void HowToPlay() {
 	//Creates new frame for the new menu that will pop up
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		//frame.setLayout(new GridBagLayout());
-		frame.setSize(800, 600);
 		textPanel = new JPanel();
-		textPanel.setPreferredSize(new Dimension(250, 300));
-		//textPanel.setLayout(new GridLayout(1,1));
-		
+		textPanel.setPreferredSize(new Dimension(250, 300));		
 
 		//Creates text label for instructions
 		textArea = new JTextArea("Hello! The goal of the game is to eat as many fish as you can. "
@@ -218,6 +214,7 @@ class Menu implements ActionListener {
 		textPanel.setOpaque(false);
 		frame.getContentPane().add(textPanel);
 		frame.pack();
+		frame.setSize(800, 600);
 		frame.setVisible(true);
 	}
     
