@@ -307,10 +307,12 @@ public class FishAnimationEnvironment extends JFrame implements Serializable {
 		g.setColor(Color.RED);
 		String lose = "Game Over!";
 		String lose2 = "Better luck next time!";
+		// add a Play Again button
 		if(!buttonAdded){
 			playAgain = new JButton("Play Again?");
-			playAgain.setLocation(325, 500);
+			playAgain.setLocation(505, 500);
 			playAgain.addActionListener(actionlistener);
+			playAgain.setSize(new Dimension(200,40));
 			this.add(playAgain);
 			buttonAdded = true;
 		}
@@ -318,9 +320,8 @@ public class FishAnimationEnvironment extends JFrame implements Serializable {
 		g.drawString(lose2, 140, 400);
 	     }   
 	}
-		
+	// ActionListener that checks if the Play Again button was clicked	
 	ActionListener actionlistener = new ActionListener(){
-
 		@Override
 		public void actionPerformed(ActionEvent e) {
 			// TODO Auto-generated method stub
