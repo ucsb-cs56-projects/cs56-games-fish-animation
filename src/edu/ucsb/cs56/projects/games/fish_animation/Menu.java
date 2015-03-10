@@ -127,33 +127,41 @@ class Menu implements ActionListener {
        GUI section that allows for user to select difficulty level
      */
     public void setDifficulty () {
-
 	frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 	frame.setLayout(new GridBagLayout());
-	
 	panel.setLayout(new GridLayout(5,1));
-	panel.setPreferredSize(new Dimension(100, 150));
+	panel.setPreferredSize(new Dimension(150, 150));
 	panel.setOpaque(false);
 	
 	//Adds the different difficulty buttons
-	Selection = new JButton("Back");
+// 	Selection = new JButton("Back");
 	Easy = new JButton("Easy");
 	Medium = new JButton("Medium");
 	Hard = new JButton("Hard");
 	Resume = new JButton("Resume Game");
+	Menu = new JButton("Main Menu");
+	
+	//Selection.setBackground(new Color(0xCC99FF));
+	Easy.setBackground(new Color(0xCC99FF));
+	Medium.setBackground(new Color(0xCC99FF));
+	Hard.setBackground(new Color(0xCC99FF));
+	Resume.setBackground(new Color(0xCC99FF));
+	Menu.setBackground(new Color(0xCC99FF));
 
 	//Gives the buttons actionlisteners
-	Selection.addActionListener(this);
+// 	Selection.addActionListener(this);
 	Easy.addActionListener(this);
 	Medium.addActionListener(this);
 	Hard.addActionListener(this);
 	Resume.addActionListener(this);
+	Menu.addActionListener(this);
 
-	panel.add(Selection);
+// 	panel.add(Selection);
 	panel.add(Easy);
 	panel.add(Medium);
 	panel.add(Hard);
 	panel.add(Resume);
+	panel.add(Menu);
 	
 	frame.add(panel);
 	frame.setResizable(false);
@@ -229,7 +237,7 @@ class Menu implements ActionListener {
 	    frame.remove(Play);
 	    frame.remove(Instruction);
 	    frame.remove(Exit);
-	    frame.setVisible(false);
+	  	frame.setVisible(false);
 	    HowToPlay();
 	}
 	if(event.getSource() == Back) {
@@ -238,15 +246,17 @@ class Menu implements ActionListener {
 	    instruct.setVisible(false);
 	    makegui();
 	}
-	if(event.getSource() == Selection) {
-	    panel.remove(Selection);
-	    panel.remove(Easy);
-	    panel.remove(Medium);
-	    panel.remove(Hard);
-	    panel.remove(Resume);
-	    frame.remove(panel);
-	    setCharacter();
-	}
+// 	if(event.getSource() == Selection) {
+// 	    panel.remove(Selection);
+// 	    panel.remove(Easy);
+// 	    panel.remove(Medium);
+// 	    panel.remove(Hard);
+// 	    panel.remove(Resume);
+// 	    panel.remove(Menu);
+// 	    frame.remove(panel);
+// 	   	frame.setVisible(false);
+// 	    setCharacter();
+// 	}
 	if(event.getSource() == Character) {
 	   	frame.remove(Jessica);
 		frame.remove(Martha);
@@ -278,6 +288,17 @@ class Menu implements ActionListener {
 		sharkType = 3;
 		setDifficulty();
     }
+    if(event.getSource() == Menu) {
+	    panel.remove(Selection);
+	    panel.remove(Easy);
+	    panel.remove(Medium);
+	    panel.remove(Hard);
+	    panel.remove(Resume);
+	    panel.remove(Menu);
+	    frame.remove(panel);
+		frame.setVisible(false);
+		makegui();
+	}
 }
 }
 
