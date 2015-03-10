@@ -596,7 +596,7 @@ public class FishAnimationEnvironment extends JFrame implements Serializable {
 		if(stop == false) {
 		    stop = true;
 		    pausestart = System.nanoTime() / 1000000000;
-		   // pauseGame(); 
+		   // pauseGame();  
 		}
 		else {
 		    stop = false;
