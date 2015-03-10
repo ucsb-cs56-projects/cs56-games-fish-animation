@@ -23,12 +23,12 @@ import java.net.*;
 */
 
 class Menu implements ActionListener {
-    JButton Play, Instruction, Exit, Character, Resume, Easy, Medium, Hard, Back, Menu;
+    JButton Play, Instruction, Exit, Character, Jessica, Martha, Teresa, Resume, Easy, Medium, Hard, Back, Menu;
     JFrame frame, instruct;
     int type;
     JTextArea text;
     JLabel textLabel;
-    
+	int sharkType;    
     public static void main (String[] args) {
 	Menu menu = new Menu();
 	menu.makegui();
@@ -73,47 +73,48 @@ class Menu implements ActionListener {
     public void setCharacter () {
     frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
     
-    URL jessicaURL = getClass().getResource("/resources/shark.jpg");
+    URL jessicaURL = getClass().getResource("/resources/1.png");
 	ImageIcon jessicaIM = new ImageIcon(new ImageIcon(jessicaURL).getImage());
     
-    URL marthaURL = getClass().getResource("/resources/1.png");
+    URL marthaURL = getClass().getResource("/resources/2.png");
 	ImageIcon marthaIM = new ImageIcon(new ImageIcon(marthaURL).getImage());
 	
 	URL teresaURL = getClass().getResource("/resources/3.png");
 	ImageIcon teresaIM = new ImageIcon(new ImageIcon(teresaURL).getImage());
 	
-	JButton jessica = new JButton();
-	JButton martha = new JButton();
-	JButton teresa = new JButton();
+	Jessica = new JButton();
+	Martha = new JButton();
+	Teresa = new JButton();
 	
-	jessica.setIcon(jessicaIM);
-	martha.setIcon(marthaIM);
-	teresa.setIcon(teresaIM);
-	jessica.setText("Jessica");
-	martha.setText("Martha");
-	teresa.setText("Teresa");
-	jessica.setPreferredSize(new Dimension(225, 250));
-	martha.setPreferredSize(new Dimension(225, 250));
-	teresa.setPreferredSize(new Dimension(225, 250));
+	Jessica.setIcon(jessicaIM);
+	Martha.setIcon(marthaIM);
+	Teresa.setIcon(teresaIM);
 	
-	jessica.addActionListener(this);
-	martha.addActionListener(this);
-	teresa.addActionListener(this);
+	Jessica.setText("Jessica");
+	Martha.setText("Martha");
+	Teresa.setText("Teresa");
+	Jessica.setPreferredSize(new Dimension(225, 250));
+	Martha.setPreferredSize(new Dimension(225, 250));
+	Teresa.setPreferredSize(new Dimension(225, 250));
 	
-	jessica.setHorizontalTextPosition(JButton.CENTER);
-	martha.setHorizontalTextPosition(JButton.CENTER);
-	teresa.setHorizontalTextPosition(JButton.CENTER);
+	Jessica.addActionListener(this);
+	Martha.addActionListener(this);
+	Teresa.addActionListener(this);
 	
-	jessica.setVerticalTextPosition(JButton.BOTTOM);
-	martha.setVerticalTextPosition(JButton.BOTTOM);
-	teresa.setVerticalTextPosition(JButton.BOTTOM);
+	Jessica.setHorizontalTextPosition(JButton.CENTER);
+	Martha.setHorizontalTextPosition(JButton.CENTER);
+	Teresa.setHorizontalTextPosition(JButton.CENTER);
 	
-	jessica.setFont(new Font("Corsiva Hebrew", Font.BOLD, 20));
-	martha.setFont(new Font("Corsiva Hebrew", Font.BOLD, 20));
-	teresa.setFont(new Font("Corsiva Hebrew", Font.BOLD, 20));
-    frame.getContentPane().add(BorderLayout.WEST, jessica);
-    frame.getContentPane().add(BorderLayout.CENTER, martha);
-    frame.getContentPane().add(BorderLayout.EAST, teresa);
+	Jessica.setVerticalTextPosition(JButton.BOTTOM);
+	Martha.setVerticalTextPosition(JButton.BOTTOM);
+	Teresa.setVerticalTextPosition(JButton.BOTTOM);
+	
+	Jessica.setFont(new Font("Corsiva Hebrew", Font.BOLD, 20));
+	Martha.setFont(new Font("Corsiva Hebrew", Font.BOLD, 20));
+	Teresa.setFont(new Font("Corsiva Hebrew", Font.BOLD, 20));
+    frame.getContentPane().add(BorderLayout.WEST, Jessica);
+    frame.getContentPane().add(BorderLayout.CENTER, Martha);
+    frame.getContentPane().add(BorderLayout.EAST, Teresa);
     frame.setSize(675, 250);
 	frame.setVisible(true);
     }
@@ -197,26 +198,27 @@ class Menu implements ActionListener {
     public void actionPerformed(ActionEvent event) {
 	if(event.getSource() == Easy) {
 	    frame.setVisible(false);
-	    FishAnimationEnvironment f = new FishAnimationEnvironment(3, false);
+	    FishAnimationEnvironment f = new FishAnimationEnvironment(3, sharkType, false);
 	}
 	if(event.getSource() == Medium) {
 	    frame.setVisible(false);
-	    FishAnimationEnvironment f = new FishAnimationEnvironment(7, false);
+	    FishAnimationEnvironment f = new FishAnimationEnvironment(7, sharkType, false);
 	}
 	if(event.getSource() == Hard) {
 	    frame.setVisible(false);
-	    FishAnimationEnvironment f = new FishAnimationEnvironment(14, false);
+	    FishAnimationEnvironment f = new FishAnimationEnvironment(14, sharkType, false);
 	}
 	if(event.getSource() == Resume) {
 	    frame.setVisible(false);
-	    FishAnimationEnvironment f = new FishAnimationEnvironment(0, true);
+	    FishAnimationEnvironment f = new FishAnimationEnvironment(0, sharkType, true);
 	}
 	if(event.getSource() == Play) {
 	    frame.remove(Play);
 	    frame.remove(Instruction);
 	    frame.remove(Exit);
 	    frame.remove(Character);
-	    setDifficulty();
+	    setCharacter();
+	    
 	}
 	if(event.getSource() == Exit) {
 	    System.exit(0);
@@ -246,12 +248,32 @@ class Menu implements ActionListener {
 	}
 	if(event.getSource() == Character){
 		frame.remove(Play);
-		frame.remove(Play);
 	    frame.remove(Instruction);
 	    frame.remove(Exit);
 	    frame.remove(Character);
 	    setCharacter();
 	}
+	if(event.getSource() == Jessica){
+		frame.remove(Jessica);
+		frame.remove(Martha);
+		frame.remove(Teresa);
+		sharkType = 1;
+		setDifficulty();
     }
+    if(event.getSource() == Martha){
+		frame.remove(Jessica);
+		frame.remove(Martha);
+		frame.remove(Teresa);
+		sharkType = 2;
+		setDifficulty();
+    }
+    if(event.getSource() == Teresa){
+		frame.remove(Jessica);
+		frame.remove(Martha);
+		frame.remove(Teresa);
+		sharkType = 3;
+		setDifficulty();
+    }
+}
 }
 

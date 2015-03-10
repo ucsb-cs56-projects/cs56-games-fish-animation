@@ -43,6 +43,7 @@ public class FishAnimationEnvironment extends JFrame implements Serializable {
     int numBubbles = 10+(int)(Math.random()*20); //creates a random amount of bubbles
     int numJellyFish; //holds the number of Jellyfish to be created
     int Highscore;
+    int sharkType;
     
     int timer, timerload = 0;
     long time1 = System.nanoTime()/1000000000; //Used to get the start time of the game
@@ -149,8 +150,9 @@ public class FishAnimationEnvironment extends JFrame implements Serializable {
        in input from the Menu GUI for the difficulty and creates Jellyfish based on the
        selected difficulty.
     */
-    public FishAnimationEnvironment(int difficulty, boolean l) {
+    public FishAnimationEnvironment(int difficulty, int sharkNum, boolean l) {
 	numJellyFish = difficulty;
+	sharkType = sharkNum;
 	load = l;
 	if(load){
 	    //deserialize the score, fish, shark, boat, and jellyfish
@@ -181,6 +183,7 @@ public class FishAnimationEnvironment extends JFrame implements Serializable {
 		load = false;
 		numJellyFish = 3;
 	    }
+	    
 	}
 	
 	//Adds the fish into the Array only if the load button was not selected
@@ -240,8 +243,10 @@ public class FishAnimationEnvironment extends JFrame implements Serializable {
 	    fishPanel.addMouseMotionListener(handler);
 	    
 	    //Images in the game
-	    URL sharkURL = getClass().getResource("/resources/shark.jpg");
+	    String dir = "/resources/" + sharkType + ".png";
+	    URL sharkURL = getClass().getResource(dir);
 	    Image shark = new ImageIcon(sharkURL).getImage();
+
 	    URL seaweedURL = getClass().getResource("/resources/Seaweed.jpg");
 	    Image seaweed = new ImageIcon(seaweedURL).getImage();
 	    URL boatURL = getClass().getResource("/resources/cartoon-boat.jpg");
