@@ -12,13 +12,14 @@ import java.awt.geom.AffineTransform;
 
 /**
    Creates a Bubbles object to hold X position, 
-   Y position, and diamter of Bubble
+   Y position, and diameter of Bubble
 
    @author Christina Morris
    @author Mathew Glodack
    @author Josephine Vo
    @author Jenna Cryan
-   @version CS56, Winter 2014, UCSB
+   @author Michele Haque
+   @version CS56, Winter 2015, UCSB
  */
 
 
