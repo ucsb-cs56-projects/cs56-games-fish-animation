@@ -167,6 +167,7 @@ class Menu implements ActionListener {
 	frame.setResizable(false);
 	frame.pack();
 	frame.setSize(800, 600);
+	panel.setVisible(true);
 	frame.setVisible(true);
     }
     
@@ -296,6 +297,7 @@ class Menu implements ActionListener {
 	    panel.remove(Resume);
 	    panel.remove(Menu);
 	    frame.remove(panel);
+	    panel.setVisible(false);
 		frame.setVisible(false);
 		makegui();
 	}

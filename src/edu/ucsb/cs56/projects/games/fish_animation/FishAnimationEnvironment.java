@@ -565,6 +565,7 @@ public class FishAnimationEnvironment extends JFrame implements Serializable {
 	JButton Pause;
 	URL pauseURL = getClass().getResource("/resources/PauseButton.jpg");
 	ImageIcon pause = new ImageIcon(pauseURL);
+	JButton Menu = new JButton("Main Menu");
 	JButton Save = new JButton("Save & Exit");
 	JButton Exit = new JButton("Exit");
 	
@@ -580,15 +581,17 @@ public class FishAnimationEnvironment extends JFrame implements Serializable {
 	public GameMenu() {
 	
 	    Pause = new JButton(pause);
+	    Menu.addActionListener(this);
 	    Pause.addActionListener(this);
 	    Save.addActionListener(this);
 	    Exit.addActionListener(this);
 	    
-	    JPanel allTheButtons = new JPanel(new BorderLayout());
+	    JPanel allTheButtons = new JPanel(new GridLayout(1,4));
 	    animation.getContentPane().add(BorderLayout.SOUTH, allTheButtons);
-	    allTheButtons.add(BorderLayout.EAST, Exit);
-	    allTheButtons.add(BorderLayout.CENTER, Save);
-	    allTheButtons.add(BorderLayout.WEST, Pause);
+	    allTheButtons.add(Pause);
+		allTheButtons.add(Menu);
+		allTheButtons.add(Save);
+	    allTheButtons.add(Exit);
 	    animation.setVisible(true);
 	}
 	
@@ -607,6 +610,12 @@ public class FishAnimationEnvironment extends JFrame implements Serializable {
 		    stop = false;
 		    pausetime += (System.nanoTime() / 1000000000 - pausestart);
 		}
+	    }
+	    
+	    if (event.getSource() == Menu){
+	    	animation.setVisible(false);
+	    	Menu menu = new Menu();
+	    	menu.makegui();
 	    }
 
 	    /* serialize if save was clicked.  Exits the game as well after the save.
