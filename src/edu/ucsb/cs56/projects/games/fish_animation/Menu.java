@@ -130,7 +130,7 @@ class Menu implements ActionListener {
 	frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 	frame.setLayout(new GridBagLayout());
 	panel.setLayout(new GridLayout(5,1));
-	panel.setPreferredSize(new Dimension(150, 150));
+	panel.setPreferredSize(new Dimension(150, 125));
 	panel.setOpaque(false);
 	
 	//Adds the different difficulty buttons
