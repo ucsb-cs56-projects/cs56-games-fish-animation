@@ -6,6 +6,8 @@ import java.awt.event.*;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
 import java.util.*;
+import java.io.*;
+import java.net.*;
 
 /**
    Implements a GUI that allows the user to choose diffculty,
@@ -21,49 +23,100 @@ import java.util.*;
 */
 
 class Menu implements ActionListener {
-    JButton Play, Instruction, Exit, Resume, Easy, Medium, Hard, Back, Menu;
+    JButton Play, Instruction, Exit, Character, Resume, Easy, Medium, Hard, Back, Menu;
     JFrame frame, instruct;
     int type;
     JTextArea text;
     JLabel textLabel;
     
     public static void main (String[] args) {
-		menu.makegui();
+	Menu menu = new Menu();
+	menu.makegui();
     }
     
     /**
        Main GUI interface for the first section of the Menu.  
        Allows for user to select exit, play, or instruction.
     */
-    public void makegui() {
+    public void makegui () {
 	frame = new JFrame();
-	frame.setSize(600, 75);
+	frame.setSize(600, 150);
 	frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 	
 	//Adds the different buttons to the menu
 	Play = new JButton("Play Game");
 	Instruction = new JButton("Instructions");
 	Exit = new JButton("Exit");
+	Character = new JButton("Character Selection");
 	
 	//Sets the size of the buttons
 	Play.setPreferredSize(new Dimension(200, 75));
 	Instruction.setPreferredSize(new Dimension(200, 75));
 	Exit.setPreferredSize(new Dimension(200, 75));
+	Character.setPreferredSize(new Dimension(200, 75));
 	
 	//Adds the action listeners to the buttons
 	Play.addActionListener(this);
 	Instruction.addActionListener(this);
 	Exit.addActionListener(this);
+	Character.addActionListener(this);
 	
 	//Sets up the layout of the GUI
 	frame.getContentPane().add(BorderLayout.WEST, Play);
 	frame.getContentPane().add(BorderLayout.CENTER, Instruction);
 	frame.getContentPane().add(BorderLayout.EAST, Exit);
-	frame.setSize(600, 75);
+	frame.getContentPane().add(BorderLayout.SOUTH, Character);
+	frame.setSize(600, 150);
 	frame.setVisible(true);
     }
     
+    public void setCharacter () {
+    frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
     
+    URL jessicaURL = getClass().getResource("/resources/shark.jpg");
+	ImageIcon jessicaIM = new ImageIcon(new ImageIcon(jessicaURL).getImage());
+    
+    URL marthaURL = getClass().getResource("/resources/1.png");
+	ImageIcon marthaIM = new ImageIcon(new ImageIcon(marthaURL).getImage());
+	
+	URL teresaURL = getClass().getResource("/resources/3.png");
+	ImageIcon teresaIM = new ImageIcon(new ImageIcon(teresaURL).getImage());
+	
+	JButton jessica = new JButton();
+	JButton martha = new JButton();
+	JButton teresa = new JButton();
+	
+	jessica.setIcon(jessicaIM);
+	martha.setIcon(marthaIM);
+	teresa.setIcon(teresaIM);
+	jessica.setText("Jessica");
+	martha.setText("Martha");
+	teresa.setText("Teresa");
+	jessica.setPreferredSize(new Dimension(225, 250));
+	martha.setPreferredSize(new Dimension(225, 250));
+	teresa.setPreferredSize(new Dimension(225, 250));
+	
+	jessica.addActionListener(this);
+	martha.addActionListener(this);
+	teresa.addActionListener(this);
+	
+	jessica.setHorizontalTextPosition(JButton.CENTER);
+	martha.setHorizontalTextPosition(JButton.CENTER);
+	teresa.setHorizontalTextPosition(JButton.CENTER);
+	
+	jessica.setVerticalTextPosition(JButton.BOTTOM);
+	martha.setVerticalTextPosition(JButton.BOTTOM);
+	teresa.setVerticalTextPosition(JButton.BOTTOM);
+	
+	jessica.setFont(new Font("Corsiva Hebrew", Font.BOLD, 20));
+	martha.setFont(new Font("Corsiva Hebrew", Font.BOLD, 20));
+	teresa.setFont(new Font("Corsiva Hebrew", Font.BOLD, 20));
+    frame.getContentPane().add(BorderLayout.WEST, jessica);
+    frame.getContentPane().add(BorderLayout.CENTER, martha);
+    frame.getContentPane().add(BorderLayout.EAST, teresa);
+    frame.setSize(675, 250);
+	frame.setVisible(true);
+    }
     /**
        GUI section that allows for user to select difficulty level
      */
@@ -162,6 +215,7 @@ class Menu implements ActionListener {
 	    frame.remove(Play);
 	    frame.remove(Instruction);
 	    frame.remove(Exit);
+	    frame.remove(Character);
 	    setDifficulty();
 	}
 	if(event.getSource() == Exit) {
@@ -171,6 +225,7 @@ class Menu implements ActionListener {
 	    frame.remove(Play);
 	    frame.remove(Instruction);
 	    frame.remove(Exit);
+	    frame.remove(Character);
 	    frame.setVisible(false);
 	    HowToPlay();
 	}
@@ -178,7 +233,7 @@ class Menu implements ActionListener {
 	    instruct.remove(Back);
 	    instruct.remove(textLabel);
 	    instruct.setVisible(false);
-		makegui();
+	    makegui();
 	}
 	if(event.getSource() == Menu) {
 	    frame.remove(Menu);
@@ -188,7 +243,15 @@ class Menu implements ActionListener {
 	    frame.remove(Resume);
 	    frame.setVisible(false);
 	    makegui();
-		}
+	}
+	if(event.getSource() == Character){
+		frame.remove(Play);
+		frame.remove(Play);
+	    frame.remove(Instruction);
+	    frame.remove(Exit);
+	    frame.remove(Character);
+	    setCharacter();
+	}
     }
 }
 
