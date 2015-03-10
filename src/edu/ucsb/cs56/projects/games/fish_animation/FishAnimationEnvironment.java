@@ -37,8 +37,8 @@ public class FishAnimationEnvironment extends JFrame implements Serializable {
     int maxWidth = 100; //max width of the fish
     int boatX = maxX;//hold the position of the boat
     int maxD = 10; //holds the maximum diameter of the bubbles
-    int maxScore = 20;
-    int minScore = -1;
+    int maxScore = 50;
+    int minScore = -20;
     
     int eaten = 0; //number of fish eaten
     int numFish = 75; //number of fish in environment
