@@ -96,6 +96,7 @@ public class FishAnimationEnvironment extends JFrame implements Serializable {
        Method pauseGame. Creates a option pane that allows reset game and 
 
      */
+	 /*
     private void pauseGame() {
 	String[] choices = {"Exit", "Resume Game", "Main Menu"};
 	ImageIcon pauseIcon = new ImageIcon(getClass().getResource("resouces/fish.png"));
@@ -129,7 +130,7 @@ public class FishAnimationEnvironment extends JFrame implements Serializable {
             }
     }
 
-
+*/
 
 	
     /**
@@ -563,8 +564,8 @@ public class FishAnimationEnvironment extends JFrame implements Serializable {
 	JButton Exit = new JButton("Exit");
 	
 	public void main (String[] args) {
-	    GameMenu menu = new GameMenu();
-	    //	    menu.makemenu();
+	   // GameMenu menu = new GameMenu();
+	        menu.makemenu();
 	}
 	
 	/**
