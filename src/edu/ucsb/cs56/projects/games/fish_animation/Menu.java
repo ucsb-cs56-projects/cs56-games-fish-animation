@@ -289,7 +289,7 @@ class Menu implements ActionListener {
 		setDifficulty();
     }
     if(event.getSource() == Menu) {
-	    panel.remove(Selection);
+	   // panel.remove(Selection);
 	    panel.remove(Easy);
 	    panel.remove(Medium);
 	    panel.remove(Hard);
