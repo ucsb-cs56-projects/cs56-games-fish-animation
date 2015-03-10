@@ -69,6 +69,7 @@ class Menu implements ActionListener {
 	frame.getContentPane().add(Instruction);
 	frame.getContentPane().add(Exit);
 	frame.setSize(800, 600);
+	frame.setResizable(false);
 	frame.setVisible(true);
     }
     
@@ -118,6 +119,7 @@ class Menu implements ActionListener {
     frame.getContentPane().add(Martha);
     frame.getContentPane().add(Teresa);
     frame.setSize(800, 600);
+    frame.setResizable(false);
 	frame.setVisible(true);
     }
     /**
@@ -126,23 +128,33 @@ class Menu implements ActionListener {
     public void setDifficulty () {
 
 	frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-	//JPanel panel = new JPanel();
-	//frame.setLayout(new BoxLayout(frame, BoxLayout.Y_AXIS));
-	//frame.setLayout(new BorderLayout());
+	// Box box = Box.createVerticalBox();
 	
+	//frame.setLayout(new GridBagLayout());
+	frame.setSize(800, 600);
+	JPanel backPanel = new JPanel();
+	backPanel.setLayout(new GridBagLayout());
+	backPanel.setPreferredSize(new Dimension(300, 300));
+	JPanel panel = new JPanel();
+	
+	panel.setLayout(new GridLayout(5,1));
+	//panel.setSize(new Dimension(100, 300));
+	panel.setPreferredSize(new Dimension(300, 300));
+	panel.setBackground(Color.BLACK);
 	//Adds the different difficulty buttons
 	Selection = new JButton("Back");
 	Easy = new JButton("Easy");
 	Medium = new JButton("Medium");
 	Hard = new JButton("Hard");
 	Resume = new JButton("Resume Game");
+	frame.setLayout(new BorderLayout());
 	
 	//Sets the size of the buttons
-	frame.getContentPane().add(Selection);
-	frame.getContentPane().add(Easy);
-	frame.getContentPane().add(Medium);
-	frame.getContentPane().add(Hard);
-	frame.getContentPane().add(Resume);
+// 		Selection.setPreferredSize(new Dimension(200, 75));
+// 		Easy.setPreferredSize(new Dimension(200, 75));
+// 		Medium.setPreferredSize(new Dimension(200, 75));
+// 		Hard.setPreferredSize(new Dimension(200, 75));
+// 		Resume.setPreferredSize(new Dimension(200, 75));
 	
 	//Gives the buttons actionlisteners
 	Selection.addActionListener(this);
@@ -152,12 +164,21 @@ class Menu implements ActionListener {
 	Resume.addActionListener(this);
 
 	//Puts the buttons onto the frame in BorderLayout format
-	frame.getContentPane().add(Selection);
-	frame.getContentPane().add(Easy);
-	frame.getContentPane().add(Medium);
-	frame.getContentPane().add(Hard);
-	frame.getContentPane().add(Resume);
-	frame.setSize(800, 600);
+// 	box.add(Selection);
+// 	box.add(Easy);
+// 	box.add(Medium);
+// 	box.add(Hard);
+// 	box.add(Resume);
+// 	frame.add(box, BorderLayout.CENTER);
+	panel.add(Selection);
+	panel.add(Easy);
+	panel.add(Medium);
+	panel.add(Hard);
+	panel.add(Resume);
+	backPanel.add(panel);
+	frame.add(backPanel);
+	frame.setResizable(false);
+	frame.pack();
 	frame.setVisible(true);
     }
     
@@ -165,33 +186,30 @@ class Menu implements ActionListener {
        GUI that shows the user how to play the game.  Provides
        instructions and a description of the game overall.
     */
-    public void HowToPlay() {
-	
+	 public void HowToPlay() {
 	//Creates new frame for the new menu that will pop up
-	instruct = new JFrame();
-	instruct.setSize(300, 300);
-	
-	//Creates text label for instructions
-	textLabel = new JLabel();
-	textLabel.setText("<html><p>Hello! The goal of the game is to eat as many fish as you can. "
-			  + "There's no time limit, but watch out! Jellyfish are out to get you! "
-			  + "If you eat the jellyfish, you'll lose points! "
-			  + "If you get too many negative points, you lose :( "
-			  + "To eat the fish, click on the shark and hold down the mouse button to move your shark's mouth to the fish. "
-			  + "There are three different difficulties, so test your skills on all of them! Good eating!</p></html>");
-
-	//Adds button to the instruction popup
-	Back = new JButton("Menu");
-	
-	//Adds action listener to the button to go back to the mainmenu
-	Back.addActionListener(this);
-	Back.setPreferredSize(new Dimension(150, 75));
-	
-	//Adds the layout for the button and the textArea
-	instruct.getContentPane().add(textLabel);
-	instruct.getContentPane().add(Back);
-	instruct.setVisible(true);
-    }
+		instruct = new JFrame();
+		instruct.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		instruct.setSize(300, 300);
+		//Creates text label for instructions
+		textLabel = new JLabel();
+		textLabel.setText("<html><p>Hello! The goal of the game is to eat as many fish as you can. "
+		+ "There's no time limit, but watch out! Jellyfish are out to get you! "
+		+ "If you eat the jellyfish, you'll lose points! "
+		+ "If you get too many negative points, you lose :( "
+		+ "To eat the fish, click on the shark and hold down the mouse button to move your shark's mouth to the fish. "
+		+ "There are three different difficulties, so test your skills on all of them! Good eating!</p></html>");
+		//Adds button to the instruction popup
+		Back = new JButton("Menu");
+		//Adds action listener to the button to go back to the mainmenu
+		Back.addActionListener(this);
+		Back.setPreferredSize(new Dimension(150, 75));
+		//Adds the layout for the button and the textArea
+		instruct.getContentPane().add(BorderLayout.NORTH, textLabel);
+		instruct.getContentPane().add(BorderLayout.SOUTH, Back);
+		instruct.setResizable(false);
+		instruct.setVisible(true);
+	}
     
     
     /** 
