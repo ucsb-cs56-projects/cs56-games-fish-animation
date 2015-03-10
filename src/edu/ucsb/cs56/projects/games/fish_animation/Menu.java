@@ -12,6 +12,7 @@ import java.net.*;
 /**
    Implements a GUI that allows the user to choose diffculty,
    find instructions, or exit the menu.
+
    @author Casey Barbello
    @author Daryl Pham
    @author Jenna Cryan
@@ -28,6 +29,7 @@ class Menu implements ActionListener {
     JTextArea text;
     JLabel textLabel;
 	int sharkType;    
+	
     public static void main (String[] args) {
 	Menu menu = new Menu();
 	menu.makegui();
@@ -39,7 +41,7 @@ class Menu implements ActionListener {
     */
     public void makegui () {
 	frame = new JFrame();
-	frame.setSize(600, 75);
+	frame.setSize(800, 600);
 	frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 	
 	//Adds the different buttons to the menu
@@ -56,13 +58,17 @@ class Menu implements ActionListener {
 	Play.addActionListener(this);
 	Instruction.addActionListener(this);
 	Exit.addActionListener(this);
-	
+	URL bgURL = getClass().getResource("/resources/mainbg.png");
+   	ImageIcon bgIM = new ImageIcon(new ImageIcon(bgURL).getImage());
+   	JLabel label = new JLabel(bgIM);
+   	frame.setContentPane(label);
+   	frame.setLayout(new GridBagLayout());
+   	
 	//Sets up the layout of the GUI
-	frame.getContentPane().add(BorderLayout.WEST, Play);
-	frame.getContentPane().add(BorderLayout.CENTER, Instruction);
-	frame.getContentPane().add(BorderLayout.EAST, Exit);
-	//frame.getContentPane().add(BorderLayout.SOUTH, Character);
-	frame.setSize(600, 75);
+	frame.getContentPane().add(Play);
+	frame.getContentPane().add(Instruction);
+	frame.getContentPane().add(Exit);
+	frame.setSize(800, 600);
 	frame.setVisible(true);
     }
     
@@ -108,10 +114,10 @@ class Menu implements ActionListener {
 	Jessica.setFont(new Font("Corsiva Hebrew", Font.BOLD, 20));
 	Martha.setFont(new Font("Corsiva Hebrew", Font.BOLD, 20));
 	Teresa.setFont(new Font("Corsiva Hebrew", Font.BOLD, 20));
-    frame.getContentPane().add(BorderLayout.WEST, Jessica);
-    frame.getContentPane().add(BorderLayout.CENTER, Martha);
-    frame.getContentPane().add(BorderLayout.EAST, Teresa);
-    frame.setSize(675, 250);
+    frame.getContentPane().add(Jessica);
+    frame.getContentPane().add(Martha);
+    frame.getContentPane().add(Teresa);
+    frame.setSize(800, 600);
 	frame.setVisible(true);
     }
     /**
@@ -120,6 +126,9 @@ class Menu implements ActionListener {
     public void setDifficulty () {
 
 	frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+	//JPanel panel = new JPanel();
+	//frame.setLayout(new BoxLayout(frame, BoxLayout.Y_AXIS));
+	//frame.setLayout(new BorderLayout());
 	
 	//Adds the different difficulty buttons
 	Menu = new JButton("Main Menu");
@@ -129,11 +138,11 @@ class Menu implements ActionListener {
 	Resume = new JButton("Resume Game");
 	
 	//Sets the size of the buttons
-	Menu.setPreferredSize(new Dimension(200, 75));
-	Easy.setPreferredSize(new Dimension(200, 75));
-	Medium.setPreferredSize(new Dimension(200, 75));
-	Hard.setPreferredSize(new Dimension(200, 75));
-	Resume.setPreferredSize(new Dimension(200, 75));
+	frame.getContentPane().add(Menu);
+	frame.getContentPane().add(Easy);
+	frame.getContentPane().add(Medium);
+	frame.getContentPane().add(Hard);
+	frame.getContentPane().add(Resume);
 	
 	//Gives the buttons actionlisteners
 	Menu.addActionListener(this);
@@ -143,12 +152,12 @@ class Menu implements ActionListener {
 	Resume.addActionListener(this);
 
 	//Puts the buttons onto the frame in BorderLayout format
-	frame.getContentPane().add(BorderLayout.NORTH, Menu);
-	frame.getContentPane().add(BorderLayout.WEST, Easy);
-	frame.getContentPane().add(BorderLayout.CENTER, Medium);
-	frame.getContentPane().add(BorderLayout.EAST, Hard);
-	frame.getContentPane().add(BorderLayout.SOUTH, Resume);
-	frame.setSize(600, 300);
+	frame.getContentPane().add(Menu);
+	frame.getContentPane().add(Easy);
+	frame.getContentPane().add(Medium);
+	frame.getContentPane().add(Hard);
+	frame.getContentPane().add(Resume);
+	frame.setSize(800, 600);
 	frame.setVisible(true);
     }
     
@@ -179,8 +188,8 @@ class Menu implements ActionListener {
 	Back.setPreferredSize(new Dimension(150, 75));
 	
 	//Adds the layout for the button and the textArea
-	instruct.getContentPane().add(BorderLayout.NORTH, textLabel);
-	instruct.getContentPane().add(BorderLayout.SOUTH, Back);
+	instruct.getContentPane().add(textLabel);
+	instruct.getContentPane().add(Back);
 	instruct.setVisible(true);
     }
     
@@ -244,6 +253,7 @@ class Menu implements ActionListener {
 		frame.remove(Jessica);
 		frame.remove(Martha);
 		frame.remove(Teresa);
+		frame.setVisible(false);
 		sharkType = 1;
 		setDifficulty();
     }
@@ -251,6 +261,7 @@ class Menu implements ActionListener {
 		frame.remove(Jessica);
 		frame.remove(Martha);
 		frame.remove(Teresa);
+		frame.setVisible(false);
 		sharkType = 2;
 		setDifficulty();
     }
@@ -258,8 +269,10 @@ class Menu implements ActionListener {
 		frame.remove(Jessica);
 		frame.remove(Martha);
 		frame.remove(Teresa);
+		frame.setVisible(false);
 		sharkType = 3;
 		setDifficulty();
     }
 }
 }
+
