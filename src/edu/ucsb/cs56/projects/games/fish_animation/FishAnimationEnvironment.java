@@ -509,7 +509,9 @@ public class FishAnimationEnvironment extends JFrame implements Serializable {
     class GameMenu implements ActionListener {
 	JButton Pause;
 	URL pauseURL = getClass().getResource("/resources/PauseButton.jpg");
+	URL playURL = getClass().getResource("/resources/play.png");
 	ImageIcon pause = new ImageIcon(pauseURL);
+	ImageIcon play = new ImageIcon(playURL);
 	JButton Save = new JButton("Save & Exit");
 	JButton Exit = new JButton("Exit");
 	
@@ -545,10 +547,12 @@ public class FishAnimationEnvironment extends JFrame implements Serializable {
 	    if(event.getSource() == Pause) {
 		if(stop == false) {
 		    stop = true;
+		    Pause.setIcon(play);
 		    pausestart = System.nanoTime() / 1000000000;
 		}
 		else {
 		    stop = false;
+		    Pause.setIcon(pause);
 		    pausetime += (System.nanoTime() / 1000000000 - pausestart);
 		}
 	    }
