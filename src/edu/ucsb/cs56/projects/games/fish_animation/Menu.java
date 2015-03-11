@@ -23,7 +23,7 @@ import java.net.*;
 */
 
 class Menu implements ActionListener {
-    JButton Play, Instruction, Exit, Replay, Character, Next,
+    JButton Play, Instruction, Exit, Replay, Character, Next, Start,
     Jessica, Martha, Teresa, Resume, Easy, Medium, Hard, Back, Menu;
     JFrame frame, instruct;
     JPanel panel, textPanel, buttonPanel;
@@ -177,7 +177,7 @@ class Menu implements ActionListener {
 	//Creates new frame for the new menu that will pop up
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		textPanel = new JPanel();
-		textPanel.setPreferredSize(new Dimension(250, 350));		
+		textPanel.setPreferredSize(new Dimension(250, 300));		
 
 		//Creates text label for instructions
 		textArea = new JTextArea("Hello! The goal of the game is to eat as many fish as you can. "
@@ -226,7 +226,7 @@ class Menu implements ActionListener {
 	//Creates new frame for the new menu that will pop up
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		textPanel = new JPanel();
-		textPanel.setPreferredSize(new Dimension(250, 350));		
+		textPanel.setPreferredSize(new Dimension(250, 300));		
 
 		//Creates text label for instructions
 		textArea = new JTextArea("To eat the fish, click on the shark and hold down the mouse button to move your shark's mouth to the fish. "
@@ -244,14 +244,18 @@ class Menu implements ActionListener {
                                 BorderFactory.createEmptyBorder(5,5,5,5)),
                 textArea.getBorder()));
 		//Adds button to the instruction popup
+		Start = new JButton("Start");
 		Back = new JButton("Back to Menu");
 
 		//Adds action listener to the button to go back to the mainmenu
+		Start.addActionListener(this);
 		Back.addActionListener(this);
 	
+		Start.setPreferredSize(new Dimension(150, 40));
 		Back.setPreferredSize(new Dimension(150, 40));
 
 		textPanel.add(textArea);
+		textPanel.add(Start);
 		textPanel.add(Back);
 		textPanel.setOpaque(false);
 		frame.getContentPane().add(textPanel);
@@ -299,6 +303,14 @@ class Menu implements ActionListener {
 	    frame.remove(Exit);
 	  	frame.setVisible(false);
 	    introduction();
+	}
+	if(event.getSource() == Start) {
+	    frame.remove(Back);
+	    frame.remove(Start);
+	    textPanel.setVisible(false);
+	    frame.remove(textPanel);
+	    frame.setVisible(false);
+	    setCharacter();
 	}
 	if(event.getSource() == Back) {
 	    frame.remove(Back);
