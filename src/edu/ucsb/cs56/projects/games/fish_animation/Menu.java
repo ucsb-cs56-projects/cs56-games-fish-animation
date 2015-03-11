@@ -113,9 +113,9 @@ class Menu implements ActionListener {
 		Martha.setVerticalTextPosition(JButton.BOTTOM);
 		Teresa.setVerticalTextPosition(JButton.BOTTOM);
 	
-		Jessica.setFont(new Font("Corsiva Hebrew", Font.BOLD, 20));
-		Martha.setFont(new Font("Corsiva Hebrew", Font.BOLD, 20));
-		Teresa.setFont(new Font("Corsiva Hebrew", Font.BOLD, 20));
+		Jessica.setFont(new Font("Corsiva Hebrew", Font.PLAIN, 20));
+		Martha.setFont(new Font("Corsiva Hebrew", Font.PLAIN, 20));
+		Teresa.setFont(new Font("Corsiva Hebrew", Font.PLAIN, 20));
 		frame.getContentPane().add(Jessica);
 		frame.getContentPane().add(Martha);
 		frame.getContentPane().add(Teresa);
@@ -185,7 +185,7 @@ class Menu implements ActionListener {
 		+ "If you get too many negative points, you lose! :( "
 		+ "To eat the fish, click on the shark and hold down the mouse button to move your shark's mouth to the fish. "
 		+ "There are three different difficulties, so test your skills on all of them! Good eating!");
-		textArea.setFont(new Font("Serif", Font.PLAIN, 16));
+		textArea.setFont(new Font("Verdana", Font.PLAIN, 12));
 		textArea.setLineWrap(true);
 		textArea.setWrapStyleWord(true);
 		textArea.setEditable(false);
