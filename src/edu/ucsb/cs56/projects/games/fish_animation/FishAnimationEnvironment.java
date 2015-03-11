@@ -106,21 +106,6 @@ public class FishAnimationEnvironment extends JFrame implements Serializable {
 	int randomD = (int) (Math.random() * diameter);
 	return new Bubbles(randomX, randomY, randomD);
     }
-    public void actionPerformed(ActionEvent event) {
-    	if (event.getSource() == Save){
-    	
-    	
-    	}
-    	if (event.getSource() == Resume){
-    	}
-    	if (event.getSource() == Menu){
-    	
-    	}
-    	
-    	if (event.getSource() == Exit){
-    	
-    	}
-    }
     private void gameOver() {
 	String score;
 	if (eaten >= maxScore){
@@ -151,21 +136,23 @@ public class FishAnimationEnvironment extends JFrame implements Serializable {
     
 	private void pauseGame() {
 		stop = true;
+		pausestart = System.nanoTime() / 1000000000;
 		URL pauseURL = getClass().getResource("/resources/pause.png");
 		ImageIcon pause = new ImageIcon(pauseURL);
-		Object[] options = { "Exit", "Save & Exit", "Resume Game", "Main Menu"};
+		Object[] options = { "Exit", "Save & Exit", "Main Menu", "Resume Game"};
 		int n = JOptionPane.showOptionDialog(null, "You have paused the game! "
 		+ "What would you like to do?", "Pause Game", JOptionPane.YES_NO_CANCEL_OPTION, 
-		JOptionPane.INFORMATION_MESSAGE, pause, options, options[0]);
+		JOptionPane.INFORMATION_MESSAGE, pause, options, options[3]);
 		if (n == 3){
+			stop = false;
+			pausetime += (System.nanoTime() / 1000000000 - pausestart);
+		}
+		else if (n == 2){
 			Menu menu = new Menu();
 			menu.makegui();
 			animation.dispose();
 		}
-		else if (n == 2){
-			stop = false;
-			pausetime += (System.nanoTime() / 1000000000 - pausestart);
-		}
+
 		else if (n == 1){
 			try {
 				FileOutputStream fs = new FileOutputStream("saved.ser");
@@ -657,7 +644,7 @@ public class FishAnimationEnvironment extends JFrame implements Serializable {
 			posY += 30;
 			}
                 
-			if (key == KeyEvent.VK_ESCAPE){
+			if (key == KeyEvent.VK_SPACE){
 				pauseGame();
 			}
         }

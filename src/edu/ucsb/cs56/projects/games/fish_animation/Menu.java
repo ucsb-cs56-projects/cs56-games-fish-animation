@@ -23,7 +23,8 @@ import java.net.*;
 */
 
 class Menu implements ActionListener {
-    JButton Play, Instruction, Exit, Replay, Character, Selection, Jessica, Martha, Teresa, Resume, Easy, Medium, Hard, Back, Menu;
+    JButton Play, Instruction, Exit, Replay, Character, Next,
+    Jessica, Martha, Teresa, Resume, Easy, Medium, Hard, Back, Menu;
     JFrame frame, instruct;
     JPanel panel, textPanel, buttonPanel;
     int type;
@@ -172,44 +173,43 @@ class Menu implements ActionListener {
        GUI that shows the user how to play the game.  Provides
        instructions and a description of the game overall.
     */
-	 public void HowToPlay() {
+	 public void introduction() {
 	//Creates new frame for the new menu that will pop up
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		textPanel = new JPanel();
-		textPanel.setPreferredSize(new Dimension(250, 300));		
+		textPanel.setPreferredSize(new Dimension(250, 350));		
 
 		//Creates text label for instructions
 		textArea = new JTextArea("Hello! The goal of the game is to eat as many fish as you can. "
 		+ "There is no time limit, but watch out! Jellyfish are out to get you! "
 		+ "If you eat the jellyfish, you'll lose points! "
 		+ "If you get too many negative points, you lose! :( "
-		+ "To eat the fish, click on the shark and hold down the mouse button to move your shark's mouth to the fish. "
 		+ "There are three different difficulties, so test your skills on all of them! Good eating!");
 		textArea.setFont(new Font("Verdana", Font.PLAIN, 12));
 		textArea.setLineWrap(true);
 		textArea.setWrapStyleWord(true);
 		textArea.setEditable(false);
-		JScrollPane areaScrollPane = new JScrollPane(textArea);
-		areaScrollPane.setVerticalScrollBarPolicy(
-        JScrollPane.VERTICAL_SCROLLBAR_ALWAYS);
-		areaScrollPane.setPreferredSize(new Dimension(250, 250));
-		 areaScrollPane.setBorder(
+		textArea.setPreferredSize(new Dimension(250, 200));
+		textArea.setBorder(
             BorderFactory.createCompoundBorder(
                 BorderFactory.createCompoundBorder(
-                                BorderFactory.createTitledBorder("Instructions"),
+                                BorderFactory.createTitledBorder("Introduction"),
                                 BorderFactory.createEmptyBorder(5,5,5,5)),
-                areaScrollPane.getBorder()));
+                textArea.getBorder()));
 		//Adds button to the instruction popup
-		
 		Back = new JButton("Back to Menu");
+		Next = new JButton("Next");
 
 		//Adds action listener to the button to go back to the mainmenu
 
 		Back.addActionListener(this);
+		Next.addActionListener(this);
 	
 		Back.setPreferredSize(new Dimension(150, 40));
+		Next.setPreferredSize(new Dimension(150, 40));
 
-		textPanel.add(areaScrollPane);
+		textPanel.add(textArea);
+		textPanel.add(Next);
 		textPanel.add(Back);
 		textPanel.setOpaque(false);
 		frame.getContentPane().add(textPanel);
@@ -218,7 +218,47 @@ class Menu implements ActionListener {
 		frame.setVisible(true);
 	}
     
-    
+        /**
+       GUI that shows the user how to play the game.  Provides
+       instructions and a description of the game overall.
+    */
+	 public void HowToPlay() {
+	//Creates new frame for the new menu that will pop up
+		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		textPanel = new JPanel();
+		textPanel.setPreferredSize(new Dimension(250, 350));		
+
+		//Creates text label for instructions
+		textArea = new JTextArea("To eat the fish, click on the shark and hold down the mouse button to move your shark's mouth to the fish. "
+		+ "You can also use the arrow keys on your keyboard to control the shark's movement. "
+		+ "To pause or access the menu, press the SPACE key.");
+		textArea.setFont(new Font("Verdana", Font.PLAIN, 12));
+		textArea.setLineWrap(true);
+		textArea.setWrapStyleWord(true);
+		textArea.setEditable(false);
+		textArea.setPreferredSize(new Dimension(250, 200));
+		textArea.setBorder(
+            BorderFactory.createCompoundBorder(
+                BorderFactory.createCompoundBorder(
+                                BorderFactory.createTitledBorder("Instructions"),
+                                BorderFactory.createEmptyBorder(5,5,5,5)),
+                textArea.getBorder()));
+		//Adds button to the instruction popup
+		Back = new JButton("Back to Menu");
+
+		//Adds action listener to the button to go back to the mainmenu
+		Back.addActionListener(this);
+	
+		Back.setPreferredSize(new Dimension(150, 40));
+
+		textPanel.add(textArea);
+		textPanel.add(Back);
+		textPanel.setOpaque(false);
+		frame.getContentPane().add(textPanel);
+		frame.pack();
+		frame.setSize(800, 600);
+		frame.setVisible(true);
+	}
     /** 
 	Method that takes in Mouse actions and converts them into
 	actions that the program will perform. The actions performed 
@@ -258,14 +298,22 @@ class Menu implements ActionListener {
 	    frame.remove(Instruction);
 	    frame.remove(Exit);
 	  	frame.setVisible(false);
-	    HowToPlay();
+	    introduction();
 	}
 	if(event.getSource() == Back) {
 	    frame.remove(Back);
-	    //frame.remove(textLabel);
+	    frame.remove(Next);
+	    textPanel.setVisible(false);
 	    frame.remove(textPanel);
 	    frame.setVisible(false);
 	    makegui();
+	}
+	if(event.getSource() == Next) {
+	    frame.remove(Back);
+	    textPanel.setVisible(false);
+	    frame.remove(textPanel);
+	    frame.setVisible(false);
+	    HowToPlay();
 	}
 	if(event.getSource() == Character) {
 	   	frame.remove(Jessica);
