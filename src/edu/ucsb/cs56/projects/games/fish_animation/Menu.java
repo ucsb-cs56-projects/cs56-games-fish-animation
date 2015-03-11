@@ -42,7 +42,9 @@ class Menu implements ActionListener {
        Allows for user to select exit, play, or instruction.
     */
     public void makegui () {
+    
 	frame = new JFrame();
+	frame.setTitle("Fish Animation");
 	frame.setSize(800, 600);
 	frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 	
@@ -77,7 +79,6 @@ class Menu implements ActionListener {
     
     public void setCharacter () {
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-	
 		URL jessicaURL = getClass().getResource("/resources/1.png");
 		ImageIcon jessicaIM = new ImageIcon(new ImageIcon(jessicaURL).getImage());
 	

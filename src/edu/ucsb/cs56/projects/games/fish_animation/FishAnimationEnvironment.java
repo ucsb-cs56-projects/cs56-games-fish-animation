@@ -719,6 +719,7 @@ public class FishAnimationEnvironment extends JFrame implements Serializable {
 // 	    allTheButtons.add(Menu);
 // 	    allTheButtons.add(Save);
 // 	    allTheButtons.add(Exit);
+		animation.setTitle("Fish Animation");
 	    animation.setVisible(true);
 	}
 	
