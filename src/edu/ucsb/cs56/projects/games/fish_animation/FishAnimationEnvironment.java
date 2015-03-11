@@ -4,6 +4,11 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
 import java.awt.event.ActionListener;
+import java.awt.event.KeyEvent;
+import java.awt.event.KeyListener;
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
+import java.awt.event.MouseMotionListener;
 import java.util.ArrayList;
 import java.util.*;
 import java.io.*;
@@ -54,6 +59,9 @@ public class FishAnimationEnvironment extends JFrame implements Serializable {
     boolean stop = false; // used to know when to pause the animation and when not to
     boolean load = false; // used to determine whether or not the game loads from the serialized form
     boolean gameover = false;
+    boolean left = false, right = false, up = false, down = false;
+	private long lastPressProcessed = 0;
+	
 	
     //create ArrayLists for fish, bubbles, and jellyfish.
     ArrayList<Fish> fishArray = new ArrayList<Fish>();    
@@ -96,73 +104,73 @@ public class FishAnimationEnvironment extends JFrame implements Serializable {
 	return new Bubbles(randomX, randomY, randomD);
     }
     
-	private void gameOver() {
-		String score;
-		if (eaten >= maxScore){
-			score = "You won! Your score was " + eaten + ". Play Again?";
-		}
-		else{
-			score = "You lost! Your score was " + eaten + ". Play Again?";
-		}
-		int choice = JOptionPane.showOptionDialog(null,
-			score,
-		  	"Gameover!",
-		  	JOptionPane.YES_NO_OPTION,
-		  	JOptionPane.QUESTION_MESSAGE,
-		  	null, null, null);
-
-		  // interpret the user's choice
-		if (choice == JOptionPane.YES_OPTION)
-		  {
-			// animation.setVisible(false);
-			Menu menu = new Menu();
-			menu.makegui();
-			animation.setVisible(false);
-		  }
-		else{
-			System.exit(0);
-		}
+    private void gameOver() {
+	String score;
+	if (eaten >= maxScore){
+	    score = "You won! Your score was " + eaten + ". Play Again?";
 	}
+	else{
+	    score = "You lost! Your score was " + eaten + ". Play Again?";
+	}
+	int choice = JOptionPane.showOptionDialog(null,
+						  score,
+						  "Gameover!",
+						  JOptionPane.YES_NO_OPTION,
+						  JOptionPane.QUESTION_MESSAGE,
+						  null, null, null);
+
+	// interpret the user's choice
+	if (choice == JOptionPane.YES_OPTION)
+	    {
+		// animation.setVisible(false);
+		Menu menu = new Menu();
+		menu.makegui();
+		animation.setVisible(false);
+	    }
+	else{
+	    System.exit(0);
+	}
+    }
 
     /**
        Method pauseGame. Creates a option pane that allows reset game and 
 
-     */
-	 /*
-    private void pauseGame() {
-	String[] choices = {"Exit", "Resume Game", "Main Menu"};
-	ImageIcon pauseIcon = new ImageIcon(getClass().getResource("resouces/fish.png"));
+    */
+    /*
+      private void pauseGame() {
+      String[] choices = {"Exit", "Resume Game", "Main Menu"};
+      ImageIcon pauseIcon = new ImageIcon(getClass().getResource("resouces/fish.png"));
        
-            int choice = JOptionPane.showOptionDialog(null,
-                                                      "Continue playing?",
-                                                      "GAME PAUSED",
-                                                      JOptionPane.YES_NO_OPTION,
-                                                      JOptionPane.PLAIN_MESSAGE,
-                                                      pauseIcon,
-                                                      choices,
-                                                      choices[1]);
-            switch(choice) {
-	    case 0 :
-		stop = true;
-		//	timer.stop();
-		System.exit(0);
-	    case 1 :
-		pausetime += (System.nanoTime() / 1000000000 - pausestart);
-		//pause = false;
-		stop = false;
-		break;
-	    case 2 :
-		stop = true;
-		//timer.stop();
-		animation.dispose();
-		//MainEnvironment mainEnv = new MainEnvironment();
-		//FishAnimationEnvironment fishEnv = new FishAnimationEnvironment();
-		Menu menu = new Menu();
-		break;
-            }
-    }
+      int choice = JOptionPane.showOptionDialog(null,
+      "Continue playing?",
+      "GAME PAUSED",
+      JOptionPane.YES_NO_OPTION,
+      JOptionPane.PLAIN_MESSAGE,
+      pauseIcon,
+      choices,
+      choices[1]);
+      switch(choice) {
+      case 0 :
+      stop = true;
+      //	timer.stop();
+      System.exit(0);
+      case 1 :
+      pausetime += (System.nanoTime() / 1000000000 - pausestart);
+      //pause = false;
+      stop = false;
+      break;
+      case 2 :
+      stop = true;
+      //timer.stop();
+      animation.dispose();
+      //MainEnvironment mainEnv = new MainEnvironment();
+      //FishAnimationEnvironment fishEnv = new FishAnimationEnvironment();
+      Menu menu = new Menu();
+      break;
+      }
+      }
 
-*/
+    */
 
 	
     /**
@@ -268,11 +276,13 @@ public class FishAnimationEnvironment extends JFrame implements Serializable {
 	    super.paintComponent(g); //replace current painting
 	    g.drawImage(reef, 0, 0, this); 
 	    
-	    //Starts the Action listener to listen for mouse events in the panel
-	    MouseHandler handler = new MouseHandler();
-	    fishPanel.addMouseListener(handler);
-	    fishPanel.addMouseMotionListener(handler);
-	    
+	    MyListener listener = new MyListener();
+
+	    fishPanel.addKeyListener(listener);
+	    fishPanel.addMouseListener(listener);
+	    fishPanel.addMouseMotionListener(listener);
+	    fishPanel.requestFocusInWindow();
+
 	    //Images in the game
 	    String dir = "/resources/" + sharkType + ".png";
 	    URL sharkURL = getClass().getResource(dir);
@@ -309,6 +319,19 @@ public class FishAnimationEnvironment extends JFrame implements Serializable {
 	    Shark s = new Shark(posX, posY);
 	    int newXPos = (int) s.getXPos() - 160;
 	    int newYPos = (int) s.getYPos() - 130;
+	
+	    if(newXPos < 0){
+		newXPos = 0;
+	    }
+	    if(newYPos < 0){
+		newYPos = 0;
+	    }
+	    if(newXPos > maxX - 160){
+		newXPos = maxX-160;
+	    }
+	    if(newYPos > maxY-130){
+		newYPos = maxY-130;
+	    }
 	    g2.drawImage(shark, newXPos, newYPos, this);
 	    
 	    //Draws the bubbles with the blue gradient
@@ -372,11 +395,11 @@ public class FishAnimationEnvironment extends JFrame implements Serializable {
 	    g.drawString(str2, 0, 65);
 	    if(eaten >= maxScore) {
 	    	stop = true;
-			gameOver();
+		gameOver();
 	    }
 	    else if(eaten <= minScore) {
 	    	stop = true;
-			gameOver();
+		gameOver();
 		
 	    }   
 	}
@@ -392,6 +415,7 @@ public class FishAnimationEnvironment extends JFrame implements Serializable {
 	    try {
 		while(true) {
 		    display(delay);
+		    //Thread.sleep(delay);
 		} //end while loop
 	    } catch(Exception ex) {
 		if(ex instanceof InterruptedException){}
@@ -544,12 +568,80 @@ public class FishAnimationEnvironment extends JFrame implements Serializable {
 	}
     } // end inner class named Animate
     
+
     /**
-       Class to handle mouse events. Some methods are present but not defined
+       Class to handle mouse and key events. Some methods are present but not defined
        because every method of the implemented class must be present to avoid
        compiler error
-    */
-    public class MouseHandler implements MouseListener, MouseMotionListener{
+    */	
+    public class MyListener implements KeyListener, MouseListener, MouseMotionListener{
+
+	public void keyTyped(KeyEvent e) {
+	}
+	
+	public void keyReleased(KeyEvent e) {
+
+		int key = e.getKeyCode();
+		if(stop == false){
+		    if(key == KeyEvent.VK_LEFT){
+				left = false;
+		    }
+              
+		    if(key == KeyEvent.VK_RIGHT){
+				right = false;
+		    }
+			
+		    if(key == KeyEvent.VK_UP){
+				up = false;
+            }
+        
+			if(key == KeyEvent.VK_DOWN){
+				down = false;
+			}
+                
+        }
+
+	}
+	
+	public void keyPressed(KeyEvent e){
+	    if(System.currentTimeMillis() - lastPressProcessed > 2) {
+
+		int key = e.getKeyCode();
+		if(stop == false){
+		    if(key == KeyEvent.VK_LEFT){
+			posX -= 10;
+			System.out.println("left pressed." + posX); 
+		    }
+              
+		    if(key == KeyEvent.VK_RIGHT){
+			posX += 10;
+			System.out.println("right pressed." + posX);
+		    }
+			
+		    if(key == KeyEvent.VK_UP){
+			posY -= 10;
+			System.out.println("up pressed." + posY);
+            }
+        
+			if(key == KeyEvent.VK_DOWN){
+			posY += 10;
+			System.out.println("down pressed."+posY);
+			}
+                
+			if (key == KeyEvent.VK_ESCAPE){
+				if(stop == false){
+					stop = true;
+					//insert pop up call here
+				}else{
+					stop = false;
+				}
+			}
+        }
+		lastPressProcessed = System.currentTimeMillis();
+	    }   
+	} // keyPressed
+
+
 	
 	public void mouseClicked(MouseEvent e) {
 	}
@@ -576,7 +668,6 @@ public class FishAnimationEnvironment extends JFrame implements Serializable {
 	    }
 	}	
     }
-	
     /** 
 	Class that creates an in game menu in order to Pause, 
 	resume, and save the game.
@@ -591,7 +682,7 @@ public class FishAnimationEnvironment extends JFrame implements Serializable {
 	
 	public void main (String[] args) {
 	    GameMenu menu = new GameMenu();
-	       // menu.makemenu();
+	    // menu.makemenu();
 	}
 	
 	/**
@@ -599,9 +690,9 @@ public class FishAnimationEnvironment extends JFrame implements Serializable {
 	   allows for user to select pause, resume, or save&exit.
 	*/
 	public GameMenu() {
-		Menu.setFont(new Font("Corsiva Hebrew", Font.PLAIN, 20));
-		Exit.setFont(new Font("Corsiva Hebrew", Font.PLAIN, 20));
-		Save.setFont(new Font("Corsiva Hebrew", Font.PLAIN, 20));
+	    Menu.setFont(new Font("Corsiva Hebrew", Font.PLAIN, 20));
+	    Exit.setFont(new Font("Corsiva Hebrew", Font.PLAIN, 20));
+	    Save.setFont(new Font("Corsiva Hebrew", Font.PLAIN, 20));
 	    Pause = new JButton(pause);
 	    Menu.addActionListener(this);
 	    Pause.addActionListener(this);
@@ -612,22 +703,25 @@ public class FishAnimationEnvironment extends JFrame implements Serializable {
 	    allTheButtons.setOpaque(false);
 	    animation.getContentPane().add(BorderLayout.SOUTH, allTheButtons);
 	    allTheButtons.add(Pause);
-		allTheButtons.add(Menu);
-		allTheButtons.add(Save);
+	    allTheButtons.add(Menu);
+	    allTheButtons.add(Save);
 	    allTheButtons.add(Exit);
 	    animation.setVisible(true);
 	}
 	
 	/** 
-	   Method to allow for actions that are performed on the button
-	   to be taken in and used as the source for an event to take place
+	    Method to allow for actions that are performed on the button
+	    to be taken in and used as the source for an event to take place
 	*/
 	public void actionPerformed(ActionEvent event) {
+	    if(stop == false){
+		
+	    }
 	    if(event.getSource() == Pause) {
 		if(stop == false) {
 		    stop = true;
 		    pausestart = System.nanoTime() / 1000000000;
-		   // pauseGame();  
+		    // pauseGame();  
 		}
 		else {
 		    stop = false;
@@ -662,8 +756,8 @@ public class FishAnimationEnvironment extends JFrame implements Serializable {
 			os.writeDouble(fishArray.get(k).getHeight());
 		    }
 		    for(int i = 0; i < numJellyFish; i++) {
-		    int toWriteX = (int) jellyfish.get(i).getXPos();
-		    int toWriteY = (int) jellyfish.get(i).getYPos();
+			int toWriteX = (int) jellyfish.get(i).getXPos();
+			int toWriteY = (int) jellyfish.get(i).getYPos();
 			os.writeInt(toWriteX);
 			os.writeInt(toWriteY);
 			os.writeDouble(jellyfish.get(i).getSpeed());
@@ -677,10 +771,10 @@ public class FishAnimationEnvironment extends JFrame implements Serializable {
 		numJellyFish = 0;
 		//System.exit(0);
 	    }
-		//If exit is clicked exits the game
-		if(event.getSource() == Exit) {
-			System.exit(0);
-		}
+	    //If exit is clicked exits the game
+	    if(event.getSource() == Exit) {
+		System.exit(0);
+	    }
 	}
 	
     }
