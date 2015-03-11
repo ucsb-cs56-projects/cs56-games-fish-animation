@@ -585,6 +585,9 @@ public class FishAnimationEnvironment extends JFrame implements Serializable {
 	JButton Pause;
 	URL pauseURL = getClass().getResource("/resources/PauseButton.jpg");
 	ImageIcon pause = new ImageIcon(pauseURL);
+	URL playURL = getClass().getResource("/resources/play.png");
+	ImageIcon play = new ImageIcon(playURL);
+	JPanel allTheButtons;
 	JButton Menu = new JButton("Menu");
 	JButton Save = new JButton("Save & Exit");
 	JButton Exit = new JButton("Exit");
@@ -608,7 +611,7 @@ public class FishAnimationEnvironment extends JFrame implements Serializable {
 	    Save.addActionListener(this);
 	    Exit.addActionListener(this);
 
-	    JPanel allTheButtons = new JPanel(new GridLayout(1,4));
+	    allTheButtons = new JPanel(new GridLayout(1,4));
 	    allTheButtons.setOpaque(false);
 	    animation.getContentPane().add(BorderLayout.SOUTH, allTheButtons);
 	    allTheButtons.add(Pause);
@@ -626,11 +629,33 @@ public class FishAnimationEnvironment extends JFrame implements Serializable {
 	    if(event.getSource() == Pause) {
 		if(stop == false) {
 		    stop = true;
+		    allTheButtons.remove(Pause);
+		    allTheButtons.remove(Menu);
+			allTheButtons.remove(Save);
+			allTheButtons.remove(Exit);
+			Pause = new JButton(play);
+			Pause.addActionListener(this);
+			allTheButtons.add(Pause);
+			allTheButtons.add(Menu);
+			allTheButtons.add(Save);
+			allTheButtons.add(Exit);
+			animation.setVisible(true);
 		    pausestart = System.nanoTime() / 1000000000;
 		   // pauseGame();  
 		}
 		else {
 		    stop = false;
+		    allTheButtons.remove(Pause);
+		    allTheButtons.remove(Menu);
+			allTheButtons.remove(Save);
+			allTheButtons.remove(Exit);
+			Pause = new JButton(pause);
+			Pause.addActionListener(this);
+			allTheButtons.add(Pause);
+			allTheButtons.add(Menu);
+			allTheButtons.add(Save);
+			allTheButtons.add(Exit);
+			animation.setVisible(true);
 		    pausetime += (System.nanoTime() / 1000000000 - pausestart);
 		}
 	    }
@@ -675,7 +700,7 @@ public class FishAnimationEnvironment extends JFrame implements Serializable {
 		}
 		eaten = 0;
 		numJellyFish = 0;
-		//System.exit(0);
+		System.exit(0);
 	    }
 		//If exit is clicked exits the game
 		if(event.getSource() == Exit) {
