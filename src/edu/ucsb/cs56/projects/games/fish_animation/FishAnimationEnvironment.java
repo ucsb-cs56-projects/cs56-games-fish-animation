@@ -36,6 +36,9 @@ public class FishAnimationEnvironment extends JFrame implements Serializable {
     //EndGamePanel endGamePanel = new EndGamePanel();
     DrawingPanel fishPanel = new DrawingPanel();
     JFrame animation = new JFrame();
+    JDialog dialog;
+	JPanel panel;
+	JButton Resume, Menu, Save, Exit;
     
     int maxX = 1366, maxY = 768; // Default height and width of the game at start
     int posX = maxX/2, posY = maxY/2;  //used to position the shark at the origin
@@ -103,7 +106,21 @@ public class FishAnimationEnvironment extends JFrame implements Serializable {
 	int randomD = (int) (Math.random() * diameter);
 	return new Bubbles(randomX, randomY, randomD);
     }
-    
+    public void actionPerformed(ActionEvent event) {
+    	if (event.getSource() == Save){
+    	
+    	
+    	}
+    	if (event.getSource() == Resume){
+    	}
+    	if (event.getSource() == Menu){
+    	
+    	}
+    	
+    	if (event.getSource() == Exit){
+    	
+    	}
+    }
     private void gameOver() {
 	String score;
 	if (eaten >= maxScore){
@@ -116,7 +133,7 @@ public class FishAnimationEnvironment extends JFrame implements Serializable {
 						  score,
 						  "Gameover!",
 						  JOptionPane.YES_NO_OPTION,
-						  JOptionPane.QUESTION_MESSAGE,
+						  JOptionPane.PLAIN_MESSAGE,
 						  null, null, null);
 
 	// interpret the user's choice
@@ -131,48 +148,62 @@ public class FishAnimationEnvironment extends JFrame implements Serializable {
 	    System.exit(0);
 	}
     }
-
-    /**
-       Method pauseGame. Creates a option pane that allows reset game and 
-
-    */
-    /*
-      private void pauseGame() {
-      String[] choices = {"Exit", "Resume Game", "Main Menu"};
-      ImageIcon pauseIcon = new ImageIcon(getClass().getResource("resouces/fish.png"));
-       
-      int choice = JOptionPane.showOptionDialog(null,
-      "Continue playing?",
-      "GAME PAUSED",
-      JOptionPane.YES_NO_OPTION,
-      JOptionPane.PLAIN_MESSAGE,
-      pauseIcon,
-      choices,
-      choices[1]);
-      switch(choice) {
-      case 0 :
-      stop = true;
-      //	timer.stop();
-      System.exit(0);
-      case 1 :
-      pausetime += (System.nanoTime() / 1000000000 - pausestart);
-      //pause = false;
-      stop = false;
-      break;
-      case 2 :
-      stop = true;
-      //timer.stop();
-      animation.dispose();
-      //MainEnvironment mainEnv = new MainEnvironment();
-      //FishAnimationEnvironment fishEnv = new FishAnimationEnvironment();
-      Menu menu = new Menu();
-      break;
-      }
-      }
-
-    */
-
-	
+    
+	private void pauseGame() {
+		stop = true;
+		URL pauseURL = getClass().getResource("/resources/pause.png");
+		ImageIcon pause = new ImageIcon(pauseURL);
+		Object[] options = { "Exit", "Save & Exit", "Resume Game", "Main Menu"};
+		int n = JOptionPane.showOptionDialog(null, "You have paused the game! "
+		+ "What would you like to do?", "Pause Game", JOptionPane.YES_NO_CANCEL_OPTION, 
+		JOptionPane.INFORMATION_MESSAGE, pause, options, options[0]);
+		if (n == 3){
+			Menu menu = new Menu();
+			menu.makegui();
+			animation.dispose();
+		}
+		else if (n == 2){
+			stop = false;
+			pausetime += (System.nanoTime() / 1000000000 - pausestart);
+		}
+		else if (n == 1){
+			try {
+				FileOutputStream fs = new FileOutputStream("saved.ser");
+				ObjectOutputStream os = new ObjectOutputStream(fs);
+				os.flush();
+				os.writeInt(eaten);
+				os.writeInt(numJellyFish);
+				os.writeInt(timer);
+				os.writeInt(posX);
+				os.writeInt(posY);
+				os.writeInt(boatX);
+				for(int k = 0; k < numFish; k++) {
+				os.writeDouble(fishArray.get(k).getXPos());
+				os.writeDouble(fishArray.get(k).getYPos());
+				os.writeDouble(fishArray.get(k).getWidth());
+				os.writeDouble(fishArray.get(k).getHeight());
+			}
+			for(int i = 0; i < numJellyFish; i++) {
+				int toWriteX = (int) jellyfish.get(i).getXPos();
+				int toWriteY = (int) jellyfish.get(i).getYPos();
+				os.writeInt(toWriteX);
+				os.writeInt(toWriteY);
+				os.writeDouble(jellyfish.get(i).getSpeed());
+			}
+			os.close();
+			}
+			catch(Exception ex) {
+				ex.printStackTrace();
+			}
+			eaten = 0;
+			numJellyFish = 0;
+			System.exit(0);
+		}
+		else if (n == 0){
+			System.exit(0);
+		}
+    }
+    
     /**
        Constructor for FishAnimationEnvironment. Creates a JFrame and a Jpanel that 
        is placed inside of it. Animation is done on the JPanel
@@ -270,7 +301,7 @@ public class FishAnimationEnvironment extends JFrame implements Serializable {
 	    Graphics2D g2 = (Graphics2D) g;
 	    g2.setColor(Color.BLUE);
 	    g2.fillRect(0, 0, this.getWidth(), this.getHeight());
-	    URL reefURL = getClass().getResource("/resources/background.png");
+	    URL reefURL = getClass().getResource("/resources/CoralReef.jpg");
 	    Image reef = new ImageIcon(reefURL).getImage();	   
 	    //update to background
 	    super.paintComponent(g); //replace current painting
@@ -288,9 +319,9 @@ public class FishAnimationEnvironment extends JFrame implements Serializable {
 	    URL sharkURL = getClass().getResource(dir);
 	    Image shark = new ImageIcon(sharkURL).getImage();
 
-	    URL seaweedURL = getClass().getResource("/resources/Seaweed.jpg");
+	    URL seaweedURL = getClass().getResource("/resources/Seaweed.png");
 	    Image seaweed = new ImageIcon(seaweedURL).getImage();
-	    URL boatURL = getClass().getResource("/resources/cartoon-boat.jpg");
+	    URL boatURL = getClass().getResource("/resources/ship.png");
 	    Image boat = new ImageIcon(boatURL).getImage();
 	    URL fishURL = getClass().getResource("/resources/fish.png");
 	    Image fish = new ImageIcon(fishURL).getImage();
@@ -301,7 +332,7 @@ public class FishAnimationEnvironment extends JFrame implements Serializable {
 	    }
 	    
 	    //Draws the image of the boat and also animates it
-	    g.drawImage(boat, boatX, -135, this);
+	    g.drawImage(boat, boatX, -200, this);
 	    if(!stop) {
 		boatX -= 10;
 		if(boatX <= -250) {
@@ -328,9 +359,11 @@ public class FishAnimationEnvironment extends JFrame implements Serializable {
 	    }
 	    if(newXPos > maxX - 160){
 		newXPos = maxX-160;
+
 	    }
 	    if(newYPos > maxY-130){
 		newYPos = maxY-130;
+
 	    }
 	    g2.drawImage(shark, newXPos, newYPos, this);
 	    
@@ -395,11 +428,11 @@ public class FishAnimationEnvironment extends JFrame implements Serializable {
 	    g.drawString(str2, 0, 65);
 	    if(eaten >= maxScore) {
 	    	stop = true;
-		gameOver();
+			gameOver();
 	    }
 	    else if(eaten <= minScore) {
 	    	stop = true;
-		gameOver();
+			gameOver();
 		
 	    }   
 	}
@@ -609,32 +642,23 @@ public class FishAnimationEnvironment extends JFrame implements Serializable {
 		int key = e.getKeyCode();
 		if(stop == false){
 		    if(key == KeyEvent.VK_LEFT){
-			posX -= 10;
-			System.out.println("left pressed." + posX); 
+			posX -= 30;
 		    }
               
 		    if(key == KeyEvent.VK_RIGHT){
-			posX += 10;
-			System.out.println("right pressed." + posX);
+			posX += 30;
 		    }
 			
 		    if(key == KeyEvent.VK_UP){
-			posY -= 10;
-			System.out.println("up pressed." + posY);
+			posY -= 30;
             }
         
 			if(key == KeyEvent.VK_DOWN){
-			posY += 10;
-			System.out.println("down pressed."+posY);
+			posY += 30;
 			}
                 
 			if (key == KeyEvent.VK_ESCAPE){
-				if(stop == false){
-					stop = true;
-					//insert pop up call here
-				}else{
-					stop = false;
-				}
+				pauseGame();
 			}
         }
 		lastPressProcessed = System.currentTimeMillis();
@@ -674,7 +698,7 @@ public class FishAnimationEnvironment extends JFrame implements Serializable {
     */
     class GameMenu implements ActionListener {
 	JButton Pause;
-	URL pauseURL = getClass().getResource("/resources/PauseButton.jpg");
+	URL pauseURL = getClass().getResource("/resources/pause.png");
 	ImageIcon pause = new ImageIcon(pauseURL);
 	URL playURL = getClass().getResource("/resources/play.png");
 	ImageIcon play = new ImageIcon(playURL);
@@ -685,7 +709,6 @@ public class FishAnimationEnvironment extends JFrame implements Serializable {
 	
 	public void main (String[] args) {
 	    GameMenu menu = new GameMenu();
-	    // menu.makemenu();
 	}
 	
 	/**
@@ -693,22 +716,22 @@ public class FishAnimationEnvironment extends JFrame implements Serializable {
 	   allows for user to select pause, resume, or save&exit.
 	*/
 	public GameMenu() {
-	    Menu.setFont(new Font("Corsiva Hebrew", Font.PLAIN, 20));
-	    Exit.setFont(new Font("Corsiva Hebrew", Font.PLAIN, 20));
-	    Save.setFont(new Font("Corsiva Hebrew", Font.PLAIN, 20));
-	    Pause = new JButton(pause);
-	    Menu.addActionListener(this);
-	    Pause.addActionListener(this);
-	    Save.addActionListener(this);
-	    Exit.addActionListener(this);
-
-	    allTheButtons = new JPanel(new GridLayout(1,4));
-	    allTheButtons.setOpaque(false);
-	    animation.getContentPane().add(BorderLayout.SOUTH, allTheButtons);
-	    allTheButtons.add(Pause);
-	    allTheButtons.add(Menu);
-	    allTheButtons.add(Save);
-	    allTheButtons.add(Exit);
+// 	    Menu.setFont(new Font("Corsiva Hebrew", Font.PLAIN, 20));
+// 	    Exit.setFont(new Font("Corsiva Hebrew", Font.PLAIN, 20));
+// 	    Save.setFont(new Font("Corsiva Hebrew", Font.PLAIN, 20));
+// 	    Pause = new JButton(pause);
+// 	    Menu.addActionListener(this);
+// 	    Pause.addActionListener(this);
+// 	    Save.addActionListener(this);
+// 	    Exit.addActionListener(this);
+// 
+// 	    allTheButtons = new JPanel(new GridLayout(1,4));
+// 	    allTheButtons.setOpaque(false);
+// 	    animation.getContentPane().add(BorderLayout.SOUTH, allTheButtons);
+// 	    allTheButtons.add(Pause);
+// 	    allTheButtons.add(Menu);
+// 	    allTheButtons.add(Save);
+// 	    allTheButtons.add(Exit);
 	    animation.setVisible(true);
 	}
 	
@@ -717,9 +740,6 @@ public class FishAnimationEnvironment extends JFrame implements Serializable {
 	    to be taken in and used as the source for an event to take place
 	*/
 	public void actionPerformed(ActionEvent event) {
-	    if(stop == false){
-		
-	    }
 	    if(event.getSource() == Pause) {
 		if(stop == false) {
 		    stop = true;
