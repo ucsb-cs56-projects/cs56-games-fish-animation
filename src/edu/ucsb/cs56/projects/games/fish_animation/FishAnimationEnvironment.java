@@ -108,10 +108,17 @@ public class FishAnimationEnvironment extends JFrame implements Serializable {
     }
     private void gameOver() {
 	String score;
+	
+	ImageIcon icon;
+	
 	if (eaten >= maxScore){
+		URL wonURL = getClass().getResource("/resources/won.png");
+		icon = new ImageIcon(wonURL);
 	    score = "You won! Your score was " + eaten + ". Play Again?";
 	}
 	else{
+		URL loseURL = getClass().getResource("/resources/fail.png");
+		icon = new ImageIcon(loseURL);
 	    score = "You lost! Your score was " + eaten + ". Play Again?";
 	}
 	int choice = JOptionPane.showOptionDialog(null,
@@ -119,7 +126,7 @@ public class FishAnimationEnvironment extends JFrame implements Serializable {
 						  "Gameover!",
 						  JOptionPane.YES_NO_OPTION,
 						  JOptionPane.PLAIN_MESSAGE,
-						  null, null, null);
+						  icon, null, null);
 
 	// interpret the user's choice
 	if (choice == JOptionPane.YES_OPTION)
