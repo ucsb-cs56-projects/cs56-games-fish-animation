@@ -21,8 +21,8 @@ import java.net.*;
    @author Mathew Glodack
    @author Jenna Cryan
    @author Josephine Vo
-   @author Michele Haque
    @author Shadee Barzin
+   @author Michele Haque
    @version for CS56, Winter 2015, UCSB
 */
 
@@ -162,11 +162,19 @@ public class FishAnimationEnvironment extends JFrame implements Serializable {
 	}
 
 	animation.getContentPane().add(BorderLayout.CENTER, fishPanel);
+	// begin animation
 	animate = new Animate();
 	animate.start();
-	animation.setDefaultCloseOperation(EXIT_ON_CLOSE);    
+
+	// Set game frame characteristics
 	animation.setSize(maxX, maxY);
+	animation.setDefaultCloseOperation(EXIT_ON_CLOSE);    
+	// Place game frame in center of screen
+	Dimension dim = Toolkit.getDefaultToolkit().getScreenSize();
+	animation.setLocation(dim.width/2-animation.getSize().width/2, dim.height/2-animation.getSize().height/2);
+	animation.setLocationRelativeTo(null);
 	animation.setVisible(true);
+
 	GameMenu game = new GameMenu();
 	game.makemenu();
     }//end constructor
@@ -324,7 +332,6 @@ public class FishAnimationEnvironment extends JFrame implements Serializable {
 	ActionListener actionlistener = new ActionListener(){
 		@Override
 		public void actionPerformed(ActionEvent e) {
-			// TODO Auto-generated method stub
 			JButton b = (JButton) e.getSource();
 			if(b.equals(playAgain)){
 				Menu m = new Menu();
