@@ -213,6 +213,7 @@ class Menu implements ActionListener {
 	    frame.remove(Play);
 	    frame.remove(Instruction);
 	    frame.remove(Exit);
+	    frame.setVisible(false);
 	    HowToPlay();
 	}
 	if(event.getSource() == Exit) {
