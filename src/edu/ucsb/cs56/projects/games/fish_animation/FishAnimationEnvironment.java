@@ -140,10 +140,8 @@ public class FishAnimationEnvironment extends JFrame implements Serializable {
 	    System.exit(0);
 	}
     }
-    
-	private void pauseGame() {
-		stop = true;
-		pausestart = System.nanoTime() / 1000000000;
+    private void pauseGame() {
+		
 		URL pauseURL = getClass().getResource("/resources/pause.png");
 		ImageIcon pause = new ImageIcon(pauseURL);
 		Object[] options = { "Exit", "Save & Exit", "Main Menu", "Resume Game"};
@@ -197,6 +195,7 @@ public class FishAnimationEnvironment extends JFrame implements Serializable {
 			System.exit(0);
 		}
     }
+
     
     /**
        Constructor for FishAnimationEnvironment. Creates a JFrame and a Jpanel that 
@@ -602,7 +601,7 @@ public class FishAnimationEnvironment extends JFrame implements Serializable {
        compiler error
     */	
     public class MyListener implements KeyListener, MouseListener, MouseMotionListener{
-
+		
 	public void keyTyped(KeyEvent e) {
 	}
 	
@@ -651,8 +650,15 @@ public class FishAnimationEnvironment extends JFrame implements Serializable {
 			posY += 30;
 			}
                 
-			if (key == KeyEvent.VK_SPACE){
+			if (key == KeyEvent.VK_ESCAPE && stop == false){
+				stop = true;
+				pausestart = System.nanoTime() / 1000000000;
 				pauseGame();
+				
+			}
+			if (key == KeyEvent.VK_ESCAPE && stop == true){
+				stop = false;
+				pausetime += (System.nanoTime() / 1000000000 - pausestart);
 			}
         }
 		lastPressProcessed = System.currentTimeMillis();

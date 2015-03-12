@@ -232,7 +232,7 @@ class Menu implements ActionListener {
 		//Creates text label for instructions
 		textArea = new JTextArea("To eat the fish, click on the shark and hold down the mouse button to move your shark's mouth to the fish. "
 		+ "You can also use the arrow keys on your keyboard to control the shark's movement. "
-		+ "To pause or access the menu, press the SPACE key.");
+		+ "To pause, resume the game, or access the menu, press the ESC key.");
 		textArea.setFont(new Font("Verdana", Font.PLAIN, 12));
 		textArea.setLineWrap(true);
 		textArea.setWrapStyleWord(true);
