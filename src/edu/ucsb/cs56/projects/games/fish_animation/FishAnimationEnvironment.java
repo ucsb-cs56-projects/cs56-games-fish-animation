@@ -170,8 +170,6 @@ public class FishAnimationEnvironment extends JFrame implements Serializable {
 	animation.setSize(maxX, maxY);
 	animation.setDefaultCloseOperation(EXIT_ON_CLOSE);    
 	// Place game frame in center of screen
-	Dimension dim = Toolkit.getDefaultToolkit().getScreenSize();
-	animation.setLocation(dim.width/2-animation.getSize().width/2, dim.height/2-animation.getSize().height/2);
 	animation.setLocationRelativeTo(null);
 	animation.setVisible(true);
 
@@ -307,6 +305,14 @@ public class FishAnimationEnvironment extends JFrame implements Serializable {
 		g.setFont(new Font("Corsiva Hebrew", Font.PLAIN, 100));
 		g.setColor(Color.RED);
 		String win = "YOU WON!";
+		if(!buttonAdded){
+			playAgain = new JButton("Play Again?");
+			playAgain.setLocation(505, 500);
+			playAgain.addActionListener(actionlistener);
+			playAgain.setSize(new Dimension(200,40));
+			this.add(playAgain);
+			buttonAdded = true;
+		}
 		g.drawString(win, 350, 400);
 	    }
 	    else if(eaten <= -25) {
@@ -545,7 +551,7 @@ public class FishAnimationEnvironment extends JFrame implements Serializable {
     class GameMenu implements ActionListener {
 	JButton Pause;
 	URL pauseURL = getClass().getResource("/resources/PauseButton.jpg");
-	URL playURL = getClass().getResource("/resources/play.png");
+	URL playURL = getClass().getResource("/resources/play.jpg");
 	ImageIcon pause = new ImageIcon(pauseURL);
 	ImageIcon play = new ImageIcon(playURL);
 	JButton Save = new JButton("Save & Exit");
