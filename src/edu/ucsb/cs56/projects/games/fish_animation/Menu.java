@@ -204,16 +204,15 @@ class Menu implements ActionListener {
     
     public void actionPerformed(ActionEvent event) {
 	if(event.getSource() == Play) {
-	    frame.remove(Play);
-	    frame.remove(Instruction);
-	    frame.remove(Exit);
+	    Play.setVisible(false);
+	    Instruction.setVisible(false);
+	    Exit.setVisible(false);
 	    setDifficulty();
 	}
 	if(event.getSource() == Instruction) {
 	    frame.remove(Play);
 	    frame.remove(Instruction);
 	    frame.remove(Exit);
-	    frame.setVisible(false);
 	    HowToPlay();
 	}
 	if(event.getSource() == Exit) {
