@@ -170,9 +170,7 @@ public class FishAnimationEnvironment extends JFrame implements Serializable {
 	animation.setSize(maxX, maxY);
 	animation.setDefaultCloseOperation(EXIT_ON_CLOSE);    
 	// Place game frame in center of screen
-	/*Dimension dim = Toolkit.getDefaultToolkit().getScreenSize();
-	animation.setLocation(dim.width/2-animation.getSize().width/2, dim.height/2-animation.getSize().height/2);
-	animation.setLocationRelativeTo(null);*/
+	animation.setLocationRelativeTo(null);
 	animation.setVisible(true);
 
 	GameMenu game = new GameMenu();
