@@ -212,7 +212,8 @@ public class FishAnimationEnvironment extends JFrame implements Serializable {
 	    Image seaweed = new ImageIcon(seaweedURL).getImage();
 	    URL boatURL = getClass().getResource("/resources/cartoon-boat.jpg");
 	    Image boat = new ImageIcon(boatURL).getImage();
-	    
+	    URL jellyfishURL = getClass().getResource("/resources/jellyfish.jpg");
+	    Image jellyfishImg = new ImageIcon(jellyfishURL).getImage();
 	    
 	    //Draws the seaweed at the specified points
 	    for (int i = 0; i < this.getWidth() + 125; i += 125) {
@@ -268,10 +269,9 @@ public class FishAnimationEnvironment extends JFrame implements Serializable {
 	    for(int i = 0; i < jellyfish.size(); i++) {
 	    	int jNewXPos = (int) jellyfish.get(i).getXPos();
 		int jNewYPos = (int) jellyfish.get(i).getYPos();
-		if(jellyfish.get(i).CheckJellyFish() == true) {
+		if(jellyfish.get(i).CheckJellyFish() == true) {		    
 		    //Draws the Body of the JellyFish
 		    g2.fillArc(jNewXPos, jNewYPos, 50, 40, 0, 180);
-
 		    //Draws the Tentacles of the JellyFish
      		    for(int j = (int) jellyfish.get(i).getXPos()+5; j < jellyfish.get(i).getXPos() + 50; j += 5){
 			g2.drawLine(j, jNewYPos + 75, j, jNewYPos + 10);
@@ -285,7 +285,7 @@ public class FishAnimationEnvironment extends JFrame implements Serializable {
 			g2.drawLine(j,jNewYPos+95,j,jNewYPos+10);
 		    }
 		}	    
-	    }		
+	    }	
 	    
 	    //displays the number of points
 	    g.setFont(new Font("Corsiva Hebrew", Font.PLAIN, 40));
@@ -306,13 +306,13 @@ public class FishAnimationEnvironment extends JFrame implements Serializable {
 		String win = "YOU WON!";
 		if(!buttonAdded){
 			playAgain = new JButton("Play Again?");
-			playAgain.setLocation(505, 500);
 			playAgain.addActionListener(actionlistener);
 			playAgain.setSize(new Dimension(200,40));
+			playAgain.setLocation(575, 470);
 			this.add(playAgain);
 			buttonAdded = true;
 		}
-		g.drawString(win, 350, 400);
+		g.drawString(win, 430, 300);
 	    }
 	    else if(eaten <= -25) {
 		stop = true;
@@ -323,14 +323,14 @@ public class FishAnimationEnvironment extends JFrame implements Serializable {
 		// add a Play Again button
 		if(!buttonAdded){
 			playAgain = new JButton("Play Again?");
-			playAgain.setLocation(505, 500);
 			playAgain.addActionListener(actionlistener);
 			playAgain.setSize(new Dimension(200,40));
+			playAgain.setLocation(575, 470);
 			this.add(playAgain);
 			buttonAdded = true;
 		}
-		g.drawString(lose, 325, 250);
-		g.drawString(lose2, 140, 400);
+		g.drawString(lose, 375, 250);
+		g.drawString(lose2, 150, 400);
 	     }   
 	}
 	// ActionListener that checks if the Play Again button was clicked	
