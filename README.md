@@ -43,7 +43,7 @@ The user selects Play Game, and a window that looks like this appears so the use
 ##Game Play
 When the game is started from the beginning, the background and characters will be displayed similarly to this.
 
-![](https://raw.githubusercontent.com/mochele15/cs56-games-fish-animation/master/screenshots/Normal_game.png)
+![](https://raw.githubusercontent.com/mochele15/cs56-games-fish-animation/master/screenshots/GamePlay.png)
 
 ##Link to Javadoc
 The javadoc for this game can be found here: www.cs.ucsb.edu/~michelehaque/cs56/cs56_games_fish_animation/javadoc/
