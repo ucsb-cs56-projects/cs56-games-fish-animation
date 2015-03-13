@@ -289,20 +289,20 @@ public class FishAnimationEnvironment extends JFrame implements Serializable {
 	    
 	    //displays the number of points
 	    g.setFont(new Font("Corsiva Hebrew", Font.PLAIN, 40));
-	    g.setColor(Color.WHITE);
+	    g.setColor(new Color(0xD4FFFF));
 	    String str1 = "Points: " + eaten + "!";
 	    g.drawString(str1, 0, 35);
 	    
 	    //displays the current elapsed time of the game in seconds
 	    g.setFont(new Font("Corsiva Hebrew", Font.PLAIN, 30));
-	    g.setColor(Color.WHITE);
+	    g.setColor(new Color(0xD4FFFF));
 	    String str2 = "Seconds Elapsed: " + timer;
 	    g.drawString(str2, 0, 65);
 
 	    if(eaten >= 50) {
 		stop = true;
 		g.setFont(new Font("Corsiva Hebrew", Font.PLAIN, 100));
-		g.setColor(Color.WHITE);
+		g.setColor(new Color(0xDAFFFF));
 		String win = "YOU WON!";
 		if(!buttonAdded){
 			playAgain = new JButton("Play Again?");
@@ -317,7 +317,7 @@ public class FishAnimationEnvironment extends JFrame implements Serializable {
 	    else if(eaten <= -25) {
 		stop = true;
 		g.setFont(new Font("Corsiva Hebrew", Font.PLAIN, 100));
-		g.setColor(Color.WHITE);
+		g.setColor(new Color(0xDAFFFF));
 		String lose = "Game Over!";
 		String lose2 = "Better luck next time!";
 		// add a Play Again button
