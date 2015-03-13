@@ -23,7 +23,7 @@ import java.net.URL;
 */
 
 class Menu implements ActionListener {
-    JButton Play, Instruction, Exit, Resume, Easy, Medium, Hard, Back, Menu;
+    JButton Play, Instruction, Exit, Resume, Easy, Medium, Hard, VeryHard, Back, Menu;
     JFrame frame, instruct;
     int type;
     JTextArea instrLabel, instrText;
@@ -113,6 +113,7 @@ class Menu implements ActionListener {
 	Easy = new JButton("Easy");
 	Medium = new JButton("Medium");
 	Hard = new JButton("Hard");
+	VeryHard = new JButton("Very Hard");
 	Resume = new JButton("Resume Game");
 	
 	//Sets the size of the buttons
@@ -120,6 +121,7 @@ class Menu implements ActionListener {
 	Easy.setPreferredSize(new Dimension(200, 75));
 	Medium.setPreferredSize(new Dimension(200, 75));
 	Hard.setPreferredSize(new Dimension(200, 75));
+	VeryHard.setPreferredSize(new Dimension(200,75));
 	Resume.setPreferredSize(new Dimension(200,75));
 	
 	//Gives the buttons actionlisteners
@@ -127,6 +129,7 @@ class Menu implements ActionListener {
 	Easy.addActionListener(this);
 	Medium.addActionListener(this);
 	Hard.addActionListener(this);
+	VeryHard.addActionListener(this);
 	Resume.addActionListener(this);
 
 	//Puts the buttons onto the frame in BorderLayout format
@@ -139,6 +142,8 @@ class Menu implements ActionListener {
 	frame.add(Medium);
 	Hard.setAlignmentX(frame.CENTER_ALIGNMENT);
 	frame.add(Hard);
+	VeryHard.setAlignmentX(frame.CENTER_ALIGNMENT);
+	frame.add(VeryHard);
 	Resume.setAlignmentX(frame.CENTER_ALIGNMENT);
 	frame.add(Resume);
 	frame.setVisible(true);
@@ -230,6 +235,10 @@ class Menu implements ActionListener {
 	if(event.getSource() == Hard) {
 	    frame.setVisible(false);
 	    FishAnimationEnvironment f = new FishAnimationEnvironment(14, false);
+	}
+	if(event.getSource() == VeryHard) {
+	    frame.setVisible(false);
+	    FishAnimationEnvironment f = new FishAnimationEnvironment(22, false);
 	}
 	if(event.getSource() == Resume) {
 	    frame.setVisible(false);
