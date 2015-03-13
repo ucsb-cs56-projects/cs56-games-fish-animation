@@ -21,6 +21,7 @@ __Navigation__:
    - [Main Menu](https://github.com/mochele15/cs56-games-fish-animation#main-menu)
    - [Starting the Game](https://github.com/mochele15/cs56-games-fish-animation#starting-the-game)
    - [Game Play](https://github.com/mochele15/cs56-games-fish-animation#game-play)
+   - [End of Game](https://github.com/mochele15/cs56-games-fish-animation#end-of-game)
    - [Link to Javadoc](https://github.com/mochele15/cs56-games-fish-animation#link-to-javadoc)
 
 ##Introduction
@@ -44,6 +45,11 @@ The user selects Play Game, and a window that looks like this appears so the use
 When the game is started from the beginning, the background and characters will be displayed similarly to this.
 
 ![](https://raw.githubusercontent.com/mochele15/cs56-games-fish-animation/master/screenshots/GamePlay.png)
+
+##End of Game
+When the game ends, the user is able to Play Again or Exit the game.
+
+ ![](https://raw.githubusercontent.com/mochele15/cs56-games-fish-animation/master/screenshots/EndGameScreen.png)
 
 ##Link to Javadoc
 The javadoc for this game can be found here: www.cs.ucsb.edu/~michelehaque/cs56/cs56_games_fish_animation/javadoc/
