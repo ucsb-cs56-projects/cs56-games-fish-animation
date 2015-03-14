@@ -15,7 +15,9 @@ import java.awt.geom.AffineTransform;
 
     @author Josephine Vo
     @author Jenna Cryan
-    @version for CS56, Winter 2014, UCSB
+    @author Jazarie Thach
+    @author Felicia Truong
+    @version for CS56, Winter 2015, UCSB
  */
 
 public class JellyFish extends ScumOfTheSea{

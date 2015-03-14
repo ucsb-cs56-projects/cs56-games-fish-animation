@@ -6,6 +6,8 @@ import java.awt.event.*;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
 import java.util.*;
+import java.io.*;
+import java.net.*;
 
 /**
    Implements a GUI that allows the user to choose diffculty,
@@ -15,16 +17,21 @@ import java.util.*;
    @author Daryl Pham
    @author Jenna Cryan
    @author Josephine Vo
+   @author Felicia Truong
+   @author Jazarie Thach
    @version for CS56, Winter 14, UCSB
 */
 
 class Menu implements ActionListener {
-    JButton Play, Instruction, Exit, Resume, Easy, Medium, Hard, Back, Menu;
+    JButton Play, Instruction, Exit, Replay, Character, Next, Start,
+    Jessica, Martha, Teresa, Resume, Easy, Medium, Hard, Back, Menu;
     JFrame frame, instruct;
+    JPanel panel, textPanel, buttonPanel;
     int type;
-    JTextArea text;
+    JTextArea textArea;
     JLabel textLabel;
-    
+	int sharkType;    
+	
     public static void main (String[] args) {
 	Menu menu = new Menu();
 	menu.makegui();
@@ -35,8 +42,10 @@ class Menu implements ActionListener {
        Allows for user to select exit, play, or instruction.
     */
     public void makegui () {
+    
 	frame = new JFrame();
-	frame.setSize(600, 75);
+	frame.setTitle("Fish Animation");
+	frame.setSize(800, 600);
 	frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 	
 	//Adds the different buttons to the menu
@@ -53,87 +62,208 @@ class Menu implements ActionListener {
 	Play.addActionListener(this);
 	Instruction.addActionListener(this);
 	Exit.addActionListener(this);
-	
+	URL bgURL = getClass().getResource("/resources/mainbg.png");
+   	ImageIcon bgIM = new ImageIcon(new ImageIcon(bgURL).getImage());
+   	JLabel label = new JLabel(bgIM);
+   	frame.setContentPane(label);
+   	frame.setLayout(new GridBagLayout());
+   	
 	//Sets up the layout of the GUI
-	frame.getContentPane().add(BorderLayout.WEST, Play);
-	frame.getContentPane().add(BorderLayout.CENTER, Instruction);
-	frame.getContentPane().add(BorderLayout.EAST, Exit);
-	frame.setSize(600, 75);
+	frame.getContentPane().add(Play);
+	frame.getContentPane().add(Instruction);
+	frame.getContentPane().add(Exit);
+	frame.setSize(800, 600);
+	frame.setResizable(false);
 	frame.setVisible(true);
     }
     
-    
+    public void setCharacter () {
+		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		URL jessicaURL = getClass().getResource("/resources/1.png");
+		ImageIcon jessicaIM = new ImageIcon(new ImageIcon(jessicaURL).getImage());
+	
+		URL marthaURL = getClass().getResource("/resources/2.png");
+		ImageIcon marthaIM = new ImageIcon(new ImageIcon(marthaURL).getImage());
+	
+		URL teresaURL = getClass().getResource("/resources/3.png");
+		ImageIcon teresaIM = new ImageIcon(new ImageIcon(teresaURL).getImage());
+		
+		Jessica = new JButton();
+		Martha = new JButton();
+		Teresa = new JButton();
+	
+		Jessica.setIcon(jessicaIM);
+		Martha.setIcon(marthaIM);
+		Teresa.setIcon(teresaIM);
+	
+		Jessica.setText("Jessica");
+		Martha.setText("Martha");
+		Teresa.setText("Teresa");
+		Jessica.setPreferredSize(new Dimension(225, 250));
+		Martha.setPreferredSize(new Dimension(225, 250));
+		Teresa.setPreferredSize(new Dimension(225, 250));
+	
+		Jessica.addActionListener(this);
+		Martha.addActionListener(this);
+		Teresa.addActionListener(this);
+	
+		Jessica.setHorizontalTextPosition(JButton.CENTER);
+		Martha.setHorizontalTextPosition(JButton.CENTER);
+		Teresa.setHorizontalTextPosition(JButton.CENTER);
+	
+		Jessica.setVerticalTextPosition(JButton.BOTTOM);
+		Martha.setVerticalTextPosition(JButton.BOTTOM);
+		Teresa.setVerticalTextPosition(JButton.BOTTOM);
+	
+		Jessica.setFont(new Font("Corsiva Hebrew", Font.PLAIN, 20));
+		Martha.setFont(new Font("Corsiva Hebrew", Font.PLAIN, 20));
+		Teresa.setFont(new Font("Corsiva Hebrew", Font.PLAIN, 20));
+		frame.getContentPane().add(Jessica);
+		frame.getContentPane().add(Martha);
+		frame.getContentPane().add(Teresa);
+		frame.setSize(800, 600);
+		frame.setResizable(false);
+		frame.setVisible(true);
+    }
     /**
        GUI section that allows for user to select difficulty level
      */
     public void setDifficulty () {
+		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		frame.setLayout(new GridBagLayout());
+		panel = new JPanel();
+		panel.setLayout(new GridLayout(5,1));
+		panel.setPreferredSize(new Dimension(150, 125));
+		panel.setOpaque(false);
+	
+		//Adds the different difficulty buttons
+		Easy = new JButton("Easy");
+		Medium = new JButton("Medium");
+		Hard = new JButton("Hard");
+		Resume = new JButton("Resume Game");
+		Menu = new JButton("Main Menu");
+	
+		Easy.setBackground(new Color(0xCC99FF));
+		Medium.setBackground(new Color(0xCC99FF));
+		Hard.setBackground(new Color(0xCC99FF));
+		Resume.setBackground(new Color(0xCC99FF));
+		Menu.setBackground(new Color(0xCC99FF));
 
-	frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-	
-	//Adds the different difficulty buttons
-	Menu = new JButton("Main Menu");
-	Easy = new JButton("Easy");
-	Medium = new JButton("Medium");
-	Hard = new JButton("Hard");
-	Resume = new JButton("Resume Game");
-	
-	//Sets the size of the buttons
-	Menu.setPreferredSize(new Dimension(200, 75));
-	Easy.setPreferredSize(new Dimension(200, 75));
-	Medium.setPreferredSize(new Dimension(200, 75));
-	Hard.setPreferredSize(new Dimension(200, 75));
-	Resume.setPreferredSize(new Dimension(200, 75));
-	
-	//Gives the buttons actionlisteners
-	Menu.addActionListener(this);
-	Easy.addActionListener(this);
-	Medium.addActionListener(this);
-	Hard.addActionListener(this);
-	Resume.addActionListener(this);
+		//Gives the buttons actionlisteners
+		Easy.addActionListener(this);
+		Medium.addActionListener(this);
+		Hard.addActionListener(this);
+		Resume.addActionListener(this);
+		Menu.addActionListener(this);
 
-	//Puts the buttons onto the frame in BorderLayout format
-	frame.getContentPane().add(BorderLayout.NORTH, Menu);
-	frame.getContentPane().add(BorderLayout.WEST, Easy);
-	frame.getContentPane().add(BorderLayout.CENTER, Medium);
-	frame.getContentPane().add(BorderLayout.EAST, Hard);
-	frame.getContentPane().add(BorderLayout.SOUTH, Resume);
-	frame.setSize(600, 300);
-	frame.setVisible(true);
+		panel.add(Easy);
+		panel.add(Medium);
+		panel.add(Hard);
+		panel.add(Resume);
+		panel.add(Menu);
+	
+		frame.add(panel);
+		frame.setResizable(false);
+		frame.pack();
+		frame.setSize(800, 600);
+		panel.setVisible(true);
+		frame.setVisible(true);
     }
     
     /**
        GUI that shows the user how to play the game.  Provides
        instructions and a description of the game overall.
     */
-    public void HowToPlay() {
-	
+	 public void introduction() {
 	//Creates new frame for the new menu that will pop up
-	instruct = new JFrame();
-	instruct.setSize(300, 300);
-	
-	//Creates text label for instructions
-	textLabel = new JLabel();
-	textLabel.setText("<html><p>Hello! The goal of the game is to eat as many fish as you can. "
-			  + "There's no time limit, but watch out! Jellyfish are out to get you! "
-			  + "If you eat the jellyfish, you'll lose points! "
-			  + "If you get too many negative points, you lose :( "
-			  + "To eat the fish, click on the shark and hold down the mouse button to move your shark's mouth to the fish. "
-			  + "There are three different difficulties, so test your skills on all of them! Good eating!</p></html>");
+		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		textPanel = new JPanel();
+		textPanel.setPreferredSize(new Dimension(250, 300));		
 
-	//Adds button to the instruction popup
-	Back = new JButton("Menu");
+		//Creates text label for instructions
+		textArea = new JTextArea("Hello! The goal of the game is to eat as many fish as you can. "
+		+ "There is no time limit, but watch out! Jellyfish are out to get you! "
+		+ "If you eat the jellyfish, you'll lose points! "
+		+ "If you get too many negative points, you lose! :( "
+		+ "There are three different difficulties, so test your skills on all of them! Good eating!");
+		textArea.setFont(new Font("Verdana", Font.PLAIN, 12));
+		textArea.setLineWrap(true);
+		textArea.setWrapStyleWord(true);
+		textArea.setEditable(false);
+		textArea.setPreferredSize(new Dimension(250, 200));
+		textArea.setBorder(
+            BorderFactory.createCompoundBorder(
+                BorderFactory.createCompoundBorder(
+                                BorderFactory.createTitledBorder("Introduction"),
+                                BorderFactory.createEmptyBorder(5,5,5,5)),
+                textArea.getBorder()));
+		//Adds button to the instruction popup
+		Back = new JButton("Back to Menu");
+		Next = new JButton("Next");
+
+		//Adds action listener to the button to go back to the mainmenu
+
+		Back.addActionListener(this);
+		Next.addActionListener(this);
 	
-	//Adds action listener to the button to go back to the mainmenu
-	Back.addActionListener(this);
-	Back.setPreferredSize(new Dimension(150, 75));
+		Back.setPreferredSize(new Dimension(150, 40));
+		Next.setPreferredSize(new Dimension(150, 40));
+
+		textPanel.add(textArea);
+		textPanel.add(Next);
+		textPanel.add(Back);
+		textPanel.setOpaque(false);
+		frame.getContentPane().add(textPanel);
+		frame.pack();
+		frame.setSize(800, 600);
+		frame.setVisible(true);
+	}
+    
+        /**
+       GUI that shows the user how to play the game.  Provides
+       instructions and a description of the game overall.
+    */
+	 public void HowToPlay() {
+	//Creates new frame for the new menu that will pop up
+		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		textPanel = new JPanel();
+		textPanel.setPreferredSize(new Dimension(250, 300));		
+
+		//Creates text label for instructions
+		textArea = new JTextArea("To eat the fish, click on the shark and hold down the mouse button to move your shark's mouth to the fish. "
+		+ "You can also use the arrow keys on your keyboard to control the shark's movement. "
+		+ "To pause, resume the game, or access the menu, press the ESC key.");
+		textArea.setFont(new Font("Verdana", Font.PLAIN, 12));
+		textArea.setLineWrap(true);
+		textArea.setWrapStyleWord(true);
+		textArea.setEditable(false);
+		textArea.setPreferredSize(new Dimension(250, 200));
+		textArea.setBorder(
+            BorderFactory.createCompoundBorder(
+                BorderFactory.createCompoundBorder(
+                                BorderFactory.createTitledBorder("Instructions"),
+                                BorderFactory.createEmptyBorder(5,5,5,5)),
+                textArea.getBorder()));
+		//Adds button to the instruction popup
+		Start = new JButton("Start");
+		Back = new JButton("Back to Menu");
+
+		//Adds action listener to the button to go back to the mainmenu
+		Start.addActionListener(this);
+		Back.addActionListener(this);
 	
-	//Adds the layout for the button and the textArea
-	instruct.getContentPane().add(BorderLayout.NORTH, textLabel);
-	instruct.getContentPane().add(BorderLayout.SOUTH, Back);
-	instruct.setVisible(true);
-    }
-    
-    
+		Start.setPreferredSize(new Dimension(150, 40));
+		Back.setPreferredSize(new Dimension(150, 40));
+
+		textPanel.add(textArea);
+		textPanel.add(Start);
+		textPanel.add(Back);
+		textPanel.setOpaque(false);
+		frame.getContentPane().add(textPanel);
+		frame.pack();
+		frame.setSize(800, 600);
+		frame.setVisible(true);
+	}
     /** 
 	Method that takes in Mouse actions and converts them into
 	actions that the program will perform. The actions performed 
@@ -143,25 +273,27 @@ class Menu implements ActionListener {
     public void actionPerformed(ActionEvent event) {
 	if(event.getSource() == Easy) {
 	    frame.setVisible(false);
-	    FishAnimationEnvironment f = new FishAnimationEnvironment(3, false);
+	    FishAnimationEnvironment f = new FishAnimationEnvironment(3, sharkType, false);
 	}
 	if(event.getSource() == Medium) {
 	    frame.setVisible(false);
-	    FishAnimationEnvironment f = new FishAnimationEnvironment(7, false);
+	    FishAnimationEnvironment f = new FishAnimationEnvironment(7, sharkType, false);
 	}
 	if(event.getSource() == Hard) {
 	    frame.setVisible(false);
-	    FishAnimationEnvironment f = new FishAnimationEnvironment(14, false);
+	    FishAnimationEnvironment f = new FishAnimationEnvironment(14, sharkType, false);
 	}
 	if(event.getSource() == Resume) {
 	    frame.setVisible(false);
-	    FishAnimationEnvironment f = new FishAnimationEnvironment(0, true);
+	    FishAnimationEnvironment f = new FishAnimationEnvironment(0, sharkType, true);
 	}
 	if(event.getSource() == Play) {
 	    frame.remove(Play);
 	    frame.remove(Instruction);
 	    frame.remove(Exit);
-	    setDifficulty();
+	    frame.setVisible(false);
+	    setCharacter();
+	    
 	}
 	if(event.getSource() == Exit) {
 	    System.exit(0);
@@ -170,24 +302,74 @@ class Menu implements ActionListener {
 	    frame.remove(Play);
 	    frame.remove(Instruction);
 	    frame.remove(Exit);
+	  	frame.setVisible(false);
+	    introduction();
+	}
+	if(event.getSource() == Start) {
+	    frame.remove(Back);
+	    frame.remove(Start);
+	    textPanel.setVisible(false);
+	    frame.remove(textPanel);
+	    frame.setVisible(false);
+	    setCharacter();
+	}
+	if(event.getSource() == Back) {
+	    frame.remove(Back);
+	    frame.remove(Next);
+	    textPanel.setVisible(false);
+	    frame.remove(textPanel);
+	    frame.setVisible(false);
+	    makegui();
+	}
+	if(event.getSource() == Next) {
+	    frame.remove(Back);
+	    textPanel.setVisible(false);
+	    frame.remove(textPanel);
 	    frame.setVisible(false);
 	    HowToPlay();
 	}
-	if(event.getSource() == Back) {
-	    instruct.remove(Back);
-	    instruct.remove(textLabel);
-	    instruct.setVisible(false);
-	    makegui();
+	if(event.getSource() == Character) {
+	   	frame.remove(Jessica);
+		frame.remove(Martha);
+		frame.remove(Teresa);
+		frame.setVisible(false);
+	   	setCharacter();
 	}
-	if(event.getSource() == Menu) {
-	    frame.remove(Menu);
-	    frame.remove(Easy);
-	    frame.remove(Medium);
-	    frame.remove(Hard);
-	    frame.remove(Resume);
-	    frame.setVisible(false);
-	    makegui();
-	}
+	if(event.getSource() == Jessica){
+		frame.remove(Jessica);
+		frame.remove(Martha);
+		frame.remove(Teresa);
+		frame.setVisible(false);
+		sharkType = 1;
+		setDifficulty();
     }
+    if(event.getSource() == Martha){
+		frame.remove(Jessica);
+		frame.remove(Martha);
+		frame.remove(Teresa);
+		frame.setVisible(false);
+		sharkType = 2;
+		setDifficulty();
+    }
+    if(event.getSource() == Teresa){
+		frame.remove(Jessica);
+		frame.remove(Martha);
+		frame.remove(Teresa);
+		frame.setVisible(false);
+		sharkType = 3;
+		setDifficulty();
+    }
+    if(event.getSource() == Menu) {
+	    panel.remove(Easy);
+	    panel.remove(Medium);
+	    panel.remove(Hard);
+	    panel.remove(Resume);
+	    panel.remove(Menu);
+	    frame.remove(panel);
+	    panel.setVisible(false);
+		frame.setVisible(false);
+		makegui();
+	}
+}
 }
 
