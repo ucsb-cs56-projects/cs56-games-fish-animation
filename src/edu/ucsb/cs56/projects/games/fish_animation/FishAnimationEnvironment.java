@@ -21,7 +21,9 @@ import java.net.*;
    @author Mathew Glodack
    @author Jenna Cryan
    @author Josephine Vo
-   @version for CS56, Winter 2014, UCSB
+   @author Abhijit Kulkarni
+   @author Angela Yung
+   @version for CS56, Winter 2016, UCSB
 */
 
 public class FishAnimationEnvironment extends JFrame implements Serializable {
@@ -194,6 +196,11 @@ public class FishAnimationEnvironment extends JFrame implements Serializable {
 	    fishPanel.addMouseListener(handler);
 	    fishPanel.addMouseMotionListener(handler);
 	    
+	    //Starts the Key Listener to listen for key events in the panel
+	    KeyHandler keyH = new KeyHandler();
+	    fishPanel.addKeyListener(keyH);
+	    fishPanel.requestFocus();
+
 	    //Images in the game
 	    URL sharkURL = getClass().getResource("/resources/shark.jpg");
 	    Image shark = new ImageIcon(sharkURL).getImage();
@@ -224,6 +231,14 @@ public class FishAnimationEnvironment extends JFrame implements Serializable {
 	    }
 	    
 	    //Draws the image of the Shark
+	    if(posX < 0)
+	  		posX = maxX;
+	  	else if(posX > maxX)
+	  		posX = 30;
+	  	if(posY < 30)
+	  		posY = maxY-100;
+	  	else if(posY > maxY-100)
+	  		posY = 30;
 	    Shark s = new Shark(posX, posY);
 	    int newXPos = (int) s.getXPos() - 160;
 	    int newYPos = (int) s.getYPos() - 130;
@@ -469,6 +484,35 @@ public class FishAnimationEnvironment extends JFrame implements Serializable {
 	}
     } // end inner class named Animate
     
+
+    /**
+    	Class to handle key events. Some methods are present but not defined 
+    	because every method of the implemented must be present to avoid
+    	compiler error. This lets the shark move using arrow keys.
+    */
+    public class KeyHandler implements KeyListener{
+    	public void keyPressed(KeyEvent e){
+    		int press = e.getKeyCode();
+    		switch(press){
+    			case KeyEvent.VK_LEFT:
+    				posX--;
+    				break;
+    			case KeyEvent.VK_RIGHT:
+    				posX++;
+    				break;
+    			case KeyEvent.VK_UP:
+    				posY--;
+    				break;
+    			case KeyEvent.VK_DOWN:
+    				posY++;
+    				break;
+    		}
+    		repaint();
+    	}
+    	public void keyTyped(KeyEvent e){}
+    	public void keyReleased(KeyEvent e){}
+    }
+
     /**
        Class to handle mouse events. Some methods are present but not defined
        because every method of the implemented class must be present to avoid
@@ -489,6 +533,7 @@ public class FishAnimationEnvironment extends JFrame implements Serializable {
 	}
 	
 	public void mouseReleased(MouseEvent e) {
+		fishPanel.requestFocus();
 	}
 	
 	public void mouseMoved(MouseEvent e) {
