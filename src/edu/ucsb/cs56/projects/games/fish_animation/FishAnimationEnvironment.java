@@ -49,6 +49,7 @@ public class FishAnimationEnvironment extends JFrame implements Serializable {
     int delay = 20; // The pause button delay
     boolean stop = false; // used to know when to pause the animation and when not to
     boolean load = false; // used to determine whether or not the game loads from the serialized form
+    long lastPress = 0;
 	
     //create ArrayLists for fish, bubbles, and jellyfish.
     ArrayList<Fish> fishArray = new ArrayList<Fish>();    
@@ -492,22 +493,25 @@ public class FishAnimationEnvironment extends JFrame implements Serializable {
     */
     public class KeyHandler implements KeyListener{
     	public void keyPressed(KeyEvent e){
-    		int press = e.getKeyCode();
-    		switch(press){
-    			case KeyEvent.VK_LEFT:
-    				posX--;
-    				break;
-    			case KeyEvent.VK_RIGHT:
-    				posX++;
-    				break;
-    			case KeyEvent.VK_UP:
-    				posY--;
-    				break;
-    			case KeyEvent.VK_DOWN:
-    				posY++;
-    				break;
+    		if(System.currentTimeMillis() - lastPress > 2){
+	    		int press = e.getKeyCode();
+	    		switch(press){
+	    			case KeyEvent.VK_LEFT:
+	    				posX-=25;
+	    				break;
+	    			case KeyEvent.VK_RIGHT:
+	    				posX+=25;
+	    				break;
+	    			case KeyEvent.VK_UP:
+	    				posY-=25;
+	    				break;
+	    			case KeyEvent.VK_DOWN:
+	    				posY+=25;
+	    				break;
+	    		}
+	    		lastPress = System.currentTimeMillis();
+    			repaint();
     		}
-    		repaint();
     	}
     	public void keyTyped(KeyEvent e){}
     	public void keyReleased(KeyEvent e){}
