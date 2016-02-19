@@ -50,11 +50,70 @@ public class FishAnimationEnvironment extends JFrame implements Serializable {
     boolean stop = false; // used to know when to pause the animation and when not to
     boolean load = false; // used to determine whether or not the game loads from the serialized form
     long lastPress = 0;
+    int choice = -1;
+    String message = "";
+    boolean gameover = false;
 	
     //create ArrayLists for fish, bubbles, and jellyfish.
     ArrayList<Fish> fishArray = new ArrayList<Fish>();    
     ArrayList<Bubbles> bubblesArray = new ArrayList<Bubbles>();
     ArrayList<JellyFish> jellyfish = new ArrayList<JellyFish>();
+
+    /**
+    	Method gameFinished occurs once the player wins or loses. Upon ending the game,
+    	the player now has the option of restarting the game or quitting. 
+    	@param won true if the player won, false if the player lost
+    */
+    private void gameFinished(boolean won){
+	URL ref = getClass().getResource("/resources/shark.jpg");
+	ImageIcon icon = new ImageIcon(ref);
+    	if(won){
+    		message = "Congratulations, you won! You got " + eaten + " points!";
+    	}
+    	else{
+    		message = "Sorry, you lose. You got " + eaten + " points!";
+    	}
+    	message += "\n\tPlay again?";
+
+	//	int op = JOptionPane.showOptionDialog(null, message, "Game over!", JOptionPane.YES_NO_OPTION, JOptionPane.PLAIN_MESSAGE, icon, null, null);
+	Thread t = new Thread(new Runnable(){
+		public void run(){
+		    choice = JOptionPane.showOptionDialog(fishPanel,
+						  message,
+						  "Gameover!",
+						  JOptionPane.YES_NO_OPTION,
+						  JOptionPane.PLAIN_MESSAGE,
+						  null, null, null); 
+		    if(choice == JOptionPane.YES_OPTION){
+			// animation.setVisible(false);
+			// choice = -1;
+		       	// animation.getContentPane().add(BorderLayout.CENTER, fishPanel);
+		        // animate = new Animate();
+		       	// animate.start();
+	       		// animation.setDefaultCloseOperation(EXIT_ON_CLOSE);    
+       			// animation.setSize(maxX, maxY);
+			// animation.setVisible(true);
+		       	// GameMenu game = new GameMenu();
+	       		// game.makemenu();
+			Menu game = new Menu();
+			game.makegui();
+			animation.setVisible(false);
+		    }
+		    else{
+			gameover = true;
+			System.exit(0);
+		    }
+		}
+	    });
+	    t.start();
+	    /*   if(!gameover){
+		GameMenu menu = new GameMenu();
+		menu.makemenu();
+		animation.setVisible(false);
+	    }
+	    else
+	    System.exit(0); */
+    }
 
     /** 
 	Method addNewBubbles adds Bubbles to the ArrayList
@@ -78,7 +137,6 @@ public class FishAnimationEnvironment extends JFrame implements Serializable {
 	int randomWidth = 10 + (int) (Math.random() * (maxWidth-10));
 	return new Fish(randomX, randomY, randomWidth, randomWidth / 5);
     }
-    
     /** 
 	Method createsBubbles
 	@param x for the x position 
@@ -307,19 +365,11 @@ public class FishAnimationEnvironment extends JFrame implements Serializable {
 
 	    if(eaten >= 50) {
 		stop = true;
-		g.setFont(new Font("Corsiva Hebrew", Font.PLAIN, 100));
-		g.setColor(Color.RED);
-		String win = "YOU WON!";
-		g.drawString(win, 350, 400);
+      			gameFinished(true);
 	    }
 	    else if(eaten <= -25) {
 		stop = true;
-		g.setFont(new Font("Corsiva Hebrew", Font.PLAIN, 100));
-		g.setColor(Color.RED);
-		String lose = "Game Over!";
-		String lose2 = "Better luck next time!";
-		g.drawString(lose, 325, 250);
-		g.drawString(lose2, 140, 400);
+			gameFinished(false);
 	    }   
 	}
     } //end DrawingPanel
@@ -377,7 +427,7 @@ public class FishAnimationEnvironment extends JFrame implements Serializable {
 	
 	    throws InterruptedException {
 	    // uses the stop boolean variable to pause
-	    if(!stop) {
+	    if(!stop               ) {
 		ArrayList<FishInfo> info = new ArrayList<FishInfo>();
 	 
 		for(int i = 0; i < fishArray.size(); i++) {
@@ -493,6 +543,7 @@ public class FishAnimationEnvironment extends JFrame implements Serializable {
     */
     public class KeyHandler implements KeyListener{
     	public void keyPressed(KeyEvent e){
+	    if(stop == false){
     		if(System.currentTimeMillis() - lastPress > 2){
 	    		int press = e.getKeyCode();
 	    		switch(press){
@@ -512,6 +563,7 @@ public class FishAnimationEnvironment extends JFrame implements Serializable {
 	    		lastPress = System.currentTimeMillis();
     			repaint();
     		}
+	    }
     	}
     	public void keyTyped(KeyEvent e){}
     	public void keyReleased(KeyEvent e){}
