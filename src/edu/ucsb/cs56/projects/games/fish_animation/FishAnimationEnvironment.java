@@ -27,6 +27,9 @@ import java.net.*;
 */
 
 public class FishAnimationEnvironment extends JFrame implements Serializable {
+    static{
+	System.setProperty("java.awt.headless","true");
+    }
     Thread animate;
     DrawingPanel fishPanel = new DrawingPanel();
     JFrame animation = new JFrame();
@@ -53,7 +56,7 @@ public class FishAnimationEnvironment extends JFrame implements Serializable {
     int choice = -1;
     String message = "";
     boolean gameover = false;
-	
+	int dx = 0, dy = 0;
     //create ArrayLists for fish, bubbles, and jellyfish.
     ArrayList<Fish> fishArray = new ArrayList<Fish>();    
     ArrayList<Bubbles> bubblesArray = new ArrayList<Bubbles>();
@@ -543,30 +546,53 @@ public class FishAnimationEnvironment extends JFrame implements Serializable {
     */
     public class KeyHandler implements KeyListener{
     	public void keyPressed(KeyEvent e){
+	    
 	    if(stop == false){
     		if(System.currentTimeMillis() - lastPress > 2){
 	    		int press = e.getKeyCode();
-	    		switch(press){
-	    			case KeyEvent.VK_LEFT:
-	    				posX-=25;
-	    				break;
-	    			case KeyEvent.VK_RIGHT:
-	    				posX+=25;
-	    				break;
-	    			case KeyEvent.VK_UP:
-	    				posY-=25;
-	    				break;
-	    			case KeyEvent.VK_DOWN:
-	    				posY+=25;
-	    				break;
-	    		}
+				if(press == KeyEvent.VK_LEFT){
+				    dx = -25;
+				}
+				else if(press == KeyEvent.VK_RIGHT){
+				    dx = 25;
+				}
+				else if(press == KeyEvent.VK_DOWN){
+				    dy = 25;
+				}
+				else if(press == KeyEvent.VK_UP){
+				    dy = -25;
+				}
+				posX += dx;
+				posY += dy;
+	    		// switch(press){
+	    		// 	case KeyEvent.VK_LEFT:
+	    		// 		posX-=dx;
+	    		// 		break;
+	    		// 	case KeyEvent.VK_RIGHT:
+	    		// 		posX+=dx;
+	    		// 		break;
+	    		// 	case KeyEvent.VK_UP:
+	    		// 		posY-=dy;
+	    		// 		break;
+	    		// 	case KeyEvent.VK_DOWN:
+	    		// 		posY+=dy;
+	    		// 		break;
+	    		// }
 	    		lastPress = System.currentTimeMillis();
-    			repaint();
     		}
 	    }
     	}
     	public void keyTyped(KeyEvent e){}
-    	public void keyReleased(KeyEvent e){}
+    	public void keyReleased(KeyEvent e){
+    		if(stop == false){
+    			int press = e.getKeyCode();
+    			if(press == KeyEvent.VK_RIGHT || press == KeyEvent.VK_LEFT)
+    				dx = 0;
+    			else if(press == KeyEvent.VK_DOWN || press == KeyEvent.VK_UP)
+    				dy = 0;
+    			repaint();
+    		}
+		}
     }
 
     /**
