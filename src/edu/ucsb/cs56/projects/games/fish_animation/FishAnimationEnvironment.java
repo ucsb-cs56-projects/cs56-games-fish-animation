@@ -21,10 +21,15 @@ import java.net.*;
    @author Mathew Glodack
    @author Jenna Cryan
    @author Josephine Vo
-   @version for CS56, Winter 2014, UCSB
+   @author Abhijit Kulkarni
+   @author Angela Yung
+   @version for CS56, Winter 2016, UCSB
 */
 
 public class FishAnimationEnvironment extends JFrame implements Serializable {
+    static{
+	System.setProperty("java.awt.headless","true");
+    }
     Thread animate;
     DrawingPanel fishPanel = new DrawingPanel();
     JFrame animation = new JFrame();
@@ -47,11 +52,71 @@ public class FishAnimationEnvironment extends JFrame implements Serializable {
     int delay = 20; // The pause button delay
     boolean stop = false; // used to know when to pause the animation and when not to
     boolean load = false; // used to determine whether or not the game loads from the serialized form
-	
+    long lastPress = 0;
+    int choice = -1;
+    String message = "";
+    boolean gameover = false;
+	int dx = 0, dy = 0;
     //create ArrayLists for fish, bubbles, and jellyfish.
     ArrayList<Fish> fishArray = new ArrayList<Fish>();    
     ArrayList<Bubbles> bubblesArray = new ArrayList<Bubbles>();
     ArrayList<JellyFish> jellyfish = new ArrayList<JellyFish>();
+
+    /**
+    	Method gameFinished occurs once the player wins or loses. Upon ending the game,
+    	the player now has the option of restarting the game or quitting. 
+    	@param won true if the player won, false if the player lost
+    */
+    private void gameFinished(boolean won){
+	URL ref = getClass().getResource("/resources/shark.jpg");
+	ImageIcon icon = new ImageIcon(ref);
+    	if(won){
+    		message = "Congratulations, you won! You got " + eaten + " points!";
+    	}
+    	else{
+    		message = "Sorry, you lose. You got " + eaten + " points!";
+    	}
+    	message += "\n\tPlay again?";
+
+	//	int op = JOptionPane.showOptionDialog(null, message, "Game over!", JOptionPane.YES_NO_OPTION, JOptionPane.PLAIN_MESSAGE, icon, null, null);
+	Thread t = new Thread(new Runnable(){
+		public void run(){
+		    choice = JOptionPane.showOptionDialog(fishPanel,
+						  message,
+						  "Gameover!",
+						  JOptionPane.YES_NO_OPTION,
+						  JOptionPane.PLAIN_MESSAGE,
+						  null, null, null); 
+		    if(choice == JOptionPane.YES_OPTION){
+			// animation.setVisible(false);
+			// choice = -1;
+		       	// animation.getContentPane().add(BorderLayout.CENTER, fishPanel);
+		        // animate = new Animate();
+		       	// animate.start();
+	       		// animation.setDefaultCloseOperation(EXIT_ON_CLOSE);    
+       			// animation.setSize(maxX, maxY);
+			// animation.setVisible(true);
+		       	// GameMenu game = new GameMenu();
+	       		// game.makemenu();
+			Menu game = new Menu();
+			game.makegui();
+			animation.setVisible(false);
+		    }
+		    else{
+			gameover = true;
+			System.exit(0);
+		    }
+		}
+	    });
+	    t.start();
+	    /*   if(!gameover){
+		GameMenu menu = new GameMenu();
+		menu.makemenu();
+		animation.setVisible(false);
+	    }
+	    else
+	    System.exit(0); */
+    }
 
     /** 
 	Method addNewBubbles adds Bubbles to the ArrayList
@@ -75,7 +140,6 @@ public class FishAnimationEnvironment extends JFrame implements Serializable {
 	int randomWidth = 10 + (int) (Math.random() * (maxWidth-10));
 	return new Fish(randomX, randomY, randomWidth, randomWidth / 5);
     }
-    
     /** 
 	Method createsBubbles
 	@param x for the x position 
@@ -194,6 +258,11 @@ public class FishAnimationEnvironment extends JFrame implements Serializable {
 	    fishPanel.addMouseListener(handler);
 	    fishPanel.addMouseMotionListener(handler);
 	    
+	    //Starts the Key Listener to listen for key events in the panel
+	    KeyHandler keyH = new KeyHandler();
+	    fishPanel.addKeyListener(keyH);
+	    fishPanel.requestFocus();
+
 	    //Images in the game
 	    URL sharkURL = getClass().getResource("/resources/shark.jpg");
 	    Image shark = new ImageIcon(sharkURL).getImage();
@@ -224,6 +293,14 @@ public class FishAnimationEnvironment extends JFrame implements Serializable {
 	    }
 	    
 	    //Draws the image of the Shark
+	    if(posX < 0)
+	  		posX = maxX;
+	  	else if(posX > maxX)
+	  		posX = 30;
+	  	if(posY < 30)
+	  		posY = maxY-100;
+	  	else if(posY > maxY-100)
+	  		posY = 30;
 	    Shark s = new Shark(posX, posY);
 	    int newXPos = (int) s.getXPos() - 160;
 	    int newYPos = (int) s.getYPos() - 130;
@@ -291,19 +368,11 @@ public class FishAnimationEnvironment extends JFrame implements Serializable {
 
 	    if(eaten >= 50) {
 		stop = true;
-		g.setFont(new Font("Corsiva Hebrew", Font.PLAIN, 100));
-		g.setColor(Color.RED);
-		String win = "YOU WON!";
-		g.drawString(win, 350, 400);
+      			gameFinished(true);
 	    }
 	    else if(eaten <= -25) {
 		stop = true;
-		g.setFont(new Font("Corsiva Hebrew", Font.PLAIN, 100));
-		g.setColor(Color.RED);
-		String lose = "Game Over!";
-		String lose2 = "Better luck next time!";
-		g.drawString(lose, 325, 250);
-		g.drawString(lose2, 140, 400);
+			gameFinished(false);
 	    }   
 	}
     } //end DrawingPanel
@@ -361,7 +430,7 @@ public class FishAnimationEnvironment extends JFrame implements Serializable {
 	
 	    throws InterruptedException {
 	    // uses the stop boolean variable to pause
-	    if(!stop) {
+	    if(!stop               ) {
 		ArrayList<FishInfo> info = new ArrayList<FishInfo>();
 	 
 		for(int i = 0; i < fishArray.size(); i++) {
@@ -469,6 +538,63 @@ public class FishAnimationEnvironment extends JFrame implements Serializable {
 	}
     } // end inner class named Animate
     
+
+    /**
+    	Class to handle key events. Some methods are present but not defined 
+    	because every method of the implemented must be present to avoid
+    	compiler error. This lets the shark move using arrow keys.
+    */
+    public class KeyHandler implements KeyListener{
+    	public void keyPressed(KeyEvent e){
+	    
+	    if(stop == false){
+    		if(System.currentTimeMillis() - lastPress > 2){
+	    		int press = e.getKeyCode();
+				if(press == KeyEvent.VK_LEFT){
+				    dx = -25;
+				}
+				else if(press == KeyEvent.VK_RIGHT){
+				    dx = 25;
+				}
+				else if(press == KeyEvent.VK_DOWN){
+				    dy = 25;
+				}
+				else if(press == KeyEvent.VK_UP){
+				    dy = -25;
+				}
+				posX += dx;
+				posY += dy;
+	    		// switch(press){
+	    		// 	case KeyEvent.VK_LEFT:
+	    		// 		posX-=dx;
+	    		// 		break;
+	    		// 	case KeyEvent.VK_RIGHT:
+	    		// 		posX+=dx;
+	    		// 		break;
+	    		// 	case KeyEvent.VK_UP:
+	    		// 		posY-=dy;
+	    		// 		break;
+	    		// 	case KeyEvent.VK_DOWN:
+	    		// 		posY+=dy;
+	    		// 		break;
+	    		// }
+	    		lastPress = System.currentTimeMillis();
+    		}
+	    }
+    	}
+    	public void keyTyped(KeyEvent e){}
+    	public void keyReleased(KeyEvent e){
+    		if(stop == false){
+    			int press = e.getKeyCode();
+    			if(press == KeyEvent.VK_RIGHT || press == KeyEvent.VK_LEFT)
+    				dx = 0;
+    			else if(press == KeyEvent.VK_DOWN || press == KeyEvent.VK_UP)
+    				dy = 0;
+    			repaint();
+    		}
+		}
+    }
+
     /**
        Class to handle mouse events. Some methods are present but not defined
        because every method of the implemented class must be present to avoid
@@ -489,6 +615,7 @@ public class FishAnimationEnvironment extends JFrame implements Serializable {
 	}
 	
 	public void mouseReleased(MouseEvent e) {
+		fishPanel.requestFocus();
 	}
 	
 	public void mouseMoved(MouseEvent e) {
