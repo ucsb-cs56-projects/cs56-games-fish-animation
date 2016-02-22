@@ -54,7 +54,7 @@ class Menu implements ActionListener {
 	Play = new JButton("PLAY GAME");
 	Instruction = new JButton("INSTRUCTIONS");
 	Exit = new JButton("EXIT");
-	Credit = new JButton("CREDITS");
+	Credit = new JButton("(C) 2016");
 	frame.setLayout(null);
 	pane.setLayout(null);
 	//set coordinates and size of the buttons
