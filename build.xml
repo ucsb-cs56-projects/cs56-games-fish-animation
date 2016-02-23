@@ -42,7 +42,7 @@
       <classpath refid="project.class.path"/>
     </javac>
     <copy todir="build/resources">
-      <fileset dir="resources" includes="*.jpg *.gif *.jpeg *.au"/>
+      <fileset dir="resources" includes="**/*"/>
     </copy>
   </target>
   

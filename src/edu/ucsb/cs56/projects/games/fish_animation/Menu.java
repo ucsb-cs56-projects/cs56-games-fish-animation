@@ -24,8 +24,10 @@ import java.lang.*;
 */
 
 class Menu implements ActionListener {
+
     JButton Play, Instruction, Exit, Resume, Easy, Medium, Hard, Back, Menu, Credit;
     JFrame frame, instruct, load;
+
     int type;
     JTextArea text;
     JPanel textpan;
