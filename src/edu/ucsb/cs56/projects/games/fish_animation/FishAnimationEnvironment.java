@@ -35,6 +35,7 @@ public class FishAnimationEnvironment extends JFrame implements Serializable {
     DrawingPanel fishPanel = new DrawingPanel();
     JFrame animation = new JFrame();
     Sounds ss = new Sounds();
+    ScoreManager highscore = new ScoreManager();
 
 
     int maxX = 1366, maxY = 768; // Default height and width of the game at start
@@ -84,17 +85,19 @@ public class FishAnimationEnvironment extends JFrame implements Serializable {
     */
     private void gameFinished(boolean won){
     	if(won){
-    		message = "Congratulations, you won! You got " + eaten + " points!";
+	    highscore.addScore(timer, eaten);
+	    message = "Congratulations, you won! You got " + eaten + " points! \n";
+	    message += highscore.getHighScoreString();
     	}
     	else{
-    		message = "Sorry, you lose. You got " + eaten + " points!";
+	    message = "Sorry, you lose. You got " + eaten + " points!";
     	}
     	message += "\n\tPlay again?";
 	
 	Thread t = new Thread(new Runnable(){
 		public void run(){
 		    choice = JOptionPane.showOptionDialog(fishPanel,
-							  message,
+							  new JTextArea(message),
 							  "Gameover!",
 							  JOptionPane.YES_NO_OPTION,
 							  JOptionPane.PLAIN_MESSAGE,
@@ -114,25 +117,15 @@ public class FishAnimationEnvironment extends JFrame implements Serializable {
 
     }
 
-    /** 
-	Method addNewBubbles adds Bubbles to the ArrayList
-	@param bubble a Bubbles object
+    /**
+       Method createRandomFish
+       @param x for the x position
+       @param y for the y position
+       @param maxWidth for the width of fish
     */
-    private void addNewBubbles(Bubbles bubble) {
-	bubblesArray.add(bubble);
-    }
-  
-    /** 
-	Method addNewFish add Fish to the ArrayList
-	@param fish a Fish object
-    */
-    private void addNewFish(Fish fish) {
-	fishArray.add(fish);
-    }
-    
-    private Fish createRandomFish(int xBound, int yBound, int maxWidth) {
-	int randomX = (int) (Math.random() * xBound);
-	int randomY = (int) (Math.random() * yBound);
+    private Fish createRandomFish(int x, int y, int maxWidth) {
+	int randomX = (int) (Math.random() * x);
+	int randomY = (int) (Math.random() * y);
 	int randomWidth = 10 + (int) (Math.random() * (maxWidth-10));
 	return new Fish(randomX, randomY, randomWidth, randomWidth / 5);
     }
@@ -153,11 +146,13 @@ public class FishAnimationEnvironment extends JFrame implements Serializable {
        Constructor for FishAnimationEnvironment. Creates a JFrame and a Jpanel that 
        is placed inside of it. Animation is done on the JPanel
     */
+    /*
     public FishAnimationEnvironment() {
 	for(int i = 0; i < numFish; i++){
 	    addNewFish(createRandomFish(maxX, maxY, maxWidth));
 	}
     }
+    */
     
     /**
        Custom Constructor for FishAnimationEnvironment. Creates a JFrame and a Jpanel that 
@@ -210,13 +205,13 @@ public class FishAnimationEnvironment extends JFrame implements Serializable {
 	//Adds the fish into the Array only if the load button was not selected
 	if(load == false) {
 	    for(int i = 0; i < numFish; i++){
-		addNewFish(createRandomFish(maxX, maxY, maxWidth));
+		fishArray.add((createRandomFish(maxX, maxY, maxWidth)));
 	    }
 	}
 	
 	//Adds the random amount of Bubbles into the ArrayList
 	for(int i = 0; i < numBubbles; i++) {
-	    addNewBubbles(createBubbles(maxX, maxY, maxD));
+	    bubblesArray.add((createBubbles(maxX, maxY, maxD)));
 	}
 
 	//Adds the Jellyfish into the game 
@@ -544,10 +539,10 @@ public class FishAnimationEnvironment extends JFrame implements Serializable {
 		    int hp = fishPanel.getHeight();
 
 		    if(newX < -50) {
-			addNewFish(new Fish(wp, ((Math.random() * hp) % hp), info.get(i).getWidth(), info.get(i).getHeight()));
+			fishArray.add((new Fish(wp, ((Math.random() * hp) % hp), info.get(i).getWidth(), info.get(i).getHeight())));
 		    }
 		    else {
-			addNewFish(new Fish(newX, info.get(i).getYPos(), info.get(i).getWidth(), info.get(i).getHeight()));
+		        fishArray.add((new Fish(newX, info.get(i).getYPos(), info.get(i).getWidth(), info.get(i).getHeight())));
 		    }
 		}
 	    
