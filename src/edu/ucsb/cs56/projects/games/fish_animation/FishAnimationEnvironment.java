@@ -61,7 +61,7 @@ public class FishAnimationEnvironment extends JFrame implements Serializable {
     int choice = -1;
     String message = "";
     boolean gameover = false;
-	int dx = 0, dy = 0;
+    int dx = 0, dy = 0;
     //create ArrayLists for fish, bubbles, and jellyfish.
     ArrayList<Fish> fishArray = new ArrayList<Fish>();    
     ArrayList<Bubbles> bubblesArray = new ArrayList<Bubbles>();
@@ -78,6 +78,7 @@ public class FishAnimationEnvironment extends JFrame implements Serializable {
     URL boatURL = getClass().getResource("/resources/cartoon-boat.jpg");
     Image boat = new ImageIcon(boatURL).getImage();
 
+    int difficulty;
     /**
     	Method gameFinished occurs once the player wins or loses. Upon ending the game,
     	the player now has the option of restarting the game or quitting. 
@@ -85,9 +86,9 @@ public class FishAnimationEnvironment extends JFrame implements Serializable {
     */
     private void gameFinished(boolean won){
     	if(won){
-	    highscore.addScore(timer, eaten);
+	    highscore.addScore(timer, eaten, difficulty);
 	    message = "Congratulations, you won! You got " + eaten + " points! \n";
-	    message += highscore.getHighScoreString();
+	    message += highscore.getHighScoreString(difficulty);
     	}
     	else{
 	    message = "Sorry, you lose. You got " + eaten + " points!";
@@ -161,8 +162,9 @@ public class FishAnimationEnvironment extends JFrame implements Serializable {
        selected difficulty.
     */
     public FishAnimationEnvironment(int difficulty, boolean l) {
+	this.difficulty = difficulty;
 	numJellyFish = difficulty;
-	numPlankton = 10 - difficulty;
+	numPlankton = 14 - difficulty;
 	load = l;
 	if(load){
 	    //deserialize the score, fish, shark, boat, and jellyfish

@@ -6,7 +6,9 @@ import java.io.*;
 public class ScoreManager {
     
     private ArrayList<Score> scores;
-    private static final String HIGHSCORE_FILE = "scores.dat"; //file of saved scores
+    private static final String EASY_SCORE_FILE = "easy_scores.dat"; //file of saved scores
+    private static final String MEDIUM_SCORE_FILE = "medium_scores.dat";
+    private static final String HARD_SCORE_FILE = "hard_scores.dat";
     ObjectOutputStream outputStream = null;
     ObjectInputStream inputStream = null;
 
@@ -15,8 +17,8 @@ public class ScoreManager {
         scores = new ArrayList<Score>();
     }
 
-    public ArrayList<Score> getScores() {
-        loadScoreFile();
+    public ArrayList<Score> getScores(int difficulty) {
+        loadScoreFile(difficulty);
         sort();
         return scores;
     }
@@ -26,16 +28,28 @@ public class ScoreManager {
         Collections.sort(scores, comparator);
     }
 
-    public void addScore(int timer, int score) {
-        loadScoreFile();
+    public void addScore(int timer, int score, int difficulty) {
+
+	//Difficulties: Easy = 3; Medium = 7; Hard = 14
+        loadScoreFile(difficulty);
         scores.add(new Score(timer, score));
-        updateScoreFile();
+        updateScoreFile(difficulty);
     }
 
     //loads the score file
-    public void loadScoreFile() {
+    public void loadScoreFile(int difficulty) {
         try {
-            inputStream = new ObjectInputStream(new FileInputStream(HIGHSCORE_FILE));
+	    switch(difficulty) {
+	    case 3:
+		inputStream = new ObjectInputStream(new FileInputStream(EASY_SCORE_FILE));
+		break;
+	    case 7:
+		inputStream = new ObjectInputStream(new FileInputStream(MEDIUM_SCORE_FILE));
+		break;
+	    case 14:
+		inputStream = new ObjectInputStream(new FileInputStream(HARD_SCORE_FILE));
+		break;
+	    }
             scores = (ArrayList<Score>) inputStream.readObject();
         } catch (FileNotFoundException e) {
             System.out.println("[Laad] FNF Error: " + e.getMessage());
@@ -57,9 +71,19 @@ public class ScoreManager {
 
 
     //update the score file
-    public void updateScoreFile() {
+    public void updateScoreFile(int difficulty) {
         try {
-            outputStream = new ObjectOutputStream(new FileOutputStream(HIGHSCORE_FILE));
+	    switch(difficulty) {
+	    case 3:
+		outputStream = new ObjectOutputStream(new FileOutputStream(EASY_SCORE_FILE));
+		break;
+	    case 7:
+		outputStream = new ObjectOutputStream(new FileOutputStream(MEDIUM_SCORE_FILE));
+		break;
+	    case 14:
+		outputStream = new ObjectOutputStream(new FileOutputStream(HARD_SCORE_FILE));
+		break;
+	    }
             outputStream.writeObject(scores);
         } catch (FileNotFoundException e) {
             System.out.println("[Update] FNF Error: " + e.getMessage() + ",the program will try and make a new file");
@@ -77,12 +101,12 @@ public class ScoreManager {
         }
     }
 
-    public String getHighScoreString() {
+    public String getHighScoreString(int difficulty) {
         String highscoreString = "Rank" + "\t" + "Time" + "\t\t" + "Fish Eaten \n";
 	int max = 10;
 
         ArrayList<Score> scores;
-        scores = getScores();
+        scores = getScores(difficulty);
 
         int i = 0;
         int x = scores.size();
