@@ -67,14 +67,22 @@ public class FishAnimationEnvironment extends JFrame implements Serializable {
     ArrayList<JellyFish> jellyfish = new ArrayList<JellyFish>();
     ArrayList<Plankton> plankton = new ArrayList<Plankton>();
 
+    //Images in the game
+    URL reefURL = getClass().getResource("/resources/CoralReef.jpg");
+    Image reef = new ImageIcon(reefURL).getImage();
+    URL sharkURL = getClass().getResource("/resources/shark.jpg");
+    Image shark = new ImageIcon(sharkURL).getImage();
+    URL seaweedURL = getClass().getResource("/resources/Seaweed.jpg");
+    Image seaweed = new ImageIcon(seaweedURL).getImage();
+    URL boatURL = getClass().getResource("/resources/cartoon-boat.jpg");
+    Image boat = new ImageIcon(boatURL).getImage();
+
     /**
     	Method gameFinished occurs once the player wins or loses. Upon ending the game,
     	the player now has the option of restarting the game or quitting. 
     	@param won true if the player won, false if the player lost
     */
     private void gameFinished(boolean won){
-	URL ref = getClass().getResource("/resources/shark.jpg");
-	ImageIcon icon = new ImageIcon(ref);
     	if(won){
     		message = "Congratulations, you won! You got " + eaten + " points!";
     	}
@@ -243,38 +251,19 @@ public class FishAnimationEnvironment extends JFrame implements Serializable {
        the boat, and the bubbles.     
     */
 
+    
     class DrawingPanel extends JPanel {
     
-	public void paintComponent(Graphics g){ 
+	public void paintComponent(Graphics g){
+	    fishPanel.requestFocus(); //needed to be called each Panel
 	    
 	    //Sets background color and adds background image
 	    Graphics2D g2 = (Graphics2D) g;
 	    g2.setColor(Color.BLUE);
-	    g2.fillRect(0, 0, this.getWidth(), this.getHeight());
-	    URL reefURL = getClass().getResource("/resources/CoralReef.jpg");
-	    Image reef = new ImageIcon(reefURL).getImage();	   
+	    g2.fillRect(0, 0, this.getWidth(), this.getHeight());	   
 	    super.paintComponent(g); //replace current painting
 	    g.drawImage(reef, 0, 0, this); 
-	    
-	    //Starts the Action listener to listen for mouse events in the panel
-	    MouseHandler handler = new MouseHandler();
-	    fishPanel.addMouseListener(handler);
-	    fishPanel.addMouseMotionListener(handler);
-	    
-	    //Starts the Key Listener to listen for key events in the panel
-	    KeyHandler keyH = new KeyHandler();
-	    fishPanel.addKeyListener(keyH);
-	    fishPanel.requestFocus();
 
-	    //Images in the game
-	    URL sharkURL = getClass().getResource("/resources/shark.jpg");
-	    Image shark = new ImageIcon(sharkURL).getImage();
-	    URL seaweedURL = getClass().getResource("/resources/Seaweed.jpg");
-	    Image seaweed = new ImageIcon(seaweedURL).getImage();
-	    URL boatURL = getClass().getResource("/resources/cartoon-boat.jpg");
-	    Image boat = new ImageIcon(boatURL).getImage();
-	    
-	    
 	    //Draws the seaweed at the specified points
 	    for (int i = 0; i < this.getWidth() + 125; i += 125) {
 		g.drawImage(seaweed, i, this.getHeight() - 83, this);
@@ -375,15 +364,7 @@ public class FishAnimationEnvironment extends JFrame implements Serializable {
 	    g.setColor(Color.RED);
 	    String str2 = "Seconds Elapsed: " + timer;
 	    g.drawString(str2, 0, 65);
-
-	    if(eaten >= 50) {
-		stop = true;
-      			gameFinished(true);
-	    }
-	    else if(eaten <= -25) {
-		stop = true;
-			gameFinished(false);
-	    }   
+	       
 	}
     } //end DrawingPanel
     
@@ -393,9 +374,19 @@ public class FishAnimationEnvironment extends JFrame implements Serializable {
     class Animate extends Thread{
 	public void run(){
 	    
+	    //Starts the Action listener to listen for mouse events in the panel
+	    MouseHandler handler = new MouseHandler();
+	    fishPanel.addMouseListener(handler);
+	    fishPanel.addMouseMotionListener(handler);
+	    
+	    //Starts the Key Listener to listen for key events in the panel
+	    KeyHandler keyH = new KeyHandler();
+	    fishPanel.addKeyListener(keyH);
+	    //fishPanel.requestFocus();
+	    
 	    try {
 		while(true) {
-		    display(delay);
+		    display(delay, fishPanel);
 		} //end while loop
 	    } catch(Exception ex) {
 		if(ex instanceof InterruptedException){}
@@ -436,7 +427,7 @@ public class FishAnimationEnvironment extends JFrame implements Serializable {
 	   Creates each frame and also checks if the fish have been eaten.  
 	   Removes fish and creates a new fish if it has been eaten.
 	**/
-	void display(int delay) 
+	void display(int delay, DrawingPanel fishPanel) 
 	
 	    throws InterruptedException {
 	    // uses the stop boolean variable to pause
@@ -455,7 +446,6 @@ public class FishAnimationEnvironment extends JFrame implements Serializable {
 		       increment eaten if true */
 		    if ((xf > posX - 40 && xf < posX + 40) && (yf > posY - 25 && yf < posY + 25)) {
 			info.add(new FishInfo(fishPanel.getWidth(), Math.random() * maxY, wf, hf));
-			//ss.sharksound();
 			eaten++;
 		    }
 		    else {
@@ -569,7 +559,15 @@ public class FishAnimationEnvironment extends JFrame implements Serializable {
 		}
 	    
 		fishPanel.repaint();
-
+		if(eaten >= 50) {
+		    stop = true;
+		    gameFinished(true);
+		}
+		else if(eaten <= -25) {
+		    stop = true;
+		    gameFinished(false);
+		}
+		
 		if(Thread.currentThread().interrupted()) {
 		    throw(new InterruptedException());
 		}
