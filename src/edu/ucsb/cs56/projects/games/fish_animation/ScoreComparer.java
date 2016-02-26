@@ -14,10 +14,10 @@ public class ScoreComparer implements Comparator<Score> {
 	//return  0 if equal time and eaten fish
 	//return  1 if score2 is higher than score1
 	//return -1 if score1 is higher than score2 
-	if (time1 > time2) {
+	if (time1 < time2) {
 	    return -1;
 	}
-	else if (time2 > time1){
+	else if (time2 < time1){
 	    return 1;
 	}
 	else {

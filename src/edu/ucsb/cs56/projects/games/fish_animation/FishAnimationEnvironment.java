@@ -251,7 +251,8 @@ public class FishAnimationEnvironment extends JFrame implements Serializable {
     class DrawingPanel extends JPanel {
     
 	public void paintComponent(Graphics g){
-	    fishPanel.requestFocus(); //needed to be called each Panel
+	    //fishPanel.requestFocus(); //needed to be called each Panel
+	    requestFocus();
 	    
 	    //Sets background color and adds background image
 	    Graphics2D g2 = (Graphics2D) g;
