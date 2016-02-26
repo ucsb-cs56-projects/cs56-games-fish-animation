@@ -34,7 +34,6 @@ public class FishAnimationEnvironment extends JFrame implements Serializable {
     Thread animate;
     DrawingPanel fishPanel = new DrawingPanel();
     JFrame animation = new JFrame();
-    Sounds ss = new Sounds();
     ScoreManager highscore = new ScoreManager();
 
 
