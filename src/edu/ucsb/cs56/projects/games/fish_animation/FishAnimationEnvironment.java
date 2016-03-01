@@ -672,9 +672,13 @@ public class FishAnimationEnvironment extends JFrame implements Serializable {
     class GameMenu implements ActionListener {
 	JButton Pause;
 	URL pauseURL = getClass().getResource("/resources/PauseButton.jpg");
+	URL playURL = getClass().getResource("/resources/PlayButton.png");
 	ImageIcon pause = new ImageIcon(pauseURL);
+	ImageIcon play = new ImageIcon(playURL);
+	
 	JButton Save = new JButton("Save & Exit");
 	JButton Exit = new JButton("Exit");
+	JPanel allTheButtons;
 	
 	public void main (String[] args) {
 	    GameMenu menu = new GameMenu();
@@ -692,11 +696,11 @@ public class FishAnimationEnvironment extends JFrame implements Serializable {
 	    Save.addActionListener(this);
 	    Exit.addActionListener(this);
 	    
-	    JPanel allTheButtons = new JPanel(new BorderLayout());
+	    allTheButtons = new JPanel(new GridLayout(1,3));
 	    animation.getContentPane().add(BorderLayout.SOUTH, allTheButtons);
-	    allTheButtons.add(BorderLayout.EAST, Exit);
-	    allTheButtons.add(BorderLayout.CENTER, Save);
-	    allTheButtons.add(BorderLayout.WEST, Pause);
+	    allTheButtons.add(Pause);
+	    allTheButtons.add(Save);
+	    allTheButtons.add(Exit);
 	    animation.setVisible(true);
 	}
 	
@@ -708,10 +712,28 @@ public class FishAnimationEnvironment extends JFrame implements Serializable {
 	    if(event.getSource() == Pause) {
 		if(stop == false) {
 		    stop = true;
+		    allTheButtons.remove(Pause);
+		    allTheButtons.remove(Save);
+		    allTheButtons.remove(Exit);
+		    Pause = new JButton(play);
+		    Pause.addActionListener(this);
+		    allTheButtons.add(Pause);
+		    allTheButtons.add(Save);
+		    allTheButtons.add(Exit);
+		    animation.setVisible(true);
 		    pausestart = System.nanoTime() / 1000000000;
 		}
 		else {
 		    stop = false;
+		    allTheButtons.remove(Pause);
+		    allTheButtons.remove(Save);
+		    allTheButtons.remove(Exit);
+		    Pause = new JButton(pause);
+		    Pause.addActionListener(this);
+		    allTheButtons.add(Pause);
+		    allTheButtons.add(Save);
+		    allTheButtons.add(Exit);
+		    animation.setVisible(true);
 		    pausetime += (System.nanoTime() / 1000000000 - pausestart);
 		}
 	    }
