@@ -9,6 +9,8 @@ import java.util.*;
 import java.net.*; //url
 import java.util.concurrent.TimeUnit;
 import java.lang.*;
+import javax.imageio.*;
+import java.io.*;
 
 /**
    Implements a GUI that allows the user to choose diffculty,
@@ -26,17 +28,30 @@ import java.lang.*;
 class Menu implements ActionListener {
 
     JButton Play, Instruction, Exit, Resume, Easy, Medium, Hard, Back, Menu, Credit;
+    JButton Character, CMenu, Kwhale, Shark;
     JFrame frame, instruct, load;
 
     int type;
     JTextArea text;
     JPanel textpan;
     JLabel textLabel, pane, p2;
+
+    boolean character_type = true; //true = shark, false = kwhale
+
     
     public static void main (String[] args) {
 	Menu menu = new Menu();
 
 	menu.makegui();
+	/*
+	Sounds1 ss = new Sounds1();
+	try {
+	    ss.music();
+	}
+	catch(Exception e) {
+	    e.printStackTrace();
+	    }*/
+
     }
     
     /**
@@ -57,19 +72,24 @@ class Menu implements ActionListener {
 	Instruction = new JButton("INSTRUCTIONS");
 	Exit = new JButton("EXIT");
 	Credit = new JButton("(C) 2016");
+	Character = new JButton("CHARACTER");
 	frame.setLayout(null);
 	pane.setLayout(null);
+
+	
 	//set coordinates and size of the buttons
 	Play.setBounds(25,25,150,75);
 	Instruction.setBounds(25,500,150,75);
 	Exit.setBounds(625,500,150,75);
 	Credit.setBounds(625,25,150,75);
+	Character.setBounds(25,125,150,75);
 
 	//Adds the action listeners to the buttons
 	Play.addActionListener(this);
 	Instruction.addActionListener(this);
 	Exit.addActionListener(this);
 	Credit.addActionListener(this);
+	Character.addActionListener(this);
 
 	//sets the jbutton to transparent with a white border and the specific font
 	Play.setOpaque(false);
@@ -112,6 +132,8 @@ class Menu implements ActionListener {
 	    }
 	});
 
+
+	//Instruction 
 	Instruction.setOpaque(false);
 	Instruction.setContentAreaFilled(false);
 	Instruction.setBorder(BorderFactory.createLineBorder(Color.white));
@@ -148,17 +170,38 @@ class Menu implements ActionListener {
 	    }
 	});
 
+	//Character 
+	Character.setOpaque(false);
+	Character.setContentAreaFilled(false);
+	Character.setBorder(BorderFactory.createLineBorder(Color.white));
+	Character.setForeground(Color.white);
+	Character.setFont(new Font("Century Gothic", Font.PLAIN, 18));
+
+	Character.addMouseListener(new java.awt.event.MouseAdapter() {
+	    public void mouseEntered(java.awt.event.MouseEvent evt) {
+	        Character.setForeground(Color.green);
+	        Character.setBorder(BorderFactory.createLineBorder(Color.green));
+	    }
+
+	    public void mouseExited(java.awt.event.MouseEvent evt) {
+	        Character.setForeground(Color.white);
+	        Character.setBorder(BorderFactory.createLineBorder(Color.white));
+	    }
+	});
+
 	//doesn't allow tab focus
 	Play.setFocusable(false);
 	Instruction.setFocusable(false);
 	Exit.setFocusable(false);
 	Credit.setFocusable(false);
+	Character.setFocusable(false);
 	//Sets up the background image
 	pane.setSize(800,625);
 	pane.add(Play);
 	pane.add(Instruction);
 	pane.add(Exit);
 	pane.add(Credit);
+	pane.add(Character);
 	frame.setContentPane(pane);
 	frame.setVisible(true);
     }
@@ -315,6 +358,120 @@ class Menu implements ActionListener {
 		frame.setContentPane(p2);
 		frame.setVisible(true);
     }
+
+    public void setCharacter() {
+	frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+	/*
+	URL sharkurl = getClass().getResource("/resources/shark.jpg");
+	ImageIcon shark = new ImageIcon(shark).getImage();
+	URL killerwhaleurl = getClass().getResource("/resources/killerwhale.png");
+	ImageIcon killerwhale = new ImageIcon(killerwhale).getImage(); */
+
+
+	//set the background
+	URL back = getClass().getResource("/resources/background.jpeg");
+	ImageIcon bg = new ImageIcon(back);
+	p2 = new JLabel(bg);
+	p2.setLayout(null);
+
+	
+	//text to choose character
+	JLabel diff = new JLabel("<html><div style='text-align:center; '>Choose your<br>character</html>");
+	diff.setFont(new Font("Century Gothic", Font.BOLD, 28));
+	diff.setForeground(new Color(75,255,255));
+	diff.setBounds(75,75,400,200);
+
+
+	//create the buttons
+	Shark = new JButton();
+	Kwhale = new JButton();
+	try {
+	    Image shark = ImageIO.read(getClass().getResource("/resources/shark.jpg"));
+	    Image killerwhale = ImageIO.read(getClass().getResource("/resources/kwhale.gif"));
+	    Shark.setIcon(new ImageIcon(shark));
+	    Kwhale.setIcon(new ImageIcon(killerwhale));
+	} catch (IOException e) {
+	}
+
+	CMenu = new JButton("MAIN MENU");
+	CMenu.setBounds(475,475,150,80);
+	Shark.setBounds(75,250,210,115);
+	Kwhale.setBounds(75,445,210,115);
+	
+	Shark.setOpaque(false);
+	Shark.setContentAreaFilled(false);
+	Shark.setBorder(BorderFactory.createLineBorder(Color.white));
+	Shark.setForeground(Color.white);
+	
+	//mouse listener for the hover effect
+	Shark.addMouseListener(new java.awt.event.MouseAdapter() {
+		public void mouseEntered(java.awt.event.MouseEvent evt) {
+		    Shark.setForeground(new Color(75,255,255));
+		    Shark.setBorder(BorderFactory.createLineBorder(new Color(75,255,255)));
+		    
+		}
+		
+		public void mouseExited(java.awt.event.MouseEvent evt) {
+		    Shark.setForeground(Color.white);
+		    Shark.setBorder(BorderFactory.createLineBorder(Color.white));
+		}
+	    });
+
+
+	Kwhale.setOpaque(false);
+	Kwhale.setContentAreaFilled(false);
+	Kwhale.setBorder(BorderFactory.createLineBorder(Color.white));
+	Kwhale.setForeground(Color.white);
+	
+	//mouse listener for the hover effect
+	Kwhale.addMouseListener(new java.awt.event.MouseAdapter() {
+		public void mouseEntered(java.awt.event.MouseEvent evt) {
+		    Kwhale.setForeground(new Color(75,255,255));
+		    Kwhale.setBorder(BorderFactory.createLineBorder(new Color(75,255,255)));
+		    
+		}
+		
+		public void mouseExited(java.awt.event.MouseEvent evt) {
+		    Kwhale.setForeground(Color.white);
+		    Kwhale.setBorder(BorderFactory.createLineBorder(Color.white));
+		}
+	    });
+	
+	
+	CMenu.setOpaque(false);
+	CMenu.setContentAreaFilled(false);
+	CMenu.setBorder(BorderFactory.createLineBorder(Color.white));
+	CMenu.setForeground(Color.white);
+	CMenu.setFont(new Font("Century Gothic", Font.PLAIN, 18));
+
+	//mouse listener for the hover effect
+	CMenu.addMouseListener(new java.awt.event.MouseAdapter() {
+		public void mouseEntered(java.awt.event.MouseEvent evt) {
+		    CMenu.setForeground(new Color(75,255,255));
+		    CMenu.setBorder(BorderFactory.createLineBorder(new Color(75,255,255)));
+		}
+		
+		public void mouseExited(java.awt.event.MouseEvent evt) {
+		    CMenu.setForeground(Color.white);
+		    CMenu.setBorder(BorderFactory.createLineBorder(Color.white));
+		}
+	    });
+
+	CMenu.addActionListener(this);
+	Shark.addActionListener(this);
+	Kwhale.addActionListener(this);
+
+	CMenu.setFocusable(false);
+	Shark.setFocusable(false);
+	Kwhale.setFocusable(false);
+
+	p2.add(CMenu);
+	p2.add(Shark);
+	p2.add(Kwhale);
+	p2.add(diff);
+	frame.setContentPane(p2);
+	frame.setVisible(true);
+    }
     
     /**
        GUI that shows the user how to play the game.  Provides
@@ -360,25 +517,33 @@ class Menu implements ActionListener {
     public void actionPerformed(ActionEvent event) {
 	if(event.getSource() == Easy) {
 	    frame.setVisible(false);
-	    FishAnimationEnvironment f = new FishAnimationEnvironment(3, false);
+	    FishAnimationEnvironment f = new FishAnimationEnvironment(character_type, 3, false);
 	}
 	if(event.getSource() == Medium) {
-		frame.setVisible(false);
-	    FishAnimationEnvironment f = new FishAnimationEnvironment(7, false);
+	    frame.setVisible(false);
+	    FishAnimationEnvironment f = new FishAnimationEnvironment(character_type, 7, false);
 	}
 	if(event.getSource() == Hard) {
-		frame.setVisible(false);
-	    FishAnimationEnvironment f = new FishAnimationEnvironment(14, false);
+	    frame.setVisible(false);
+	    FishAnimationEnvironment f = new FishAnimationEnvironment(character_type, 14, false);
 	}
 	if(event.getSource() == Resume){
-		frame.setVisible(false);
-		FishAnimationEnvironment f = new FishAnimationEnvironment(0,true);
+	    frame.setVisible(false);
+	    FishAnimationEnvironment f = new FishAnimationEnvironment(character_type, 0,true);
 	}
+	if(event.getSource() == Shark) {
+	    character_type = true;
+	}
+	if(event.getSource() == Kwhale) {
+	    character_type = false;
+	}
+	    
 	if(event.getSource() == Play) {
 	    frame.remove(Play);
 	    frame.remove(Instruction);
 	    frame.remove(Exit);
 	    frame.remove(Credit);
+	    frame.remove(Character);
 	    setDifficulty();
 	}
 	if(event.getSource() == Exit) {
@@ -389,13 +554,14 @@ class Menu implements ActionListener {
 	    frame.remove(Instruction);
 	    frame.remove(Exit);
 	    frame.remove(Credit);
+	    frame.remove(Character);
 	    frame.setVisible(false);
 	    HowToPlay();
 	}
 	if(event.getSource() == Back) {
 	    instruct.remove(Back);
 	    instruct.remove(textLabel);
-	   	instruct.setVisible(false);
+	    instruct.setVisible(false);
 	    makegui();
 	}
 	if(event.getSource() == Menu) {
@@ -404,6 +570,21 @@ class Menu implements ActionListener {
 	    frame.remove(Medium);
 	    frame.remove(Hard);
 	    frame.remove(Resume);
+	    frame.setVisible(false);
+	    makegui();
+	}
+	if(event.getSource() == Character) {
+	    frame.remove(Play);
+	    frame.remove(Instruction);
+	    frame.remove(Exit);
+	    frame.remove(Credit);
+	    frame.remove(Character);
+	    setCharacter();
+	}
+	if(event.getSource() == CMenu) {
+	    frame.remove(Shark);
+	    frame.remove(Kwhale);
+	    frame.remove(CMenu);
 	    frame.setVisible(false);
 	    makegui();
 	}

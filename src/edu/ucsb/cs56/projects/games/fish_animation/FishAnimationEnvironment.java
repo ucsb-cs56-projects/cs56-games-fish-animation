@@ -57,6 +57,9 @@ public class FishAnimationEnvironment extends JFrame implements Serializable {
     int delay = 20; // The pause button delay
     boolean stop = false; // used to know when to pause the animation and when not to
     boolean load = false; // used to determine whether or not the game loads from the serialized form
+
+    boolean character_type;  //determines character, (shark, kwhale)
+    
     long lastPress = 0;
     int choice = -1;
     String message = "";
@@ -77,6 +80,8 @@ public class FishAnimationEnvironment extends JFrame implements Serializable {
     Image seaweed = new ImageIcon(seaweedURL).getImage();
     URL boatURL = getClass().getResource("/resources/cartoon-boat.jpg");
     Image boat = new ImageIcon(boatURL).getImage();
+    URL kwhaleURL = getClass().getResource("/resources/kwhale.gif");
+    Image kwhale = new ImageIcon(kwhaleURL).getImage();
 
     int difficulty;
     /**
@@ -161,8 +166,9 @@ public class FishAnimationEnvironment extends JFrame implements Serializable {
        in input from the Menu GUI for the difficulty and creates Jellyfish based on the
        selected difficulty.
     */
-    public FishAnimationEnvironment(int difficulty, boolean l) {
+    public FishAnimationEnvironment(boolean character_type, int difficulty, boolean l) {
 	this.difficulty = difficulty;
+	this.character_type = character_type;
 	numJellyFish = difficulty;
 	numPlankton = 14 - difficulty;
 	load = l;
@@ -171,6 +177,7 @@ public class FishAnimationEnvironment extends JFrame implements Serializable {
 	    try {
 		FileInputStream fileStream = new FileInputStream("saved.ser");
 		ObjectInputStream os = new ObjectInputStream(fileStream);
+		character_type = os.readBoolean();
 		eaten = os.readInt();
 		numJellyFish = os.readInt();
 		numPlankton = os.readInt();
@@ -294,7 +301,11 @@ public class FishAnimationEnvironment extends JFrame implements Serializable {
 	    Shark s = new Shark(posX, posY);
 	    int newXPos = (int) s.getXPos() - 160;
 	    int newYPos = (int) s.getYPos() - 130;
-	    g2.drawImage(shark, newXPos, newYPos, this);
+
+	    if(character_type)
+		g2.drawImage(shark, newXPos, newYPos, this);
+	    else
+		g2.drawImage(kwhale, newXPos, newYPos, this);
 	    
 	    //Draws the bubbles with the blue gradient
 	    Color b = new Color(127, 255, 212);
@@ -747,6 +758,7 @@ public class FishAnimationEnvironment extends JFrame implements Serializable {
 		    FileOutputStream fs = new FileOutputStream("saved.ser");
 		    ObjectOutputStream os = new ObjectOutputStream(fs);
 		    os.flush();
+		    os.writeBoolean(character_type);
 		    os.writeInt(eaten);
 		    os.writeInt(numJellyFish);
 		    os.writeInt(numPlankton);
