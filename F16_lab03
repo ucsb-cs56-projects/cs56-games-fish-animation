@@ -1,12 +1,16 @@
 
 
 (a) A brief description: The fish animation launchs a game in which you can control a shark(or a white whale) with your mouse or arrow key. You want to reach 50 points by eating fishes and avoid jellyfish during this process.
-(b) User stories: as a player, I can use the mouse to control a shark to eat fish; as a player, I can choose the difficulty in the menus.
-(c) The game fish animation runs, and it has a complete game menu and game logic.
-(d) User sotries to make it more fun: I can choose the game mod, so that I can play either play in sandbox or the normal mod; as aplayer, I can control the shark to swim faster from time to time, so I can avoid the jellyfish.
+(b) User stories: as a player, I can use the mouse to control a shark to eat fish; 
+                  as a player, I can choose the difficulty in the menus.
+                  as a player, I can pause my game so that I can answer the phont
+(c) The game fish animation can run and have a simple instruction for player. It has a complete game logic, but the instructions is insufficient.
+(d) User sotries to make it more fun: as a player, I can choose the game mod, so that I can play either play in sandbox or the normal mod; 
+                                      as a player, I can control the shark to swim faster from time to time, so I can avoid the jellyfish.
+                                      as a player, I may expect some events that subtract the points so that the game is more challanging.
 (e) The current README.md is good, it bascilly descibe some issues we can develop to make the project better. Some extra information about the functions of each file may be helpful for the next generation.
-(f)
-(g) There are enough issues to get me 1000 points. Most of the issue are pretty clear
+(f) The cureent targes in buil.xml are rin, runEnv, compile, clean, run-from-jar, javadoc.
+(g) There are enough issues to get me 1000 points. Most of the issue are pretty clear.
 (h)
 (i)
 (j)
