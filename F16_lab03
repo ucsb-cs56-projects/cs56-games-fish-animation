@@ -9,8 +9,8 @@
                                       as a player, I can control the shark to swim faster from time to time, so I can avoid the jellyfish.
                                       as a player, I may expect some events that subtract the points so that the game is more challanging.
 (e) The current README.md is good, it bascilly descibe some issues we can develop to make the project better. Some extra information about the functions of each file may be helpful for the next generation.
-(f) The cureent targes in buil.xml are rin, runEnv, compile, clean, run-from-jar, javadoc.
-(g) There are enough issues to get me 1000 points. Most of the issue are pretty clear.
-(h)
+(f) The cureent targes in buil.xml are run, runEnv, compile, clean, run-from-jar, javadoc. jar and run-from-jar don't have description and runEnv doesn't work. Also, javadoc seems need to be updated to produce a right javadoc.
+(g) Currently, there are 19 issues. There are enough issues to get me 1000 points. All issues have a pretty cleaer description.
+(h) There are enough issues, and nothing good has comes to our mind that this point.
 (i)
-(j)
+(j) There's no Junit Tests at current point. The easiest way to test our code may be just run the game and see whether it functions or not.
