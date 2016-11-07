@@ -27,19 +27,17 @@ import java.io.*;
 */
 
 class Menu implements ActionListener {
+    private JButton Play, Instruction, Exit, Resume, Easy, Medium, Hard, Back, Menu, Credit;
+    private JButton Character, CMenu, Kwhale, Shark;
+    private JFrame frame, instruct, load;
 
-    JButton Play, Instruction, Exit, Resume, Easy, Medium, Hard, Back, Menu, Credit;
-    JButton Character, CMenu, Kwhale, Shark;
-    JFrame frame, instruct, load;
+    private int type;
+    private JTextArea text;
+    private JPanel textpan;
+    private JLabel textLabel, pane, p2;
 
-    int type;
-    JTextArea text;
-    JPanel textpan;
-    JLabel textLabel, pane, p2;
+    private boolean character_type = true; //true = shark, false = kwhale
 
-    boolean character_type = true; //true = shark, false = kwhale
-
-    
     public static void main (String[] args) {
 	Menu menu = new Menu();
 
