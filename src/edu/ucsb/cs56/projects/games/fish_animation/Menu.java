@@ -31,17 +31,37 @@ class Menu implements ActionListener {
     private JButton Character, CMenu, Kwhale, Shark;
     private JFrame frame, instruct, load;
 
+<<<<<<< HEAD
     private int type;
     private JTextArea text;
     private JPanel textpan;
     private JLabel textLabel, pane, p2;
 
     private boolean character_type = true; //true = shark, false = kwhale
+=======
+    JButton Play, Instruction, Exit, Resume, Easy, Medium, Hard, Back, Menu, Credit, PlayBGM, PauseBGM;
+    JButton Character, CMenu, Kwhale, Shark;
+    JFrame frame, instruct, load;
+
+    int type;
+    JTextArea text;
+    JPanel textpan;
+    JLabel textLabel, pane, p2;
+    
+>>>>>>> 35e8bace2d4cd8dc7662fee8ba819d611e654294
 
     public static void main (String[] args) {
 	Menu menu = new Menu();
 
 	menu.makegui();
+	
+	// pre-load all sound effects by calling init method 
+	SoundEffect.init();
+	// set the volume
+	SoundEffect.volume = SoundEffect.Volume.MEDIUM;
+	// start the bgm
+	SoundEffect.BGM.play();
+	
 	/*
 	Sounds1 ss = new Sounds1();
 	try {
@@ -59,7 +79,7 @@ class Menu implements ActionListener {
     */
     public void makegui () {
 
-       	frame = new JFrame();
+    frame = new JFrame();
 	frame.setSize(800,625);
 	frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 	frame.setTitle("Welcome to Fish Game!");
@@ -74,6 +94,18 @@ class Menu implements ActionListener {
 	Character = new JButton("CHARACTER");
 	frame.setLayout(null);
 	pane.setLayout(null);
+	
+	//Adds image icon to control BGM
+    PlayBGM = new JButton();
+    PauseBGM = new JButton();
+    
+    try{
+    	Image imgPlay = ImageIO.read(getClass().getResource("/resources/play.png")).getScaledInstance( 50, 50,  java.awt.Image.SCALE_SMOOTH );
+    	Image imgPause = ImageIO.read(getClass().getResource("/resources/pause.png")).getScaledInstance( 50, 50,  java.awt.Image.SCALE_SMOOTH );
+    	PlayBGM.setIcon(new ImageIcon(imgPlay));
+    	PauseBGM.setIcon(new ImageIcon(imgPause));
+    }catch (IOException ex) {
+    }
 
 	
 	//set coordinates and size of the buttons
@@ -82,6 +114,8 @@ class Menu implements ActionListener {
 	Exit.setBounds(625,500,150,75);
 	Credit.setBounds(625,25,150,75);
 	Character.setBounds(25,125,150,75);
+	PlayBGM.setBounds(625, 100, 50, 50);
+	PauseBGM.setBounds(685,100, 50, 50);
 
 	//Adds the action listeners to the buttons
 	Play.addActionListener(this);
@@ -89,6 +123,44 @@ class Menu implements ActionListener {
 	Exit.addActionListener(this);
 	Credit.addActionListener(this);
 	Character.addActionListener(this);
+	PlayBGM.addActionListener(this);
+	PauseBGM.addActionListener(this);
+	
+	PlayBGM.setOpaque(false);
+	PlayBGM.setContentAreaFilled(false);
+	PlayBGM.setBorder(BorderFactory.createLineBorder(Color.black));
+	PlayBGM.setForeground(Color.white);
+	PlayBGM.setFont(new Font("Century Gothic", Font.PLAIN, 18));
+	
+	PlayBGM.addMouseListener(new java.awt.event.MouseAdapter(){
+		public void mouseEntered(java.awt.event.MouseEvent evt) {
+	        PlayBGM.setForeground(Color.green);
+	        PlayBGM.setBorder(BorderFactory.createLineBorder(Color.green));
+		}
+	        
+	    public void mouseExited(java.awt.event.MouseEvent evt) {
+		    PlayBGM.setForeground(Color.white);
+		    PlayBGM.setBorder(BorderFactory.createLineBorder(Color.black));
+		}
+	});
+	
+	PauseBGM.setOpaque(false);
+	PauseBGM.setContentAreaFilled(false);
+	PauseBGM.setBorder(BorderFactory.createLineBorder(Color.black));
+	PauseBGM.setForeground(Color.white);
+	PauseBGM.setFont(new Font("Century Gothic", Font.PLAIN, 18));
+	
+	PauseBGM.addMouseListener(new java.awt.event.MouseAdapter(){
+		public void mouseEntered(java.awt.event.MouseEvent evt) {
+	        PauseBGM.setForeground(Color.white);
+	        PauseBGM.setBorder(BorderFactory.createLineBorder(Color.green));
+		}
+	        
+	    public void mouseExited(java.awt.event.MouseEvent evt) {
+		    PauseBGM.setForeground(Color.white);
+		    PauseBGM.setBorder(BorderFactory.createLineBorder(Color.black));
+		}
+	});
 
 	//sets the jbutton to transparent with a white border and the specific font
 	Play.setOpaque(false);
@@ -201,6 +273,8 @@ class Menu implements ActionListener {
 	pane.add(Exit);
 	pane.add(Credit);
 	pane.add(Character);
+	pane.add(PlayBGM);
+	pane.add(PauseBGM);
 	frame.setContentPane(pane);
 	frame.setVisible(true);
     }
@@ -536,7 +610,13 @@ class Menu implements ActionListener {
 	if(event.getSource() == Kwhale) {
 	    character_type = false;
 	}
-	    
+	
+	if(event.getSource() == PauseBGM){
+		SoundEffect.BGM.stop();
+	}
+	if(event.getSource() == PlayBGM){
+		SoundEffect.BGM.play();
+	}
 	if(event.getSource() == Play) {
 	    frame.remove(Play);
 	    frame.remove(Instruction);
