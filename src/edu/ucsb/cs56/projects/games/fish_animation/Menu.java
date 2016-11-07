@@ -31,14 +31,13 @@ class Menu implements ActionListener {
     private JButton Character, CMenu, Kwhale, Shark;
     private JFrame frame, instruct, load;
 
-<<<<<<< HEAD
     private int type;
     private JTextArea text;
     private JPanel textpan;
     private JLabel textLabel, pane, p2;
 
     private boolean character_type = true; //true = shark, false = kwhale
-=======
+
     JButton Play, Instruction, Exit, Resume, Easy, Medium, Hard, Back, Menu, Credit, PlayBGM, PauseBGM;
     JButton Character, CMenu, Kwhale, Shark;
     JFrame frame, instruct, load;
@@ -48,8 +47,6 @@ class Menu implements ActionListener {
     JPanel textpan;
     JLabel textLabel, pane, p2;
     
->>>>>>> 35e8bace2d4cd8dc7662fee8ba819d611e654294
-
     public static void main (String[] args) {
 	Menu menu = new Menu();
 
