@@ -23,7 +23,8 @@ import java.io.*;
    @author Josephine Vo
    @author Abhijit Kulkarni
    @author Angela Yung
-   @version for CS56, Winter 16, UCSB
+   @author Huiyang Ziheng
+   @version for CS56, Fall 16, UCSB
 */
 
 class Menu implements ActionListener {
@@ -51,6 +52,7 @@ class Menu implements ActionListener {
 	// set the volume
 	SoundEffect.volume = SoundEffect.Volume.MEDIUM;
 	// start the bgm
+	SoundEffect.FINISH.stop();
 	SoundEffect.BGM.play();
 	
 	/*
@@ -603,7 +605,7 @@ class Menu implements ActionListener {
 	}
 	
 	if(event.getSource() == PauseBGM){
-		SoundEffect.BGM.stop();
+		SoundEffect.BGM.pause();
 	}
 	if(event.getSource() == PlayBGM){
 		SoundEffect.BGM.play();

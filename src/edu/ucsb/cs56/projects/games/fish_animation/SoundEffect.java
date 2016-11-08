@@ -7,6 +7,8 @@ import javax.sound.sampled.*;
 /**
  * All sound effects and BGM
  * using enum encapsulates all sounds effect
+ * 
+ * @author: Huiyang Ziheng
 */
 
 
@@ -42,42 +44,22 @@ public enum SoundEffect{
 	private Clip clip;
 	
 	public void play(){
-		if(this != BGM)
-		{
-			if(volume != Volume.MUTE){
-				if(clip.isRunning())
-					clip.stop();
-				clip.setFramePosition(0);
-				clip.start();
-			}
+		if (volume != Volume.MUTE) {
+			clip.setFramePosition(0);
+			clip.start();
 		}
-		else if(this == BGM)
-		{
-			if(volume != Volume.MUTE){
-				if(SoundEffect.FINISH.isRunning())
-				{
-					SoundEffect.FINISH.stop();
-					clip.setFramePosition(0);
-				}
-				clip.loop(99);
-			}
-		}
-		else if(this == FINISH)
-		{
-			if(volume != Volume.MUTE){
-				if(SoundEffect.BGM.isRunning())
-				{
-					SoundEffect.BGM.stop();
-					clip.setFramePosition(0);
-				}
-				clip.loop(99);
-			}
-		}
+		
+	}
+	
+	public void pause(){
+		if(clip.isRunning())
+			clip.stop();
 	}
 	
 	public void stop(){
 		if(clip.isRunning())
 			clip.stop();
+		clip.setFramePosition(0);
 	}
 	
 	public boolean isRunning(){
