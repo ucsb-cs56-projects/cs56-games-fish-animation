@@ -739,6 +739,7 @@ public class FishAnimationEnvironment extends JFrame implements Serializable {
 	    if(event.getSource() == Pause) {
 		if(stop == false) {
 		    stop = true;
+		    SoundEffect.BGM.pause();
 		    allTheButtons.remove(Pause);
 		    allTheButtons.remove(Save);
 		    allTheButtons.remove(Exit);
@@ -752,6 +753,7 @@ public class FishAnimationEnvironment extends JFrame implements Serializable {
 		}
 		else {
 		    stop = false;
+		    SoundEffect.BGM.play();
 		    allTheButtons.remove(Pause);
 		    allTheButtons.remove(Save);
 		    allTheButtons.remove(Exit);
