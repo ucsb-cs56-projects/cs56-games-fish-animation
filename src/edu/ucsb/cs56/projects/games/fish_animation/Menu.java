@@ -23,7 +23,8 @@ import java.io.*;
    @author Josephine Vo
    @author Abhijit Kulkarni
    @author Angela Yung
-   @author Huiyang Ziheng
+   @author Huiyang He
+   @author Ziheng Song
    @version for CS56, Fall 16, UCSB
 */
 

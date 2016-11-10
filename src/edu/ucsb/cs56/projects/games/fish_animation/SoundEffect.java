@@ -8,7 +8,7 @@ import javax.sound.sampled.*;
  * All sound effects and BGM
  * using enum encapsulates all sounds effect
  * 
- * @author: Huiyang Ziheng
+ * @author: Huiyang He
 */
 
 
@@ -45,7 +45,6 @@ public enum SoundEffect{
 	
 	public void play(){
 		if (volume != Volume.MUTE) {
-			clip.setFramePosition(0);
 			clip.start();
 		}
 		
