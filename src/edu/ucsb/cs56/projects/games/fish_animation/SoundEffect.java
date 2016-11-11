@@ -9,6 +9,7 @@ import javax.sound.sampled.*;
  * using enum encapsulates all sounds effect
  * 
  * @author: Huiyang He
+ * @author: Ziheng Zhang
 */
 
 
@@ -46,8 +47,16 @@ public enum SoundEffect{
 	public void play(){
 		if (volume != Volume.MUTE) {
 			clip.start();
-		}
-		
+		}	
+	}
+	
+	public void playEffects(){
+		if (volume != Volume.MUTE) {
+			if(clip.isRunning())
+				clip.stop();
+			clip.setFramePosition(0);
+			clip.start();
+		}	
 	}
 	
 	public void pause(){
