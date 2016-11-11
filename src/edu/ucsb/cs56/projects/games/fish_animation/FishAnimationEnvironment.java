@@ -48,6 +48,8 @@ public class FishAnimationEnvironment extends JFrame implements Serializable {
 	private int boatX = maxX;// hold the position of the boat
 	private int maxD = 10; // holds the maximum diameter of the bubbles
 
+	private int health = 50;
+	private int maxHealth = 50;
 	private int eaten = 0; // number of fish eaten
 	private int numFish = 75; // number of fish in environment
 	private int numBubbles = 10 + (int) (Math.random() * 20); // creates a
@@ -55,8 +57,6 @@ public class FishAnimationEnvironment extends JFrame implements Serializable {
 																// of bubbles
 	private int numJellyFish; // holds the number of Jellyfish to be created
 	private int numPlankton;
-	private int Highscore;
-
 	private int timer, timerload = 0;
 	private long time1 = System.nanoTime() / 1000000000; // Used to get the
 															// start time of the
@@ -383,18 +383,29 @@ public class FishAnimationEnvironment extends JFrame implements Serializable {
 			for (int i = 0; i < plankton.size(); i++) {
 				g2.draw(plankton.get(i));
 			}
+			
+			g2.setStroke(new BasicStroke(2));
 
 			// displays the number of points
 			g.setFont(new Font("Corsiva Hebrew", Font.PLAIN, 40));
 			g.setColor(Color.RED);
 			String str1 = "Points: " + eaten + "!";
-			g.drawString(str1, 0, 35);
+			g.drawString(str1, 20, 35);
+			
+			//	displays the health bar
+			
+
+			g.setFont(new Font("Corsiva Hebrew", Font.PLAIN, 20));
+			g.setColor(Color.RED);
+			g.drawString("Health", 30, 90);
+			g.drawRect(20, 95, 350, 20);
+			g.fillRect(20, 95, (int)(350 * health/maxHealth), 20);
 
 			// displays the current elapsed time of the game in seconds
 			g.setFont(new Font("Corsiva Hebrew", Font.PLAIN, 30));
 			g.setColor(Color.RED);
 			String str2 = "Seconds Elapsed: " + timer;
-			g.drawString(str2, 0, 65);
+			g.drawString(str2, 20, 65);
 
 		}
 	} // end DrawingPanel
@@ -486,6 +497,8 @@ public class FishAnimationEnvironment extends JFrame implements Serializable {
 					 */
 					if ((xf > posX - 40 && xf < posX + 40) && (yf > posY - 25 && yf < posY + 25)) {
 						info.add(new FishInfo(fishPanel.getWidth(), Math.random() * maxY, wf, hf));
+						if(health < maxHealth)
+							health++;
 						eaten++;
 						SoundEffect.FISH.playEffects();
 					} else {
@@ -501,7 +514,8 @@ public class FishAnimationEnvironment extends JFrame implements Serializable {
 					// check if shark is touching a jellyfish and delete
 					// jellyfish and penalize if true
 					if ((xj - 20 > posX - 200 && xj + 20 < posX + 40) && (yj + 60 > posY - 60 && yj < posY + 25)) {
-						eaten -= 10;
+						eaten -= 5;
+						health -= 10;
 						SoundEffect.JELLYFISH.playEffects();
 						// reset jellyfish position
 						jellyfish.get(i).setX(((int) ((Math.random() * 12345) % fishPanel.getWidth())));
@@ -597,10 +611,10 @@ public class FishAnimationEnvironment extends JFrame implements Serializable {
 				}
 
 				fishPanel.repaint();
-				if (eaten >= 50) {
+				if (eaten >= 50 && health > 0) {
 					stop = true;
 					gameFinished(true);
-				} else if (eaten <= -25) {
+				} else if (health <= 0) {
 					stop = true;
 					gameFinished(false);
 				}
