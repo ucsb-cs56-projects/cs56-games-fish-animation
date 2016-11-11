@@ -1,12 +1,8 @@
 package edu.ucsb.cs56.projects.games.fish_animation;
 
 import java.awt.geom.GeneralPath; // combinations of lines and curves
-import java.awt.geom.AffineTransform; // translation, rotation, scale
-import java.awt.Shape; // general class for shapes
-import java.awt.geom.Point2D; 
 import java.awt.geom.Line2D; 
 import java.awt.geom.Rectangle2D;
-import java.awt.Rectangle;
 import java.awt.geom.PathIterator;
 import java.awt.geom.AffineTransform;
 import java.awt.geom.Ellipse2D;
@@ -33,21 +29,12 @@ public class Plankton extends ScumOfTheSea{
 	@param height of the Fish
     */
     
-    double xPos;
-    double yPos;
-    boolean moveL;
-    int count;
+    private double xPos,yPos;
+    private boolean moveL;
+    private int count;
 
-    double body_width = 5;
-    double body_height = 10;
-    double larm_x;
-    double larm_y;
-    double rarm_x;
-    double rarm_y;
-    double lfoot_x;
-    double lfoot_y;
-    double rfoot_x;
-    double rfoot_y;
+    private double body_width = 5, body_height = 10;
+    private double larm_x, larm_y, rarm_x, rarm_y, lfoot_x, lfoot_y, rfoot_x, rfoot_y;
     
     /**
        draws the specified fish
@@ -119,7 +106,7 @@ public class Plankton extends ScumOfTheSea{
        plankton moves in constructor
     */
     @Override 
-    void move(double m) {
+    public void move(double m) {
 	moveL = !(moveL);
     }
 

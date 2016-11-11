@@ -23,9 +23,7 @@ import java.io.*;
    @author Josephine Vo
    @author Abhijit Kulkarni
    @author Angela Yung
-   @author Huiyang He
-   @author Ziheng Song
-   @version for CS56, Fall 16, UCSB
+   @version for CS56, Winter 16, UCSB
 */
 
 class Menu implements ActionListener {
@@ -55,17 +53,8 @@ class Menu implements ActionListener {
 	// start the bgm
 	SoundEffect.FINISH.stop();
 	SoundEffect.BGM.play();
-	
-	/*
-	Sounds1 ss = new Sounds1();
-	try {
-	    ss.music();
-	}
-	catch(Exception e) {
-	    e.printStackTrace();
-	    }*/
-
     }
+	
     
     /**
        Main GUI interface for the first section of the Menu.  
@@ -260,8 +249,6 @@ class Menu implements ActionListener {
 	Exit.setFocusable(false);
 	Credit.setFocusable(false);
 	Character.setFocusable(false);
-	PlayBGM.setFocusable(false);
-	PauseBGM.setFocusable(false);;
 	//Sets up the background image
 	pane.setSize(800,625);
 	pane.add(Play);
