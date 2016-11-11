@@ -90,27 +90,32 @@ public class FishAnimationEnvironment extends JFrame implements Serializable {
     	the player now has the option of restarting the game or quitting. 
     	@param won true if the player won, false if the player lost
     */
-    private void gameFinished(boolean won){
-    	if(won){
-	    highscore.addScore(timer, eaten, difficulty);
-	    message = "Congratulations, you won! You got " + eaten + " points! \n";
-	    message += highscore.getHighScoreString(difficulty);
-    	}
-    	else{
-	    message = "Sorry, you lose. You got " + eaten + " points!";
-    	}
-    	message += "\n\tPlay again?";
-	
-	Thread t = new Thread(new Runnable(){
-		public void run(){
-		    choice = JOptionPane.showOptionDialog(fishPanel,
-							  new JTextArea(message),
-							  "Gameover!",
-							  JOptionPane.YES_NO_OPTION,
+	private void gameFinished(boolean won) {
+		// change the BGM if the game is finished
+		SoundEffect.BGM.stop();
+		SoundEffect.FINISH.play();
+		Character c = character_type ? Character.SHARK : Character.WHALE;
+		String playerName = "CS56";
+		
+		if (won) {
+			highscore.addScore(timer, eaten, difficulty, playerName, c);
+			message = "Congratulations, you won! You got " + eaten + " points! \n";
+			message += highscore.getHighScoreString(difficulty);
+		} else {
+			message = "Sorry, you lose. You got " + eaten + " points!";
+		}
+		message += "\n\tPlay again?";
+
+		Thread t = new Thread(new Runnable() {
+			public void run() {
+				choice = JOptionPane.showOptionDialog(fishPanel, new JTextArea(message), "Gameover!",
+						JOptionPane.YES_NO_OPTION,
 							  JOptionPane.PLAIN_MESSAGE,
 							  null, null, null); 
 		    if(choice == JOptionPane.YES_OPTION){
 			Menu game = new Menu();
+			SoundEffect.FINISH.stop();
+			SoundEffect.BGM.play();
 			game.makegui();
 			animation.setVisible(false);
 		    }
@@ -383,6 +388,7 @@ public class FishAnimationEnvironment extends JFrame implements Serializable {
     */
     class Animate extends Thread{
 	public void run(){
+		
 	    
 	    //Starts the Action listener to listen for mouse events in the panel
 	    MouseHandler handler = new MouseHandler();
@@ -456,6 +462,7 @@ public class FishAnimationEnvironment extends JFrame implements Serializable {
 		    if ((xf > posX - 40 && xf < posX + 40) && (yf > posY - 25 && yf < posY + 25)) {
 			info.add(new FishInfo(fishPanel.getWidth(), Math.random() * maxY, wf, hf));
 			eaten++;
+			SoundEffect.FISH.playEffects();
 		    }
 		    else {
 			info.add(new FishInfo(xf, yf, wf, hf));
@@ -470,6 +477,7 @@ public class FishAnimationEnvironment extends JFrame implements Serializable {
 		    // check if shark is touching a jellyfish and delete jellyfish and penalize if true
 		    if((xj - 20 > posX - 200 && xj + 20 < posX + 40) && (yj + 60 > posY - 60 && yj < posY + 25)) {
 			eaten -= 10;
+			SoundEffect.JELLYFISH.playEffects();
 			// reset jellyfish position
 			jellyfish.get(i).setX(((int) ((Math.random() * 12345) % fishPanel.getWidth())));
 			jellyfish.get(i).setY((int) fishPanel.getHeight());
@@ -727,6 +735,7 @@ public class FishAnimationEnvironment extends JFrame implements Serializable {
 	    if(event.getSource() == Pause) {
 		if(stop == false) {
 		    stop = true;
+		    SoundEffect.BGM.pause();
 		    allTheButtons.remove(Pause);
 		    allTheButtons.remove(Save);
 		    allTheButtons.remove(Exit);
@@ -740,6 +749,7 @@ public class FishAnimationEnvironment extends JFrame implements Serializable {
 		}
 		else {
 		    stop = false;
+		    SoundEffect.BGM.play();
 		    allTheButtons.remove(Pause);
 		    allTheButtons.remove(Save);
 		    allTheButtons.remove(Exit);
