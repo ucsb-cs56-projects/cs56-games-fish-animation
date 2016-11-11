@@ -20,6 +20,12 @@ public enum SoundEffect{
 	FINISH("resources/finish.wav"),
 	BGM("resources/BGM.wav");
 	
+	public static enum Volume{
+		MUTE, LOW, MEDIUM, HIGH
+	}
+
+	public static Volume volume = Volume.MEDIUM;
+	
 	private SoundEffect(String fileName) {
 		try{
 			URL url = this.getClass().getClassLoader().getResource(fileName);
@@ -36,11 +42,7 @@ public enum SoundEffect{
 		}
 	}
 
-	public static enum Volume{
-		MUTE, LOW, MEDIUM, HIGH
-	}
 
-	public static Volume volume = Volume.MEDIUM;
 
 	private Clip clip;
 	
