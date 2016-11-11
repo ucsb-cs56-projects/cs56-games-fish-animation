@@ -2,7 +2,10 @@ package edu.ucsb.cs56.projects.games.fish_animation;
 
 import java.awt.geom.GeneralPath; // combinations of lines and curves
 import java.awt.geom.AffineTransform; // translation, rotation, scale
-import java.awt.geom.Line2D;
+import java.awt.Shape; // general class for shapes
+import java.awt.geom.Point2D; 
+import java.awt.geom.Line2D; 
+import java.awt.geom.Rectangle2D;
 import java.awt.Rectangle;
 import java.awt.geom.PathIterator;
 import java.awt.geom.AffineTransform;
@@ -64,14 +67,14 @@ public class JellyFish extends ScumOfTheSea{
     /** Sets the move of the JellyFish
 	@param Boolean b will set the state of the JellyFish
     */
-    public void setMove(boolean b) {
+    void setMove(boolean b) {
 	this.move = b; 
     }
 
     /** Checks if the JellyFish is moving or not
 	@return True or False whether the JellyFish is moving
     */
-    public boolean checkJellyFish() {
+    boolean checkJellyFish() {
 	return move;
     }
 
@@ -79,28 +82,28 @@ public class JellyFish extends ScumOfTheSea{
 	@param m moves the Y position of the JellyFish
     */
     @Override 
-    public void move(double m) { 
+    void move(double m) { 
 	y -= m;
     }
 
     /** Sets the count of the JellyFish
 	Incrementer for count which is par of the JellyFish object
     */
-    public void setCount() {
+    void setCount() {
 	this.count += 1;
     }
     
     /** Gets the Count of the JellyFish, will be able to delay the movement
 	@return Count of the JellyFish
     */
-    public int getCount() {
+    int getCount() {
 	return count;
     }
     
     /** Gets the speed that each different Jellyfish moves at.  
 	@return the speed of the Jellyfish
     */
-    public double getSpeed() {
+    double getSpeed() {
 	return speed;
     }
 }

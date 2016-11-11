@@ -93,40 +93,40 @@ public class FishAnimationEnvironment extends JFrame implements Serializable {
     	the player now has the option of restarting the game or quitting. 
     	@param won true if the player won, false if the player lost
     */
-    private void gameFinished(boolean won){
-    	//change the BGM if the game is finished
-    	SoundEffect.BGM.stop();
-    	SoundEffect.FINISH.play();
-    	if(won){
-	    highscore.addScore(timer, eaten, difficulty);
-	    message = "Congratulations, you won! You got " + eaten + " points! \n";
-	    message += highscore.getHighScoreString(difficulty);
-    	}
-    	else{
-	    message = "Sorry, you lose. You got " + eaten + " points!";
-    	}
-    	message += "\n\tPlay again?";
-	
-	Thread t = new Thread(new Runnable(){
-		public void run(){
-		    choice = JOptionPane.showOptionDialog(fishPanel,
-							  new JTextArea(message),
-							  "Gameover!",
-							  JOptionPane.YES_NO_OPTION,
-							  JOptionPane.PLAIN_MESSAGE,
-							  null, null, null); 
-		    if(choice == JOptionPane.YES_OPTION){
-			Menu game = new Menu();
-			SoundEffect.FINISH.stop();
-	    	SoundEffect.BGM.play();
-			game.makegui();
-			animation.setVisible(false);
-		    }
-		    else{
-			gameover = true;
-			System.exit(0);
-		    }
+	private void gameFinished(boolean won) {
+		// change the BGM if the game is finished
+		SoundEffect.BGM.stop();
+		SoundEffect.FINISH.play();
+		Character c = character_type ? Character.SHARK : Character.WHALE;
+		String playerName = "CS56";
+
+		if (won) {
+			highscore.addScore(timer, eaten, difficulty, playerName, c);
+			message = "Congratulations, you won! You got " + eaten + " points! \n";
+
+			// To do: evoke the panel ask the players to enter their name;
+
+			message += highscore.getHighScoreString(difficulty);
+		} else {
+			message = "Sorry, you lose. You got " + eaten + " points!";
 		}
+		message += "\n\tPlay again?";
+
+		Thread t = new Thread(new Runnable() {
+			public void run() {
+				choice = JOptionPane.showOptionDialog(fishPanel, new JTextArea(message), "Gameover!",
+						JOptionPane.YES_NO_OPTION, JOptionPane.PLAIN_MESSAGE, null, null, null);
+				if (choice == JOptionPane.YES_OPTION) {
+					Menu game = new Menu();
+					SoundEffect.FINISH.stop();
+					SoundEffect.BGM.play();
+					game.makegui();
+					animation.setVisible(false);
+				} else {
+					gameover = true;
+					System.exit(0);
+				}
+			}
 	    });
 	    t.start();
 
@@ -344,7 +344,7 @@ public class FishAnimationEnvironment extends JFrame implements Serializable {
 	    for(int i = 0; i < jellyfish.size(); i++) {
 	    	int jNewXPos = (int) jellyfish.get(i).getXPos();
 		int jNewYPos = (int) jellyfish.get(i).getYPos();
-		if(jellyfish.get(i).CheckJellyFish() == true) {
+		if(jellyfish.get(i).checkJellyFish() == true) {
 		    //Draws the Body of the JellyFish
 		    g2.fillArc(jNewXPos, jNewYPos, 50, 40, 0, 180);
 
@@ -469,7 +469,7 @@ public class FishAnimationEnvironment extends JFrame implements Serializable {
 		    if ((xf > posX - 40 && xf < posX + 40) && (yf > posY - 25 && yf < posY + 25)) {
 			info.add(new FishInfo(fishPanel.getWidth(), Math.random() * maxY, wf, hf));
 			eaten++;
-			SoundEffect.FISH.play();
+			SoundEffect.FISH.playEffects();
 		    }
 		    else {
 			info.add(new FishInfo(xf, yf, wf, hf));
@@ -484,7 +484,7 @@ public class FishAnimationEnvironment extends JFrame implements Serializable {
 		    // check if shark is touching a jellyfish and delete jellyfish and penalize if true
 		    if((xj - 20 > posX - 200 && xj + 20 < posX + 40) && (yj + 60 > posY - 60 && yj < posY + 25)) {
 			eaten -= 10;
-			SoundEffect.JELLYFISH.play();
+			SoundEffect.JELLYFISH.playEffects();
 			// reset jellyfish position
 			jellyfish.get(i).setX(((int) ((Math.random() * 12345) % fishPanel.getWidth())));
 			jellyfish.get(i).setY((int) fishPanel.getHeight());
@@ -529,7 +529,7 @@ public class FishAnimationEnvironment extends JFrame implements Serializable {
 		    }
 
 		    // If the jellyfish is true it moves 10 pixels and setMove to false
-		    if(jellyfish.get(i).CheckJellyFish() == true) {
+		    if(jellyfish.get(i).checkJellyFish() == true) {
 			if (jellyfish.get(i).getCount() % 20 == 0) {
 			    jellyfish.get(i).move(jellyfish.get(i).getSpeed());
 			    jellyfish.get(i).setMove(false);

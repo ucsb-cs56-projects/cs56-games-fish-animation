@@ -260,6 +260,8 @@ class Menu implements ActionListener {
 	Exit.setFocusable(false);
 	Credit.setFocusable(false);
 	Character.setFocusable(false);
+	PlayBGM.setFocusable(false);
+	PauseBGM.setFocusable(false);;
 	//Sets up the background image
 	pane.setSize(800,625);
 	pane.add(Play);
