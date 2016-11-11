@@ -2,9 +2,6 @@ package edu.ucsb.cs56.projects.games.fish_animation;
 
 import javax.swing.*;
 
-import com.sun.org.apache.bcel.internal.generic.NEW;
-import com.sun.org.apache.xml.internal.resolver.readers.TR9401CatalogReader;
-
 import java.awt.*;
 import java.awt.event.*;
 import java.awt.event.ActionListener;
