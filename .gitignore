@@ -5,5 +5,11 @@
 *.war
 *.ear
 
+*.project
+
+*.dat
+
+*.DS_Store
+
 *.ant-targets-build.xml
 **/build
