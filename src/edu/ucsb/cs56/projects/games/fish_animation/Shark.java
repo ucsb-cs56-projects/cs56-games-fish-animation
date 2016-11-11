@@ -1,6 +1,9 @@
 package edu.ucsb.cs56.projects.games.fish_animation;
 
-import java.awt.geom.AffineTransform; // translation, rotation, scale 
+import java.awt.geom.GeneralPath; // combinations of lines and curves
+import java.awt.geom.AffineTransform; // translation, rotation, scale
+import java.awt.Shape; // general class for shapes
+import java.awt.geom.Point2D; 
 import java.awt.geom.Line2D; 
 import java.awt.geom.Rectangle2D;
 import java.awt.Rectangle;
@@ -29,7 +32,8 @@ public class Shark extends ScumOfTheSea {
        @param yPos y coord of the middle of the Shark
     */
 
-    private double xPos, yPos;
+    double xPos;
+    double yPos;
 
     /**
        Holds the shark's position on the Panel
@@ -81,7 +85,7 @@ public class Shark extends ScumOfTheSea {
        shark movement dictated by mouse events
     */
     @Override 
-    public void move(double m){
+    void move(double m){
 	;
     }
 }

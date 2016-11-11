@@ -1,4 +1,4 @@
-package edu.ucsb.cs56.projects.games.fish_animation;;
+package edu.ucsb.cs56.projects.games.fish_animation;
 
 import java.util.Comparator;
 

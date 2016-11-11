@@ -4,7 +4,9 @@ import java.awt.geom.GeneralPath; // combinations of lines and curves
 import java.awt.geom.AffineTransform; // translation, rotation, scale
 import java.awt.Shape; // general class for shapes
 import java.awt.geom.Point2D; 
-import java.awt.geom.Line2D;
+import java.awt.geom.Line2D; 
+import java.awt.geom.Rectangle2D;
+import java.awt.Rectangle;
 import java.awt.geom.PathIterator;
 import java.awt.geom.AffineTransform;
 
@@ -22,9 +24,9 @@ import java.awt.geom.AffineTransform;
 
 public class Bubbles extends ScumOfTheSea
 {
-    private double x, y;
-    private int diameter;
-    
+    double x, y; 
+    int diameter;
+
     /** 
 	Bubbles Constructor
 	@param x sets the x position
@@ -86,7 +88,7 @@ public class Bubbles extends ScumOfTheSea
 	@param m changes the position of the Bubbles object
     */
     @Override 
-    public void move(double m) {
+    void move(double m) {
 	y -= m;
     }
 }
