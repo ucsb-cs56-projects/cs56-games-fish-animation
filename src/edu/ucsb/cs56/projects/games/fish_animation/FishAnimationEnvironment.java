@@ -9,6 +9,7 @@ import java.util.ArrayList;
 import java.util.*;
 import java.io.*;
 import java.net.*;
+import javax.swing.JOptionPane;
 
 /**
  * Creates a JFrame that animates Fish and allows for a shark to eat the fish.
@@ -110,7 +111,7 @@ public class FishAnimationEnvironment extends JFrame implements Serializable {
 		
 		if (won) {
 			message = "Please enter your name \n";
-			playerName = JOptionPane.showInputDialog(message);
+			playerName = JOptionPane.showInputDialog(fishPanel, message, "CS56");
 			highscore.addScore(timer, eaten, difficulty, playerName, c);
 			message += highscore.getHighScoreString(difficulty);
 		} else {

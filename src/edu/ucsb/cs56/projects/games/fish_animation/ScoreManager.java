@@ -55,11 +55,11 @@ public class ScoreManager {
 	    }
             scores = (ArrayList<Score>) inputStream.readObject();
         } catch (FileNotFoundException e) {
-            System.out.println("[Laad] FNF Error: " + e.getMessage());
+          //  System.out.println("[Laad] FNF Error: " + e.getMessage());
         } catch (IOException e) {
-            System.out.println("[Laad] IO Error: " + e.getMessage());
+          //  System.out.println("[Laad] IO Error: " + e.getMessage());
         } catch (ClassNotFoundException e) {
-            System.out.println("[Laad] CNF Error: " + e.getMessage());
+          //  System.out.println("[Laad] CNF Error: " + e.getMessage());
         } finally {
             try {
                 if (outputStream != null) {
