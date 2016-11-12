@@ -93,7 +93,7 @@ public class FishAnimationEnvironment extends JFrame implements Serializable {
 
 	private int difficulty;
 	
-	String playerName = "CS56";
+	private String playerName = "CS56";
 
 	/**
 	 * Method gameFinished occurs once the player wins or loses. Upon ending the
@@ -847,39 +847,6 @@ public class FishAnimationEnvironment extends JFrame implements Serializable {
 			}
 		}
 
-	}
-	
-	private class EnterName implements ActionListener {
-		JFrame enterName = new JFrame();
-		JPanel enter = new JPanel(new GridLayout(0, 3));
-		JLabel text = new JLabel("Please enter your name");
-		JButton inputButton = new JButton("Enter");
-		JTextField editTextArea = new JTextField("CS56");
-
-		public void EnterName() {
-
-			inputButton.addActionListener(this);
-
-			enterName.setSize(350, 200);
-			enterName.setAlwaysOnTop(true);
-			enterName.setLocationByPlatform(true);
-
-			enter.add(text);
-			enter.add(inputButton);
-			enter.add(editTextArea);
-
-			enterName.add(enter);
-			enterName.setLocationRelativeTo(null);
-			enterName.pack();
-			enterName.setVisible(true);
-		}
-
-		public void actionPerformed(ActionEvent event) {
-			if (event.getSource() == inputButton) {
-				playerName = editTextArea.getText();
-				enterName.setVisible(false);
-			}
-		}
 	}
 
 } // end class Animate
