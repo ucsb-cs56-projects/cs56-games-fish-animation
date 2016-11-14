@@ -1,6 +1,9 @@
 package edu.ucsb.cs56.projects.games.fish_animation;
 
 import java.util.*;
+
+import com.sun.media.sound.SoftCubicResampler;
+
 import java.io.*;
 
 public class ScoreManager {
@@ -28,11 +31,11 @@ public class ScoreManager {
         Collections.sort(scores, comparator);
     }
 
-    public void addScore(int timer, int score, int difficulty) {
+    public void addScore(int timer, int score, int difficulty, String playerName, Character c) {
 
 	//Difficulties: Easy = 3; Medium = 7; Hard = 14
         loadScoreFile(difficulty);
-        scores.add(new Score(timer, score));
+        scores.add(new Score(timer, score, playerName, c));
         updateScoreFile(difficulty);
     }
 
@@ -102,7 +105,7 @@ public class ScoreManager {
     }
 
     public String getHighScoreString(int difficulty) {
-        String highscoreString = "Rank" + "\t" + "Time" + "\t\t" + "Fish Eaten \n";
+        String highscoreString = "Rank"  + "\t"+ "Name" + "\t" + "Character"  + "\t" + "Time" + "\t" + "Fish Eaten \n";
 	int max = 10;
 
         ArrayList<Score> scores;
@@ -116,7 +119,8 @@ public class ScoreManager {
             x = max;
         }
         while (i < x) {
-            highscoreString += (i + 1) + "." + "\t" + scores.get(i).getTime() + "\t" + "\t" + scores.get(i).getScore() + "\n";
+        	Score temp = scores.get(i);
+            highscoreString += (i + 1) + "." + "\t" + temp.getPlayerName() + "\t" + temp.getCharacter() + "\t" + temp.getTime() + "\t" + temp.getScore() + "\n";
             i++;
         }
         return highscoreString;

@@ -51,18 +51,10 @@ class Menu implements ActionListener {
 	// set the volume
 	SoundEffect.volume = SoundEffect.Volume.MEDIUM;
 	// start the bgm
+	SoundEffect.FINISH.stop();
 	SoundEffect.BGM.play();
-	
-	/*
-	Sounds1 ss = new Sounds1();
-	try {
-	    ss.music();
-	}
-	catch(Exception e) {
-	    e.printStackTrace();
-	    }*/
-
     }
+	
     
     /**
        Main GUI interface for the first section of the Menu.  
@@ -603,7 +595,7 @@ class Menu implements ActionListener {
 	}
 	
 	if(event.getSource() == PauseBGM){
-		SoundEffect.BGM.stop();
+		SoundEffect.BGM.pause();
 	}
 	if(event.getSource() == PlayBGM){
 		SoundEffect.BGM.play();
