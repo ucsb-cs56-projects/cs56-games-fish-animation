@@ -2,8 +2,6 @@ package edu.ucsb.cs56.projects.games.fish_animation;
 
 import java.util.*;
 
-import com.sun.media.sound.SoftCubicResampler;
-
 import java.io.*;
 
 public class ScoreManager {
