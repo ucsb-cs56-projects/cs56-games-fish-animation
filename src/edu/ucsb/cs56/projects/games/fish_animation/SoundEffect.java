@@ -29,7 +29,6 @@ public enum SoundEffect{
 	private SoundEffect(String fileName) {
 		try{
 			URL url = this.getClass().getClassLoader().getResource(fileName);
-			System.out.println(url != null);
 			AudioInputStream audioInputStream = AudioSystem.getAudioInputStream(url);
 			clip = AudioSystem.getClip();
 			clip.open(audioInputStream);
