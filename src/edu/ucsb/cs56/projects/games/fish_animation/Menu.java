@@ -2,6 +2,7 @@ package edu.ucsb.cs56.projects.games.fish_animation;
 
 import javax.swing.*;
 
+import org.omg.CORBA.PRIVATE_MEMBER;
 
 import java.awt.*;
 import java.awt.event.*;
@@ -12,6 +13,8 @@ import java.net.*; //url
 import java.util.concurrent.TimeUnit;
 import java.lang.*;
 import javax.imageio.*;
+import javax.management.loading.PrivateClassLoader;
+
 import java.io.*;
 
 /**
@@ -29,13 +32,13 @@ import java.io.*;
 
 class Menu implements ActionListener {
 
-	JButton Play, Instruction, Exit, Resume, Easy, Medium, Hard, Back, Menu, Credit, PlayBGM, PauseBGM, HighScore, NextPage;
-	JButton Character, CMenu, Kwhale, Shark;
-	JFrame frame, instruct, load;
+	private JButton Play, Instruction, Exit, Resume, Easy, Medium, Hard, Back, Menu, Credit, PlayBGM, PauseBGM, HighScore, NextPage;
+	private JButton Character, CMenu, Kwhale, Shark;
+	private JFrame frame, instruct, load;
 
-	int type;
-	JTextArea text;
-	JPanel textpan;
+	private int type;
+	private JTextArea text;
+	private JPanel textpan;
 	JLabel textLabel, pane, p2;
 
 	boolean character_type = true; // true = shark, false = kwhale
