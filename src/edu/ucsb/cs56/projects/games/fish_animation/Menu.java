@@ -4,6 +4,8 @@ import javax.swing.*;
 
 import org.omg.CORBA.PRIVATE_MEMBER;
 
+import com.sun.corba.se.impl.protocol.giopmsgheaders.Message;
+
 import java.awt.*;
 import java.awt.event.*;
 import java.awt.event.ActionListener;
@@ -34,11 +36,11 @@ class Menu implements ActionListener {
 
 	private JButton Play, Instruction, Exit, Resume, Easy, Medium, Hard, Back, Menu, Credit, PlayBGM, PauseBGM, HighScore, NextPage;
 	private JButton Character, CMenu, Kwhale, Shark;
-	private JFrame frame, instruct, load;
+	private JFrame frame, instruct;
 
-	private int type;
-	private JTextArea text;
-	private JPanel textpan;
+//	private int type;
+//	private JTextArea text;
+//	private JPanel textpan;
 	JLabel textLabel, pane, p2;
 
 	boolean character_type = true; // true = shark, false = kwhale
@@ -664,18 +666,19 @@ class Menu implements ActionListener {
 		}
 		if(event.getSource() == NextPage){
 			textLabel = new JLabel();
+			String s = "<html><h3>How to Play</h3>" 
+					+ "<p>To eat the fish, "
+					+ "click on the shark and hold down the mouse button to move your shark's mouth to the fish.</p>"
+					+ "<p>You can also use the arrow keys to move the fish as well."
+					+ "<ul>"
+					+ "<li> &#x2191 moves the shark upward for a short distance</li>"
+					+ "<li> &#x2190 arrow moves the shark left for a short distance</li>"
+					+ "<li> &#x2192 arrow moves the shark right for a short distance</li>"
+					+ "<li> &#x2193 arrow moves the shark downward for a short distance</li>"
+					+ "</ul>"
+					+ "</p></html>";
 			
-			textLabel.setText("<html><h3>How to Play</h3>" 
-			+ "<p>To eat the fish, "
-			+ "click on the shark and hold down the mouse button to move your shark's mouth to the fish.</p>"
-			+ "<p>You can also use the arrow keys to move the fish as well."
-			+ "<ul>"
-			+ "<li> &#x2191 moves the shark upward for a short distance</li>"
-			+ "<li> &#x2190 arrow moves the shark left for a short distance</li>"
-			+ "<li> &#x2192 arrow moves the shark right for a short distance</li>"
-			+ "<li> &#x2193 arrow moves the shark downward for a short distance</li>"
-			+ "</ul>"
-			+ "</p></html>");
+			textLabel.setText(s);
 			
 			Back = new JButton("Menu");
 			Back.addActionListener(this);
