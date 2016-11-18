@@ -693,7 +693,7 @@ class Menu implements ActionListener {
 			instruct.remove(Back);
 			instruct.remove(textLabel);
 			instruct.setVisible(false);
-			makegui();
+	//		makegui();
 		}
 		if (event.getSource() == Menu) {
 			frame.remove(Menu);
