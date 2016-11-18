@@ -39,6 +39,7 @@ public class ScoreManager {
 
     //loads the score file
     public void loadScoreFile(int difficulty) {
+    	scores = new ArrayList<Score>();
         try {
 	    switch(difficulty) {
 	    case 3:
@@ -104,13 +105,14 @@ public class ScoreManager {
 
     public String getHighScoreString(int difficulty) {
         String highscoreString = "Rank"  + "\t"+ "Name" + "\t" + "Character"  + "\t" + "Time" + "\t" + "Fish Eaten \n";
-	int max = 10;
+        int max = 10;
 
         ArrayList<Score> scores;
         scores = getScores(difficulty);
 
         int i = 0;
         int x = scores.size();
+        
 
 	//if more than 10 scores in the file, then only include top 10 scores
         if (x > max) {
@@ -121,6 +123,6 @@ public class ScoreManager {
             highscoreString += (i + 1) + "." + "\t" + temp.getPlayerName() + "\t" + temp.getCharacter() + "\t" + temp.getTime() + "\t" + temp.getScore() + "\n";
             i++;
         }
-        return highscoreString;
+        return highscoreString + '\n';
     }
 }
