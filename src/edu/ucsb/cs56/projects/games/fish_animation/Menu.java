@@ -1,6 +1,8 @@
 package edu.ucsb.cs56.projects.games.fish_animation;
 
 import javax.swing.*;
+
+
 import java.awt.*;
 import java.awt.event.*;
 import java.awt.event.ActionListener;
@@ -27,7 +29,7 @@ import java.io.*;
 
 class Menu implements ActionListener {
 
-	JButton Play, Instruction, Exit, Resume, Easy, Medium, Hard, Back, Menu, Credit, PlayBGM, PauseBGM, HighScore;
+	JButton Play, Instruction, Exit, Resume, Easy, Medium, Hard, Back, Menu, Credit, PlayBGM, PauseBGM, HighScore, NextPage;
 	JButton Character, CMenu, Kwhale, Shark;
 	JFrame frame, instruct, load;
 
@@ -550,26 +552,30 @@ class Menu implements ActionListener {
 		// Creates new frame for the new menu that will pop up
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		instruct = new JFrame();
-		instruct.setSize(300, 300);
 		// Creates text label for instructions
 		textLabel = new JLabel();
-		textLabel.setText("<html><p>Hello! The goal of the game is to eat as many fish as you can. "
+		
+		textLabel.setText("<html><h3>Welcome to Fish Animation !</h3>"
+				+ "<p>Hello! The goal of the game is to eat as many fish as you can. "
 				+ "There's no time limit, but watch out! Jellyfish are out to get you! "
-				+ "If you eat the jellyfish, you'll lose points! " + "If you get too many negative points, you lose :( "
-				+ "To eat the fish, click on the shark and hold down the mouse button to move your shark's mouth to the fish."
-				+ "You can also use the arrow keys to move the fish as well."
+				+ "If you eat the jellyfish, you'll lose health! " 
+				+ "If your health is 0 or you get too many negative points, you lose :( "
 				+ "There are three different difficulties, so test your skills on all of them! Good eating!</p></html>");
 
 		// Adds button to the instruction popup
-		Back = new JButton("Menu");
+		NextPage = new JButton("Next");
 
 		// Adds action listener to the button to go back to the mainmenu
-		Back.addActionListener(this);
-		Back.setPreferredSize(new Dimension(150, 75));
+		NextPage.addActionListener(this);
+		NextPage.setPreferredSize(new Dimension(150, 75));
 
 		// Adds the layout for the button and the textArea
+		instruct.setSize(350, 550);
+		instruct.setAlwaysOnTop( true );
+		instruct.setLocationByPlatform( true );
+		instruct.setLocationRelativeTo(pane);
 		instruct.getContentPane().add(BorderLayout.NORTH, textLabel);
-		instruct.getContentPane().add(BorderLayout.SOUTH, Back);
+		instruct.getContentPane().add(BorderLayout.SOUTH, NextPage);
 		instruct.setVisible(true);
 	}
 	
@@ -642,16 +648,40 @@ class Menu implements ActionListener {
 			System.exit(0);
 		}
 		if (event.getSource() == Instruction) {
-			frame.remove(Play);
-			frame.remove(Instruction);
-			frame.remove(Exit);
-			frame.remove(Credit);
-			frame.remove(Character);
-			frame.setVisible(false);
+//			frame.remove(Play);
+//			frame.remove(Instruction);
+//			frame.remove(Exit);
+//			frame.remove(Credit);
+//			frame.remove(Character);
+//			frame.setVisible(false);
 			HowToPlay();
 		}if (event.getSource() == HighScore) {
 
 			HighScores();
+		}
+		if(event.getSource() == NextPage){
+			textLabel = new JLabel();
+			
+			textLabel.setText("<html><h3>How to Play</h3>" 
+			+ "<p>To eat the fish, "
+			+ "click on the shark and hold down the mouse button to move your shark's mouth to the fish.</p>"
+			+ "<p>You can also use the arrow keys to move the fish as well."
+			+ "<ul>"
+			+ "<li></li>"
+			+ "<li></li>"
+			+ "<li></li>"
+			+ "<li></li>"
+			+ "</ul>"
+			+ "</p></html>");
+			
+			Back = new JButton("Menu");
+			Back.addActionListener(this);
+			Back.setPreferredSize(new Dimension(150, 75));
+			instruct.getContentPane().removeAll();
+			instruct.getContentPane().add(BorderLayout.NORTH, textLabel);
+			instruct.getContentPane().add(BorderLayout.SOUTH, Back);
+			instruct.getContentPane().revalidate();
+			instruct.repaint();
 		}
 		if (event.getSource() == Back) {
 			instruct.remove(Back);
