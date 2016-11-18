@@ -667,10 +667,10 @@ class Menu implements ActionListener {
 			+ "click on the shark and hold down the mouse button to move your shark's mouth to the fish.</p>"
 			+ "<p>You can also use the arrow keys to move the fish as well."
 			+ "<ul>"
-			+ "<li></li>"
-			+ "<li></li>"
-			+ "<li></li>"
-			+ "<li></li>"
+			+ "<li> &#x2191 moves the shark upward for a short distance</li>"
+			+ "<li> &#x2190 arrow moves the shark left for a short distance</li>"
+			+ "<li> &#x2192 arrow moves the shark right for a short distance</li>"
+			+ "<li> &#x2193 arrow moves the shark downward for a short distance</li>"
 			+ "</ul>"
 			+ "</p></html>");
 			
