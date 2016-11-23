@@ -2,9 +2,6 @@ package edu.ucsb.cs56.projects.games.fish_animation;
 
 import javax.swing.*;
 
-import org.omg.CORBA.PRIVATE_MEMBER;
-
-import com.sun.corba.se.impl.protocol.giopmsgheaders.Message;
 
 import java.awt.*;
 import java.awt.event.*;
@@ -596,11 +593,11 @@ class Menu implements ActionListener {
 		message += highscore.getHighScoreString(14);
 		
 		JFrame highscores = new JFrame();
-		highscores.setSize(350, 500);
+		highscores.setSize(550, 300);
 		highscores.setAlwaysOnTop( true );
 		highscores.setLocationByPlatform( true );
 		highscores.add(new TextArea(message));
-		highscores.pack();
+		//highscores.pack();
 		highscores.setLocationRelativeTo(pane);
 		highscores.setVisible( true );
 	}
