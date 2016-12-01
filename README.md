@@ -13,6 +13,12 @@ YES | mastergberry | jovo123, jcryan | A fish animation
 ```
 ================
 
-W16 final remarks
+F16 final remarks
 
-What the code does: Each sea creature class extends ScumOfTheSea to be represented in the ocean. The menu class takes care of everything up to the start of the game. The FishAnimationEnvironment is where the bulk of the game is defined. The features that it supports are saving the game as well as saving high scores at the end of the game (this is defined in ScoreManager.java as well as Score.java and ScoreComparer.java. Even though there is a move() function defined in each class of the sea creatures, a lot of the sea creatures are animated not using the move(). For refactoring, the layout in Menu.java can be improved on by using the card layout and the gridbag layout. The code cann be made more modular as well. The FishAnimationEnvironment currently just has a bunch of classes defined so it is a bit difficult to go through and understand. The utilization of the  abstact class could be done better as well, since a lot of the methods defined in the inherited classes don't get used.
+Currently the game runs, and we have the following classes:
+Game logics: Score, Score Manager, ScoreComparer, ScumOftheSea, JellyFish, Fish, Shark, SoundEffects, Character
+GUI: Menu, GeneralPathWrapper
+Mixed: FishAnimationEnvironment
+
+
+The main function to start the program is in Menu.java. Menu.java takes care of building the main menu of the game, and some Jbuttons are tied to some functions in FishAnimationEnvironment.java, where the bulk of the game is defined. Currently, FishAnimationEnvironemnt.java is a mix of Game Logics and GUI stuffs, so it is pretty hard to read through and understand. A code refactoring on this java file is highly recommanded. Try to separate the game logic from GUI completely.  
