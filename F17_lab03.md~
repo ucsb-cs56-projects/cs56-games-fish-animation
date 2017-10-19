@@ -39,5 +39,5 @@ There are a total of 14 java classes. GUI claeese include Menu, GeneralPathWrapp
 At First glance, the code and methods are clear and the comments are suitable. Besides, the relationship between classes are also obvious such as the relation between Score and ScoreComparer (ScoreComparer compare the scores the players get). However, with a detailed analysis, it is easy to find some serious problem in the animation although the program runs well each time. I suggests the other programmers to run the app directly. As a player, you will find bugs more easily. Besides, the comments between the codes are detailed. If you read them carefully, you will find it is pretty easy to follow up.  
 
 ### Question(j)
-There is no Junit Test but it is somehow useful to add Junit test program. It can help programmers to debug and add new features more smoothly. However, it is more convenient to directly run the game to detect the bug if there is.
+There is no Junit Test but it is somehow useful to add Junit test program. It can help programmers to debug and add new features more smoothly. However, it is more convenient to di/Users/sunxiao/Desktop/cs56-games-fish-animation rectly run the game to detect the bug if there is.
 
