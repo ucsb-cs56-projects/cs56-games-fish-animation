@@ -547,6 +547,7 @@ class Menu implements ActionListener {
 		
 		textLabel.setText("<html><h3>Welcome to Fish Animation !</h3>"
 				+ "<p>Hello! The goal of the game is to eat as many fish as you can. "
+                + "Right now, the target point is 50. Whenever you get 50 or more points, you win! "
 				+ "There's no time limit, but watch out! Jellyfish are out to get you! "
 				+ "If you eat the jellyfish, you'll lose health! " 
 				+ "If your health is 0 or you get too many negative points, you lose :( "
