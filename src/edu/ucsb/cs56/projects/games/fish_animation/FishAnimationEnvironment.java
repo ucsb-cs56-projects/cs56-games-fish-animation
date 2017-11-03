@@ -110,7 +110,7 @@ public class FishAnimationEnvironment extends JFrame implements Serializable {
 		Character c = character_type ? Character.SHARK : Character.WHALE;
 		
 		if (won) {
-			message = "Please enter your name \n";
+			message = "Congratulations! \n You have reached 50 points and win the game!\n Please enter your name \n";
 			playerName = JOptionPane.showInputDialog(fishPanel, message, "CS56");
 			highscore.addScore(timer, eaten, difficulty, playerName, c);
 			message += highscore.getHighScoreString(difficulty);
