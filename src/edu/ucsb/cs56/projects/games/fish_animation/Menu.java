@@ -74,8 +74,9 @@ class Menu implements ActionListener {
 		Play = new JButton("PLAY GAME");
 		Instruction = new JButton("INSTRUCTIONS");
 		Exit = new JButton("EXIT");
-		Credit = new JTextField("(C) 2016");
 		Character = new JButton("CHARACTER");
+        //create a copyright text
+        Credit = new JTextField("(C) 2016");
 		frame.setLayout(null);
 		pane.setLayout(null);
 		HighScore = new JButton("HIGH SCORES");
@@ -109,7 +110,6 @@ class Menu implements ActionListener {
 		Instruction.addActionListener(this);
 		HighScore.addActionListener(this);
 		Exit.addActionListener(this);
-		//Credit.addActionListener(this);
 		Character.addActionListener(this);
 		PlayBGM.addActionListener(this);
 		PauseBGM.addActionListener(this);

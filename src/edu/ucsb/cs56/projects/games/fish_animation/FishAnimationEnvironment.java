@@ -112,16 +112,13 @@ public class FishAnimationEnvironment extends JFrame implements Serializable {
 		
 		if (won) {
 			message = "Congratulations! \n You have reached 50 points and win the game!\n Please enter your name \n";
-            //JOptionPane.showMessageDialog(null, null, "my title", JOptionPane.INFORMATION_MESSAGE);
-			playerName = JOptionPane.showInputDialog(fishPanel, message, "You win!", JOptionPane.INFORMATION_MESSAGE);
+			playerName = (String) JOptionPane.showInputDialog(fishPanel, message, "You win!", JOptionPane.INFORMATION_MESSAGE,null,null,playerName);
 			highscore.addScore(timer, eaten, difficulty, playerName, c);
 			message += highscore.getHighScoreString(difficulty);
 		} else {
 			message = "Sorry, you lose. You got " + eaten + " points!";
 		}
 		message += "\n\tPlay again?";
-        
-        //public static Volume volume = Volume.MEDIUM;
 
 		Thread t = new Thread(new Runnable() {
 			public void run() {
