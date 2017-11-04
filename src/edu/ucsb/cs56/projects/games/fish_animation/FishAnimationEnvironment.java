@@ -37,7 +37,6 @@ public class FishAnimationEnvironment extends JFrame implements Serializable {
 	private DrawingPanel fishPanel = new DrawingPanel();
 	private JFrame animation = new JFrame();
 	private ScoreManager highscore = new ScoreManager();
-
 	private int maxX = 1366, maxY = 768; // Default height and width of the game
 											// at start
 	private int posX = maxX / 2, posY = maxY / 2; // used to position the shark
@@ -284,7 +283,6 @@ public class FishAnimationEnvironment extends JFrame implements Serializable {
 		public void paintComponent(Graphics g) {
 			// fishPanel.requestFocus(); //needed to be called each Panel
 			requestFocus();
-
 			// Sets background color and adds background image
 			Graphics2D g2 = (Graphics2D) g;
 			g2.setColor(Color.BLUE);

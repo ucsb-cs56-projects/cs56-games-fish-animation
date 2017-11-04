@@ -34,7 +34,7 @@ class Menu implements ActionListener {
 	private JButton Play, Instruction, Exit, Resume, Easy, Medium, Hard, Back, Menu, PlayBGM, PauseBGM, HighScore, NextPage;
     private JTextField Credit;
 	private JButton Character, CMenu, Kwhale, Shark;
-	private JFrame frame, instruct;
+	public static JFrame frame, instruct;
 
 //	private int type;
 //	private JTextArea text;
@@ -42,11 +42,19 @@ class Menu implements ActionListener {
 	JLabel textLabel, pane, p2;
 
 	boolean character_type = true; // true = shark, false = kwhale
+    URL back = getClass().getResource("/resources/background.gif");
 
 	public static void main(String[] args) {
-		Menu menu = new Menu();
-
-		menu.makegui();
+        
+        Menu menu = new Menu();
+        
+        frame = new JFrame();
+        frame.setSize(800, 625);
+        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        frame.setTitle("Welcome to Fish Game!");
+        
+        
+        menu.makegui();
 
 		// pre-load all sound effects by calling init method
 		SoundEffect.init();
@@ -62,12 +70,7 @@ class Menu implements ActionListener {
 	 * select exit, play, or instruction.
 	 */
 	public void makegui() {
-
-		frame = new JFrame();
-		frame.setSize(800, 625);
-		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		frame.setTitle("Welcome to Fish Game!");
-		URL back = getClass().getResource("/resources/background.gif");
+        
 		ImageIcon bg = new ImageIcon(back);
 		pane = new JLabel(bg);
 		// Adds the different buttons to the menu
@@ -600,7 +603,9 @@ class Menu implements ActionListener {
 	public void actionPerformed(ActionEvent event) {
 		if (event.getSource() == Easy) {
 			frame.setVisible(false);
+            //frame.dgetContentPane().removeAll();
 			FishAnimationEnvironment f = new FishAnimationEnvironment(character_type, 3, false);
+
 		}
 		if (event.getSource() == Medium) {
 			frame.setVisible(false);
@@ -683,7 +688,7 @@ class Menu implements ActionListener {
 			frame.remove(Medium);
 			frame.remove(Hard);
 			frame.remove(Resume);
-			frame.setVisible(false);
+			//frame.setVisible(false);
 			makegui();
 		}
 		if (event.getSource() == Character) {
@@ -691,14 +696,14 @@ class Menu implements ActionListener {
 			frame.remove(Instruction);
 			frame.remove(Exit);
 			frame.remove(Credit);
-			frame.remove(Character);
+			//frame.remove(Character);
 			setCharacter();
 		}
 		if (event.getSource() == CMenu) {
 			frame.remove(Shark);
 			frame.remove(Kwhale);
 			frame.remove(CMenu);
-			frame.setVisible(false);
+			//frame.setVisible(false);
 			makegui();
 		}
 	}
