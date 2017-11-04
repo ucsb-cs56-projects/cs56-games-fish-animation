@@ -623,8 +623,10 @@ class Menu implements ActionListener {
 
 		if (event.getSource() == PauseBGM) {
 			SoundEffect.BGM.pause();
+            SoundEffect.volume = SoundEffect.Volume.MUTE;
 		}
 		if (event.getSource() == PlayBGM) {
+            SoundEffect.volume = SoundEffect.Volume.MEDIUM;
 			SoundEffect.BGM.play();
 		}
 		if (event.getSource() == Play) {
