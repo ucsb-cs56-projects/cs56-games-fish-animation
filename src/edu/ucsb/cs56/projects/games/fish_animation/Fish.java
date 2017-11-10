@@ -5,6 +5,7 @@ import java.awt.geom.AffineTransform; // translation, rotation, scale
 import java.awt.geom.Line2D; 
 import java.awt.geom.PathIterator;
 import java.awt.geom.AffineTransform;
+import java.awt.geom.Ellipse2D;
 
 /**
    A vector drawing of a Fish that implements
@@ -47,17 +48,17 @@ public class Fish extends ScumOfTheSea{
 	double nextX = 0;
 	double nextY = 0;
 	
-  //URL fishURL = getClass().getResource("/resources/Fish.jpg");
-  //Image fish = new ImageIcon(fishURL).getImage();
+	//URL fishURL = getClass().getResource("/resources/Fish.jpg");
+	//Image fish = new ImageIcon(fishURL).getImage();
 
-		for(double j = 0;j < 100; j += 1.0) { 
+	for(double j = 0;j < 100; j += 1.0) { 
 	    nextX = currentX + (((3.0 / 4.0) * width) / 100.0);
 	    nextY = currentY + ((height / 2.0) * (Math.sin(Math.PI * ((j + 1.0) / 100.0)) - Math.sin(Math.PI * ((j - 1.0) / 100.0))));
 	    wholeFish.append(new Line2D.Double(currentX, currentY, nextX, nextY), false);
 	    currentX = nextX;
 	    currentY = nextY;
 	}
-
+	
 	nextX = currentX + (1.0 / 4.0) * width;
 	nextY = y + (height / 2.0);
 	wholeFish.append(new Line2D.Double(currentX, currentY, nextX, nextY), false);
