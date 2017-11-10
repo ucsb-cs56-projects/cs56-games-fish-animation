@@ -14,7 +14,7 @@ import javax.swing.JOptionPane;
 /**
  * Creates a JFrame that animates Fish and allows for a shark to eat the fish.
  * Tracks the amount of fish eaten with an elapsed amount of time.
- * 
+ *
  * @author Lawrence Khuu
  * @author Casey Barbello
  * @author Daryl Pham
@@ -29,7 +29,7 @@ import javax.swing.JOptionPane;
  */
 
 public class FishAnimationEnvironment extends JFrame implements Serializable {
-
+	
 	static {
 		System.setProperty("java.awt.headless", "true");
 	}
@@ -37,38 +37,37 @@ public class FishAnimationEnvironment extends JFrame implements Serializable {
 	private DrawingPanel fishPanel = new DrawingPanel();
 	private JFrame animation = new JFrame();
 	private ScoreManager highscore = new ScoreManager();
-
 	private int maxX = 1366, maxY = 768; // Default height and width of the game
-											// at start
+	// at start
 	private int posX = maxX / 2, posY = maxY / 2; // used to position the shark
-													// at the origin
+	// at the origin
 	private int maxWidth = 100; // max width of the fish
 	private int boatX = maxX;// hold the position of the boat
 	private int maxD = 10; // holds the maximum diameter of the bubbles
-
+	
 	private int health = 50;
 	private int maxHealth = 50;
 	private int eaten = 0; // number of fish eaten
 	private int numFish = 75; // number of fish in environment
 	private int numBubbles = 10 + (int) (Math.random() * 20); // creates a
-																// random amount
-																// of bubbles
+	// random amount
+	// of bubbles
 	private int numJellyFish; // holds the number of Jellyfish to be created
 	private int numPlankton;
 	private int timer, timerload = 0;
 	private long time1 = System.nanoTime() / 1000000000; // Used to get the
-															// start time of the
-															// game
+	// start time of the
+	// game
 	private long time2, pausestart, pausetime = 0; // time that the pause button
-													// was pressed for
+	// was pressed for
 	private int delay = 20; // The pause button delay
 	private boolean stop = false; // used to know when to pause the animation
-									// and when not to
+	// and when not to
 	private boolean load = false; // used to determine whether or not the game
-									// loads from the serialized form
-
+	// loads from the serialized form
+	
 	private boolean character_type; // determines character, (shark, kwhale)
-
+	
 	private long lastPress = 0;
 	private int choice = -1;
 	private String message = "";
@@ -79,7 +78,7 @@ public class FishAnimationEnvironment extends JFrame implements Serializable {
 	private ArrayList<Bubbles> bubblesArray = new ArrayList<Bubbles>();
 	private ArrayList<JellyFish> jellyfish = new ArrayList<JellyFish>();
 	private ArrayList<Plankton> plankton = new ArrayList<Plankton>();
-
+	
 	// Images in the game
 	private URL reefURL = getClass().getResource("/resources/CoralReef.jpg");
 	private Image reef = new ImageIcon(reefURL).getImage();
@@ -91,18 +90,19 @@ public class FishAnimationEnvironment extends JFrame implements Serializable {
 	private Image boat = new ImageIcon(boatURL).getImage();
 	private URL kwhaleURL = getClass().getResource("/resources/kwhale.gif");
 	private Image kwhale = new ImageIcon(kwhaleURL).getImage();
-
+	
 	private int difficulty;
 	
 	private String playerName = "CS56";
-
+	
 	/**
 	 * Method gameFinished occurs once the player wins or loses. Upon ending the
 	 * game, the player now has the option of restarting the game or quitting.
-	 * 
+	 *
 	 * @param won
 	 *            true if the player won, false if the player lost
 	 */
+	
 	private void gameFinished(boolean won) {
 		// change the BGM if the game is finished
 		SoundEffect.BGM.stop();
@@ -110,19 +110,19 @@ public class FishAnimationEnvironment extends JFrame implements Serializable {
 		Character c = character_type ? Character.SHARK : Character.WHALE;
 		
 		if (won) {
-			message = "Please enter your name \n";
-			playerName = JOptionPane.showInputDialog(fishPanel, message, "CS56");
+			message = "Congratulations! \n You have reached 50 points and win the game!\n Please enter your name \n";
+			playerName = (String) JOptionPane.showInputDialog(fishPanel, message, "You win!", JOptionPane.INFORMATION_MESSAGE,null,null,playerName);
 			highscore.addScore(timer, eaten, difficulty, playerName, c);
 			message += highscore.getHighScoreString(difficulty);
 		} else {
 			message = "Sorry, you lose. You got " + eaten + " points!";
 		}
 		message += "\n\tPlay again?";
-
+		
 		Thread t = new Thread(new Runnable() {
 			public void run() {
 				choice = JOptionPane.showOptionDialog(fishPanel, new JTextArea(message), "Gameover!",
-						JOptionPane.YES_NO_OPTION, JOptionPane.PLAIN_MESSAGE, null, null, null);
+													  JOptionPane.YES_NO_OPTION, JOptionPane.PLAIN_MESSAGE, null, null, null);
 				if (choice == JOptionPane.YES_OPTION) {
 					Menu game = new Menu();
 					SoundEffect.FINISH.stop();
@@ -136,12 +136,12 @@ public class FishAnimationEnvironment extends JFrame implements Serializable {
 			}
 		});
 		t.start();
-
+		
 	}
-
+	
 	/**
 	 * Method createRandomFish
-	 * 
+	 *
 	 * @param x
 	 *            for the x position
 	 * @param y
@@ -155,10 +155,10 @@ public class FishAnimationEnvironment extends JFrame implements Serializable {
 		int randomWidth = 10 + (int) (Math.random() * (maxWidth - 10));
 		return new Fish(randomX, randomY, randomWidth, randomWidth / 5);
 	}
-
+	
 	/**
 	 * Method createsBubbles
-	 * 
+	 *
 	 * @param x
 	 *            for the x position
 	 * @param y
@@ -172,7 +172,7 @@ public class FishAnimationEnvironment extends JFrame implements Serializable {
 		int randomD = (int) (Math.random() * diameter);
 		return new Bubbles(randomX, randomY, randomD);
 	}
-
+	
 	/**
 	 * Constructor for FishAnimationEnvironment. Creates a JFrame and a Jpanel
 	 * that is placed inside of it. Animation is done on the JPanel
@@ -181,7 +181,7 @@ public class FishAnimationEnvironment extends JFrame implements Serializable {
 	 * public FishAnimationEnvironment() { for(int i = 0; i < numFish; i++){
 	 * addNewFish(createRandomFish(maxX, maxY, maxWidth)); } }
 	 */
-
+	
 	/**
 	 * Custom Constructor for FishAnimationEnvironment. Creates a JFrame and a
 	 * Jpanel that is placed inside of it. Animation is done on the JPanel. This
@@ -207,7 +207,7 @@ public class FishAnimationEnvironment extends JFrame implements Serializable {
 				posX = os.readInt();
 				posY = os.readInt();
 				boatX = os.readInt();
-
+				
 				for (int k = 0; k < numFish; k++) {
 					Fish f = new Fish(os.readDouble(), os.readDouble(), os.readDouble(), os.readDouble());
 					fishArray.add(f);
@@ -232,36 +232,36 @@ public class FishAnimationEnvironment extends JFrame implements Serializable {
 				numJellyFish = 3;
 			}
 		}
-
+		
 		// Adds the fish into the Array only if the load button was not selected
 		if (!load) {
 			for (int i = 0; i < numFish; i++) {
 				fishArray.add((createRandomFish(maxX, maxY, maxWidth)));
 			}
 		}
-
+		
 		// Adds the random amount of Bubbles into the ArrayList
 		for (int i = 0; i < numBubbles; i++) {
 			bubblesArray.add((createBubbles(maxX, maxY, maxD)));
 		}
-
+		
 		// Adds the Jellyfish into the game
 		if (!load) {
 			for (int i = 0; i < numJellyFish; i++) {
 				JellyFish j = new JellyFish((int) (Math.random() * 12345) % maxX, maxY,
-						(Math.random() * 123) % 50 + 15);
+											(Math.random() * 123) % 50 + 15);
 				jellyfish.add(j);
 			}
 		}
-
+		
 		if (!load) {
 			for (int i = 0; i < numPlankton; i++) {
 				Plankton p = new Plankton((int) (Math.random() * 12345) % maxX, (int) (Math.random() * 12345) % maxY,
-						true);
+										  true);
 				plankton.add(p);
 			}
 		}
-
+		
 		animation.getContentPane().add(BorderLayout.CENTER, fishPanel);
 		animate = new Animate();
 		animate.start();
@@ -271,31 +271,30 @@ public class FishAnimationEnvironment extends JFrame implements Serializable {
 		GameMenu game = new GameMenu();
 		game.makemenu();
 	}// end constructor
-
+	
 	/**
 	 * Innerclass for a custom Jpanel for animation. Draws out the background
 	 * and the in-game components including a timer, the score, the shark, the
 	 * fish, the jellyfish, the seaweed, the boat, and the bubbles.
 	 */
-
+	
 	class DrawingPanel extends JPanel {
-
+		
 		public void paintComponent(Graphics g) {
 			// fishPanel.requestFocus(); //needed to be called each Panel
 			requestFocus();
-
 			// Sets background color and adds background image
 			Graphics2D g2 = (Graphics2D) g;
 			g2.setColor(Color.BLUE);
 			g2.fillRect(0, 0, this.getWidth(), this.getHeight());
 			super.paintComponent(g); // replace current painting
 			g.drawImage(reef, 0, 0, this);
-
+			
 			// Draws the seaweed at the specified points
 			for (int i = 0; i < this.getWidth() + 125; i += 125) {
 				g.drawImage(seaweed, i, this.getHeight() - 83, this);
 			}
-
+			
 			// Draws the image of the boat and also animates it
 			g.drawImage(boat, boatX, -135, this);
 			if (!stop) {
@@ -304,13 +303,13 @@ public class FishAnimationEnvironment extends JFrame implements Serializable {
 					boatX = this.getWidth();
 				}
 			}
-
+			
 			// Draws the fish based off the fish info array
 			g2.setColor(Color.YELLOW);
 			for (int i = 0; i < fishArray.size(); i++) {
 				g2.draw(fishArray.get(i));
 			}
-
+			
 			// Draws the image of the Shark
 			if (posX < 0)
 				posX = maxX;
@@ -323,12 +322,12 @@ public class FishAnimationEnvironment extends JFrame implements Serializable {
 			Shark s = new Shark(posX, posY);
 			int newXPos = (int) s.getXPos() - 160;
 			int newYPos = (int) s.getYPos() - 130;
-
+			
 			if (character_type)
 				g2.drawImage(shark, newXPos, newYPos, this);
 			else
 				g2.drawImage(kwhale, newXPos, newYPos, this);
-
+			
 			// Draws the bubbles with the blue gradient
 			Color b = new Color(127, 255, 212);
 			for (int i = 0; i < bubblesArray.size(); i++) {
@@ -340,18 +339,18 @@ public class FishAnimationEnvironment extends JFrame implements Serializable {
 				int BubblesY2 = yI + bubblesArray.get(i).getDiameter() / 2;
 				int BubblesX = xI - bubblesArray.get(i).getDiameter() / 2;
 				int BubblesX2 = xI + bubblesArray.get(i).getDiameter() / 2;
-
+				
 				// Creates a gradient color for the Bubble
 				GradientPaint gradient = new GradientPaint(BubblesX, BubblesY, Color.BLUE, BubblesX2, BubblesY2, b);
 				g2.setPaint(gradient);
-
+				
 				// Draws a Bubbles object onto the screen
 				int xb = (int) bubblesArray.get(i).getXPos();
 				int yb = (int) bubblesArray.get(i).getYPos();
 				int db = (int) bubblesArray.get(i).getDiameter();
 				g2.fillOval(xb, yb, db, db);
 			}
-
+			
 			// Sets the Color to PINK for the jellyfish
 			g2.setColor(Color.PINK);
 			for (int i = 0; i < jellyfish.size(); i++) {
@@ -360,7 +359,7 @@ public class FishAnimationEnvironment extends JFrame implements Serializable {
 				if (jellyfish.get(i).checkJellyFish() == true) {
 					// Draws the Body of the JellyFish
 					g2.fillArc(jNewXPos, jNewYPos, 50, 40, 0, 180);
-
+					
 					// Draws the Tentacles of the JellyFish
 					for (int j = (int) jellyfish.get(i).getXPos() + 5; j < jellyfish.get(i).getXPos() + 50; j += 5) {
 						g2.drawLine(j, jNewYPos + 75, j, jNewYPos + 10);
@@ -368,14 +367,14 @@ public class FishAnimationEnvironment extends JFrame implements Serializable {
 				} else {
 					// Draws the Body of the JellyFish
 					g2.fillArc(jNewXPos + 5, jNewYPos, 40, 50, 0, 180);
-
+					
 					// Draws the Tentacles of the JellyFish
 					for (int j = (int) jellyfish.get(i).getXPos() + 10; j < jellyfish.get(i).getXPos() + 45; j += 5) {
 						g2.drawLine(j, jNewYPos + 95, j, jNewYPos + 10);
 					}
 				}
 			}
-
+			
 			// sets green for plankton
 			g2.setColor(Color.GREEN);
 			for (int i = 0; i < plankton.size(); i++) {
@@ -383,112 +382,112 @@ public class FishAnimationEnvironment extends JFrame implements Serializable {
 			}
 			
 			g2.setStroke(new BasicStroke(2));
-
+			
 			// displays the number of points
 			g.setFont(new Font("Corsiva Hebrew", Font.PLAIN, 40));
 			g.setColor(Color.RED);
 			String str1 = "Points: " + eaten + "!";
 			g.drawString(str1, 20, 35);
 			
-			//	displays the health bar
+			//    displays the health bar
 			
-
+			
 			g.setFont(new Font("Corsiva Hebrew", Font.PLAIN, 20));
 			g.setColor(Color.RED);
 			g.drawString("Health", 30, 90);
 			g.drawRect(20, 95, 350, 20);
 			g.fillRect(20, 95, (int)(350 * health/maxHealth), 20);
-
+			
 			// displays the current elapsed time of the game in seconds
 			g.setFont(new Font("Corsiva Hebrew", Font.PLAIN, 30));
 			g.setColor(Color.RED);
 			String str2 = "Seconds Elapsed: " + timer;
 			g.drawString(str2, 20, 65);
-
+			
 		}
 	} // end DrawingPanel
-
+	
 	/**
 	 * Class that animates the game to get the fish and bubbles to move.
 	 */
 	class Animate extends Thread {
 		public void run() {
-
+			
 			// Starts the Action listener to listen for mouse events in the
 			// panel
 			MouseHandler handler = new MouseHandler();
 			fishPanel.addMouseListener(handler);
 			fishPanel.addMouseMotionListener(handler);
-
+			
 			// Starts the Key Listener to listen for key events in the panel
 			KeyHandler keyH = new KeyHandler();
 			fishPanel.addKeyListener(keyH);
 			// fishPanel.requestFocus();
-
+			
 			try {
 				while (true) {
 					display(delay, fishPanel);
 				} // end while loop
 			} catch (Exception ex) {
 				if (!(ex instanceof InterruptedException)) { // Unexpected
-																// exception
-																// occurred.
+					// exception
+					// occurred.
 					System.out.println(ex);
 					System.exit(1); // terminate program
 				} // end if
 			} // end catch
 		} // end run
-
+		
 		/**
 		 * Class that holds the information for each separate fish in order to
 		 * animate the fish and know its whereabouts on the screen.
 		 */
 		class FishInfo {
 			private double x, y, width, height;
-
+			
 			FishInfo(double x, double y, double width, double height) {
 				this.x = x;
 				this.y = y;
 				this.width = width;
 				this.height = height;
 			}
-
+			
 			public double getXPos() {
 				return x;
 			}
-
+			
 			public double getYPos() {
 				return y;
 			}
-
+			
 			public double getWidth() {
 				return width;
 			}
-
+			
 			public double getHeight() {
 				return height;
 			}
 		}
-
+		
 		/**
 		 * Creates each frame and also checks if the fish have been eaten.
 		 * Removes fish and creates a new fish if it has been eaten.
 		 **/
 		public void display(int delay, DrawingPanel fishPanel)
-
-				throws InterruptedException {
+		
+		throws InterruptedException {
 			// uses the stop boolean variable to pause
 			if (!stop) {
 				ArrayList<FishInfo> info = new ArrayList<FishInfo>();
-
+				
 				for (int i = 0; i < fishArray.size(); i++) {
-
+					
 					// get x position, y position, width, and height of fish
 					int xf = (int) fishArray.get(i).getXPos();
 					int yf = (int) fishArray.get(i).getYPos();
 					int wf = (int) fishArray.get(i).getWidth();
 					int hf = (int) fishArray.get(i).getHeight();
-
+					
 					/*
 					 * check if each fish is at sharks mouth and remove from
 					 * screen and increment eaten if true
@@ -503,12 +502,12 @@ public class FishAnimationEnvironment extends JFrame implements Serializable {
 						info.add(new FishInfo(xf, yf, wf, hf));
 					}
 				}
-
+				
 				for (int i = 0; i < jellyfish.size(); i++) {
 					// get x and y positions of jellyfish
 					int xj = (int) jellyfish.get(i).getXPos();
 					int yj = (int) jellyfish.get(i).getYPos();
-
+					
 					// check if shark is touching a jellyfish and delete
 					// jellyfish and penalize if true
 					if ((xj - 20 > posX - 200 && xj + 20 < posX + 40) && (yj + 60 > posY - 60 && yj < posY + 25)) {
@@ -520,11 +519,11 @@ public class FishAnimationEnvironment extends JFrame implements Serializable {
 						jellyfish.get(i).setY((int) fishPanel.getHeight());
 					}
 				}
-
+				
 				for (int i = 0; i < plankton.size(); i++) {
 					int xp = (int) plankton.get(i).getXPos();
 					int yp = (int) plankton.get(i).getYPos();
-
+					
 					if ((xp - 20 > posX - 200 && xp + 20 < posX + 40) && (yp + 60 > posY - 60 && yp < posY + 25)) {
 						eaten += 5;
 						// reset plankton position
@@ -535,7 +534,7 @@ public class FishAnimationEnvironment extends JFrame implements Serializable {
 					}
 				}
 				fishArray.clear();
-
+				
 				// Displays the Bubbles of the bubblesArray ArrayList
 				for (int i = 0; i < bubblesArray.size(); i++) {
 					if (bubblesArray.get(i).getYPos() <= -20) {
@@ -544,7 +543,7 @@ public class FishAnimationEnvironment extends JFrame implements Serializable {
 					} else
 						// moves the bubbles 2 pixels
 						bubblesArray.get(i).move(2);
-
+					
 				}
 				// Displays the jellyfish ArrayList
 				for (int i = 0; i < jellyfish.size(); i++) {
@@ -552,21 +551,21 @@ public class FishAnimationEnvironment extends JFrame implements Serializable {
 						jellyfish.get(i).setX(((int) ((Math.random() * 12345) % fishPanel.getWidth())));
 						jellyfish.get(i).setY((int) fishPanel.getHeight());
 					}
-
+					
 					// If the jellyfish is true it moves 10 pixels and setMove
 					// to false
 					if (jellyfish.get(i).checkJellyFish() && jellyfish.get(i).getCount() % 20 == 0) {
 						jellyfish.get(i).move(jellyfish.get(i).getSpeed());
 						jellyfish.get(i).setMove(false);
 					}
-
+					
 					// Sets move from false to true
 					if (jellyfish.get(i).getCount() % 20 == 10) {
 						jellyfish.get(i).setMove(true);
 					}
 					jellyfish.get(i).setCount();
 				}
-
+				
 				for (int i = 0; i < plankton.size(); i++) {
 					if (plankton.get(i).moveLeft() == true) {
 						Plankton newp = new Plankton(plankton.get(i).getXPos() - 5, plankton.get(i).getYPos(), false);
@@ -576,7 +575,7 @@ public class FishAnimationEnvironment extends JFrame implements Serializable {
 						plankton.set(i, newp);
 					}
 				}
-
+				
 				// Speed of the fish moving across the screen
 				double currentSpeed = numFish % 6;
 				for (int i = 0; i < info.size(); i++) {
@@ -588,16 +587,16 @@ public class FishAnimationEnvironment extends JFrame implements Serializable {
 					double newX = info.get(i).getXPos() - currentSpeed;
 					int wp = fishPanel.getWidth();
 					int hp = fishPanel.getHeight();
-
+					
 					if (newX < -50) {
 						fishArray.add((new Fish(wp, ((Math.random() * hp) % hp), info.get(i).getWidth(),
-								info.get(i).getHeight())));
+												info.get(i).getHeight())));
 					} else {
 						fishArray.add((new Fish(newX, info.get(i).getYPos(), info.get(i).getWidth(),
-								info.get(i).getHeight())));
+												info.get(i).getHeight())));
 					}
 				}
-
+				
 				/*
 				 * Some math to calculate the real time minus the amount of time
 				 * the game was paused in order to keep the game at the correct
@@ -607,7 +606,7 @@ public class FishAnimationEnvironment extends JFrame implements Serializable {
 					time2 = System.nanoTime() / 1000000000 - pausetime;
 					timer = (int) (time2 - time1) + timerload;
 				}
-
+				
 				fishPanel.repaint();
 				if (eaten >= 50 && health > 0) {
 					stop = true;
@@ -616,16 +615,16 @@ public class FishAnimationEnvironment extends JFrame implements Serializable {
 					stop = true;
 					gameFinished(false);
 				}
-
+				
 				if (Thread.currentThread().interrupted()) {
 					throw (new InterruptedException());
 				}
-
+				
 				Thread.currentThread().sleep(delay);
 			} // end display method
 		}
 	} // end inner class named Animate
-
+	
 	/**
 	 * Class to handle key events. Some methods are present but not defined
 	 * because every method of the implemented must be present to avoid compiler
@@ -633,7 +632,7 @@ public class FishAnimationEnvironment extends JFrame implements Serializable {
 	 */
 	public class KeyHandler implements KeyListener {
 		public void keyPressed(KeyEvent e) {
-
+			
 			if (stop == false) {
 				if (System.currentTimeMillis() - lastPress > 2) {
 					int press = e.getKeyCode();
@@ -666,10 +665,10 @@ public class FishAnimationEnvironment extends JFrame implements Serializable {
 				}
 			}
 		}
-
+		
 		public void keyTyped(KeyEvent e) {
 		}
-
+		
 		public void keyReleased(KeyEvent e) {
 			if (stop == false) {
 				int press = e.getKeyCode();
@@ -681,38 +680,38 @@ public class FishAnimationEnvironment extends JFrame implements Serializable {
 			}
 		}
 	}
-
+	
 	/**
 	 * Class to handle mouse events. Some methods are present but not defined
 	 * because every method of the implemented class must be present to avoid
 	 * compiler error
 	 */
 	public class MouseHandler implements MouseListener, MouseMotionListener {
-
+		
 		public void mouseClicked(MouseEvent e) {
 			// present to avoid compiler error
 		}
-
+		
 		public void mousePressed(MouseEvent e) {
 			// present to avoid compiler error
 		}
-
+		
 		public void mouseEntered(MouseEvent e) {
 			// present to avoid compiler error
 		}
-
+		
 		public void mouseExited(MouseEvent e) {
 			// present to avoid compiler error
 		}
-
+		
 		public void mouseReleased(MouseEvent e) {
 			fishPanel.requestFocus();
 		}
-
+		
 		public void mouseMoved(MouseEvent e) {
 			// present to avoid compiler error
 		}
-
+		
 		public void mouseDragged(MouseEvent e) {
 			if (stop == false) {
 				posX = e.getX();
@@ -720,7 +719,7 @@ public class FishAnimationEnvironment extends JFrame implements Serializable {
 			}
 		}
 	}
-
+	
 	/**
 	 * Class that creates an in game menu in order to Pause, resume, and save
 	 * the game.
@@ -731,28 +730,28 @@ public class FishAnimationEnvironment extends JFrame implements Serializable {
 		private URL playURL = getClass().getResource("/resources/PlayButton.png");
 		private ImageIcon pause = new ImageIcon(pauseURL);
 		private ImageIcon play = new ImageIcon(playURL);
-
+		
 		private JButton Save = new JButton("Save & Exit");
 		private JButton Exit = new JButton("Exit");
 		private JPanel allTheButtons;
 		
-
+		
 		public void main(String[] args) {
 			GameMenu menu = new GameMenu();
 			menu.makemenu();
 		}
-
+		
 		/**
 		 * Main GUI interface for the in-Game GUI. This menu allows for user to
 		 * select pause, resume, or save&exit.
 		 */
 		public void makemenu() {
-
+			
 			Pause = new JButton(pause);
 			Pause.addActionListener(this);
 			Save.addActionListener(this);
 			Exit.addActionListener(this);
-
+			
 			allTheButtons = new JPanel(new GridLayout(1, 3));
 			animation.getContentPane().add(BorderLayout.SOUTH, allTheButtons);
 			allTheButtons.add(Pause);
@@ -761,7 +760,7 @@ public class FishAnimationEnvironment extends JFrame implements Serializable {
 			animation.setVisible(true);
 		}
 		
-
+		
 		/**
 		 * Method to allow for actions that are performed on the button to be
 		 * taken in and used as the source for an event to take place
@@ -796,7 +795,7 @@ public class FishAnimationEnvironment extends JFrame implements Serializable {
 					pausetime += (System.nanoTime() / 1000000000 - pausestart);
 				}
 			}
-
+			
 			/*
 			 * serialize if save was clicked. Exits the game as well after the
 			 * save. Saves all of the positions of all the different items that
@@ -847,7 +846,7 @@ public class FishAnimationEnvironment extends JFrame implements Serializable {
 				System.exit(0);
 			}
 		}
-
+		
 	}
-
+	
 } // end class Animate

@@ -105,7 +105,7 @@ public class Fish extends ScumOfTheSea{
     */
     @Override 
     public void setX(double x) {
-	;
+	
     }
 
     /**
@@ -113,7 +113,7 @@ public class Fish extends ScumOfTheSea{
     */
     @Override 
     public void setY(double y) {
-	;
+	
     }
     
     /**
