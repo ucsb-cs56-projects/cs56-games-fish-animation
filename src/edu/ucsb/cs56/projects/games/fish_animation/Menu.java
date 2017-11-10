@@ -31,7 +31,10 @@ import java.io.*;
 
 class Menu implements ActionListener {
 
-	private JButton Play, Instruction, Exit, Resume, Easy, Medium, Hard, Back, Menu, Credit, PlayBGM, PauseBGM, HighScore, NextPage;
+
+	private JButton Play, Instruction, Exit, Resume, Easy, Medium, Hard, Back, Menu, PlayBGM, PauseBGM, HighScore, NextPage;
+	private JTextField Credit;
+
 	private JButton Character, CMenu, Kwhale, Shark;
 	private JFrame frame, instruct;
 
@@ -41,10 +44,24 @@ class Menu implements ActionListener {
 	JLabel textLabel, pane, p2;
 
 	boolean character_type = true; // true = shark, false = kwhale
+<<<<<<< Updated upstream
 
 	public static void main(String[] args) {
 		Menu menu = new Menu();
 
+	URL back = getClass().getResource("/resources/background.gif");
+
+	public static void main(String[] args) {
+		
+		Menu menu = new Menu();
+		
+		frame = new JFrame();
+		frame.setSize(800, 625);
+		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		frame.setTitle("Welcome to Fish Game!");
+		
+		
+>>>>>>> Stashed changes
 		menu.makegui();
 
 		// pre-load all sound effects by calling init method
@@ -62,11 +79,14 @@ class Menu implements ActionListener {
 	 */
 	public void makegui() {
 
+
 		frame = new JFrame();
 		frame.setSize(800, 625);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.setTitle("Welcome to Fish Game!");
 		URL back = getClass().getResource("/resources/background.gif");
+		
+
 		ImageIcon bg = new ImageIcon(back);
 		pane = new JLabel(bg);
 		// Adds the different buttons to the menu
@@ -75,6 +95,9 @@ class Menu implements ActionListener {
 		Exit = new JButton("EXIT");
 		Credit = new JButton("(C) 2016");
 		Character = new JButton("CHARACTER");
+
+		Credit = new JTextField("(C) 2016");
+
 		frame.setLayout(null);
 		pane.setLayout(null);
 		HighScore = new JButton("HIGH SCORES");
@@ -190,9 +213,15 @@ class Menu implements ActionListener {
 		});
 
 		Credit.setOpaque(false);
+
 		Credit.setContentAreaFilled(false);
 		Credit.setBorder(BorderFactory.createLineBorder(Color.white));
 		Credit.setForeground(Color.white);
+
+		Credit.setBackground(new Color(0,0,0,0));
+		Credit.setForeground(Color.white);
+		Credit.setHorizontalAlignment(SwingConstants.CENTER);
+
 		Credit.setFont(new Font("Century Gothic", Font.PLAIN, 18));
 
 		// mouse listener for the hover effect
@@ -559,6 +588,10 @@ class Menu implements ActionListener {
 		
 		textLabel.setText("<html><h3>Welcome to Fish Animation !</h3>"
 				+ "<p>Hello! The goal of the game is to eat as many fish as you can. "
+
+
+				+ "Right now, the target point is 50. Whenever you get 50 or more points, you win! "
+
 				+ "There's no time limit, but watch out! Jellyfish are out to get you! "
 				+ "If you eat the jellyfish, you'll lose health! " 
 				+ "If your health is 0 or you get too many negative points, you lose :( "
@@ -611,6 +644,10 @@ class Menu implements ActionListener {
 	public void actionPerformed(ActionEvent event) {
 		if (event.getSource() == Easy) {
 			frame.setVisible(false);
+
+
+			//frame.dgetContentPane().removeAll();
+
 			FishAnimationEnvironment f = new FishAnimationEnvironment(character_type, 3, false);
 		}
 		if (event.getSource() == Medium) {
@@ -634,8 +671,15 @@ class Menu implements ActionListener {
 
 		if (event.getSource() == PauseBGM) {
 			SoundEffect.BGM.pause();
+
 		}
 		if (event.getSource() == PlayBGM) {
+
+			SoundEffect.volume = SoundEffect.Volume.MUTE;
+		}
+		if (event.getSource() == PlayBGM) {
+			SoundEffect.volume = SoundEffect.Volume.MEDIUM;
+
 			SoundEffect.BGM.play();
 		}
 		if (event.getSource() == Play) {
