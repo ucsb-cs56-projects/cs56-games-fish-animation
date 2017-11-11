@@ -51,12 +51,12 @@ public class Fish extends ScumOfTheSea{
 	//URL fishURL = getClass().getResource("/resources/Fish.jpg");
 	//Image fish = new ImageIcon(fishURL).getImage();
 
-		for(double j = 0;j < 100; j += 1.0) { 
-			nextX = currentX + ((0.75 * width) / 100.0);
-			nextY = currentY + ((height / 2.0) * (Math.sin(Math.PI * ((j + 1.0) / 100.0)) - Math.sin(Math.PI * ((j - 1.0) / 100.0))));
-			wholeFish.append(new Line2D.Double(currentX, currentY, nextX, nextY), false);
-			currentX = nextX;
-			currentY = nextY;
+	for(double j = 0;j < 100; j += 1.0) { 
+		nextX = currentX + ((0.75 * width) / 100.0);
+		nextY = currentY + ((height / 2.0) * (Math.sin(Math.PI * ((j + 1.0) / 100.0)) - Math.sin(Math.PI * ((j - 1.0) / 100.0))));
+		wholeFish.append(new Line2D.Double(currentX, currentY, nextX, nextY), false);
+		currentX = nextX;
+		currentY = nextY;
 	}
 
 	nextX = currentX + (1.0 / 4.0) * width;
@@ -136,6 +136,6 @@ public class Fish extends ScumOfTheSea{
 		*/
 		@Override 
 		public void move(double m) {
-            ;
+			;
 		}
 }
