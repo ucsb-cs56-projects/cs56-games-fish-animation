@@ -298,9 +298,12 @@ public class FishAnimationEnvironment extends JFrame implements Serializable {
 			g2.fillRect(0, 0, this.getWidth(), this.getHeight());
 			super.paintComponent(g); // replace current painting
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
 			g.drawImage(reef, 0, 0, this);
 
 =======
+=======
+>>>>>>> Stashed changes
             
             //set different backgorund here
             //easy

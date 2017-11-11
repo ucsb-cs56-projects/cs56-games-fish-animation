@@ -622,7 +622,10 @@ class Menu implements ActionListener {
 			frame.setVisible(false);
 			FishAnimationEnvironment f = new FishAnimationEnvironment(character_type, 3, false);
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
 =======
+=======
+>>>>>>> Stashed changes
             //change background1
             diffBG = 1;
 			
