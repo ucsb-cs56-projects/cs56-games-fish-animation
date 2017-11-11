@@ -387,9 +387,9 @@ public class FishAnimationEnvironment extends JFrame implements Serializable {
 
 			// displays the score bar
 			g.setFont(new Font("Corsiva Hebrew", Font.PLAIN, 20));
-                        g.setColor(Color.GREEN);
-                        g.drawRect(20, 70, 350, 20);
-                        g.fillRect(20, 70, (int)(350 * eaten/50), 20);
+						g.setColor(Color.GREEN);
+						g.drawRect(20, 70, 350, 20);
+						g.fillRect(20, 70, (int)(350 * eaten/50), 20);
 			
 			// displays the number of points
 			g.setFont(new Font("Corsiva Hebrew", Font.PLAIN, 20));
@@ -407,7 +407,7 @@ public class FishAnimationEnvironment extends JFrame implements Serializable {
 
 			// display the points of health inside the health bar
 			g.setFont(new Font("Corsiva Hebrew", Font.PLAIN, 20));
-                        g.setColor(Color.WHITE);
+						g.setColor(Color.WHITE);
 			String heal = "My health: " + health + "/50";
 			g.drawString(heal, 135, 112);
 			
