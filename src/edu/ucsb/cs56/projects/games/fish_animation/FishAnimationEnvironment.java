@@ -81,8 +81,16 @@ public class FishAnimationEnvironment extends JFrame implements Serializable {
 	private ArrayList<Plankton> plankton = new ArrayList<Plankton>();
 
 	// Images in the game
-	private URL reefURL = getClass().getResource("/resources/CoralReef.jpg");
-	private Image reef = new ImageIcon(reefURL).getImage();
+    //difficulty1
+	private URL reefURL1 = getClass().getResource("/resources/CoralReef1.jpg");
+	private Image reef1 = new ImageIcon(reefURL1).getImage();
+    //difficulty2
+    private URL reefURL2 = getClass().getResource("/resources/CoralReef2.jpg");
+    private Image reef2 = new ImageIcon(reefURL2).getImage();
+    //difficulty3
+    private URL reefURL3 = getClass().getResource("/resources/CoralReef3.jpg");
+    private Image reef3 = new ImageIcon(reefURL3).getImage();
+    
 	private URL sharkURL = getClass().getResource("/resources/shark.jpg");
 	private Image shark = new ImageIcon(sharkURL).getImage();
 	private URL seaweedURL = getClass().getResource("/resources/Seaweed.jpg");
@@ -289,8 +297,25 @@ public class FishAnimationEnvironment extends JFrame implements Serializable {
 			g2.setColor(Color.BLUE);
 			g2.fillRect(0, 0, this.getWidth(), this.getHeight());
 			super.paintComponent(g); // replace current painting
+<<<<<<< Updated upstream
 			g.drawImage(reef, 0, 0, this);
 
+=======
+            
+            //set different backgorund here
+            //easy
+            if (Menu.diffBG == 1) {
+                g.drawImage(reef1, 0, 0, this);
+            }//medium
+            else if (Menu.diffBG == 2) {
+                g.drawImage(reef2, 0, 0, this);
+            }
+            else if (Menu.diffBG == 3)//hard
+            {
+                g.drawImage(reef3, 0, 0, this);
+            }
+			
+>>>>>>> Stashed changes
 			// Draws the seaweed at the specified points
 			for (int i = 0; i < this.getWidth() + 125; i += 125) {
 				g.drawImage(seaweed, i, this.getHeight() - 83, this);
