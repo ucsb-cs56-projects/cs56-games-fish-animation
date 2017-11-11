@@ -32,7 +32,7 @@ import java.io.*;
 class Menu implements ActionListener {
 
 	private JButton Play, Instruction, Exit, Resume, Easy, Medium, Hard, Back, Menu, PlayBGM, PauseBGM, HighScore, NextPage;
-    private JTextField Credit;
+	private JTextField Credit;
 	private JButton Character, CMenu, Kwhale, Shark;
 	private JFrame frame, instruct;
 
@@ -109,7 +109,6 @@ class Menu implements ActionListener {
 		Instruction.addActionListener(this);
 		HighScore.addActionListener(this);
 		Exit.addActionListener(this);
-		//Credit.addActionListener(this);
 		Character.addActionListener(this);
 		PlayBGM.addActionListener(this);
 		PauseBGM.addActionListener(this);
@@ -191,10 +190,9 @@ class Menu implements ActionListener {
 		});
 
 		Credit.setOpaque(false);
-		Credit.setBorder(BorderFactory.createLineBorder(Color.white));
-        Credit.setBackground(new Color(0,0,0,0));
-        Credit.setForeground(Color.white);
-        Credit.setHorizontalAlignment(SwingConstants.CENTER);
+		Credit.setBackground(new Color(0,0,0,0));
+		Credit.setForeground(Color.white);
+		Credit.setHorizontalAlignment(SwingConstants.CENTER);
 		Credit.setFont(new Font("Century Gothic", Font.PLAIN, 18));
 
 		// Instruction
