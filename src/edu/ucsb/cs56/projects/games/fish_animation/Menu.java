@@ -35,10 +35,8 @@ class Menu implements ActionListener {
 	private JTextField Credit;
 	private JButton Character, CMenu, Kwhale, Shark;
 	private JFrame frame, instruct;
+	
 
-//	private int type;
-//	private JTextArea text;
-//	private JPanel textpan;
 	JLabel textLabel, pane, p2;
 
 	boolean character_type = true; // true = shark, false = kwhale
