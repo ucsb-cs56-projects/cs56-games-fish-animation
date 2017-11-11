@@ -300,13 +300,13 @@ public class FishAnimationEnvironment extends JFrame implements Serializable {
 			
 			//set different backgorund here
 			//easy
-			if (Menu.diffBG == 1) {
+			if (difficulty == 3) {
 				g.drawImage(reef1, 0, 0, this);
 			}//medium
-			else if (Menu.diffBG == 2) {
+			else if (difficulty == 7) {
 				g.drawImage(reef2, 0, 0, this);
 			}
-			else if (Menu.diffBG == 3)//hard
+			else if (difficulty == 14)//hard
 			{
 				g.drawImage(reef3, 0, 0, this);
 			}

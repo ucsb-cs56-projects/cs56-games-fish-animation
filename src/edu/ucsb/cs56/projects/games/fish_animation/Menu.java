@@ -33,18 +33,8 @@ class Menu implements ActionListener {
 
 	private JButton Play, Instruction, Exit, Resume, Easy, Medium, Hard, Back, Menu, Credit, PlayBGM, PauseBGM, HighScore, NextPage;
 	private JButton Character, CMenu, Kwhale, Shark;
-
-
-//	private int type;
-//	private JTextArea text;
-//	private JPanel textpan;
-
 	public static JFrame frame, instruct;
-	public static int diffBG;
 	
-	//    private int type;
-	//    private JTextArea text;
-	//    private JPanel textpan;
 
 	JLabel textLabel, pane, p2;
 
@@ -620,20 +610,14 @@ class Menu implements ActionListener {
 		if (event.getSource() == Easy) {
 			frame.setVisible(false);
 			FishAnimationEnvironment f = new FishAnimationEnvironment(character_type, 3, false);
-			//change background1
-			diffBG = 1;
 		}
 		if (event.getSource() == Medium) {
 			frame.setVisible(false);
 			FishAnimationEnvironment f = new FishAnimationEnvironment(character_type, 7, false);
-			//change background2
-			diffBG = 2;
 		}
 		if (event.getSource() == Hard) {
 			frame.setVisible(false);
 			FishAnimationEnvironment f = new FishAnimationEnvironment(character_type, 14, false);
-			//change background3
-			diffBG = 3;
 		}
 		if (event.getSource() == Resume) {
 			frame.setVisible(false);
