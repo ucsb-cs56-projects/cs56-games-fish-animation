@@ -38,7 +38,7 @@ class Menu implements ActionListener {
 //	private int type;
 //	private JTextArea text;
 //	private JPanel textpan;
-	JLabel textLabel, pane, p2;
+	JLabel textLabel, pane, p2, label;
 
 	boolean character_type = true; // true = shark, false = kwhale
 
@@ -92,7 +92,7 @@ class Menu implements ActionListener {
 			PauseBGM.setIcon(new ImageIcon(imgPause));
 		} catch (IOException ex) {
 		}
-
+        
 		// set coordinates and size of the buttons
 		Play.setBounds(25, 25, 150, 75);
 		Instruction.setBounds(25, 500, 150, 75);
