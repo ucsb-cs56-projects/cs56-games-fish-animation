@@ -92,6 +92,7 @@ class Menu implements ActionListener {
 			PauseBGM.setIcon(new ImageIcon(imgPause));
 		} catch (IOException ex) {
 		}
+		
 		// set coordinates and size of the buttons
 		Play.setBounds(25, 25, 150, 75);
 		Instruction.setBounds(25, 500, 150, 75);
