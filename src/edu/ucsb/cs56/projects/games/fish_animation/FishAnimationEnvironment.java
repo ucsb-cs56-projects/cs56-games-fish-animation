@@ -579,7 +579,7 @@ public class FishAnimationEnvironment extends JFrame implements Serializable {
 				}
 
 				// Speed of the fish moving across the screen
-				double currentSpeed = numFish % 2;
+				double currentSpeed = numFish % 6;
 				for (int i = 0; i < info.size(); i++) {
 					if ((currentSpeed - 1) < 2) {
 						currentSpeed = (numFish % 10) + 1;
@@ -597,7 +597,7 @@ public class FishAnimationEnvironment extends JFrame implements Serializable {
 					int wp = fishPanel.getWidth();
 					int hp = fishPanel.getHeight();
 
-					if (newX < -50 || newY < 0) {
+					if (newX < -50 || newY < 0 || newY > 768) {
 						fishArray.add((new Fish(wp, ((Math.random() * hp) % hp), info.get(i).getWidth(),
 								info.get(i).getHeight())));
 					} else {
