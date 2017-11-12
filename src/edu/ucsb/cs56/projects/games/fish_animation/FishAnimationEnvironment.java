@@ -305,10 +305,6 @@ public class FishAnimationEnvironment extends JFrame implements Serializable {
 				if (boatX <= -250) {
 					boatX = this.getWidth();
 				}
-				if ((boatX - 20 > posX - 200 && boatX + 20 < posX + 40) && (-135 + 60 > posY - 60 && -135 < posY + 25)) {
-					health = 0;
-				}
-
 			}
 
 			// Draws the fish based off the fish info array
@@ -593,12 +589,10 @@ public class FishAnimationEnvironment extends JFrame implements Serializable {
 					}
 
 					Random random = new Random();
-					int num1 = random.nextInt(3 + 1 -(1)) + (1); 
-					int num2 = random.nextInt(-1 + 1 -(-3)) + (-3);
-					int num3 = random.nextBoolean() ? num1 : num2;
+					int num = random.nextInt(3 + 1 -(-3)) + (-3); 
 
 					double newX = info.get(i).getXPos() - currentSpeed;
-					double newY = info.get(i).getYPos() - num3;
+					double newY = info.get(i).getYPos() - num;
 					int wp = fishPanel.getWidth();
 					int hp = fishPanel.getHeight();
 

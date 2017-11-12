@@ -19,7 +19,8 @@ import java.awt.event.*;
    @author Daryl Pham
    @author Jenna Cryan
    @author Josephine Vo
-   @version for CS56, Winter 2014, UCSB
+   @author Yuhao Zhang
+   @version for CS56, Fall 2017, UCSB
 */
 
 public class Shark extends ScumOfTheSea {
@@ -45,7 +46,11 @@ public class Shark extends ScumOfTheSea {
     */
     @Override 
     public double getXPos() {
-	return xPos;
+      if (xPos < 0)
+        xPos = 0;
+      if (xPos > 1366)
+        xPos = 1366;
+      return xPos;
     }
 
     /**
@@ -54,7 +59,11 @@ public class Shark extends ScumOfTheSea {
     */
     @Override 
     public double getYPos() {
-        return yPos;
+      if (yPos < 0)
+        yPos = 0;
+      if (yPos > 768)
+        yPos = 768;
+      return yPos;
     }
     
     /**
@@ -63,7 +72,7 @@ public class Shark extends ScumOfTheSea {
     */
     @Override 
     public void setX(double x) {
-	xPos = x;
+      xPos = x;
     }
 	
     /**
@@ -72,7 +81,7 @@ public class Shark extends ScumOfTheSea {
     */
     @Override 
     public void setY(double y) {
-	yPos = y;
+	     yPos = y;
     }
     
     /**
