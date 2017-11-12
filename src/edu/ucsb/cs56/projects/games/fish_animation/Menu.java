@@ -31,7 +31,8 @@ import java.io.*;
 
 class Menu implements ActionListener {
 
-	private JButton Play, Instruction, Exit, Resume, Easy, Medium, Hard, Back, Menu, Credit, PlayBGM, PauseBGM, HighScore, NextPage;
+	private JButton Play, Instruction, Exit, Resume, Easy, Medium, Hard, Back, Menu, PlayBGM, PauseBGM, HighScore, NextPage;
+	private JTextField Credit;
 	private JButton Character, CMenu, Kwhale, Shark;
 	private JFrame frame, instruct;
 	
@@ -71,7 +72,7 @@ class Menu implements ActionListener {
 		Play = new JButton("PLAY GAME");
 		Instruction = new JButton("INSTRUCTIONS");
 		Exit = new JButton("EXIT");
-		Credit = new JButton("(C) 2016");
+		Credit = new JTextField("(C) 2016");
 		Character = new JButton("CHARACTER");
 		frame.setLayout(null);
 		pane.setLayout(null);
@@ -106,7 +107,6 @@ class Menu implements ActionListener {
 		Instruction.addActionListener(this);
 		HighScore.addActionListener(this);
 		Exit.addActionListener(this);
-		Credit.addActionListener(this);
 		Character.addActionListener(this);
 		PlayBGM.addActionListener(this);
 		PauseBGM.addActionListener(this);
@@ -188,24 +188,10 @@ class Menu implements ActionListener {
 		});
 
 		Credit.setOpaque(false);
-		Credit.setContentAreaFilled(false);
-		Credit.setBorder(BorderFactory.createLineBorder(Color.white));
+		Credit.setBackground(new Color(0,0,0,0));
 		Credit.setForeground(Color.white);
+		Credit.setHorizontalAlignment(SwingConstants.CENTER);
 		Credit.setFont(new Font("Century Gothic", Font.PLAIN, 18));
-
-		// mouse listener for the hover effect
-		Credit.addMouseListener(new java.awt.event.MouseAdapter() {
-			public void mouseEntered(java.awt.event.MouseEvent evt) {
-				Credit.setForeground(new Color(255, 175, 75));
-				Credit.setBorder(BorderFactory.createLineBorder(new Color(255, 175, 75)));
-
-			}
-
-			public void mouseExited(java.awt.event.MouseEvent evt) {
-				Credit.setForeground(Color.white);
-				Credit.setBorder(BorderFactory.createLineBorder(Color.white));
-			}
-		});
 
 		// Instruction
 		Instruction.setOpaque(false);
@@ -648,12 +634,6 @@ class Menu implements ActionListener {
 			System.exit(0);
 		}
 		if (event.getSource() == Instruction) {
-//			frame.remove(Play);
-//			frame.remove(Instruction);
-//			frame.remove(Exit);
-//			frame.remove(Credit);
-//			frame.remove(Character);
-//			frame.setVisible(false);
 			HowToPlay();
 		}if (event.getSource() == HighScore) {
 
