@@ -588,8 +588,7 @@ public class FishAnimationEnvironment extends JFrame implements Serializable {
 						currentSpeed--;
 					}
 
-					Random random = new Random();
-					int num = random.nextInt(3 + 1 -(-3)) + (-3); 
+					double num = Math.random(); 
 
 					double newX = info.get(i).getXPos() - currentSpeed;
 					double newY = info.get(i).getYPos() - num;
