@@ -26,6 +26,7 @@ import java.util.Random;
  * @author Abhijit Kulkarni
  * @author Angela Yung
  * @author Ziheng Song
+ * @author Yuhao Zhang
  * @version for CS56, Winter 2016, UCSB
  */
 
@@ -304,6 +305,10 @@ public class FishAnimationEnvironment extends JFrame implements Serializable {
 				if (boatX <= -250) {
 					boatX = this.getWidth();
 				}
+				if ((boatX - 20 > posX - 200 && boatX + 20 < posX + 40) && (-135 + 60 > posY - 60 && -135 < posY + 25)) {
+					health = 0;
+				}
+
 			}
 
 			// Draws the fish based off the fish info array
