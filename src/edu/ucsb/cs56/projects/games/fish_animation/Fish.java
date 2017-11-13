@@ -5,7 +5,6 @@ import java.awt.geom.AffineTransform; // translation, rotation, scale
 import java.awt.geom.Line2D; 
 import java.awt.geom.PathIterator;
 import java.awt.geom.AffineTransform;
-import java.awt.geom.Ellipse2D;
 
 /**
    A vector drawing of a Fish that implements
