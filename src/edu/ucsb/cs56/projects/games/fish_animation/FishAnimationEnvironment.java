@@ -189,14 +189,15 @@ public class FishAnimationEnvironment extends JFrame implements Serializable {
 	 * creates Jellyfish based on the selected difficulty.
 	 */
 	public FishAnimationEnvironment(boolean character_type, int difficulty, boolean l) {
-		
+		//change characters' healths
 		if (character_type){
 			maxHealth = 50;
 			health = 50;
 		}
 		else{
 			maxHealth = 100;
-			health = 100;}
+			health = 100;
+		}
 			
 		this.difficulty = difficulty;
 		this.character_type = character_type;
@@ -506,11 +507,12 @@ public class FishAnimationEnvironment extends JFrame implements Serializable {
 					 */
 					if ((xf > posX - 40 && xf < posX + 40) && (yf > posY - 25 && yf < posY + 25)) {
 						info.add(new FishInfo(fishPanel.getWidth(), Math.random() * maxY, wf, hf));
-						if(health < maxHealth)
+						if (health < maxHealth)
 							if (character_type){
-								health+=2;
-							}else{
-								health+=1;
+								health += 2;
+							}
+							else {
+								health += 1;
 							}
 						eaten++;
 						SoundEffect.FISH.playEffects();
@@ -529,7 +531,7 @@ public class FishAnimationEnvironment extends JFrame implements Serializable {
 					if ((xj - 20 > posX - 200 && xj + 20 < posX + 40) && (yj + 60 > posY - 60 && yj < posY + 25)) {
 						eaten -= 5;
 						if (character_type){
-							health -= 5;
+							health -= 10;
 						}else{
 							health -=10;
 						}
