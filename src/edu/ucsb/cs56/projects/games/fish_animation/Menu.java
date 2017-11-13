@@ -31,12 +31,13 @@ import java.io.*;
 
 class Menu implements ActionListener {
 
-	private JButton Play, Instruction, Exit, Resume, Easy, Medium, Hard, Back, Menu, PlayBGM, PauseBGM, HighScore, NextPage;
-	private JTextField Credit;
+	private JButton Play, Instruction, Exit, Resume, Easy, Medium, Hard, Back, Menu, Credit, PlayBGM, PauseBGM, HighScore, NextPage, Crazy;
 	private JButton Character, CMenu, Kwhale, Shark;
 	private JFrame frame, instruct;
-	
 
+//	private int type;
+//	private JTextArea text;
+//	private JPanel textpan;
 	JLabel textLabel, pane, p2;
 
 	boolean character_type = true; // true = shark, false = kwhale
@@ -72,7 +73,7 @@ class Menu implements ActionListener {
 		Play = new JButton("PLAY GAME");
 		Instruction = new JButton("INSTRUCTIONS");
 		Exit = new JButton("EXIT");
-		Credit = new JTextField("(C) 2016");
+		Credit = new JButton("(C) 2016");
 		Character = new JButton("CHARACTER");
 		frame.setLayout(null);
 		pane.setLayout(null);
@@ -107,6 +108,7 @@ class Menu implements ActionListener {
 		Instruction.addActionListener(this);
 		HighScore.addActionListener(this);
 		Exit.addActionListener(this);
+		Credit.addActionListener(this);
 		Character.addActionListener(this);
 		PlayBGM.addActionListener(this);
 		PauseBGM.addActionListener(this);
@@ -188,10 +190,24 @@ class Menu implements ActionListener {
 		});
 
 		Credit.setOpaque(false);
-		Credit.setBackground(new Color(0,0,0,0));
+		Credit.setContentAreaFilled(false);
+		Credit.setBorder(BorderFactory.createLineBorder(Color.white));
 		Credit.setForeground(Color.white);
-		Credit.setHorizontalAlignment(SwingConstants.CENTER);
 		Credit.setFont(new Font("Century Gothic", Font.PLAIN, 18));
+
+		// mouse listener for the hover effect
+		Credit.addMouseListener(new java.awt.event.MouseAdapter() {
+			public void mouseEntered(java.awt.event.MouseEvent evt) {
+				Credit.setForeground(new Color(255, 175, 75));
+				Credit.setBorder(BorderFactory.createLineBorder(new Color(255, 175, 75)));
+
+			}
+
+			public void mouseExited(java.awt.event.MouseEvent evt) {
+				Credit.setForeground(Color.white);
+				Credit.setBorder(BorderFactory.createLineBorder(Color.white));
+			}
+		});
 
 		// Instruction
 		Instruction.setOpaque(false);
@@ -289,12 +305,14 @@ class Menu implements ActionListener {
 		Medium = new JButton("MEDIUM");
 		Hard = new JButton("HARD");
 		Resume = new JButton("RESUME");
+		Crazy = new JButton ("Crazy");
 
 		Menu.setBounds(475, 475, 150, 80);
-		Easy.setBounds(75, 370, 150, 50);
-		Medium.setBounds(75, 445, 150, 50);
-		Hard.setBounds(75, 520, 150, 50);
+		Easy.setBounds(75, 300, 150, 50);
+		Medium.setBounds(75, 370, 150, 50);
+		Hard.setBounds(75, 440, 150, 50);
 		Resume.setBounds(635, 30, 150, 80);
+		Crazy.setBounds(75,510,150,50);
 
 		Resume.setOpaque(false);
 		Resume.setContentAreaFilled(false);
@@ -394,6 +412,30 @@ class Menu implements ActionListener {
 				Hard.setBorder(BorderFactory.createLineBorder(Color.white));
 			}
 		});
+		
+		//Crazy mode
+		
+		Crazy.setOpaque(false);
+		Crazy.setContentAreaFilled(false);
+		Crazy.setBorder(BorderFactory.createLineBorder(Color.white));
+		Crazy.setForeground(Color.white);
+		Crazy.setFont(new Font("Century Gothic", Font.PLAIN, 18));
+		
+		// mouse listener for the hover effect
+		Crazy.addMouseListener(new java.awt.event.MouseAdapter() {
+			public void mouseEntered(java.awt.event.MouseEvent evt) {
+				Crazy.setForeground(Color.red);
+				Crazy.setBorder(BorderFactory.createLineBorder(Color.red));
+				
+			}
+			
+			public void mouseExited(java.awt.event.MouseEvent evt) {
+				Crazy.setForeground(Color.white);
+				Crazy.setBorder(BorderFactory.createLineBorder(Color.white));
+			}
+		});
+		
+		
 		// Set
 		// Sets the size of the buttons
 
@@ -402,17 +444,20 @@ class Menu implements ActionListener {
 		Easy.addActionListener(this);
 		Medium.addActionListener(this);
 		Hard.addActionListener(this);
+		Crazy.addActionListener(this);
 		Resume.addActionListener(this);
 		Menu.setFocusable(false);
 		Easy.setFocusable(false);
 		Medium.setFocusable(false);
 		Hard.setFocusable(false);
+		Crazy.setFocusable(false);
 		Resume.setFocusable(false);
 
 		p2.add(Menu);
 		p2.add(Easy);
 		p2.add(Medium);
 		p2.add(Hard);
+		p2.add(Crazy);
 		p2.add(Resume);
 		p2.add(diff);
 		frame.setContentPane(p2);
@@ -575,6 +620,8 @@ class Menu implements ActionListener {
 		message += highscore.getHighScoreString(7);
 		message += "Hard\n";
 		message += highscore.getHighScoreString(14);
+		message += "Crazy\n";
+		message += highscore.getHighScoreString(30);
 		
 		JFrame highscores = new JFrame();
 		highscores.setSize(550, 300);
@@ -605,6 +652,10 @@ class Menu implements ActionListener {
 			frame.setVisible(false);
 			FishAnimationEnvironment f = new FishAnimationEnvironment(character_type, 14, false);
 		}
+		if (event.getSource() == Crazy) {
+			frame.setVisible(false);
+			FishAnimationEnvironment f = new FishAnimationEnvironment(character_type, 30, false);
+		}
 		if (event.getSource() == Resume) {
 			frame.setVisible(false);
 			FishAnimationEnvironment f = new FishAnimationEnvironment(character_type, 0, true);
@@ -634,6 +685,12 @@ class Menu implements ActionListener {
 			System.exit(0);
 		}
 		if (event.getSource() == Instruction) {
+//			frame.remove(Play);
+//			frame.remove(Instruction);
+//			frame.remove(Exit);
+//			frame.remove(Credit);
+//			frame.remove(Character);
+//			frame.setVisible(false);
 			HowToPlay();
 		}if (event.getSource() == HighScore) {
 
@@ -675,6 +732,7 @@ class Menu implements ActionListener {
 			frame.remove(Easy);
 			frame.remove(Medium);
 			frame.remove(Hard);
+			frame.remove(Crazy);
 			frame.remove(Resume);
 			frame.setVisible(false);
 			makegui();

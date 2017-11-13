@@ -90,7 +90,9 @@ public class FishAnimationEnvironment extends JFrame implements Serializable {
 	//difficulty3
 	private URL reefURL3 = getClass().getResource("/resources/CoralReef3.jpg");
 	private Image reef3 = new ImageIcon(reefURL3).getImage();
-	
+	//difficulty4
+	private URL reefURL4 = getClass().getResource("/resources/CoralReef4.jpg");
+	private Image reef4 = new ImageIcon(reefURL4).getImage();
 	private URL sharkURL = getClass().getResource("/resources/shark.jpg");
 	private Image shark = new ImageIcon(sharkURL).getImage();
 	private URL seaweedURL = getClass().getResource("/resources/Seaweed.jpg");
@@ -309,6 +311,10 @@ public class FishAnimationEnvironment extends JFrame implements Serializable {
 			else if (difficulty == 14)//hard
 			{
 				g.drawImage(reef3, 0, 0, this);
+			}
+			else if (difficulty == 30)//crazy
+			{
+				g.drawImage(reef4, 0, 0, this);
 			}
 			
 			// Draws the seaweed at the specified points
