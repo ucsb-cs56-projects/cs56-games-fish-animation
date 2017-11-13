@@ -92,7 +92,7 @@ class Menu implements ActionListener {
 		} catch (IOException ex) {
 		}
 
-		// set coordinates and size of the buttons
+        // set coordinates and size of the buttons
 		Play.setBounds(25, 25, 150, 75);
 		Instruction.setBounds(25, 500, 150, 75);
 		HighScore.setBounds(25, 400, 150, 75);
