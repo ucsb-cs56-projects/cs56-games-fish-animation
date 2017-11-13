@@ -530,11 +530,7 @@ public class FishAnimationEnvironment extends JFrame implements Serializable {
 					// jellyfish and penalize if true
 					if ((xj - 20 > posX - 200 && xj + 20 < posX + 40) && (yj + 60 > posY - 60 && yj < posY + 25)) {
 						eaten -= 5;
-						if (character_type){
-							health -= 10;
-						}else{
-							health -=10;
-						}
+						health -= 10;
 						SoundEffect.JELLYFISH.playEffects();
 						// reset jellyfish position
 						jellyfish.get(i).setX(((int) ((Math.random() * 12345) % fishPanel.getWidth())));
