@@ -25,7 +25,8 @@ import javax.swing.JOptionPane;
  * @author Abhijit Kulkarni
  * @author Angela Yung
  * @author Ziheng Song
- * @version for CS56, Winter 2016, UCSB
+ * @author Yuhao Zhang
+ * @version for CS56, Fall 2017, UCSB
  */
 
 public class FishAnimationEnvironment extends JFrame implements Serializable {
@@ -404,26 +405,38 @@ public class FishAnimationEnvironment extends JFrame implements Serializable {
 			
 			g2.setStroke(new BasicStroke(2));
 
-			// displays the number of points
-			g.setFont(new Font("Corsiva Hebrew", Font.PLAIN, 40));
-			g.setColor(Color.RED);
-			String str1 = "Points: " + eaten + "!";
-			g.drawString(str1, 20, 35);
-			
-			//  displays the health bar
-			
 
+			// displays the score bar
+			g.setFont(new Font("Corsiva Hebrew", Font.PLAIN, 20));
+			g.setColor(Color.GREEN);
+			g.drawRect(20, 70, 350, 20);
+			g.fillRect(20, 70, (int)(350 * eaten/50), 20);
+			
+			// displays the number of points
+			g.setFont(new Font("Corsiva Hebrew", Font.PLAIN, 20));
+			g.setColor(Color.WHITE);
+			String str1 = "Points: " + eaten + "/50";
+			g.drawString(str1, 135, 87);
+
+
+			// display the health bar
+			
 			g.setFont(new Font("Corsiva Hebrew", Font.PLAIN, 20));
 			g.setColor(Color.RED);
-			g.drawString("Health", 30, 90);
 			g.drawRect(20, 95, 350, 20);
 			g.fillRect(20, 95, (int)(350 * health/maxHealth), 20);
 
+			// display the points of health inside the health bar
+			g.setFont(new Font("Corsiva Hebrew", Font.PLAIN, 20));
+			g.setColor(Color.WHITE);
+			String heal = "Health: " + health + "/50";
+			g.drawString(heal, 135, 112);
+			
 			// displays the current elapsed time of the game in seconds
 			g.setFont(new Font("Corsiva Hebrew", Font.PLAIN, 30));
 			g.setColor(Color.RED);
 			String str2 = "Seconds Elapsed: " + timer;
-			g.drawString(str2, 20, 65);
+			g.drawString(str2, 20, 60);
 
 		}
 	} // end DrawingPanel
