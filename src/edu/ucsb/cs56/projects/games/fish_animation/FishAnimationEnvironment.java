@@ -218,6 +218,7 @@ public class FishAnimationEnvironment extends JFrame implements Serializable {
 				posX = os.readInt();
 				posY = os.readInt();
 				boatX = os.readInt();
+				this.difficulty = os.readInt();
 
 				for (int k = 0; k < numFish; k++) {
 					Fish f = new Fish(os.readDouble(), os.readDouble(), os.readDouble(), os.readDouble());
@@ -854,6 +855,7 @@ public class FishAnimationEnvironment extends JFrame implements Serializable {
 					os.writeInt(posX);
 					os.writeInt(posY);
 					os.writeInt(boatX);
+					os.writeInt(difficulty);
 					for (int k = 0; k < numFish; k++) {
 						os.writeDouble(fishArray.get(k).getXPos());
 						os.writeDouble(fishArray.get(k).getYPos());

@@ -390,8 +390,8 @@ class Menu implements ActionListener {
 		// mouse listener for the hover effect
 		Hard.addMouseListener(new java.awt.event.MouseAdapter() {
 			public void mouseEntered(java.awt.event.MouseEvent evt) {
-				Hard.setForeground(Color.red);
-				Hard.setBorder(BorderFactory.createLineBorder(Color.red));
+				Hard.setForeground(new Color(255, 175, 75));
+				Hard.setBorder(BorderFactory.createLineBorder(new Color(255, 175, 75)));
 
 			}
 
