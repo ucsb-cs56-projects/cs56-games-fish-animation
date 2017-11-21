@@ -20,6 +20,7 @@ YES | mastergberry | jovo123, jcryan | A fish animation
 * To help developers add more features, the game is set to win whenver you get 50 points
 * There's no time limit, but watch out! Jellyfish are out to get you!
 * If you eat the jellyfish, you'll lose health!
+* If you touch the ship, you die immediately! Take Care!
 * If your health is 0 or you get too many negative points, you lose.
 * There are three different difficulties, so test your skills on all of them! Good eating!
 
