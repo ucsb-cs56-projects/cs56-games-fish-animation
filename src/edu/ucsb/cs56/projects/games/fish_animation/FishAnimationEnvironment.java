@@ -91,7 +91,9 @@ public class FishAnimationEnvironment extends JFrame implements Serializable {
 	//difficulty3
 	private URL reefURL3 = getClass().getResource("/resources/CoralReef3.jpg");
 	private Image reef3 = new ImageIcon(reefURL3).getImage();
-	
+	//difficulty4
+	private URL reefURL4 = getClass().getResource("/resources/CoralReef4.jpg");
+	private Image reef4 = new ImageIcon(reefURL4).getImage();
 	private URL sharkURL = getClass().getResource("/resources/shark.jpg");
 	private Image shark = new ImageIcon(sharkURL).getImage();
 	private URL seaweedURL = getClass().getResource("/resources/Seaweed.jpg");
@@ -216,6 +218,7 @@ public class FishAnimationEnvironment extends JFrame implements Serializable {
 				posX = os.readInt();
 				posY = os.readInt();
 				boatX = os.readInt();
+				this.difficulty = os.readInt();
 
 				for (int k = 0; k < numFish; k++) {
 					Fish f = new Fish(os.readDouble(), os.readDouble(), os.readDouble(), os.readDouble());
@@ -311,6 +314,10 @@ public class FishAnimationEnvironment extends JFrame implements Serializable {
 			{
 				g.drawImage(reef3, 0, 0, this);
 			}
+			else if (difficulty == 30)//crazy
+			{
+				g.drawImage(reef4, 0, 0, this);
+			}
 			
 			// Draws the seaweed at the specified points
 			for (int i = 0; i < this.getWidth() + 125; i += 125) {
@@ -324,7 +331,11 @@ public class FishAnimationEnvironment extends JFrame implements Serializable {
 				if (boatX <= -250) {
 					boatX = this.getWidth();
 				}
+				if ((boatX > posX - 200 && boatX + 120 < posX + 40) && (60 > posY - 60 && 0 < posY + 25)) {
+					health = 0;
+				}
 			}
+			
 
 			// Draws the fish based off the fish info array
 			g2.setColor(Color.YELLOW);
@@ -848,6 +859,7 @@ public class FishAnimationEnvironment extends JFrame implements Serializable {
 					os.writeInt(posX);
 					os.writeInt(posY);
 					os.writeInt(boatX);
+					os.writeInt(difficulty);
 					for (int k = 0; k < numFish; k++) {
 						os.writeDouble(fishArray.get(k).getXPos());
 						os.writeDouble(fishArray.get(k).getYPos());

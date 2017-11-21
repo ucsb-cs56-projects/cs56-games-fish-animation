@@ -31,11 +31,10 @@ import java.io.*;
 
 class Menu implements ActionListener {
 
-	private JButton Play, Instruction, Exit, Resume, Easy, Medium, Hard, Back, Menu, PlayBGM, PauseBGM, HighScore, NextPage;
-	private JTextField Credit;
+	private JButton Play, Instruction, Exit, Resume, Easy, Medium, Hard, Back, Menu, PlayBGM, PauseBGM, HighScore, NextPage, Crazy;
 	private JButton Character, CMenu, Kwhale, Shark;
+	private JTextField Credit;
 	private JFrame frame, instruct;
-	
 
 	JLabel textLabel, pane, p2;
 
@@ -107,6 +106,7 @@ class Menu implements ActionListener {
 		Instruction.addActionListener(this);
 		HighScore.addActionListener(this);
 		Exit.addActionListener(this);
+		Credit.addActionListener(this);
 		Character.addActionListener(this);
 		PlayBGM.addActionListener(this);
 		PauseBGM.addActionListener(this);
@@ -192,6 +192,7 @@ class Menu implements ActionListener {
 		Credit.setForeground(Color.white);
 		Credit.setHorizontalAlignment(SwingConstants.CENTER);
 		Credit.setFont(new Font("Century Gothic", Font.PLAIN, 18));
+
 
 		// Instruction
 		Instruction.setOpaque(false);
@@ -289,12 +290,14 @@ class Menu implements ActionListener {
 		Medium = new JButton("MEDIUM");
 		Hard = new JButton("HARD");
 		Resume = new JButton("RESUME");
+		Crazy = new JButton ("CRAZY");
 
 		Menu.setBounds(475, 475, 150, 80);
-		Easy.setBounds(75, 370, 150, 50);
-		Medium.setBounds(75, 445, 150, 50);
-		Hard.setBounds(75, 520, 150, 50);
+		Easy.setBounds(75, 300, 150, 50);
+		Medium.setBounds(75, 370, 150, 50);
+		Hard.setBounds(75, 440, 150, 50);
 		Resume.setBounds(635, 30, 150, 80);
+		Crazy.setBounds(75,510,150,50);
 
 		Resume.setOpaque(false);
 		Resume.setContentAreaFilled(false);
@@ -384,8 +387,8 @@ class Menu implements ActionListener {
 		// mouse listener for the hover effect
 		Hard.addMouseListener(new java.awt.event.MouseAdapter() {
 			public void mouseEntered(java.awt.event.MouseEvent evt) {
-				Hard.setForeground(Color.red);
-				Hard.setBorder(BorderFactory.createLineBorder(Color.red));
+				Hard.setForeground(new Color(255, 175, 75));
+				Hard.setBorder(BorderFactory.createLineBorder(new Color(255, 175, 75)));
 
 			}
 
@@ -394,6 +397,30 @@ class Menu implements ActionListener {
 				Hard.setBorder(BorderFactory.createLineBorder(Color.white));
 			}
 		});
+		
+		//Crazy mode
+		
+		Crazy.setOpaque(false);
+		Crazy.setContentAreaFilled(false);
+		Crazy.setBorder(BorderFactory.createLineBorder(Color.white));
+		Crazy.setForeground(Color.white);
+		Crazy.setFont(new Font("Century Gothic", Font.PLAIN, 18));
+		
+		// mouse listener for the hover effect
+		Crazy.addMouseListener(new java.awt.event.MouseAdapter() {
+			public void mouseEntered(java.awt.event.MouseEvent evt) {
+				Crazy.setForeground(Color.red);
+				Crazy.setBorder(BorderFactory.createLineBorder(Color.red));
+				
+			}
+			
+			public void mouseExited(java.awt.event.MouseEvent evt) {
+				Crazy.setForeground(Color.white);
+				Crazy.setBorder(BorderFactory.createLineBorder(Color.white));
+			}
+		});
+		
+		
 		// Set
 		// Sets the size of the buttons
 
@@ -402,17 +429,20 @@ class Menu implements ActionListener {
 		Easy.addActionListener(this);
 		Medium.addActionListener(this);
 		Hard.addActionListener(this);
+		Crazy.addActionListener(this);
 		Resume.addActionListener(this);
 		Menu.setFocusable(false);
 		Easy.setFocusable(false);
 		Medium.setFocusable(false);
 		Hard.setFocusable(false);
+		Crazy.setFocusable(false);
 		Resume.setFocusable(false);
 
 		p2.add(Menu);
 		p2.add(Easy);
 		p2.add(Medium);
 		p2.add(Hard);
+		p2.add(Crazy);
 		p2.add(Resume);
 		p2.add(diff);
 		frame.setContentPane(p2);
@@ -545,7 +575,8 @@ class Menu implements ActionListener {
 				+ "<p>Hello! The goal of the game is to eat as many fish as you can. "
 				+ "Right now, the target is 50 points."
 				+ "There's no time limit, but watch out! Jellyfish are out to get you! "
-				+ "If you eat the jellyfish, you'll lose health! " 
+				+ "If you eat the jellyfish, you'll lose health! "
+				+ "If you touch the ship, you die immediately! Take Care! " 
 				+ "If your health is 0 or you get too many negative points, you lose :( "
 				+ "There are three different difficulties, so test your skills on all of them! Good eating!</p></html>");
 
@@ -576,6 +607,8 @@ class Menu implements ActionListener {
 		message += highscore.getHighScoreString(7);
 		message += "Hard\n";
 		message += highscore.getHighScoreString(14);
+		message += "Crazy\n";
+		message += highscore.getHighScoreString(30);
 		
 		JFrame highscores = new JFrame();
 		highscores.setSize(550, 300);
@@ -606,6 +639,10 @@ class Menu implements ActionListener {
 			frame.setVisible(false);
 			FishAnimationEnvironment f = new FishAnimationEnvironment(character_type, 14, false);
 		}
+		if (event.getSource() == Crazy) {
+			frame.setVisible(false);
+			FishAnimationEnvironment f = new FishAnimationEnvironment(character_type, 30, false);
+		}
 		if (event.getSource() == Resume) {
 			frame.setVisible(false);
 			FishAnimationEnvironment f = new FishAnimationEnvironment(character_type, 0, true);
@@ -635,6 +672,7 @@ class Menu implements ActionListener {
 			System.exit(0);
 		}
 		if (event.getSource() == Instruction) {
+
 			HowToPlay();
 		}if (event.getSource() == HighScore) {
 
@@ -669,13 +707,14 @@ class Menu implements ActionListener {
 			instruct.remove(Back);
 			instruct.remove(textLabel);
 			instruct.setVisible(false);
-	//      makegui();
+
 		}
 		if (event.getSource() == Menu) {
 			frame.remove(Menu);
 			frame.remove(Easy);
 			frame.remove(Medium);
 			frame.remove(Hard);
+			frame.remove(Crazy);
 			frame.remove(Resume);
 			frame.setVisible(false);
 			makegui();
