@@ -290,7 +290,7 @@ class Menu implements ActionListener {
 		Medium = new JButton("MEDIUM");
 		Hard = new JButton("HARD");
 		Resume = new JButton("RESUME");
-		Crazy = new JButton ("Crazy");
+		Crazy = new JButton ("CRAZY");
 
 		Menu.setBounds(475, 475, 150, 80);
 		Easy.setBounds(75, 300, 150, 50);
