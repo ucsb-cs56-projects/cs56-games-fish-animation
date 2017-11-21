@@ -36,9 +36,6 @@ class Menu implements ActionListener {
 	private JTextField Credit;
 	private JFrame frame, instruct;
 
-//	private int type;
-//	private JTextArea text;
-//	private JPanel textpan;
 	JLabel textLabel, pane, p2;
 
 	boolean character_type = true; // true = shark, false = kwhale
@@ -673,12 +670,7 @@ class Menu implements ActionListener {
 			System.exit(0);
 		}
 		if (event.getSource() == Instruction) {
-//			frame.remove(Play);
-//			frame.remove(Instruction);
-//			frame.remove(Exit);
-//			frame.remove(Credit);
-//			frame.remove(Character);
-//			frame.setVisible(false);
+
 			HowToPlay();
 		}if (event.getSource() == HighScore) {
 
@@ -713,7 +705,6 @@ class Menu implements ActionListener {
 			instruct.remove(Back);
 			instruct.remove(textLabel);
 			instruct.setVisible(false);
-	//		makegui();
 		}
 		if (event.getSource() == Menu) {
 			frame.remove(Menu);
