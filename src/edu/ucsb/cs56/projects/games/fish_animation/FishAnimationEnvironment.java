@@ -331,7 +331,11 @@ public class FishAnimationEnvironment extends JFrame implements Serializable {
 				if (boatX <= -250) {
 					boatX = this.getWidth();
 				}
+				if ((boatX > posX - 200 && boatX + 120 < posX + 40) && (60 > posY - 60 && 0 < posY + 25)) {
+					health = 0;
+				}
 			}
+			
 
 			// Draws the fish based off the fish info array
 			g2.setColor(Color.YELLOW);
