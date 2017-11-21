@@ -39,19 +39,19 @@ class Menu implements ActionListener {
 	JLabel textLabel, pane, p2;
 
 	boolean character_type = true; // true = shark, false = kwhale
-    URL back = getClass().getResource("/resources/background.gif");
+	URL back = getClass().getResource("/resources/background.gif");
 
 	public static void main(String[] args) {
-        
-        Menu menu = new Menu();
-        
-        frame = new JFrame();
-        frame.setSize(800, 625);
-        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        frame.setTitle("Welcome to Fish Game!");
-        
-        
-        menu.makegui();
+		
+		Menu menu = new Menu();
+		
+		frame = new JFrame();
+		frame.setSize(800, 625);
+		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		frame.setTitle("Welcome to Fish Game!");
+		
+		
+		menu.makegui();
 
 		// pre-load all sound effects by calling init method
 		SoundEffect.init();
@@ -67,7 +67,7 @@ class Menu implements ActionListener {
 	 * select exit, play, or instruction.
 	 */
 	public void makegui() {
-        
+		
 		ImageIcon bg = new ImageIcon(back);
 		pane = new JLabel(bg);
 		// Adds the different buttons to the menu
@@ -75,8 +75,8 @@ class Menu implements ActionListener {
 		Instruction = new JButton("INSTRUCTIONS");
 		Exit = new JButton("EXIT");
 		Character = new JButton("CHARACTER");
-        //create a copyright text
-        Credit = new JTextField("(C) 2016");
+		//create a copyright text
+		Credit = new JTextField("(C) 2016");
 		frame.setLayout(null);
 		pane.setLayout(null);
 		HighScore = new JButton("HIGH SCORES");
@@ -633,7 +633,7 @@ class Menu implements ActionListener {
 	public void actionPerformed(ActionEvent event) {
 		if (event.getSource() == Easy) {
 			frame.setVisible(false);
-            //frame.dgetContentPane().removeAll();
+			//frame.dgetContentPane().removeAll();
 			FishAnimationEnvironment f = new FishAnimationEnvironment(character_type, 3, false);
 
 		}
@@ -662,10 +662,10 @@ class Menu implements ActionListener {
 
 		if (event.getSource() == PauseBGM) {
 			SoundEffect.BGM.pause();
-            SoundEffect.volume = SoundEffect.Volume.MUTE;
+			SoundEffect.volume = SoundEffect.Volume.MUTE;
 		}
 		if (event.getSource() == PlayBGM) {
-            SoundEffect.volume = SoundEffect.Volume.MEDIUM;
+			SoundEffect.volume = SoundEffect.Volume.MEDIUM;
 			SoundEffect.BGM.play();
 		}
 		if (event.getSource() == Play) {
