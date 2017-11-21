@@ -91,7 +91,7 @@ class Menu implements ActionListener {
 		} catch (IOException ex) {
 		}
 
-        // set coordinates and size of the buttons
+		// set coordinates and size of the buttons
 		Play.setBounds(25, 25, 150, 75);
 		Instruction.setBounds(25, 500, 150, 75);
 		HighScore.setBounds(25, 400, 150, 75);
@@ -573,6 +573,7 @@ class Menu implements ActionListener {
 		
 		textLabel.setText("<html><h3>Welcome to Fish Animation !</h3>"
 				+ "<p>Hello! The goal of the game is to eat as many fish as you can. "
+				+ "Right now, the target is 50 points. Whenever you get 50 or more points, you win! "
 				+ "There's no time limit, but watch out! Jellyfish are out to get you! "
 				+ "If you eat the jellyfish, you'll lose health! "
 				+ "If you touch the ship, you die immediately! Take Care! " 
@@ -706,6 +707,7 @@ class Menu implements ActionListener {
 			instruct.remove(Back);
 			instruct.remove(textLabel);
 			instruct.setVisible(false);
+
 		}
 		if (event.getSource() == Menu) {
 			frame.remove(Menu);
