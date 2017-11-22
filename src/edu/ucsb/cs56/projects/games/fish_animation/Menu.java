@@ -26,6 +26,7 @@ import java.io.*;
  * @author Josephine Vo
  * @author Abhijit Kulkarni
  * @author Angela Yung
+ * @author Yuhao Zhang
  * @version for CS56, Winter 16, UCSB
  */
 
@@ -52,6 +53,30 @@ class Menu implements ActionListener {
 		// start the bgm
 		SoundEffect.FINISH.stop();
 		SoundEffect.BGM.play();
+	}
+
+	// Set up buttons
+	public void buttonOperation(JButton b, Color c){
+		b.setOpaque(false);
+		b.setContentAreaFilled(false);
+		b.setBorder(BorderFactory.createLineBorder(c));
+		b.setForeground(Color.white);
+		b.setFont(new Font("Century Gothic", Font.PLAIN, 18));
+	}
+
+	// Mouse listener for the hover effect
+	public void buttonAddListener(JButton b, Color c1, Color c2, Color c3, Color c4){
+		b.addMouseListener(new java.awt.event.MouseAdapter() {
+			public void mouseEntered(java.awt.event.MouseEvent evt) {
+				b.setForeground(c1);
+				b.setBorder(BorderFactory.createLineBorder(c2));
+			}
+
+			public void mouseExited(java.awt.event.MouseEvent evt) {
+				b.setForeground(c3);
+				b.setBorder(BorderFactory.createLineBorder(c4));
+			}
+		});
 	}
 
 	/**
@@ -111,144 +136,40 @@ class Menu implements ActionListener {
 		PlayBGM.addActionListener(this);
 		PauseBGM.addActionListener(this);
 
-		HighScore.setOpaque(false);
-		HighScore.setContentAreaFilled(false);
-		HighScore.setBorder(BorderFactory.createLineBorder(Color.white));
-		HighScore.setForeground(Color.white);
-		HighScore.setFont(new Font("Century Gothic", Font.PLAIN, 18));
-
-		HighScore.addMouseListener(new java.awt.event.MouseAdapter() {
-			public void mouseEntered(java.awt.event.MouseEvent evt) {
-				HighScore.setForeground(Color.green);
-				HighScore.setBorder(BorderFactory.createLineBorder(Color.green));
-			}
-
-			public void mouseExited(java.awt.event.MouseEvent evt) {
-				HighScore.setForeground(Color.white);
-				HighScore.setBorder(BorderFactory.createLineBorder(Color.white));
-			}
-		});
+		// HighScore
+		buttonOperation(HighScore, Color.white);
+		buttonAddListener(HighScore, Color.green, Color.green, Color.white, Color.white);
 		
-		PlayBGM.setOpaque(false);
-		PlayBGM.setContentAreaFilled(false);
-		PlayBGM.setBorder(BorderFactory.createLineBorder(Color.black));
-		PlayBGM.setForeground(Color.white);
-		PlayBGM.setFont(new Font("Century Gothic", Font.PLAIN, 18));
+		// PlayBGM
+		buttonOperation(PlayBGM, Color.black);
+		buttonAddListener(PlayBGM, Color.green, Color.green, Color.white, Color.black);
 
-		PlayBGM.addMouseListener(new java.awt.event.MouseAdapter() {
-			public void mouseEntered(java.awt.event.MouseEvent evt) {
-				PlayBGM.setForeground(Color.green);
-				PlayBGM.setBorder(BorderFactory.createLineBorder(Color.green));
-			}
+		// PauseBGM
+		buttonOperation(PauseBGM, Color.black);
+		buttonAddListener(PauseBGM, Color.white, Color.green, Color.white, Color.black);
 
-			public void mouseExited(java.awt.event.MouseEvent evt) {
-				PlayBGM.setForeground(Color.white);
-				PlayBGM.setBorder(BorderFactory.createLineBorder(Color.black));
-			}
-		});
+		// Play
+		buttonOperation(Play, Color.white);
+		buttonAddListener(Play, Color.green, Color.green, Color.white, Color.white);
 
-		PauseBGM.setOpaque(false);
-		PauseBGM.setContentAreaFilled(false);
-		PauseBGM.setBorder(BorderFactory.createLineBorder(Color.black));
-		PauseBGM.setForeground(Color.white);
-		PauseBGM.setFont(new Font("Century Gothic", Font.PLAIN, 18));
-
-		PauseBGM.addMouseListener(new java.awt.event.MouseAdapter() {
-			public void mouseEntered(java.awt.event.MouseEvent evt) {
-				PauseBGM.setForeground(Color.white);
-				PauseBGM.setBorder(BorderFactory.createLineBorder(Color.green));
-			}
-
-			public void mouseExited(java.awt.event.MouseEvent evt) {
-				PauseBGM.setForeground(Color.white);
-				PauseBGM.setBorder(BorderFactory.createLineBorder(Color.black));
-			}
-		});
-
-		// sets the jbutton to transparent with a white border and the specific
-		// font
-		Play.setOpaque(false);
-		Play.setContentAreaFilled(false);
-		Play.setBorder(BorderFactory.createLineBorder(Color.white));
-		Play.setForeground(Color.white);
-		Play.setFont(new Font("Century Gothic", Font.PLAIN, 18));
-
-		// mouse listener for the hover effect
-		Play.addMouseListener(new java.awt.event.MouseAdapter() {
-			public void mouseEntered(java.awt.event.MouseEvent evt) {
-				Play.setForeground(Color.green);
-				Play.setBorder(BorderFactory.createLineBorder(Color.green));
-
-			}
-
-			public void mouseExited(java.awt.event.MouseEvent evt) {
-				Play.setForeground(Color.white);
-				Play.setBorder(BorderFactory.createLineBorder(Color.white));
-			}
-		});
-
+		// Credit
 		Credit.setOpaque(false);
 		Credit.setBackground(new Color(0,0,0,0));
 		Credit.setForeground(Color.white);
 		Credit.setHorizontalAlignment(SwingConstants.CENTER);
 		Credit.setFont(new Font("Century Gothic", Font.PLAIN, 18));
 
-
 		// Instruction
-		Instruction.setOpaque(false);
-		Instruction.setContentAreaFilled(false);
-		Instruction.setBorder(BorderFactory.createLineBorder(Color.white));
-		Instruction.setForeground(Color.white);
-		Instruction.setFont(new Font("Century Gothic", Font.PLAIN, 18));
+		buttonOperation(Instruction, Color.white);
+		buttonAddListener(Instruction, Color.green, Color.green, Color.white, Color.white);
 
-		Instruction.addMouseListener(new java.awt.event.MouseAdapter() {
-			public void mouseEntered(java.awt.event.MouseEvent evt) {
-				Instruction.setForeground(Color.green);
-				Instruction.setBorder(BorderFactory.createLineBorder(Color.green));
-			}
-
-			public void mouseExited(java.awt.event.MouseEvent evt) {
-				Instruction.setForeground(Color.white);
-				Instruction.setBorder(BorderFactory.createLineBorder(Color.white));
-			}
-		});
-
-		Exit.setOpaque(false);
-		Exit.setContentAreaFilled(false);
-		Exit.setBorder(BorderFactory.createLineBorder(Color.white));
-		Exit.setForeground(Color.white);
-		Exit.setFont(new Font("Century Gothic", Font.PLAIN, 18));
-
-		Exit.addMouseListener(new java.awt.event.MouseAdapter() {
-			public void mouseEntered(java.awt.event.MouseEvent evt) {
-				Exit.setForeground(Color.red);
-				Exit.setBorder(BorderFactory.createLineBorder(Color.red));
-			}
-
-			public void mouseExited(java.awt.event.MouseEvent evt) {
-				Exit.setForeground(Color.white);
-				Exit.setBorder(BorderFactory.createLineBorder(Color.white));
-			}
-		});
+		// Exit
+		buttonOperation(Exit, Color.white);
+		buttonAddListener(Exit, Color.red, Color.red, Color.white, Color.white);
 
 		// Character
-		Character.setOpaque(false);
-		Character.setContentAreaFilled(false);
-		Character.setBorder(BorderFactory.createLineBorder(Color.white));
-		Character.setForeground(Color.white);
-		Character.setFont(new Font("Century Gothic", Font.PLAIN, 18));
-
-		Character.addMouseListener(new java.awt.event.MouseAdapter() {
-			public void mouseEntered(java.awt.event.MouseEvent evt) {
-				Character.setForeground(Color.green);
-				Character.setBorder(BorderFactory.createLineBorder(Color.green));
-			}
-
-			public void mouseExited(java.awt.event.MouseEvent evt) {
-				Character.setForeground(Color.white);
-				Character.setBorder(BorderFactory.createLineBorder(Color.white));
-			}
-		});
+		buttonOperation(Character, Color.white);
+		buttonAddListener(Character, Color.green, Color.green, Color.white, Color.white);
 
 		// doesn't allow tab focus
 		Play.setFocusable(false);
@@ -299,128 +220,31 @@ class Menu implements ActionListener {
 		Resume.setBounds(635, 30, 150, 80);
 		Crazy.setBounds(75,510,150,50);
 
-		Resume.setOpaque(false);
-		Resume.setContentAreaFilled(false);
-		Resume.setBorder(BorderFactory.createLineBorder(Color.white));
-		Resume.setForeground(Color.white);
-		Resume.setFont(new Font("Century Gothic", Font.PLAIN, 18));
+		// Resume
+		buttonOperation(Resume, Color.white);
+		buttonAddListener(Resume, new Color(75, 255, 255), new Color(75, 255, 255), Color.white, Color.white);
 
-		// mouse listener for the hover effect
-		Resume.addMouseListener(new java.awt.event.MouseAdapter() {
-			public void mouseEntered(java.awt.event.MouseEvent evt) {
-				Resume.setForeground(new Color(75, 255, 255));
-				Resume.setBorder(BorderFactory.createLineBorder(new Color(75, 255, 255)));
+		// Menu
+		buttonOperation(Menu, Color.white);
+		buttonAddListener(Menu, new Color(75, 255, 255), new Color(75, 255, 255), Color.white, Color.white);
 
-			}
-
-			public void mouseExited(java.awt.event.MouseEvent evt) {
-				Resume.setForeground(Color.white);
-				Resume.setBorder(BorderFactory.createLineBorder(Color.white));
-			}
-		});
-
-		Menu.setOpaque(false);
-		Menu.setContentAreaFilled(false);
-		Menu.setBorder(BorderFactory.createLineBorder(Color.white));
-		Menu.setForeground(Color.white);
-		Menu.setFont(new Font("Century Gothic", Font.PLAIN, 18));
-
-		// mouse listener for the hover effect
-		Menu.addMouseListener(new java.awt.event.MouseAdapter() {
-			public void mouseEntered(java.awt.event.MouseEvent evt) {
-				Menu.setForeground(new Color(75, 255, 255));
-				Menu.setBorder(BorderFactory.createLineBorder(new Color(75, 255, 255)));
-			}
-
-			public void mouseExited(java.awt.event.MouseEvent evt) {
-				Menu.setForeground(Color.white);
-				Menu.setBorder(BorderFactory.createLineBorder(Color.white));
-			}
-		});
-
-		Easy.setOpaque(false);
-		Easy.setContentAreaFilled(false);
-		Easy.setBorder(BorderFactory.createLineBorder(Color.white));
-		Easy.setForeground(Color.white);
-		Easy.setFont(new Font("Century Gothic", Font.PLAIN, 18));
-
-		// mouse listener for the hover effect
-		Easy.addMouseListener(new java.awt.event.MouseAdapter() {
-			public void mouseEntered(java.awt.event.MouseEvent evt) {
-				Easy.setForeground(Color.green);
-				Easy.setBorder(BorderFactory.createLineBorder(Color.green));
-
-			}
-
-			public void mouseExited(java.awt.event.MouseEvent evt) {
-				Easy.setForeground(Color.white);
-				Easy.setBorder(BorderFactory.createLineBorder(Color.white));
-			}
-		});
-
-		Medium.setOpaque(false);
-		Medium.setContentAreaFilled(false);
-		Medium.setBorder(BorderFactory.createLineBorder(Color.white));
-		Medium.setForeground(Color.white);
-		Medium.setFont(new Font("Century Gothic", Font.PLAIN, 18));
-
-		// mouse listener for the hover effect
-		Medium.addMouseListener(new java.awt.event.MouseAdapter() {
-			public void mouseEntered(java.awt.event.MouseEvent evt) {
-				Medium.setForeground(Color.yellow);
-				Medium.setBorder(BorderFactory.createLineBorder(Color.yellow));
-
-			}
-
-			public void mouseExited(java.awt.event.MouseEvent evt) {
-				Medium.setForeground(Color.white);
-				Medium.setBorder(BorderFactory.createLineBorder(Color.white));
-			}
-		});
-
-		Hard.setOpaque(false);
-		Hard.setContentAreaFilled(false);
-		Hard.setBorder(BorderFactory.createLineBorder(Color.white));
-		Hard.setForeground(Color.white);
-		Hard.setFont(new Font("Century Gothic", Font.PLAIN, 18));
-
-		// mouse listener for the hover effect
-		Hard.addMouseListener(new java.awt.event.MouseAdapter() {
-			public void mouseEntered(java.awt.event.MouseEvent evt) {
-				Hard.setForeground(new Color(255, 175, 75));
-				Hard.setBorder(BorderFactory.createLineBorder(new Color(255, 175, 75)));
-
-			}
-
-			public void mouseExited(java.awt.event.MouseEvent evt) {
-				Hard.setForeground(Color.white);
-				Hard.setBorder(BorderFactory.createLineBorder(Color.white));
-			}
-		});
+		// Easy
+		buttonOperation(Easy, Color.white);
+		buttonAddListener(Easy, Color.green, Color.green, Color.white, Color.white);
 		
-		//Crazy mode
+		// Medium
+		buttonOperation(Medium, Color.white);
+		buttonAddListener(Medium, Color.yellow, Color.yellow, Color.white, Color.white);
+
+		// Hard
+		buttonOperation(Hard, Color.white);
+		buttonAddListener(Hard, new Color(255, 175, 75), new Color(255, 175, 75), Color.white, Color.white);
 		
-		Crazy.setOpaque(false);
-		Crazy.setContentAreaFilled(false);
-		Crazy.setBorder(BorderFactory.createLineBorder(Color.white));
-		Crazy.setForeground(Color.white);
-		Crazy.setFont(new Font("Century Gothic", Font.PLAIN, 18));
-		
-		// mouse listener for the hover effect
-		Crazy.addMouseListener(new java.awt.event.MouseAdapter() {
-			public void mouseEntered(java.awt.event.MouseEvent evt) {
-				Crazy.setForeground(Color.red);
-				Crazy.setBorder(BorderFactory.createLineBorder(Color.red));
-				
-			}
-			
-			public void mouseExited(java.awt.event.MouseEvent evt) {
-				Crazy.setForeground(Color.white);
-				Crazy.setBorder(BorderFactory.createLineBorder(Color.white));
-			}
-		});
-		
-		
+		// Crazy
+		buttonOperation(Crazy, Color.white);
+		buttonAddListener(Crazy, Color.red, Color.red, Color.white, Color.white);
+
+
 		// Set
 		// Sets the size of the buttons
 
@@ -486,62 +310,26 @@ class Menu implements ActionListener {
 		Shark.setBounds(75, 250, 210, 115);
 		Kwhale.setBounds(75, 445, 210, 115);
 
+		// Shark
 		Shark.setOpaque(false);
 		Shark.setContentAreaFilled(false);
 		Shark.setBorder(BorderFactory.createLineBorder(Color.white));
 		Shark.setForeground(Color.white);
 
-		// mouse listener for the hover effect
-		Shark.addMouseListener(new java.awt.event.MouseAdapter() {
-			public void mouseEntered(java.awt.event.MouseEvent evt) {
-				Shark.setForeground(new Color(75, 255, 255));
-				Shark.setBorder(BorderFactory.createLineBorder(new Color(75, 255, 255)));
+		buttonAddListener(Shark, new Color(75, 255, 255), new Color(75, 255, 255), Color.white, Color.white);
 
-			}
-
-			public void mouseExited(java.awt.event.MouseEvent evt) {
-				Shark.setForeground(Color.white);
-				Shark.setBorder(BorderFactory.createLineBorder(Color.white));
-			}
-		});
-
+		// Kwhale
 		Kwhale.setOpaque(false);
 		Kwhale.setContentAreaFilled(false);
 		Kwhale.setBorder(BorderFactory.createLineBorder(Color.white));
 		Kwhale.setForeground(Color.white);
 
-		// mouse listener for the hover effect
-		Kwhale.addMouseListener(new java.awt.event.MouseAdapter() {
-			public void mouseEntered(java.awt.event.MouseEvent evt) {
-				Kwhale.setForeground(new Color(75, 255, 255));
-				Kwhale.setBorder(BorderFactory.createLineBorder(new Color(75, 255, 255)));
+		buttonAddListener(Kwhale, new Color(75, 255, 255), new Color(75, 255, 255), Color.white, Color.white);
 
-			}
+		// CMenu
+		buttonOperation(CMenu, Color.white);
+		buttonAddListener(CMenu, new Color(75, 255, 255), new Color(75, 255, 255), Color.white, Color.white);
 
-			public void mouseExited(java.awt.event.MouseEvent evt) {
-				Kwhale.setForeground(Color.white);
-				Kwhale.setBorder(BorderFactory.createLineBorder(Color.white));
-			}
-		});
-
-		CMenu.setOpaque(false);
-		CMenu.setContentAreaFilled(false);
-		CMenu.setBorder(BorderFactory.createLineBorder(Color.white));
-		CMenu.setForeground(Color.white);
-		CMenu.setFont(new Font("Century Gothic", Font.PLAIN, 18));
-
-		// mouse listener for the hover effect
-		CMenu.addMouseListener(new java.awt.event.MouseAdapter() {
-			public void mouseEntered(java.awt.event.MouseEvent evt) {
-				CMenu.setForeground(new Color(75, 255, 255));
-				CMenu.setBorder(BorderFactory.createLineBorder(new Color(75, 255, 255)));
-			}
-
-			public void mouseExited(java.awt.event.MouseEvent evt) {
-				CMenu.setForeground(Color.white);
-				CMenu.setBorder(BorderFactory.createLineBorder(Color.white));
-			}
-		});
 
 		CMenu.addActionListener(this);
 		Shark.addActionListener(this);
