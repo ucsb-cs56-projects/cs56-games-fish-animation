@@ -1,9 +1,5 @@
 package edu.ucsb.cs56.projects.games.fish_animation;
 
-import java.awt.geom.AffineTransform; // translation, rotation, scale 
-import java.awt.geom.Line2D; 
-import java.awt.geom.Rectangle2D;
-import java.awt.geom.PathIterator;
 import java.awt.geom.AffineTransform;
 import javax.swing.*;
 import java.awt.*;
@@ -81,6 +77,5 @@ public class Shark extends ScumOfTheSea {
     */
     @Override 
     public void move(double m){
-	;
     }
 }

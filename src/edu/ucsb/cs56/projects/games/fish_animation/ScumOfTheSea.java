@@ -1,8 +1,6 @@
 package edu.ucsb.cs56.projects.games.fish_animation;
 
 import java.awt.Shape; // general class for shapes
-import java.awt.geom.Point2D;
-import java.awt.geom.PathIterator;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;

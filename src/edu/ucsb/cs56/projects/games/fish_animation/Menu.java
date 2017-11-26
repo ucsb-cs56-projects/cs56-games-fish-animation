@@ -559,7 +559,7 @@ class Menu implements ActionListener {
 	 * GUI that shows the user how to play the game. Provides instructions and a
 	 * description of the game overall.
 	 */
-	public void HowToPlay() {
+	public void howToPlay() {
 
 		// Creates new frame for the new menu that will pop up
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -669,7 +669,7 @@ class Menu implements ActionListener {
 		}
 		if (event.getSource() == Instruction) {
 
-			HowToPlay();
+			howToPlay();
 		}if (event.getSource() == HighScore) {
 
 			HighScores();

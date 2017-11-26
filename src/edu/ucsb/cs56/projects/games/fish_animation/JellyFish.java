@@ -1,6 +1,5 @@
 package edu.ucsb.cs56.projects.games.fish_animation;
 
-import java.awt.geom.AffineTransform;
 
 /** Creates a JellyFish object which
     holds its x position and y position
