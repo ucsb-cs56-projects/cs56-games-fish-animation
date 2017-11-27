@@ -25,7 +25,8 @@ import javax.swing.JOptionPane;
  * @author Abhijit Kulkarni
  * @author Angela Yung
  * @author Ziheng Song
- * @version for CS56, Winter 2016, UCSB
+ * @author Yuhao Zhang
+ * @version for CS56, Fall 2017, UCSB
  */
 
 public class FishAnimationEnvironment extends JFrame implements Serializable {
@@ -81,8 +82,18 @@ public class FishAnimationEnvironment extends JFrame implements Serializable {
 	private ArrayList<Plankton> plankton = new ArrayList<Plankton>();
 
 	// Images in the game
-	private URL reefURL = getClass().getResource("/resources/CoralReef.jpg");
-	private Image reef = new ImageIcon(reefURL).getImage();
+	//difficulty1
+	private URL reefURL1 = getClass().getResource("/resources/CoralReef1.jpg");
+	private Image reef1 = new ImageIcon(reefURL1).getImage();
+	//difficulty2
+	private URL reefURL2 = getClass().getResource("/resources/CoralReef2.jpg");
+	private Image reef2 = new ImageIcon(reefURL2).getImage();
+	//difficulty3
+	private URL reefURL3 = getClass().getResource("/resources/CoralReef3.jpg");
+	private Image reef3 = new ImageIcon(reefURL3).getImage();
+	//difficulty4
+	private URL reefURL4 = getClass().getResource("/resources/CoralReef4.jpg");
+	private Image reef4 = new ImageIcon(reefURL4).getImage();
 	private URL sharkURL = getClass().getResource("/resources/shark.jpg");
 	private Image shark = new ImageIcon(sharkURL).getImage();
 	private URL seaweedURL = getClass().getResource("/resources/Seaweed.jpg");
@@ -111,8 +122,8 @@ public class FishAnimationEnvironment extends JFrame implements Serializable {
 		Character c = character_type ? Character.SHARK : Character.WHALE;
 		
 		if (won) {
-			message = "Congratulations! \n You have reached 50 points and win the game!\n Please enter your name \n";
-			playerName = (String) JOptionPane.showInputDialog(fishPanel, message, "You win!", JOptionPane.INFORMATION_MESSAGE,null,null,playerName);
+			message = "Congratulations!\nYou have reached 50 points and won the game!\nPlease enter your name:";
+			playerName = JOptionPane.showInputDialog(fishPanel, message, "You win!", JOptionPane.INFORMATION_MESSAGE);
 			highscore.addScore(timer, eaten, difficulty, playerName, c);
 			message += highscore.getHighScoreString(difficulty);
 		} else {
@@ -208,6 +219,7 @@ public class FishAnimationEnvironment extends JFrame implements Serializable {
 				posX = os.readInt();
 				posY = os.readInt();
 				boatX = os.readInt();
+				this.difficulty = os.readInt();
 
 				for (int k = 0; k < numFish; k++) {
 					Fish f = new Fish(os.readDouble(), os.readDouble(), os.readDouble(), os.readDouble());
@@ -290,8 +302,24 @@ public class FishAnimationEnvironment extends JFrame implements Serializable {
 			g2.setColor(Color.BLUE);
 			g2.fillRect(0, 0, this.getWidth(), this.getHeight());
 			super.paintComponent(g); // replace current painting
-			g.drawImage(reef, 0, 0, this);
-
+			
+			//set different backgorund here
+			//easy
+			if (difficulty == 3) {
+				g.drawImage(reef1, 0, 0, this);
+			}//medium
+			else if (difficulty == 7) {
+				g.drawImage(reef2, 0, 0, this);
+			}
+			else if (difficulty == 14)//hard
+			{
+				g.drawImage(reef3, 0, 0, this);
+			}
+			else if (difficulty == 30)//crazy
+			{
+				g.drawImage(reef4, 0, 0, this);
+			}
+			
 			// Draws the seaweed at the specified points
 			for (int i = 0; i < this.getWidth() + 125; i += 125) {
 				g.drawImage(seaweed, i, this.getHeight() - 83, this);
@@ -304,7 +332,11 @@ public class FishAnimationEnvironment extends JFrame implements Serializable {
 				if (boatX <= -250) {
 					boatX = this.getWidth();
 				}
+				if ((boatX > posX - 200 && boatX + 120 < posX + 40) && (60 > posY - 60 && 0 < posY + 25)) {
+					health = 0;
+				}
 			}
+			
 
 			// Draws the fish based off the fish info array
 			g2.setColor(Color.YELLOW);
@@ -385,26 +417,38 @@ public class FishAnimationEnvironment extends JFrame implements Serializable {
 			
 			g2.setStroke(new BasicStroke(2));
 
-			// displays the number of points
-			g.setFont(new Font("Corsiva Hebrew", Font.PLAIN, 40));
-			g.setColor(Color.RED);
-			String str1 = "Points: " + eaten + "!";
-			g.drawString(str1, 20, 35);
-			
-			//	displays the health bar
-			
 
+			// displays the score bar
+			g.setFont(new Font("Corsiva Hebrew", Font.PLAIN, 20));
+			g.setColor(Color.GREEN);
+			g.drawRect(20, 70, 350, 20);
+			g.fillRect(20, 70, (int)(350 * eaten/50), 20);
+			
+			// displays the number of points
+			g.setFont(new Font("Corsiva Hebrew", Font.PLAIN, 20));
+			g.setColor(Color.WHITE);
+			String str1 = "Points: " + eaten + "/50";
+			g.drawString(str1, 135, 87);
+
+
+			// display the health bar
+			
 			g.setFont(new Font("Corsiva Hebrew", Font.PLAIN, 20));
 			g.setColor(Color.RED);
-			g.drawString("Health", 30, 90);
 			g.drawRect(20, 95, 350, 20);
 			g.fillRect(20, 95, (int)(350 * health/maxHealth), 20);
 
+			// display the points of health inside the health bar
+			g.setFont(new Font("Corsiva Hebrew", Font.PLAIN, 20));
+			g.setColor(Color.WHITE);
+			String heal = "Health: " + health + "/50";
+			g.drawString(heal, 135, 112);
+			
 			// displays the current elapsed time of the game in seconds
 			g.setFont(new Font("Corsiva Hebrew", Font.PLAIN, 30));
 			g.setColor(Color.RED);
 			String str2 = "Seconds Elapsed: " + timer;
-			g.drawString(str2, 20, 65);
+			g.drawString(str2, 20, 60);
 
 		}
 	} // end DrawingPanel
@@ -816,6 +860,7 @@ public class FishAnimationEnvironment extends JFrame implements Serializable {
 					os.writeInt(posX);
 					os.writeInt(posY);
 					os.writeInt(boatX);
+					os.writeInt(difficulty);
 					for (int k = 0; k < numFish; k++) {
 						os.writeDouble(fishArray.get(k).getXPos());
 						os.writeDouble(fishArray.get(k).getYPos());
