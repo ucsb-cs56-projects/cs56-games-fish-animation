@@ -357,7 +357,7 @@ public class FishAnimationEnvironment extends JFrame implements Serializable {
 
 			if (character_type){
 				g2.drawImage(shark, newXPos, newYPos, this);
-				}
+			}
 			else{
 				g2.drawImage(kwhale, newXPos, newYPos, this);
 			}
@@ -540,13 +540,14 @@ public class FishAnimationEnvironment extends JFrame implements Serializable {
 					 */
 					if ((xf > posX - 40 && xf < posX + 40) && (yf > posY - 25 && yf < posY + 25)) {
 						info.add(new FishInfo(fishPanel.getWidth(), Math.random() * maxY, wf, hf));
-						if (health < maxHealth)
+						if (health < maxHealth){
 							if (character_type){
 								health += 2;
 							}
 							else {
 								health += 1;
 							}
+						}
 						eaten++;
 						SoundEffect.FISH.playEffects();
 					} else {
