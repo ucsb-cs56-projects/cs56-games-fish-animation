@@ -39,10 +39,18 @@ class Menu implements ActionListener {
 	JLabel textLabel, pane, p2;
 
 	boolean character_type = true; // true = shark, false = kwhale
+	URL back = getClass().getResource("/resources/background.gif");
 
 	public static void main(String[] args) {
+		
 		Menu menu = new Menu();
-
+		
+		frame = new JFrame();
+		frame.setSize(800, 625);
+		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		frame.setTitle("Welcome to Fish Game!");
+		
+		
 		menu.makegui();
 
 		// pre-load all sound effects by calling init method
@@ -59,12 +67,7 @@ class Menu implements ActionListener {
 	 * select exit, play, or instruction.
 	 */
 	public void makegui() {
-
-		frame = new JFrame();
-		frame.setSize(800, 625);
-		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		frame.setTitle("Welcome to Fish Game!");
-		URL back = getClass().getResource("/resources/background.gif");
+		
 		ImageIcon bg = new ImageIcon(back);
 		pane = new JLabel(bg);
 		// Adds the different buttons to the menu
@@ -616,7 +619,6 @@ class Menu implements ActionListener {
 		highscores.setAlwaysOnTop( true );
 		highscores.setLocationByPlatform( true );
 		highscores.add(new TextArea(message));
-		//highscores.pack();
 		highscores.setLocationRelativeTo(pane);
 		highscores.setVisible( true );
 	}
@@ -719,7 +721,6 @@ class Menu implements ActionListener {
 			frame.remove(Hard);
 			frame.remove(Crazy);
 			frame.remove(Resume);
-			frame.setVisible(false);
 			makegui();
 		}
 		if (event.getSource() == Character) {
@@ -727,14 +728,12 @@ class Menu implements ActionListener {
 			frame.remove(Instruction);
 			frame.remove(Exit);
 			frame.remove(Credit);
-			frame.remove(Character);
 			setCharacter();
 		}
 		if (event.getSource() == CMenu) {
 			frame.remove(Shark);
 			frame.remove(Kwhale);
 			frame.remove(CMenu);
-			frame.setVisible(false);
 			makegui();
 		}
 	}
