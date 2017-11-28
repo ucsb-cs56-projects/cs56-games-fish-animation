@@ -619,7 +619,6 @@ class Menu implements ActionListener {
 		highscores.setAlwaysOnTop( true );
 		highscores.setLocationByPlatform( true );
 		highscores.add(new TextArea(message));
-		//highscores.pack();
 		highscores.setLocationRelativeTo(pane);
 		highscores.setVisible( true );
 	}
@@ -633,9 +632,7 @@ class Menu implements ActionListener {
 	public void actionPerformed(ActionEvent event) {
 		if (event.getSource() == Easy) {
 			frame.setVisible(false);
-			//frame.dgetContentPane().removeAll();
 			FishAnimationEnvironment f = new FishAnimationEnvironment(character_type, 3, false);
-
 		}
 		if (event.getSource() == Medium) {
 			frame.setVisible(false);
