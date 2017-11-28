@@ -56,7 +56,7 @@ class Menu implements ActionListener {
 	}
 
 	// Set up buttons
-	public void buttonOperation(JButton b, Color c){
+	private void setButtonStyle(JButton b, Color c){
 		b.setOpaque(false);
 		b.setContentAreaFilled(false);
 		b.setBorder(BorderFactory.createLineBorder(c));
@@ -65,16 +65,16 @@ class Menu implements ActionListener {
 	}
 
 	// Mouse listener for the hover effect
-	public void buttonAddListener(JButton b, Color c1, Color c2, Color c3, Color c4){
+	private void buttonAddListener(JButton b, Color c1, Color c2){
 		b.addMouseListener(new java.awt.event.MouseAdapter() {
 			public void mouseEntered(java.awt.event.MouseEvent evt) {
 				b.setForeground(c1);
-				b.setBorder(BorderFactory.createLineBorder(c2));
+				b.setBorder(BorderFactory.createLineBorder(c1));
 			}
 
 			public void mouseExited(java.awt.event.MouseEvent evt) {
-				b.setForeground(c3);
-				b.setBorder(BorderFactory.createLineBorder(c4));
+				b.setForeground(Color.white);
+				b.setBorder(BorderFactory.createLineBorder(c2));
 			}
 		});
 	}
@@ -137,20 +137,20 @@ class Menu implements ActionListener {
 		PauseBGM.addActionListener(this);
 
 		// HighScore
-		buttonOperation(HighScore, Color.white);
-		buttonAddListener(HighScore, Color.green, Color.green, Color.white, Color.white);
+		setButtonStyle(HighScore, Color.white);
+		buttonAddListener(HighScore, Color.green, Color.white);
 		
 		// PlayBGM
-		buttonOperation(PlayBGM, Color.black);
-		buttonAddListener(PlayBGM, Color.green, Color.green, Color.white, Color.black);
+		setButtonStyle(PlayBGM, Color.black);
+		buttonAddListener(PlayBGM, Color.green, Color.black);
 
 		// PauseBGM
-		buttonOperation(PauseBGM, Color.black);
-		buttonAddListener(PauseBGM, Color.white, Color.green, Color.white, Color.black);
+		setButtonStyle(PauseBGM, Color.black);
+		buttonAddListener(PauseBGM, Color.white, Color.black);
 
 		// Play
-		buttonOperation(Play, Color.white);
-		buttonAddListener(Play, Color.green, Color.green, Color.white, Color.white);
+		setButtonStyle(Play, Color.white);
+		buttonAddListener(Play, Color.green, Color.white);
 
 		// Credit
 		Credit.setOpaque(false);
@@ -160,16 +160,16 @@ class Menu implements ActionListener {
 		Credit.setFont(new Font("Century Gothic", Font.PLAIN, 18));
 
 		// Instruction
-		buttonOperation(Instruction, Color.white);
-		buttonAddListener(Instruction, Color.green, Color.green, Color.white, Color.white);
+		setButtonStyle(Instruction, Color.white);
+		buttonAddListener(Instruction, Color.green, Color.white);
 
 		// Exit
-		buttonOperation(Exit, Color.white);
-		buttonAddListener(Exit, Color.red, Color.red, Color.white, Color.white);
+		setButtonStyle(Exit, Color.white);
+		buttonAddListener(Exit, Color.red, Color.white);
 
 		// Character
-		buttonOperation(Character, Color.white);
-		buttonAddListener(Character, Color.green, Color.green, Color.white, Color.white);
+		setButtonStyle(Character, Color.white);
+		buttonAddListener(Character, Color.green, Color.white);
 
 		// doesn't allow tab focus
 		Play.setFocusable(false);
@@ -221,28 +221,28 @@ class Menu implements ActionListener {
 		Crazy.setBounds(75,510,150,50);
 
 		// Resume
-		buttonOperation(Resume, Color.white);
-		buttonAddListener(Resume, new Color(75, 255, 255), new Color(75, 255, 255), Color.white, Color.white);
+		setButtonStyle(Resume, Color.white);
+		buttonAddListener(Resume, new Color(75, 255, 255), Color.white);
 
 		// Menu
-		buttonOperation(Menu, Color.white);
-		buttonAddListener(Menu, new Color(75, 255, 255), new Color(75, 255, 255), Color.white, Color.white);
+		setButtonStyle(Menu, Color.white);
+		buttonAddListener(Menu, new Color(75, 255, 255), Color.white);
 
 		// Easy
-		buttonOperation(Easy, Color.white);
-		buttonAddListener(Easy, Color.green, Color.green, Color.white, Color.white);
+		setButtonStyle(Easy, Color.white);
+		buttonAddListener(Easy, Color.green, Color.white);
 		
 		// Medium
-		buttonOperation(Medium, Color.white);
-		buttonAddListener(Medium, Color.yellow, Color.yellow, Color.white, Color.white);
+		setButtonStyle(Medium, Color.white);
+		buttonAddListener(Medium, Color.yellow, Color.white);
 
 		// Hard
-		buttonOperation(Hard, Color.white);
-		buttonAddListener(Hard, new Color(255, 175, 75), new Color(255, 175, 75), Color.white, Color.white);
+		setButtonStyle(Hard, Color.white);
+		buttonAddListener(Hard, new Color(255, 175, 75), Color.white);
 		
 		// Crazy
-		buttonOperation(Crazy, Color.white);
-		buttonAddListener(Crazy, Color.red, Color.red, Color.white, Color.white);
+		setButtonStyle(Crazy, Color.white);
+		buttonAddListener(Crazy, Color.red, Color.white);
 
 
 		// Set
@@ -316,7 +316,7 @@ class Menu implements ActionListener {
 		Shark.setBorder(BorderFactory.createLineBorder(Color.white));
 		Shark.setForeground(Color.white);
 
-		buttonAddListener(Shark, new Color(75, 255, 255), new Color(75, 255, 255), Color.white, Color.white);
+		buttonAddListener(Shark, new Color(75, 255, 255), Color.white);
 
 		// Kwhale
 		Kwhale.setOpaque(false);
@@ -324,11 +324,11 @@ class Menu implements ActionListener {
 		Kwhale.setBorder(BorderFactory.createLineBorder(Color.white));
 		Kwhale.setForeground(Color.white);
 
-		buttonAddListener(Kwhale, new Color(75, 255, 255), new Color(75, 255, 255), Color.white, Color.white);
+		buttonAddListener(Kwhale, new Color(75, 255, 255), Color.white);
 
 		// CMenu
-		buttonOperation(CMenu, Color.white);
-		buttonAddListener(CMenu, new Color(75, 255, 255), new Color(75, 255, 255), Color.white, Color.white);
+		setButtonStyle(CMenu, Color.white);
+		buttonAddListener(CMenu, new Color(75, 255, 255), Color.white);
 
 
 		CMenu.addActionListener(this);
