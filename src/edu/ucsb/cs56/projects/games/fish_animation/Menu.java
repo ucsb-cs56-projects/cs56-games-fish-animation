@@ -724,7 +724,6 @@ class Menu implements ActionListener {
 			frame.remove(Hard);
 			frame.remove(Crazy);
 			frame.remove(Resume);
-			//frame.setVisible(false);
 			makegui();
 		}
 		if (event.getSource() == Character) {
@@ -732,14 +731,12 @@ class Menu implements ActionListener {
 			frame.remove(Instruction);
 			frame.remove(Exit);
 			frame.remove(Credit);
-			//frame.remove(Character);
 			setCharacter();
 		}
 		if (event.getSource() == CMenu) {
 			frame.remove(Shark);
 			frame.remove(Kwhale);
 			frame.remove(CMenu);
-			//frame.setVisible(false);
 			makegui();
 		}
 	}
