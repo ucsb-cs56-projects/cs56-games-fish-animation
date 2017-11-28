@@ -14,7 +14,7 @@ import java.awt.event.*;
    A shark class that creates a shark that faces 
    in the opposite direction of the fish moving
    across the screen.
-   
+      
    @author Casey Barbello
    @author Daryl Pham
    @author Jenna Cryan
@@ -29,9 +29,9 @@ public class Shark extends ScumOfTheSea {
        @param xPos x coord of the middle of the Shark
        @param yPos y coord of the middle of the Shark
     */
-    
+
     private double xPos, yPos;
-    
+
     /**
        Holds the shark's position on the Panel
     */
@@ -45,17 +45,17 @@ public class Shark extends ScumOfTheSea {
        @return the x position of the shark
     */
     @Override 
-	public double getXPos() {
-	return xPos;
+    public double getXPos() {
+      return xPos;
     }
-    
+
     /**
        Gets the yLocation of the shark
        @return the y position of the shark
     */
     @Override 
-	public double getYPos() {
-	return yPos;
+    public double getYPos() {
+      return yPos;
     }
     
     /**
@@ -63,17 +63,17 @@ public class Shark extends ScumOfTheSea {
        @return set the x position of the shark
     */
     @Override 
-	public void setX(double x) {
-	xPos = x;
+    public void setX(double x) {
+      xPos = x;
     }
-    
+	
     /**
        Sets the yLocation of the shark
        @return set the y position of the shark
     */
     @Override 
-	public void setY(double y) {
-	yPos = y;
+    public void setY(double y) {
+	     yPos = y;
     }
     
     /**
@@ -82,7 +82,7 @@ public class Shark extends ScumOfTheSea {
        shark movement dictated by mouse events
     */
     @Override 
-	public void move(double m){
+    public void move(double m){
 	;
     }
 }

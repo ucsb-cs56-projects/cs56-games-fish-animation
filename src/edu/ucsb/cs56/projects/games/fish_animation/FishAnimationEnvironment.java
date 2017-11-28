@@ -639,25 +639,30 @@ public class FishAnimationEnvironment extends JFrame implements Serializable {
 				}
 
 				// Speed of the fish moving across the screen
-				double currentSpeed = numFish % 6;
-				for (int i = 0; i < info.size(); i++) {
-					if ((currentSpeed - 1) < 2) {
-						currentSpeed = (numFish % 10) + 1;
-					} else {
-						currentSpeed--;
-					}
-					double newX = info.get(i).getXPos() - currentSpeed;
-					int wp = fishPanel.getWidth();
-					int hp = fishPanel.getHeight();
-
-					if (newX < -50) {
-						fishArray.add((new Fish(wp, ((Math.random() * hp) % hp), info.get(i).getWidth(),
-								info.get(i).getHeight())));
-					} else {
-						fishArray.add((new Fish(newX, info.get(i).getYPos(), info.get(i).getWidth(),
-								info.get(i).getHeight())));
-					}
-				}
+  				double currentSpeed = numFish % 6;
+  				double angle = 60;
+  				for (int i = 0; i < info.size(); i++) {
+      				if ((currentSpeed - 1) < 2) {
+   						currentSpeed = (numFish % 10) + 1;
+      				} else {
+   						currentSpeed--;
+      				}
+      
+      				double newX = info.get(i).getXPos() + Math.cos(angle) * currentSpeed;
+      				double newY = info.get(i).getYPos() + Math.sin(angle) * currentSpeed;
+      
+      				int wp = fishPanel.getWidth();
+      				int hp = fishPanel.getHeight();
+      
+      				if (newX < -50 || newY < 0 || newY > 768) {
+   						fishArray.add((new Fish(wp, ((Math.random() * hp) % hp), info.get(i).getWidth(),
+      					info.get(i).getHeight())));
+      				} else {
+   						fishArray.add((new Fish(newX, newY, info.get(i).getWidth(),
+      					info.get(i).getHeight())));
+      				}
+      				angle *= -1;
+  				}
 
 				/*
 				 * Some math to calculate the real time minus the amount of time

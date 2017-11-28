@@ -10,12 +10,13 @@ import java.awt.geom.AffineTransform;
    A vector drawing of a Fish that implements
    the Shape interface, and so can be drawn, as well as
    rotated, scaled, etc.
-      
+   
    @author Lawrence Khuu
    @author Josephine Vo
    @author Jenna Cryan
    @author Abhijit Kulkarni
    @author Angela Yung
+   @author Yuhao Zhang
    @version for CS56, Winter 2016, UCSB
    
 */
@@ -49,9 +50,9 @@ public class Fish extends ScumOfTheSea{
 	
 	//URL fishURL = getClass().getResource("/resources/Fish.jpg");
 	//Image fish = new ImageIcon(fishURL).getImage();
-
+	
 	for(double j = 0;j < 100; j += 1.0) { 
-	    nextX = currentX + (((3.0 / 4.0) * width) / 100.0);
+	    nextX = currentX + ((0.75 * width) / 100.0);
 	    nextY = currentY + ((height / 2.0) * (Math.sin(Math.PI * ((j + 1.0) / 100.0)) - Math.sin(Math.PI * ((j - 1.0) / 100.0))));
 	    wholeFish.append(new Line2D.Double(currentX, currentY, nextX, nextY), false);
 	    currentX = nextX;
@@ -63,7 +64,7 @@ public class Fish extends ScumOfTheSea{
 	wholeFish.append(new Line2D.Double(currentX, currentY, nextX, nextY), false);
 	currentX = nextX;
 	currentY = nextY;
-
+	
 	nextY = y - (height / 2.0);
 	wholeFish.append(new Line2D.Double(currentX, currentY, nextX, nextY), false);
 	currentX = nextX;
@@ -75,20 +76,20 @@ public class Fish extends ScumOfTheSea{
 	currentX = nextX;
 	currentY = nextY;
 	
-        for(double j = 0; j < 100; j += 1.0) {
-            nextX = currentX - (((3.0 / 4.0) * width) / 100.0);
-            nextY = currentY - ((height / 2.0) * (Math.sin(Math.PI * ((j + 1.0) / 100.0)) - Math.sin(Math.PI * ((j - 1.0) / 100.0))));
-            wholeFish.append(new Line2D.Double(currentX, currentY, nextX, nextY), false);
-            currentX = nextX;
-            currentY = nextY;
-        }
+	for(double j = 0; j < 100; j += 1.0) {
+	    nextX = currentX - (((3.0 / 4.0) * width) / 100.0);
+	    nextY = currentY - ((height / 2.0) * (Math.sin(Math.PI * ((j + 1.0) / 100.0)) - Math.sin(Math.PI * ((j - 1.0) / 100.0))));
+	    wholeFish.append(new Line2D.Double(currentX, currentY, nextX, nextY), false);
+	    currentX = nextX;
+	    currentY = nextY;
+	}
     }
     
     /**
        gets the xLocation of the fish
     */
     @Override 
-    public double getXPos() {
+	public double getXPos() {
 	return xPos;
     }
     
@@ -96,23 +97,23 @@ public class Fish extends ScumOfTheSea{
        gets the yLocation of the fish
     */
     @Override 
-    public double getYPos() {
-        return yPos;
+	public double getYPos() {
+	return yPos;
     }
     
     /**
        X is set in the constructor
     */
     @Override 
-    public void setX(double x) {
+	public void setX(double x) {
 	;
     }
-
+    
     /**
        Y is set in the constructor
     */
     @Override 
-    public void setY(double y) {
+	public void setY(double y) {
 	;
     }
     
@@ -120,21 +121,21 @@ public class Fish extends ScumOfTheSea{
        gets the Width of the fish
     */
     public double getWidth() {
-        return width;
+	return width;
     }
     
     /**
        gets the height of the fish
     */
     public double getHeight() {
-        return height;
+	return height;
     }
-
+    
     /**
        fish moves in constructor
     */
     @Override 
-    public void move(double m) {
+	public void move(double m) {
 	;
     }
 }
