@@ -27,7 +27,8 @@ import java.util.Random;
  * @author Angela Yung
  * @author Ziheng Song
  * @author Yuhao Zhang
- * @version for CS56, Winter 2016, UCSB
+ * @version for CS56, Fall 2017, UCSB
+
  */
 
 public class FishAnimationEnvironment extends JFrame implements Serializable {
@@ -119,7 +120,80 @@ public class FishAnimationEnvironment extends JFrame implements Serializable {
 	} else {
 	    message = "Sorry, you lose. You got " + eaten + " points!";
 	}
+<<<<<<< HEAD
 	message += "\n\tPlay again?";
+=======
+	private Thread animate;
+	private DrawingPanel fishPanel = new DrawingPanel();
+	private JFrame animation = new JFrame();
+	private ScoreManager highscore = new ScoreManager();
+
+	private int maxX = 1366, maxY = 768; // Default height and width of the game
+											// at start
+	private int posX = maxX / 2, posY = maxY / 2; // used to position the shark
+													// at the origin
+	private int maxWidth = 100; // max width of the fish
+	private int boatX = maxX;// hold the position of the boat
+	private int maxD = 10; // holds the maximum diameter of the bubbles
+
+	private int health = 50;
+	private int maxHealth = 50;
+	private int eaten = 0; // number of fish eaten
+	private int numFish = 75; // number of fish in environment
+	private int numBubbles = 10 + (int) (Math.random() * 20); // creates a
+																// random amount
+																// of bubbles
+	private int numJellyFish; // holds the number of Jellyfish to be created
+	private int numPlankton;
+	private int timer, timerload = 0;
+	private long time1 = System.nanoTime() / 1000000000; // Used to get the
+															// start time of the
+															// game
+	private long time2, pausestart, pausetime = 0; // time that the pause button
+													// was pressed for
+	private int delay = 20; // The pause button delay
+	private boolean stop = false; // used to know when to pause the animation
+									// and when not to
+	private boolean load = false; // used to determine whether or not the game
+									// loads from the serialized form
+
+	private boolean character_type; // determines character, (shark, kwhale)
+
+	private long lastPress = 0;
+	private int choice = -1;
+	private String message = "";
+	private boolean gameover = false;
+	private int dx = 0, dy = 0;
+	// create ArrayLists for fish, bubbles, and jellyfish.
+	private ArrayList<Fish> fishArray = new ArrayList<Fish>();
+	private ArrayList<Bubbles> bubblesArray = new ArrayList<Bubbles>();
+	private ArrayList<JellyFish> jellyfish = new ArrayList<JellyFish>();
+	private ArrayList<Plankton> plankton = new ArrayList<Plankton>();
+
+	// Images in the game
+	//difficulty1
+	private URL reefURL1 = getClass().getResource("/resources/CoralReef1.jpg");
+	private Image reef1 = new ImageIcon(reefURL1).getImage();
+	//difficulty2
+	private URL reefURL2 = getClass().getResource("/resources/CoralReef2.jpg");
+	private Image reef2 = new ImageIcon(reefURL2).getImage();
+	//difficulty3
+	private URL reefURL3 = getClass().getResource("/resources/CoralReef3.jpg");
+	private Image reef3 = new ImageIcon(reefURL3).getImage();
+	//difficulty4
+	private URL reefURL4 = getClass().getResource("/resources/CoralReef4.jpg");
+	private Image reef4 = new ImageIcon(reefURL4).getImage();
+	private URL sharkURL = getClass().getResource("/resources/shark.jpg");
+	private Image shark = new ImageIcon(sharkURL).getImage();
+	private URL seaweedURL = getClass().getResource("/resources/Seaweed.jpg");
+	private Image seaweed = new ImageIcon(seaweedURL).getImage();
+	private URL boatURL = getClass().getResource("/resources/cartoon-boat.jpg");
+	private Image boat = new ImageIcon(boatURL).getImage();
+	private URL kwhaleURL = getClass().getResource("/resources/kwhale.gif");
+	private Image kwhale = new ImageIcon(kwhaleURL).getImage();
+
+	private int difficulty;
+>>>>>>> cfb901d348fa29821885bef96f51e2f68056b4ce
 	
 	Thread t = new Thread(new Runnable() {
 		public void run() {
@@ -210,9 +284,19 @@ public class FishAnimationEnvironment extends JFrame implements Serializable {
 		posY = os.readInt();
 		boatX = os.readInt();
 		
+<<<<<<< HEAD
 		for (int k = 0; k < numFish; k++) {
 		    Fish f = new Fish(os.readDouble(), os.readDouble(), os.readDouble(), os.readDouble());
 		    fishArray.add(f);
+=======
+		if (won) {
+			message = "Congratulations!\nYou have reached 50 points and won the game!\nPlease enter your name:";
+			playerName = JOptionPane.showInputDialog(fishPanel, message, "You win!", JOptionPane.INFORMATION_MESSAGE);
+			highscore.addScore(timer, eaten, difficulty, playerName, c);
+			message += highscore.getHighScoreString(difficulty);
+		} else {
+			message = "Sorry, you lose. You got " + eaten + " points!";
+>>>>>>> cfb901d348fa29821885bef96f51e2f68056b4ce
 		}
 		for (int i = 0; i < numJellyFish; i++) {
 		    int x = os.readInt();
@@ -246,6 +330,7 @@ public class FishAnimationEnvironment extends JFrame implements Serializable {
 	for (int i = 0; i < numBubbles; i++) {
 	    bubblesArray.add((createBubbles(maxX, maxY, maxD)));
 	}
+<<<<<<< HEAD
 	
 	// Adds the Jellyfish into the game
 	if (!load) {
@@ -258,6 +343,93 @@ public class FishAnimationEnvironment extends JFrame implements Serializable {
 	
 	if (!load) {
 	    for (int i = 0; i < numPlankton; i++) {
+=======
+
+	/**
+	 * Constructor for FishAnimationEnvironment. Creates a JFrame and a Jpanel
+	 * that is placed inside of it. Animation is done on the JPanel
+	 */
+	/*
+	 * public FishAnimationEnvironment() { for(int i = 0; i < numFish; i++){
+	 * addNewFish(createRandomFish(maxX, maxY, maxWidth)); } }
+	 */
+
+	/**
+	 * Custom Constructor for FishAnimationEnvironment. Creates a JFrame and a
+	 * Jpanel that is placed inside of it. Animation is done on the JPanel. This
+	 * Constructor takes in input from the Menu GUI for the difficulty and
+	 * creates Jellyfish based on the selected difficulty.
+	 */
+	public FishAnimationEnvironment(boolean character_type, int difficulty, boolean l) {
+		this.difficulty = difficulty;
+		this.character_type = character_type;
+		numJellyFish = difficulty;
+		numPlankton = 14 - difficulty;
+		load = l;
+		if (load) {
+			// deserialize the score, fish, shark, boat, and jellyfish
+			try {
+				FileInputStream fileStream = new FileInputStream("saved.ser");
+				ObjectInputStream os = new ObjectInputStream(fileStream);
+				this.character_type = os.readBoolean();
+				eaten = os.readInt();
+				numJellyFish = os.readInt();
+				numPlankton = os.readInt();
+				timerload = os.readInt();
+				posX = os.readInt();
+				posY = os.readInt();
+				boatX = os.readInt();
+				this.difficulty = os.readInt();
+
+				for (int k = 0; k < numFish; k++) {
+					Fish f = new Fish(os.readDouble(), os.readDouble(), os.readDouble(), os.readDouble());
+					fishArray.add(f);
+				}
+				for (int i = 0; i < numJellyFish; i++) {
+					int x = os.readInt();
+					int y = os.readInt();
+					double speed = os.readDouble();
+					JellyFish j = new JellyFish(x, y, speed);
+					jellyfish.add(j);
+				}
+				for (int i = 0; i < numPlankton; i++) {
+					int x = os.readInt();
+					int y = os.readInt();
+					Plankton p = new Plankton(x, y, true);
+					plankton.add(p);
+				}
+				os.close();
+			} catch (Exception ex) {
+				ex.printStackTrace();
+				load = false;
+				numJellyFish = 3;
+			}
+		}
+
+		// Adds the fish into the Array only if the load button was not selected
+		if (!load) {
+			for (int i = 0; i < numFish; i++) {
+				fishArray.add((createRandomFish(maxX, maxY, maxWidth)));
+			}
+		}
+
+		// Adds the random amount of Bubbles into the ArrayList
+		for (int i = 0; i < numBubbles; i++) {
+			bubblesArray.add((createBubbles(maxX, maxY, maxD)));
+		}
+
+		// Adds the Jellyfish into the game
+		if (!load) {
+			for (int i = 0; i < numJellyFish; i++) {
+				JellyFish j = new JellyFish((int) (Math.random() * 12345) % maxX, maxY,
+						(Math.random() * 123) % 50 + 15);
+				jellyfish.add(j);
+			}
+		}
+
+		if (!load) {
+			for (int i = 0; i < numPlankton; i++) {
+>>>>>>> cfb901d348fa29821885bef96f51e2f68056b4ce
 				Plankton p = new Plankton((int) (Math.random() * 12345) % maxX, (int) (Math.random() * 12345) % maxY,
 							  true);
 				plankton.add(p);
@@ -305,6 +477,7 @@ public class FishAnimationEnvironment extends JFrame implements Serializable {
 		if (boatX <= -250) {
 		    boatX = this.getWidth();
 		}
+<<<<<<< HEAD
 	    }
 	    
 	    // Draws the fish based off the fish info array
@@ -375,6 +548,184 @@ public class FishAnimationEnvironment extends JFrame implements Serializable {
 		    for (int j = (int) jellyfish.get(i).getXPos() + 10; j < jellyfish.get(i).getXPos() + 45; j += 5) {
 			g2.drawLine(j, jNewYPos + 95, j, jNewYPos + 10);
 		    }
+=======
+
+		animation.getContentPane().add(BorderLayout.CENTER, fishPanel);
+		animate = new Animate();
+		animate.start();
+		animation.setDefaultCloseOperation(EXIT_ON_CLOSE);
+		animation.setSize(maxX, maxY);
+		animation.setVisible(true);
+		GameMenu game = new GameMenu();
+		game.makemenu();
+	}// end constructor
+
+	/**
+	 * Innerclass for a custom Jpanel for animation. Draws out the background
+	 * and the in-game components including a timer, the score, the shark, the
+	 * fish, the jellyfish, the seaweed, the boat, and the bubbles.
+	 */
+
+	class DrawingPanel extends JPanel {
+
+		public void paintComponent(Graphics g) {
+			// fishPanel.requestFocus(); //needed to be called each Panel
+			requestFocus();
+
+			// Sets background color and adds background image
+			Graphics2D g2 = (Graphics2D) g;
+			g2.setColor(Color.BLUE);
+			g2.fillRect(0, 0, this.getWidth(), this.getHeight());
+			super.paintComponent(g); // replace current painting
+			
+			//set different backgorund here
+			//easy
+			if (difficulty == 3) {
+				g.drawImage(reef1, 0, 0, this);
+			}//medium
+			else if (difficulty == 7) {
+				g.drawImage(reef2, 0, 0, this);
+			}
+			else if (difficulty == 14)//hard
+			{
+				g.drawImage(reef3, 0, 0, this);
+			}
+			else if (difficulty == 30)//crazy
+			{
+				g.drawImage(reef4, 0, 0, this);
+			}
+			
+			// Draws the seaweed at the specified points
+			for (int i = 0; i < this.getWidth() + 125; i += 125) {
+				g.drawImage(seaweed, i, this.getHeight() - 83, this);
+			}
+
+			// Draws the image of the boat and also animates it
+			g.drawImage(boat, boatX, -135, this);
+			if (!stop) {
+				boatX -= 10;
+				if (boatX <= -250) {
+					boatX = this.getWidth();
+				}
+				if ((boatX > posX - 200 && boatX + 120 < posX + 40) && (60 > posY - 60 && 0 < posY + 25)) {
+					health = 0;
+				}
+			}
+			
+
+			// Draws the fish based off the fish info array
+			g2.setColor(Color.YELLOW);
+			for (int i = 0; i < fishArray.size(); i++) {
+				g2.draw(fishArray.get(i));
+			}
+
+			// Draws the image of the Shark
+			if (posX < 0)
+				posX = maxX;
+			else if (posX > maxX)
+				posX = 30;
+			if (posY < 30)
+				posY = maxY - 100;
+			else if (posY > maxY - 100)
+				posY = 30;
+			Shark s = new Shark(posX, posY);
+			int newXPos = (int) s.getXPos() - 160;
+			int newYPos = (int) s.getYPos() - 130;
+
+			if (character_type)
+				g2.drawImage(shark, newXPos, newYPos, this);
+			else
+				g2.drawImage(kwhale, newXPos, newYPos, this);
+
+			// Draws the bubbles with the blue gradient
+			Color b = new Color(127, 255, 212);
+			for (int i = 0; i < bubblesArray.size(); i++) {
+				double yD = bubblesArray.get(i).getYPos();
+				int yI = (int) yD;
+				double xD = bubblesArray.get(i).getXPos();
+				int xI = (int) xD;
+				int BubblesY = yI - bubblesArray.get(i).getDiameter() / 2;
+				int BubblesY2 = yI + bubblesArray.get(i).getDiameter() / 2;
+				int BubblesX = xI - bubblesArray.get(i).getDiameter() / 2;
+				int BubblesX2 = xI + bubblesArray.get(i).getDiameter() / 2;
+
+				// Creates a gradient color for the Bubble
+				GradientPaint gradient = new GradientPaint(BubblesX, BubblesY, Color.BLUE, BubblesX2, BubblesY2, b);
+				g2.setPaint(gradient);
+
+				// Draws a Bubbles object onto the screen
+				int xb = (int) bubblesArray.get(i).getXPos();
+				int yb = (int) bubblesArray.get(i).getYPos();
+				int db = (int) bubblesArray.get(i).getDiameter();
+				g2.fillOval(xb, yb, db, db);
+			}
+
+			// Sets the Color to PINK for the jellyfish
+			g2.setColor(Color.PINK);
+			for (int i = 0; i < jellyfish.size(); i++) {
+				int jNewXPos = (int) jellyfish.get(i).getXPos();
+				int jNewYPos = (int) jellyfish.get(i).getYPos();
+				if (jellyfish.get(i).checkJellyFish() == true) {
+					// Draws the Body of the JellyFish
+					g2.fillArc(jNewXPos, jNewYPos, 50, 40, 0, 180);
+
+					// Draws the Tentacles of the JellyFish
+					for (int j = (int) jellyfish.get(i).getXPos() + 5; j < jellyfish.get(i).getXPos() + 50; j += 5) {
+						g2.drawLine(j, jNewYPos + 75, j, jNewYPos + 10);
+					}
+				} else {
+					// Draws the Body of the JellyFish
+					g2.fillArc(jNewXPos + 5, jNewYPos, 40, 50, 0, 180);
+
+					// Draws the Tentacles of the JellyFish
+					for (int j = (int) jellyfish.get(i).getXPos() + 10; j < jellyfish.get(i).getXPos() + 45; j += 5) {
+						g2.drawLine(j, jNewYPos + 95, j, jNewYPos + 10);
+					}
+				}
+			}
+
+			// sets green for plankton
+			g2.setColor(Color.GREEN);
+			for (int i = 0; i < plankton.size(); i++) {
+				g2.draw(plankton.get(i));
+			}
+			
+			g2.setStroke(new BasicStroke(2));
+
+
+			// displays the score bar
+			g.setFont(new Font("Corsiva Hebrew", Font.PLAIN, 20));
+			g.setColor(Color.GREEN);
+			g.drawRect(20, 70, 350, 20);
+			g.fillRect(20, 70, (int)(350 * eaten/50), 20);
+			
+			// displays the number of points
+			g.setFont(new Font("Corsiva Hebrew", Font.PLAIN, 20));
+			g.setColor(Color.WHITE);
+			String str1 = "Points: " + eaten + "/50";
+			g.drawString(str1, 135, 87);
+
+
+			// display the health bar
+			
+			g.setFont(new Font("Corsiva Hebrew", Font.PLAIN, 20));
+			g.setColor(Color.RED);
+			g.drawRect(20, 95, 350, 20);
+			g.fillRect(20, 95, (int)(350 * health/maxHealth), 20);
+
+			// display the points of health inside the health bar
+			g.setFont(new Font("Corsiva Hebrew", Font.PLAIN, 20));
+			g.setColor(Color.WHITE);
+			String heal = "Health: " + health + "/50";
+			g.drawString(heal, 135, 112);
+			
+			// displays the current elapsed time of the game in seconds
+			g.setFont(new Font("Corsiva Hebrew", Font.PLAIN, 30));
+			g.setColor(Color.RED);
+			String str2 = "Seconds Elapsed: " + timer;
+			g.drawString(str2, 20, 60);
+
+>>>>>>> cfb901d348fa29821885bef96f51e2f68056b4ce
 		}
 	    }
 	    
@@ -803,6 +1154,7 @@ public class FishAnimationEnvironment extends JFrame implements Serializable {
 		    animation.setVisible(true);
 		    pausetime += (System.nanoTime() / 1000000000 - pausestart);
 		}
+<<<<<<< HEAD
 	    }
 	    
 	    /*
@@ -845,6 +1197,95 @@ public class FishAnimationEnvironment extends JFrame implements Serializable {
 		    os.close();
 		} catch (Exception ex) {
 		    ex.printStackTrace();
+=======
+		
+
+		/**
+		 * Method to allow for actions that are performed on the button to be
+		 * taken in and used as the source for an event to take place
+		 */
+		public void actionPerformed(ActionEvent event) {
+			if (event.getSource() == Pause) {
+				if (stop == false) {
+					stop = true;
+					SoundEffect.BGM.pause();
+					allTheButtons.remove(Pause);
+					allTheButtons.remove(Save);
+					allTheButtons.remove(Exit);
+					Pause = new JButton(play);
+					Pause.addActionListener(this);
+					allTheButtons.add(Pause);
+					allTheButtons.add(Save);
+					allTheButtons.add(Exit);
+					animation.setVisible(true);
+					pausestart = System.nanoTime() / 1000000000;
+				} else {
+					stop = false;
+					SoundEffect.BGM.play();
+					allTheButtons.remove(Pause);
+					allTheButtons.remove(Save);
+					allTheButtons.remove(Exit);
+					Pause = new JButton(pause);
+					Pause.addActionListener(this);
+					allTheButtons.add(Pause);
+					allTheButtons.add(Save);
+					allTheButtons.add(Exit);
+					animation.setVisible(true);
+					pausetime += (System.nanoTime() / 1000000000 - pausestart);
+				}
+			}
+
+			/*
+			 * serialize if save was clicked. Exits the game as well after the
+			 * save. Saves all of the positions of all the different items that
+			 * are on the screen including the shark, fish, jelly, and the boat
+			 */
+			if (event.getSource() == Save) {
+				try {
+					FileOutputStream fs = new FileOutputStream("saved.ser");
+					ObjectOutputStream os = new ObjectOutputStream(fs);
+					os.flush();
+					os.writeBoolean(character_type);
+					os.writeInt(eaten);
+					os.writeInt(numJellyFish);
+					os.writeInt(numPlankton);
+					os.writeInt(timer);
+					os.writeInt(posX);
+					os.writeInt(posY);
+					os.writeInt(boatX);
+					os.writeInt(difficulty);
+					for (int k = 0; k < numFish; k++) {
+						os.writeDouble(fishArray.get(k).getXPos());
+						os.writeDouble(fishArray.get(k).getYPos());
+						os.writeDouble(fishArray.get(k).getWidth());
+						os.writeDouble(fishArray.get(k).getHeight());
+					}
+					for (int i = 0; i < numJellyFish; i++) {
+						int toWriteX = (int) jellyfish.get(i).getXPos();
+						int toWriteY = (int) jellyfish.get(i).getYPos();
+						os.writeInt(toWriteX);
+						os.writeInt(toWriteY);
+						os.writeDouble(jellyfish.get(i).getSpeed());
+					}
+					for (int i = 0; i < numPlankton; i++) {
+						int toWriteX = (int) plankton.get(i).getXPos();
+						int toWriteY = (int) plankton.get(i).getYPos();
+						os.writeInt(toWriteX);
+						os.writeInt(toWriteY);
+					}
+					os.close();
+				} catch (Exception ex) {
+					ex.printStackTrace();
+				}
+				eaten = 0;
+				numJellyFish = 0;
+				System.exit(0);
+			}
+			// If exit is clicked exits the game
+			if (event.getSource() == Exit) {
+				System.exit(0);
+			}
+>>>>>>> cfb901d348fa29821885bef96f51e2f68056b4ce
 		}
 		eaten = 0;
 		numJellyFish = 0;
