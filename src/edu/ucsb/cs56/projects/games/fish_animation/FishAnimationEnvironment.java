@@ -114,6 +114,7 @@ public class FishAnimationEnvironment extends JFrame implements Serializable {
 	 * @param won
 	 *            true if the player won, false if the player lost
 	 */
+    
 	private void gameFinished(boolean won) {
 		// change the BGM if the game is finished
 		SoundEffect.BGM.stop();
