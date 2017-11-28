@@ -72,8 +72,8 @@ class Menu implements ActionListener {
 		Instruction = new JButton("INSTRUCTIONS");
 		Exit = new JButton("EXIT");
 		Character = new JButton("CHARACTER");
-        //create a copyright text
-        Credit = new JTextField("(C) 2016");
+		//create a copyright text
+		Credit = new JTextField("(C) 2016");
 		frame.setLayout(null);
 		pane.setLayout(null);
 		HighScore = new JButton("HIGH SCORES");
@@ -107,10 +107,7 @@ class Menu implements ActionListener {
 		Instruction.addActionListener(this);
 		HighScore.addActionListener(this);
 		Exit.addActionListener(this);
-<<<<<<< HEAD
-=======
 		Credit.addActionListener(this);
->>>>>>> cfb901d348fa29821885bef96f51e2f68056b4ce
 		Character.addActionListener(this);
 		PlayBGM.addActionListener(this);
 		PauseBGM.addActionListener(this);
@@ -660,10 +657,10 @@ class Menu implements ActionListener {
 
 		if (event.getSource() == PauseBGM) {
 			SoundEffect.BGM.pause();
-            SoundEffect.volume = SoundEffect.Volume.MUTE;
+			SoundEffect.volume = SoundEffect.Volume.MUTE;
 		}
 		if (event.getSource() == PlayBGM) {
-            SoundEffect.volume = SoundEffect.Volume.MEDIUM;
+			SoundEffect.volume = SoundEffect.Volume.MEDIUM;
 			SoundEffect.BGM.play();
 		}
 		if (event.getSource() == Play) {
