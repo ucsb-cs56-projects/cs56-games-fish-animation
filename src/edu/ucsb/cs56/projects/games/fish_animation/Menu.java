@@ -6,13 +6,9 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
 import java.awt.event.ActionListener;
-import java.util.ArrayList;
 import java.util.*;
 import java.net.*; //url
-import java.util.concurrent.TimeUnit;
-import java.lang.*;
 import javax.imageio.*;
-import javax.management.loading.PrivateClassLoader;
 
 import java.io.*;
 
@@ -567,7 +563,7 @@ class Menu implements ActionListener {
 	 * GUI that shows the user how to play the game. Provides instructions and a
 	 * description of the game overall.
 	 */
-	public void HowToPlay() {
+	public void howToPlay() {
 
 		// Creates new frame for the new menu that will pop up
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -678,7 +674,7 @@ class Menu implements ActionListener {
 		}
 		if (event.getSource() == Instruction) {
 
-			HowToPlay();
+			howToPlay();
 		}if (event.getSource() == HighScore) {
 
 			HighScores();
