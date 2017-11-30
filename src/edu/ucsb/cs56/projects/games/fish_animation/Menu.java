@@ -30,7 +30,8 @@ class Menu implements ActionListener {
 	private JButton Play, Instruction, Exit, Resume, Easy, Medium, Hard, Back, Menu, PlayBGM, PauseBGM, HighScore, NextPage, Crazy;
 	private JButton Character, CMenu, Kwhale, Shark;
 	private JTextField Credit;
-	private JFrame frame, instruct;
+	private JFrame instruct;
+	public static JFrame frame;
 
 	JLabel textLabel, pane, p2;
 
