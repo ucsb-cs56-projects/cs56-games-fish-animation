@@ -19,3 +19,8 @@ Yes the software runs wells. It displays a smoothly animated fish upon launch. T
 * As a player, I can only eat fish smaller in size than mine (create fish larger than player's).
 * As a player, I can evolve to gain new skills.
 ## (e) README.md Assessment
+The README.md contains very little information for maintainence of the software. Clear descriptions of resolved issues and the general architecture of the game should be included, for example, the F17 update should focus more on stating whether or not their solutions to the "GUI errors" relates to the F16 final remarks on code refactoring for FishAnimationEnvironment.java rather than trying to advertise and explain the goal of the game.
+## (f) build.xml Assessment
+The build.xml has a few targets that needs a descriptions.
+## (g) Current Issues Assessment
+a
