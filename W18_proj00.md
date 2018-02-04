@@ -11,7 +11,7 @@ A HIGH QUALITY game where you play as a fish and ry to eat enough fish to reach 
 * As a player, I can get killed by a boat.
 * As a player, I can resume the game even though I don't have a game in progress.
 ## (c) Brief Software Assessment
-Yes the software runs wells. It displays a smoothly animated fish upon launch. The main menu is working and the gameplay features controlling a fish using either a mouse of keyboard WASD to eat enough fish and earn 50 points without dying.
+Yes the software runs well. It displays a smoothly animated fish upon launch. The main menu is working and the gameplay features controlling a fish using either a mouse of keyboard WASD to eat enough fish and earn 50 points without dying.
 ## (d) User Stories - Potential New Features
 * As a player, I can purchase new characters, temporary power-ups, and permament perks from an in-game store.
 * As a graphical interface of the game, I can prove myself not to be a so sketchy.
@@ -23,4 +23,15 @@ The README.md contains very little information for maintainence of the software.
 ## (f) build.xml Assessment
 The build.xml has a few targets that needs a descriptions.
 ## (g) Current Issues Assessment
-a
+Most issues include a clear explanation for what can be improved. Some are ambiguous and require clarification.
+## (h) Additional Issues - to be considered
+https://github.com/ucsb-cs56-projects/cs56-games-fish-animation/issues/105
+## (i) Assessment of Current Code
+Some parts of the code are already structured in a clear fashion; however, there are a few classes that need refactoring:
+* FishAnimationEnvironment.java currently contains code for both the main GUI, the score computation, AND the in-game graphics, which seems very cluttered. This needs to be re-organized into different classes. In addition, some of the code can be refactored and simplified with methods (such as object motion, etc.)
+* Fish.java, Plankton.java have a lot of code in the constructors (apart from getters and setters), which should probably be replaced with methods.
+* Shark.java, Jellyfish.java, Score.java, ScoreManager.java, ScoreComparer.java, and Character.java are fine.
+* SoundEffect.java has clean code but doesn't seem to function (there's no background music during actual gameplay).
+* Menu.java might have potential for simplifications.
+## (j) Testing
+The project has no JUnit tests at all. Testing should be added to the project; each test should focus on one particular class (constructor, method) and should be independent of other tests. 
