@@ -25,7 +25,8 @@ The build.xml has a few targets that needs a descriptions.
 ## (g) Current Issues Assessment
 Most issues include a clear explanation for what can be improved. Some are ambiguous and require clarification.
 ## (h) Additional Issues - to be considered
-https://github.com/ucsb-cs56-projects/cs56-games-fish-animation/issues/105
+* https://github.com/ucsb-cs56-projects/cs56-games-fish-animation/issues/105
+* https://github.com/ucsb-cs56-projects/cs56-games-fish-animation/issues/107
 ## (i) Assessment of Current Code
 Some parts of the code are already structured in a clear fashion; however, there are a few classes that need refactoring:
 * FishAnimationEnvironment.java currently contains code for both the main GUI, the score computation, AND the in-game graphics, which seems very cluttered. This needs to be re-organized into different classes. In addition, some of the code can be refactored and simplified with methods (such as object motion, etc.)
