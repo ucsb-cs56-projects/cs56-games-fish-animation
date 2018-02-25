@@ -1,7 +1,136 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="013cd1a3-e7c5-4038-8425-6e5b57cc84ec" name="Default" comment="" />
+    <list default="true" id="013cd1a3-e7c5-4038-8425-6e5b57cc84ec" name="Default" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" afterPath="$PROJECT_DIR$/.idea/misc.xml" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change beforePath="$PROJECT_DIR$/resources/fish_sprites/fishTile_001.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/resources/fish_sprites/fishTile_002.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/resources/fish_sprites/fishTile_003.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/resources/fish_sprites/fishTile_004.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/resources/fish_sprites/fishTile_005.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/resources/fish_sprites/fishTile_006.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/resources/fish_sprites/fishTile_007.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/resources/fish_sprites/fishTile_008.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/resources/fish_sprites/fishTile_009.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/resources/fish_sprites/fishTile_010.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/resources/fish_sprites/fishTile_011.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/resources/fish_sprites/fishTile_012.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/resources/fish_sprites/fishTile_013.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/resources/fish_sprites/fishTile_014.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/resources/fish_sprites/fishTile_015.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/resources/fish_sprites/fishTile_016.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/resources/fish_sprites/fishTile_017.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/resources/fish_sprites/fishTile_018.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/resources/fish_sprites/fishTile_019.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/resources/fish_sprites/fishTile_020.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/resources/fish_sprites/fishTile_021.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/resources/fish_sprites/fishTile_022.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/resources/fish_sprites/fishTile_023.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/resources/fish_sprites/fishTile_024.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/resources/fish_sprites/fishTile_025.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/resources/fish_sprites/fishTile_026.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/resources/fish_sprites/fishTile_027.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/resources/fish_sprites/fishTile_028.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/resources/fish_sprites/fishTile_029.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/resources/fish_sprites/fishTile_030.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/resources/fish_sprites/fishTile_031.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/resources/fish_sprites/fishTile_032.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/resources/fish_sprites/fishTile_033.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/resources/fish_sprites/fishTile_034.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/resources/fish_sprites/fishTile_035.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/resources/fish_sprites/fishTile_036.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/resources/fish_sprites/fishTile_037.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/resources/fish_sprites/fishTile_038.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/resources/fish_sprites/fishTile_039.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/resources/fish_sprites/fishTile_040.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/resources/fish_sprites/fishTile_041.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/resources/fish_sprites/fishTile_042.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/resources/fish_sprites/fishTile_043.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/resources/fish_sprites/fishTile_044.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/resources/fish_sprites/fishTile_045.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/resources/fish_sprites/fishTile_046.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/resources/fish_sprites/fishTile_047.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/resources/fish_sprites/fishTile_048.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/resources/fish_sprites/fishTile_049.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/resources/fish_sprites/fishTile_050.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/resources/fish_sprites/fishTile_051.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/resources/fish_sprites/fishTile_052.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/resources/fish_sprites/fishTile_053.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/resources/fish_sprites/fishTile_054.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/resources/fish_sprites/fishTile_055.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/resources/fish_sprites/fishTile_056.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/resources/fish_sprites/fishTile_057.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/resources/fish_sprites/fishTile_058.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/resources/fish_sprites/fishTile_059.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/resources/fish_sprites/fishTile_060.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/resources/fish_sprites/fishTile_061.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/resources/fish_sprites/fishTile_062.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/resources/fish_sprites/fishTile_063.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/resources/fish_sprites/fishTile_064.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/resources/fish_sprites/fishTile_065.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/resources/fish_sprites/fishTile_066.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/resources/fish_sprites/fishTile_067.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/resources/fish_sprites/fishTile_068.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/resources/fish_sprites/fishTile_069.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/resources/fish_sprites/fishTile_070.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/resources/fish_sprites/fishTile_071.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/resources/fish_sprites/fishTile_072.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/resources/fish_sprites/fishTile_073.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/resources/fish_sprites/fishTile_074.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/resources/fish_sprites/fishTile_075.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/resources/fish_sprites/fishTile_076.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/resources/fish_sprites/fishTile_077.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/resources/fish_sprites/fishTile_078.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/resources/fish_sprites/fishTile_079.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/resources/fish_sprites/fishTile_080.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/resources/fish_sprites/fishTile_081.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/resources/fish_sprites/fishTile_082.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/resources/fish_sprites/fishTile_083.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/resources/fish_sprites/fishTile_084.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/resources/fish_sprites/fishTile_085.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/resources/fish_sprites/fishTile_086.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/resources/fish_sprites/fishTile_087.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/resources/fish_sprites/fishTile_088.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/resources/fish_sprites/fishTile_089.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/resources/fish_sprites/fishTile_090.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/resources/fish_sprites/fishTile_091.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/resources/fish_sprites/fishTile_092.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/resources/fish_sprites/fishTile_093.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/resources/fish_sprites/fishTile_094.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/resources/fish_sprites/fishTile_095.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/resources/fish_sprites/fishTile_096.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/resources/fish_sprites/fishTile_097.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/resources/fish_sprites/fishTile_098.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/resources/fish_sprites/fishTile_099.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/resources/fish_sprites/fishTile_100.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/resources/fish_sprites/fishTile_101.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/resources/fish_sprites/fishTile_102.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/resources/fish_sprites/fishTile_103.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/resources/fish_sprites/fishTile_104.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/resources/fish_sprites/fishTile_105.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/resources/fish_sprites/fishTile_106.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/resources/fish_sprites/fishTile_107.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/resources/fish_sprites/fishTile_108.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/resources/fish_sprites/fishTile_109.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/resources/fish_sprites/fishTile_110.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/resources/fish_sprites/fishTile_111.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/resources/fish_sprites/fishTile_112.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/resources/fish_sprites/fishTile_113.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/resources/fish_sprites/fishTile_114.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/resources/fish_sprites/fishTile_115.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/resources/fish_sprites/fishTile_116.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/resources/fish_sprites/fishTile_117.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/resources/fish_sprites/fishTile_118.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/resources/fish_sprites/fishTile_119.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/resources/fish_sprites/fishTile_120.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/resources/fish_sprites/fishTile_121.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/resources/fish_sprites/fishTile_122.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/resources/fish_sprites/fishTile_123.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/resources/fish_sprites/fishTile_124.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/resources/fish_sprites/fishTile_125.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/resources/fish_sprites/fishTile_126.png" afterPath="" />
+    </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -11,13 +140,45 @@
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
   <component name="FileEditorManager">
-    <leaf>
-      <file leaf-file-name="Fish.java" pinned="false" current-in-tab="true">
+    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
+      <file leaf-file-name="Fish.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/edu/ucsb/cs56/projects/games/fish_animation/Fish.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="246">
+            <state relative-caret-position="255">
               <caret line="18" column="13" lean-forward="false" selection-start-line="18" selection-start-column="13" selection-end-line="18" selection-end-column="13" />
               <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="FishAnimationEnvironment.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/edu/ucsb/cs56/projects/games/fish_animation/FishAnimationEnvironment.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="11670">
+              <caret line="797" column="37" lean-forward="false" selection-start-line="797" selection-start-column="37" selection-end-line="797" selection-end-column="37" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Menu.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/edu/ucsb/cs56/projects/games/fish_animation/Menu.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="155">
+              <caret line="51" column="0" lean-forward="false" selection-start-line="51" selection-start-column="0" selection-end-line="51" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="ImageIcon.java" pinned="false" current-in-tab="true">
+        <entry file="jar:///Library/Java/JavaVirtualMachines/jdk1.8.0_162.jdk/Contents/Home/src.zip!/javax/swing/ImageIcon.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="51">
+              <caret line="216" column="0" lean-forward="false" selection-start-line="216" selection-start-column="0" selection-end-line="216" selection-end-column="0" />
+              <folding>
+                <element signature="e#6758#6759#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -30,6 +191,13 @@
   <component name="GradleLocalSettings">
     <option name="externalProjectsViewState">
       <projects_view />
+    </option>
+  </component>
+  <component name="IdeDocumentHistory">
+    <option name="CHANGED_PATHS">
+      <list>
+        <option value="$PROJECT_DIR$/src/edu/ucsb/cs56/projects/games/fish_animation/Menu.java" />
+      </list>
     </option>
   </component>
   <component name="ProjectFrameBounds">
@@ -53,16 +221,18 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scratches" />
       <pane id="AndroidView" />
-      <pane id="Scope" />
-      <pane id="PackagesPane" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
             <path>
               <item name="cs56-games-fish-animation" type="b2602c69:ProjectViewProjectNode" />
               <item name="cs56-games-fish-animation" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="cs56-games-fish-animation" type="b2602c69:ProjectViewProjectNode" />
+              <item name="cs56-games-fish-animation" type="462c0819:PsiDirectoryNode" />
+              <item name="resources" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="cs56-games-fish-animation" type="b2602c69:ProjectViewProjectNode" />
@@ -79,7 +249,18 @@
           <select />
         </subPane>
       </pane>
+      <pane id="PackagesPane" />
+      <pane id="Scope" />
+      <pane id="Scratches" />
     </panes>
+  </component>
+  <component name="PropertiesComponent">
+    <property name="settings.editor.selected.configurable" value="preferences.lookFeel" />
+  </component>
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/resources" />
+    </key>
   </component>
   <component name="RunDashboard">
     <option name="ruleStates">
@@ -100,6 +281,25 @@
       <option name="HEIGHT" value="300" />
       <option name="POLICY_FILE" value="$APPLICATION_HOME_DIR$/bin/appletviewer.policy" />
       <module />
+    </configuration>
+    <configuration name="Menu" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea">
+        <pattern>
+          <option name="PATTERN" value="edu.ucsb.cs56.projects.games.fish_animation.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="MAIN_CLASS_NAME" value="edu.ucsb.cs56.projects.games.fish_animation.Menu" />
+      <option name="VM_PARAMETERS" />
+      <option name="PROGRAM_PARAMETERS" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <option name="ENABLE_SWING_INSPECTOR" value="false" />
+      <option name="ENV_VARIABLES" />
+      <option name="PASS_PARENT_ENVS" value="true" />
+      <module name="cs56-games-fish-animation" />
+      <envs />
     </configuration>
     <configuration default="true" type="Application" factoryName="Application">
       <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
@@ -175,6 +375,11 @@
       <option name="PROGRAM_PARAMETERS" />
       <predefined_log_file id="idea.log" enabled="true" />
     </configuration>
+    <recent_temporary>
+      <list size="1">
+        <item index="0" class="java.lang.String" itemvalue="Application.Menu" />
+      </list>
+    </recent_temporary>
   </component>
   <component name="ShelveChangesManager" show_recycled="false">
     <option name="remove_strategy" value="false" />
@@ -194,33 +399,33 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="20" y="42" width="1400" height="838" extended-state="0" />
-    <editor active="true" />
     <layout>
-      <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
+      <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Palette&#9;" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
-      <window_info id="Image Layers" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
-      <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
-      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="true" content_ui="tabs" />
-      <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
-      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
-      <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
-      <window_info id="Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Palette&#9;" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Image Layers" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
+      <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
+      <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32898173" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
+      <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
-      <window_info id="Theme Preview" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
+      <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
+      <window_info id="Theme Preview" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="true" content_ui="tabs" />
+      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="5" side_tool="true" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
-      <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
     </layout>
   </component>
   <component name="VcsContentAnnotationSettings">
@@ -231,11 +436,94 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
+    <entry file="file://$PROJECT_DIR$/src/edu/ucsb/cs56/projects/games/fish_animation/FishAnimationEnvironment.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="11670">
+          <caret line="797" column="37" lean-forward="false" selection-start-line="797" selection-start-column="37" selection-end-line="797" selection-end-column="37" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/edu/ucsb/cs56/projects/games/fish_animation/Fish.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="246">
+        <state relative-caret-position="255">
           <caret line="18" column="13" lean-forward="false" selection-start-line="18" selection-start-column="13" selection-end-line="18" selection-end-column="13" />
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar:///Library/Java/JavaVirtualMachines/jdk1.8.0_162.jdk/Contents/Home/src.zip!/javax/swing/ImageIcon.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="2565">
+          <caret line="216" column="0" lean-forward="false" selection-start-line="216" selection-start-column="0" selection-end-line="216" selection-end-column="0" />
+          <folding>
+            <element signature="e#6758#6759#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/edu/ucsb/cs56/projects/games/fish_animation/Menu.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1500">
+          <caret line="110" column="53" lean-forward="true" selection-start-line="110" selection-start-column="53" selection-end-line="110" selection-end-column="53" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/edu/ucsb/cs56/projects/games/fish_animation/Fish.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/edu/ucsb/cs56/projects/games/fish_animation/Fish.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/edu/ucsb/cs56/projects/games/fish_animation/Fish.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="255">
+          <caret line="18" column="13" lean-forward="false" selection-start-line="18" selection-start-column="13" selection-end-line="18" selection-end-column="13" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar:///Library/Java/JavaVirtualMachines/jdk1.8.0_162.jdk/Contents/Home/src.zip!/java/awt/event/MouseMotionListener.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="543">
+          <caret line="66" column="16" lean-forward="false" selection-start-line="66" selection-start-column="16" selection-end-line="66" selection-end-column="16" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/edu/ucsb/cs56/projects/games/fish_animation/FishAnimationEnvironment.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="11670">
+          <caret line="797" column="37" lean-forward="false" selection-start-line="797" selection-start-column="37" selection-end-line="797" selection-end-column="37" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/edu/ucsb/cs56/projects/games/fish_animation/Menu.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="155">
+          <caret line="51" column="0" lean-forward="false" selection-start-line="51" selection-start-column="0" selection-end-line="51" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar:///Library/Java/JavaVirtualMachines/jdk1.8.0_162.jdk/Contents/Home/src.zip!/javax/swing/ImageIcon.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="51">
+          <caret line="216" column="0" lean-forward="false" selection-start-line="216" selection-start-column="0" selection-end-line="216" selection-end-column="0" />
+          <folding>
+            <element signature="e#6758#6759#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -244,6 +532,7 @@
     <states>
       <state key="ProjectJDKs.UI">
         <settings>
+          <last-edited>1.8</last-edited>
           <splitter-proportions>
             <option name="proportions">
               <list>
