@@ -358,12 +358,15 @@ public class FishAnimationEnvironment extends JFrame implements Serializable {
 					health = 0;
 				}
 			}
-			
+
+            URL fishURL = getClass().getResource("/resources/fish_sprites/fishTile_079.png");
+			Image fish = new ImageIcon(fishURL).getImage();
 
 			// Draws the fish based off the fish info array
 			g2.setColor(Color.YELLOW);
 			for (int i = 0; i < fishArray.size(); i++) {
-				g2.draw(fishArray.get(i));
+				//g2.draw(fishArray.get(i));
+				g2.drawImage(fish, (int)fishArray.get(i).getXPos(), (int)fishArray.get(i).getYPos(), this);
 			}
 
 			// Draws the image of the Shark

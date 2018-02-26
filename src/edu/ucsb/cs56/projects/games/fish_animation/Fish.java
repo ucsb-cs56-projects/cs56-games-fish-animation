@@ -41,8 +41,8 @@ public class Fish extends ScumOfTheSea{
 	GeneralPath wholeFish = this.get();
 	double currentX = x - (width / 2);
 	double currentY = y;
-	double nextX = 0;
-	double nextY = 0;
+	double nextX;
+	double nextY;
 	
 	//URL fishURL = getClass().getResource("/resources/Fish.jpg");
 	//Image fish = new ImageIcon(fishURL).getImage();
