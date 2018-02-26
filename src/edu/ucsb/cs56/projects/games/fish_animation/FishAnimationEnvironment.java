@@ -86,6 +86,7 @@ public class FishAnimationEnvironment extends JFrame implements Serializable {
 	List<String> seaFloorSprites = Arrays.asList("fishTile_014.png", "fishTile_015.png", "fishTile_016.png",
             "fishTile_017.png", "fishTile_032.png", "fishTile_033.png", "fishTile_034.png","fishTile_035.png",
             "fishTile_050.png", "fishTile_051.png", "fishTile_052.png", "fishTile_053.png");
+	ArrayList<URL> seaFloorURLList = new ArrayList<>();
 
 	// Images in the game
 	//difficulty1
@@ -102,8 +103,7 @@ public class FishAnimationEnvironment extends JFrame implements Serializable {
 	private Image reef4 = new ImageIcon(reefURL4).getImage();
 	private URL sharkURL = getClass().getResource("/resources/shark.jpg");
 	private Image shark = new ImageIcon(sharkURL).getImage();
-	private URL seaFloorURL = getClass().getResource("/resources/fish_sprites/" + "PALCEHOLDER");
-	private Image seaFloor = new ImageIcon(seaFloorURL).getImage();
+	private Image seaFloor;
 	private URL boatURL = getClass().getResource("/resources/cartoon-boat.jpg");
 	private Image boat = new ImageIcon(boatURL).getImage();
 	private URL kwhaleURL = getClass().getResource("/resources/kwhale.gif");
@@ -334,12 +334,15 @@ public class FishAnimationEnvironment extends JFrame implements Serializable {
 			{
 				g.drawImage(reef4, 0, 0, this);
 			}
+
+			for (int i = 0; i < seaFloorSprites.size(); i++) {
+                seaFloorURLList.add(getClass().getResource("/resources/fish_sprites/" + seaFloorSprites.get(i)));
+            }
 			
 			// Draws the seaweed at the specified points
 			for (int i = 0; i < this.getWidth() + 125; i += 125) {
-                int random = (int)(Math.random() * seaFloorSprites.size());
-                seaFloorURL = getClass().getResource("/resources/fish_sprites/" + seaFloorSprites.get(random));
-                seaFloor = new ImageIcon(seaFloorURL).getImage();
+                int random = (int)(Math.random() * seaFloorURLList.size());
+                seaFloor = new ImageIcon(seaFloorURLList.get(random)).getImage();
 				g.drawImage(seaFloor, i, this.getHeight() - 83, this);
 			}
 

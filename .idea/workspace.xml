@@ -2,8 +2,6 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="e9367f12-90a1-41c3-bb2f-f3b04ef16146" name="Default" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/junit_4_8_2.xml" afterPath="$PROJECT_DIR$/.idea/libraries/junit_4_8_2.xml" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" afterPath="$PROJECT_DIR$/.idea/misc.xml" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change beforePath="$PROJECT_DIR$/src/edu/ucsb/cs56/projects/games/fish_animation/FishAnimationEnvironment.java" afterPath="$PROJECT_DIR$/src/edu/ucsb/cs56/projects/games/fish_animation/FishAnimationEnvironment.java" />
     </list>
@@ -30,8 +28,8 @@
       <file leaf-file-name="FishAnimationEnvironment.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/edu/ucsb/cs56/projects/games/fish_animation/FishAnimationEnvironment.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="228">
-              <caret line="87" column="46" lean-forward="true" selection-start-line="87" selection-start-column="46" selection-end-line="87" selection-end-column="46" />
+            <state relative-caret-position="462">
+              <caret line="344" column="61" lean-forward="false" selection-start-line="344" selection-start-column="61" selection-end-line="344" selection-end-column="61" />
               <folding />
             </state>
           </provider>
@@ -360,8 +358,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/edu/ucsb/cs56/projects/games/fish_animation/FishAnimationEnvironment.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="228">
-          <caret line="87" column="46" lean-forward="true" selection-start-line="87" selection-start-column="46" selection-end-line="87" selection-end-column="46" />
+        <state relative-caret-position="462">
+          <caret line="344" column="61" lean-forward="false" selection-start-line="344" selection-start-column="61" selection-end-line="344" selection-end-column="61" />
           <folding />
         </state>
       </provider>
