@@ -337,7 +337,7 @@ public class FishAnimationEnvironment extends JFrame implements Serializable {
 
             int random;
 			for (int i = 0; i < (this.getWidth() + 125)/125; i++) {
-			    random = (int)(Math.random() * seaFloorURLList.size());
+			    random = (int)(Math.random() * seaFloorSprites.size());
                 seaFloorURLList.add(getClass().getResource("/resources/fish_sprites/" + seaFloorSprites.get(random)));
             }
 			
