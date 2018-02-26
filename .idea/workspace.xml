@@ -2,6 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="e9367f12-90a1-41c3-bb2f-f3b04ef16146" name="Default" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change beforePath="$PROJECT_DIR$/src/edu/ucsb/cs56/projects/games/fish_animation/FishAnimationEnvironment.java" afterPath="$PROJECT_DIR$/src/edu/ucsb/cs56/projects/games/fish_animation/FishAnimationEnvironment.java" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
@@ -27,8 +28,8 @@
       <file leaf-file-name="FishAnimationEnvironment.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/edu/ucsb/cs56/projects/games/fish_animation/FishAnimationEnvironment.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="408">
-              <caret line="344" column="66" lean-forward="false" selection-start-line="344" selection-start-column="66" selection-end-line="344" selection-end-column="66" />
+            <state relative-caret-position="353">
+              <caret line="345" column="52" lean-forward="true" selection-start-line="345" selection-start-column="52" selection-end-line="345" selection-end-column="52" />
               <folding />
             </state>
           </provider>
@@ -71,6 +72,7 @@
       <find>jellyfi</find>
       <find>seaweed</find>
       <find>seaFloor</find>
+      <find>seaf</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -357,8 +359,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/edu/ucsb/cs56/projects/games/fish_animation/FishAnimationEnvironment.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="408">
-          <caret line="344" column="66" lean-forward="false" selection-start-line="344" selection-start-column="66" selection-end-line="344" selection-end-column="66" />
+        <state relative-caret-position="353">
+          <caret line="345" column="52" lean-forward="true" selection-start-line="345" selection-start-column="52" selection-end-line="345" selection-end-column="52" />
           <folding />
         </state>
       </provider>
