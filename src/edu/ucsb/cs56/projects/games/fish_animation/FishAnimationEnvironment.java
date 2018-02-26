@@ -83,12 +83,17 @@ public class FishAnimationEnvironment extends JFrame implements Serializable {
 	private ArrayList<Plankton> plankton = new ArrayList<Plankton>();
 
 	// ArrayList of various seaweed and rock sprites
-	List<String> seaFloorSpriteFileNames = Arrays.asList("fishTile_014.png", "fishTile_015.png", "fishTile_016.png",
+    private List<String> seaFloorSpriteFileNames = Arrays.asList("fishTile_014.png", "fishTile_015.png", "fishTile_016.png",
             "fishTile_017.png", "fishTile_032.png", "fishTile_033.png", "fishTile_034.png","fishTile_035.png",
-            "fishTile_050.png", "fishTile_051.png", "fishTile_052.png", "fishTile_053.png");
-	ArrayList<URL> seaFloorURLList = new ArrayList<>();
+            "fishTile_050.png", "fishTile_051.png", "fishTile_052.png", "fishTile_053.png", "fishTile_084.png",
+            "fishTile_085.png");
+    private ArrayList<URL> seaFloorURLList = new ArrayList<>();
 
-	// Images in the game
+    private List<String> fishSpriteFileNames = Arrays.asList("fishTile_073.png", "fishTile_075.png", "fishTile_077.png",
+            "fishTile_079.png", "fishTile_081.png");
+	private ArrayList<URL> fishURLList = new ArrayList<>();
+
+    // Images in the game
 	//difficulty1
 	private URL reefURL1 = getClass().getResource("/resources/CoralReef1.jpg");
 	private Image reef1 = new ImageIcon(reefURL1).getImage();
@@ -103,7 +108,8 @@ public class FishAnimationEnvironment extends JFrame implements Serializable {
 	private Image reef4 = new ImageIcon(reefURL4).getImage();
 	private URL sharkURL = getClass().getResource("/resources/shark.jpg");
 	private Image shark = new ImageIcon(sharkURL).getImage();
-	private Image seaFloor;
+	private Image seaFloorObjectImage;
+	private Image fishImage;
 	private URL boatURL = getClass().getResource("/resources/cartoon-boat.png");
 	private Image boat = new ImageIcon(boatURL).getImage();
 	private URL kwhaleURL = getClass().getResource("/resources/kwhale.gif");
@@ -335,16 +341,17 @@ public class FishAnimationEnvironment extends JFrame implements Serializable {
 				g.drawImage(reef4, 0, 0, this);
 			}
 
-            int random;
+            int randomSeaFloor;
 			for (int i = 0; i < seaFloorSpriteFileNames.size(); i++) {
-			    random = (int)(Math.random() * seaFloorSpriteFileNames.size());
-                seaFloorURLList.add(getClass().getResource("/resources/fish_sprites/" + seaFloorSpriteFileNames.get(random)));
+                randomSeaFloor = (int)(Math.random() * seaFloorSpriteFileNames.size());
+                seaFloorURLList.add(getClass().getResource("/resources/fish_sprites/"
+                        + seaFloorSpriteFileNames.get(randomSeaFloor)));
             }
 
 			// Draws the seaweed at the specified points
 			for (int i = 0; i < this.getWidth(); i += 64) {
-                seaFloor = new ImageIcon(seaFloorURLList.get(i%(seaFloorURLList.size()))).getImage();
-                g.drawImage(seaFloor, i, this.getHeight() - 64, this);
+                seaFloorObjectImage = new ImageIcon(seaFloorURLList.get(i%(seaFloorURLList.size()))).getImage();
+                g.drawImage(seaFloorObjectImage, i, this.getHeight() - 64, this);
 			}
 
 			// Draws the image of the boat and also animates it
@@ -359,14 +366,19 @@ public class FishAnimationEnvironment extends JFrame implements Serializable {
 				}
 			}
 
-            URL fishURL = getClass().getResource("/resources/fish_sprites/fishTile_079.png");
-			Image fish = new ImageIcon(fishURL).getImage();
+
+            int randomFish;
+            for (int i = 0; i < fishSpriteFileNames.size(); i++) {
+                randomFish = (int)(Math.random() * fishSpriteFileNames.size());
+                fishURLList.add(getClass().getResource("/resources/fish_sprites/"
+                        + fishSpriteFileNames.get(randomFish)));
+            }
 
 			// Draws the fish based off the fish info array
 			g2.setColor(Color.YELLOW);
 			for (int i = 0; i < fishArray.size(); i++) {
-				//g2.draw(fishArray.get(i));
-				g2.drawImage(fish, (int)fishArray.get(i).getXPos(), (int)fishArray.get(i).getYPos(), this);
+                fishImage = new ImageIcon(fishURLList.get(i%(fishURLList.size()))).getImage();
+				g2.drawImage(fishImage, (int)fishArray.get(i).getXPos(), (int)fishArray.get(i).getYPos(), this);
 			}
 
 			// Draws the image of the Shark
