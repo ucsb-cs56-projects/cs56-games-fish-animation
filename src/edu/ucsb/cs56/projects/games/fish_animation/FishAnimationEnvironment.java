@@ -83,7 +83,7 @@ public class FishAnimationEnvironment extends JFrame implements Serializable {
 	private ArrayList<Plankton> plankton = new ArrayList<Plankton>();
 
 	// ArrayList of various seaweed and rock sprites
-	List<String> seaFloorSprites = Arrays.asList("fishTile_014.png", "fishTile_015.png", "fishTile_016.png",
+	List<String> seaFloorSpriteFileNames = Arrays.asList("fishTile_014.png", "fishTile_015.png", "fishTile_016.png",
             "fishTile_017.png", "fishTile_032.png", "fishTile_033.png", "fishTile_034.png","fishTile_035.png",
             "fishTile_050.png", "fishTile_051.png", "fishTile_052.png", "fishTile_053.png");
 	ArrayList<URL> seaFloorURLList = new ArrayList<>();
@@ -336,16 +336,16 @@ public class FishAnimationEnvironment extends JFrame implements Serializable {
 			}
 
             int random;
-			for (int i = 0; i < (this.getWidth() + 125)/125; i++) {
-			    random = (int)(Math.random() * seaFloorSprites.size());
-                seaFloorURLList.add(getClass().getResource("/resources/fish_sprites/" + seaFloorSprites.get(random)));
+			for (int i = 0; i < seaFloorSpriteFileNames.size(); i++) {
+			    random = (int)(Math.random() * seaFloorSpriteFileNames.size());
+                seaFloorURLList.add(getClass().getResource("/resources/fish_sprites/" + seaFloorSpriteFileNames.get(random)));
             }
-			
-			// Draws the seaweed at the specified points
-			for (int i = 0; i < this.getWidth() + 125; i += 125) {
 
-                seaFloor = new ImageIcon(seaFloorURLList.get(i/125)).getImage();
-				g.drawImage(seaFloor, i, this.getHeight() - 100, this);
+			// Draws the seaweed at the specified points
+			for (int i = 0; i < this.getWidth(); i += 64++) {
+                seaFloor = new ImageIcon(seaFloorURLList.get(i/64)).getImage();
+                if (i < 11)
+				    g.drawImage(seaFloor, i, this.getHeight() - 64, this);
 			}
 
 			// Draws the image of the boat and also animates it
