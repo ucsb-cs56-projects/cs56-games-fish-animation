@@ -9,12 +9,14 @@ import java.util.ArrayList;
 import java.util.*;
 import java.io.*;
 import java.net.*;
+import java.util.List;
 import javax.swing.JOptionPane;
 
 /**
  * Creates a JFrame that animates Fish and allows for a shark to eat the fish.
  * Tracks the amount of fish eaten with an elapsed amount of time.
- * 
+ *
+ * @author Bryan Wu
  * @author Lawrence Khuu
  * @author Casey Barbello
  * @author Daryl Pham
@@ -80,6 +82,11 @@ public class FishAnimationEnvironment extends JFrame implements Serializable {
 	private ArrayList<JellyFish> jellyfish = new ArrayList<JellyFish>();
 	private ArrayList<Plankton> plankton = new ArrayList<Plankton>();
 
+	// ArrayList of various seaweed and rock sprites
+	List<String> seaFloorSprites = Arrays.asList("fishTile_014.png", "fishTile_015.png", "fishTile_016.png",
+            "fishTile_017.png", "fishTile_032.png", "fishTile_033.png", "fishTile_034.png","fishTile_035.png",
+            "fishTile_050.png", "fishTile_051.png", "fishTile_052.png", "fishTile_053.png");
+
 	// Images in the game
 	//difficulty1
 	private URL reefURL1 = getClass().getResource("/resources/CoralReef1.jpg");
@@ -95,8 +102,8 @@ public class FishAnimationEnvironment extends JFrame implements Serializable {
 	private Image reef4 = new ImageIcon(reefURL4).getImage();
 	private URL sharkURL = getClass().getResource("/resources/shark.jpg");
 	private Image shark = new ImageIcon(sharkURL).getImage();
-	private URL seaweedURL = getClass().getResource("/resources/Seaweed.jpg");
-	private Image seaweed = new ImageIcon(seaweedURL).getImage();
+	private URL seaFloorURL = getClass().getResource("/resources/fish_sprites/" + "PALCEHOLDER");
+	private Image seaFloor = new ImageIcon(seaFloorURL).getImage();
 	private URL boatURL = getClass().getResource("/resources/cartoon-boat.jpg");
 	private Image boat = new ImageIcon(boatURL).getImage();
 	private URL kwhaleURL = getClass().getResource("/resources/kwhale.gif");
@@ -330,7 +337,10 @@ public class FishAnimationEnvironment extends JFrame implements Serializable {
 			
 			// Draws the seaweed at the specified points
 			for (int i = 0; i < this.getWidth() + 125; i += 125) {
-				g.drawImage(seaweed, i, this.getHeight() - 83, this);
+                int random = (int)(Math.random() * seaFloorSprites.size());
+                seaFloorURL = getClass().getResource("/resources/fish_sprites/" + seaFloorSprites.get(random));
+                seaFloor = new ImageIcon(seaFloorURL).getImage();
+				g.drawImage(seaFloor, i, this.getHeight() - 83, this);
 			}
 
 			// Draws the image of the boat and also animates it
