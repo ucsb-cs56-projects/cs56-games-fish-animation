@@ -2,8 +2,11 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="e9367f12-90a1-41c3-bb2f-f3b04ef16146" name="Default" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change beforePath="$PROJECT_DIR$/src/edu/ucsb/cs56/projects/games/fish_animation/Fish.java" afterPath="$PROJECT_DIR$/src/edu/ucsb/cs56/projects/games/fish_animation/Fish.java" />
+      <change beforePath="$PROJECT_DIR$/resources/fish_sprites/fishTile_073.png" afterPath="$PROJECT_DIR$/resources/fish_sprites/fishTile_073.png" />
+      <change beforePath="$PROJECT_DIR$/resources/fish_sprites/fishTile_075.png" afterPath="$PROJECT_DIR$/resources/fish_sprites/fishTile_075.png" />
+      <change beforePath="$PROJECT_DIR$/resources/fish_sprites/fishTile_077.png" afterPath="$PROJECT_DIR$/resources/fish_sprites/fishTile_077.png" />
+      <change beforePath="$PROJECT_DIR$/resources/fish_sprites/fishTile_079.png" afterPath="$PROJECT_DIR$/resources/fish_sprites/fishTile_079.png" />
+      <change beforePath="$PROJECT_DIR$/resources/fish_sprites/fishTile_081.png" afterPath="$PROJECT_DIR$/resources/fish_sprites/fishTile_081.png" />
       <change beforePath="$PROJECT_DIR$/src/edu/ucsb/cs56/projects/games/fish_animation/FishAnimationEnvironment.java" afterPath="$PROJECT_DIR$/src/edu/ucsb/cs56/projects/games/fish_animation/FishAnimationEnvironment.java" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
@@ -26,17 +29,17 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="FishAnimationEnvironment.java" pinned="false" current-in-tab="false">
+      <file leaf-file-name="FishAnimationEnvironment.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/edu/ucsb/cs56/projects/games/fish_animation/FishAnimationEnvironment.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="274">
-              <caret line="368" column="32" lean-forward="true" selection-start-line="368" selection-start-column="32" selection-end-line="368" selection-end-column="32" />
+            <state relative-caret-position="-10695">
+              <caret line="88" column="30" lean-forward="true" selection-start-line="88" selection-start-column="30" selection-end-line="88" selection-end-column="30" />
               <folding>
                 <element signature="e#2766#2772#0" expanded="true" />
                 <element signature="e#2832#2841#0" expanded="true" />
                 <element signature="e#2900#2911#0" expanded="true" />
                 <element signature="e#2968#2978#0" expanded="true" />
-                <element signature="e#17800#17810#0" expanded="true" />
+                <element signature="e#18484#18494#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -52,11 +55,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Fish.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="Fish.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/edu/ucsb/cs56/projects/games/fish_animation/Fish.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="21">
-              <caret line="44" column="17" lean-forward="true" selection-start-line="44" selection-start-column="17" selection-end-line="44" selection-end-column="17" />
+            <state relative-caret-position="-42">
+              <caret line="59" column="53" lean-forward="true" selection-start-line="59" selection-start-column="53" selection-end-line="59" selection-end-column="53" />
               <folding />
             </state>
           </provider>
@@ -360,7 +363,7 @@
             <element signature="e#2832#2841#0" expanded="true" />
             <element signature="e#2900#2911#0" expanded="true" />
             <element signature="e#2968#2978#0" expanded="true" />
-            <element signature="e#17800#17810#0" expanded="true" />
+            <element signature="e#18484#18494#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -405,25 +408,25 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/edu/ucsb/cs56/projects/games/fish_animation/Fish.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-42">
+          <caret line="59" column="53" lean-forward="true" selection-start-line="59" selection-start-column="53" selection-end-line="59" selection-end-column="53" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/edu/ucsb/cs56/projects/games/fish_animation/FishAnimationEnvironment.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="274">
-          <caret line="368" column="32" lean-forward="true" selection-start-line="368" selection-start-column="32" selection-end-line="368" selection-end-column="32" />
+        <state relative-caret-position="-10695">
+          <caret line="88" column="30" lean-forward="true" selection-start-line="88" selection-start-column="30" selection-end-line="88" selection-end-column="30" />
           <folding>
             <element signature="e#2766#2772#0" expanded="true" />
             <element signature="e#2832#2841#0" expanded="true" />
             <element signature="e#2900#2911#0" expanded="true" />
             <element signature="e#2968#2978#0" expanded="true" />
-            <element signature="e#17800#17810#0" expanded="true" />
+            <element signature="e#18484#18494#0" expanded="true" />
           </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/edu/ucsb/cs56/projects/games/fish_animation/Fish.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="21">
-          <caret line="44" column="17" lean-forward="true" selection-start-line="44" selection-start-column="17" selection-end-line="44" selection-end-column="17" />
-          <folding />
         </state>
       </provider>
     </entry>
