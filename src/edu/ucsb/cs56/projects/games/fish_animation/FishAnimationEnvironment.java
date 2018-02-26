@@ -104,7 +104,7 @@ public class FishAnimationEnvironment extends JFrame implements Serializable {
 	private URL sharkURL = getClass().getResource("/resources/shark.jpg");
 	private Image shark = new ImageIcon(sharkURL).getImage();
 	private Image seaFloor;
-	private URL boatURL = getClass().getResource("/resources/cartoon-boat.jpg");
+	private URL boatURL = getClass().getResource("/resources/cartoon-boat.png");
 	private Image boat = new ImageIcon(boatURL).getImage();
 	private URL kwhaleURL = getClass().getResource("/resources/kwhale.gif");
 	private Image kwhale = new ImageIcon(kwhaleURL).getImage();
