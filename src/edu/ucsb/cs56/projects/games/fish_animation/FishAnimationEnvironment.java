@@ -340,11 +340,12 @@ public class FishAnimationEnvironment extends JFrame implements Serializable {
 			    random = (int)(Math.random() * seaFloorSpriteFileNames.size());
                 seaFloorURLList.add(getClass().getResource("/resources/fish_sprites/" + seaFloorSpriteFileNames.get(random)));
             }
-			
+            
 			// Draws the seaweed at the specified points
-			for (int i = 0; i < this.getWidth(); i += 64) {
+			for (int i = 0; i < this.getWidth(); i += 64, index++) {
                 seaFloor = new ImageIcon(seaFloorURLList.get(i/64)).getImage();
-				g.drawImage(seaFloor, i, this.getHeight() - 64, this);
+                if (i < 11)
+				    g.drawImage(seaFloor, i, this.getHeight() - 64, this);
 			}
 
 			// Draws the image of the boat and also animates it
