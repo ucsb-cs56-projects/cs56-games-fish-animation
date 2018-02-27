@@ -57,7 +57,7 @@ public class FishAnimationEnvironment extends JFrame implements Serializable {
 																// random amount
 																// of bubbles
 	private int numJellyFish; // holds the number of Jellyfish to be created
-	private int numPlankton;
+	private int numBonus;
 	private int timer, timerload = 0;
 	private long time1 = System.nanoTime() / 1000000000; // Used to get the
 															// start time of the
@@ -83,7 +83,12 @@ public class FishAnimationEnvironment extends JFrame implements Serializable {
 	private ArrayList<JellyFish> jellyfish = new ArrayList<JellyFish>();
 
 	// ArrayList of bonus snack sprites
-    private ArrayList<Bonus> bonuses = new ArrayList<Bonus>();
+    private ArrayList<Bonus> bonuses = new ArrayList<>();
+    private List<String> bonusSpriteFileNames = Arrays.asList("yp_beer.png", "yp_moonpie.png", "yp_pizzaslice.png",
+            "yp_strawberry.png", "yp_turkey.png", "yp_icecream.png");
+    private ArrayList<URL> bonusURLList = new ArrayList<>();
+    private ArrayList<Image> bonusImageList = new ArrayList<>();
+    private Image bonusImage;
 
 	// ArrayList of various seaweed and rock sprites
     private List<String> seaFloorSpriteFileNames = Arrays.asList("fishTile_014.png", "fishTile_015.png", "fishTile_016.png",
@@ -92,12 +97,14 @@ public class FishAnimationEnvironment extends JFrame implements Serializable {
             "fishTile_085.png");
     private ArrayList<URL> seaFloorURLList = new ArrayList<>();
     private ArrayList<Image> seaFloorImageList = new ArrayList<>();
+    private Image seaFloorObjectImage;
 
     // ArrayList of various fish sprites
     private List<String> fishSpriteFileNames = Arrays.asList("fishTile_073.png", "fishTile_075.png", "fishTile_077.png",
             "fishTile_079.png", "fishTile_081.png");
 	private ArrayList<URL> fishURLList = new ArrayList<>();
 	private ArrayList<Image> fishImageList = new ArrayList<>();
+    private Image fishImage;
 
 
 
@@ -119,8 +126,6 @@ public class FishAnimationEnvironment extends JFrame implements Serializable {
     private Image reef4 = reef1;
 
 	// miscellaneous
-	private Image seaFloorObjectImage;
-	private Image fishImage;
 	private URL boatURL = getClass().getResource("/resources/cartoon-boat.png");
 	private Image boat = new ImageIcon(boatURL).getImage();
 
@@ -250,7 +255,7 @@ public class FishAnimationEnvironment extends JFrame implements Serializable {
 		this.difficulty = difficulty;
 		this.character_type = character_type;
 		numJellyFish = difficulty;
-		numPlankton = 14 - difficulty;
+		numBonus = 14 - difficulty;
 		load = l;
 		if (load) {
 			// deserialize the score, fish, shark, boat, and jellyfish
@@ -260,7 +265,7 @@ public class FishAnimationEnvironment extends JFrame implements Serializable {
 				this.character_type = os.readBoolean();
 				eaten = os.readInt();
 				numJellyFish = os.readInt();
-				numPlankton = os.readInt();
+				numBonus = os.readInt();
 				timerload = os.readInt();
 				posX = os.readInt();
 				posY = os.readInt();
@@ -278,7 +283,7 @@ public class FishAnimationEnvironment extends JFrame implements Serializable {
 					JellyFish j = new JellyFish(x, y, speed);
 					jellyfish.add(j);
 				}
-				for (int i = 0; i < numPlankton; i++) {
+				for (int i = 0; i < numBonus; i++) {
 					int x = os.readInt();
 					int y = os.readInt();
 					Bonus p = new Bonus(x, y, true);
@@ -314,7 +319,7 @@ public class FishAnimationEnvironment extends JFrame implements Serializable {
 		}
 
 		if (!load) {
-			for (int i = 0; i < numPlankton; i++) {
+			for (int i = 0; i < numBonus; i++) {
 				Bonus p = new Bonus((int) (Math.random() * 12345) % maxX, (int) (Math.random() * 12345) % maxY,
 						true);
 				bonuses.add(p);
@@ -329,6 +334,16 @@ public class FishAnimationEnvironment extends JFrame implements Serializable {
 		animation.setVisible(true);
 		GameMenu game = new GameMenu();
 		game.makemenu();
+
+		// Generate random bonuses
+        int randomBonuses;
+        for (int i = 0; i < bonusSpriteFileNames.size(); i++) {
+            randomBonuses = (int)(Math.random() * bonusSpriteFileNames.size());
+            bonusURLList.add(getClass().getResource("/resources/"
+                    + bonusSpriteFileNames.get(randomBonuses)));
+            bonusImage = new ImageIcon(bonusURLList.get(i)).getImage();
+            bonusImageList.add(bonusImage);
+        }
 
 		// Generate random sea floor objects
         int randomSeaFloor;
@@ -487,15 +502,10 @@ public class FishAnimationEnvironment extends JFrame implements Serializable {
 				}
 			}
 
-			// sets green for bonuses
-			g2.setColor(Color.GREEN);
-            URL bonus = getClass().getResource("/resources/yp_beer.png");
-                    //+ fishSpriteFileNames.get(randomFish)));
-            Image bonus_image = new ImageIcon(bonus).getImage();
             //fishImageList.add(fishImage);
 			for (int i = 0; i < bonuses.size(); i++) {
-                g2.drawImage(bonus_image, (int) bonuses.get(i).getXPos(), (int)bonuses.get(i).getYPos(), this);
-				//g2.draw(bonuses.get(i));
+                g2.drawImage(bonusImageList.get(i*bonuses.size()), (int) bonuses.get(i).getXPos(),
+                        (int)bonuses.get(i).getYPos(), this);
 			}
 			
 			g2.setStroke(new BasicStroke(2));
@@ -967,7 +977,7 @@ public class FishAnimationEnvironment extends JFrame implements Serializable {
 					os.writeBoolean(character_type);
 					os.writeInt(eaten);
 					os.writeInt(numJellyFish);
-					os.writeInt(numPlankton);
+					os.writeInt(numBonus);
 					os.writeInt(timer);
 					os.writeInt(posX);
 					os.writeInt(posY);
@@ -986,7 +996,7 @@ public class FishAnimationEnvironment extends JFrame implements Serializable {
 						os.writeInt(toWriteY);
 						os.writeDouble(jellyfish.get(i).getSpeed());
 					}
-					for (int i = 0; i < numPlankton; i++) {
+					for (int i = 0; i < numBonus; i++) {
 						int toWriteX = (int) bonuses.get(i).getXPos();
 						int toWriteY = (int) bonuses.get(i).getYPos();
 						os.writeInt(toWriteX);

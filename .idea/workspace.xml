@@ -2,14 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="e9367f12-90a1-41c3-bb2f-f3b04ef16146" name="Default" comment="">
-      <change beforePath="" afterPath="$PROJECT_DIR$/.idea/uiDesigner.xml" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change beforePath="$PROJECT_DIR$/docs/javadoc/edu/ucsb/cs56/projects/games/fish_animation/Plankton.html" afterPath="$PROJECT_DIR$/docs/javadoc/edu/ucsb/cs56/projects/games/fish_animation/Plankton.html" />
-      <change beforePath="$PROJECT_DIR$/docs/javadoc/edu/ucsb/cs56/projects/games/fish_animation/class-use/Plankton.html" afterPath="$PROJECT_DIR$/docs/javadoc/edu/ucsb/cs56/projects/games/fish_animation/class-use/Plankton.html" />
-      <change beforePath="$PROJECT_DIR$/resources/whale_left.png" afterPath="$PROJECT_DIR$/resources/whale_left.png" />
-      <change beforePath="$PROJECT_DIR$/resources/whale_right.png" afterPath="$PROJECT_DIR$/resources/whale_right.png" />
       <change beforePath="$PROJECT_DIR$/src/edu/ucsb/cs56/projects/games/fish_animation/FishAnimationEnvironment.java" afterPath="$PROJECT_DIR$/src/edu/ucsb/cs56/projects/games/fish_animation/FishAnimationEnvironment.java" />
-      <change beforePath="$PROJECT_DIR$/src/edu/ucsb/cs56/projects/games/fish_animation/Plankton.java" afterPath="$PROJECT_DIR$/src/edu/ucsb/cs56/projects/games/fish_animation/Bonus.java" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -34,14 +28,13 @@
       <file leaf-file-name="FishAnimationEnvironment.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/edu/ucsb/cs56/projects/games/fish_animation/FishAnimationEnvironment.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="274">
-              <caret line="497" column="18" lean-forward="false" selection-start-line="497" selection-start-column="18" selection-end-line="497" selection-end-column="18" />
+            <state relative-caret-position="105">
+              <caret line="507" column="61" lean-forward="false" selection-start-line="507" selection-start-column="61" selection-end-line="507" selection-end-column="61" />
               <folding>
-                <element signature="e#2810#2816#0" expanded="true" />
-                <element signature="e#2876#2885#0" expanded="true" />
-                <element signature="e#2944#2955#0" expanded="true" />
-                <element signature="e#3049#3056#0" expanded="true" />
-                <element signature="e#20484#20494#0" expanded="true" />
+                <element signature="e#2807#2813#0" expanded="true" />
+                <element signature="e#2873#2882#0" expanded="true" />
+                <element signature="e#2941#2952#0" expanded="true" />
+                <element signature="e#21028#21038#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -105,6 +98,16 @@
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="252">
               <caret line="14" column="22" lean-forward="false" selection-start-line="14" selection-start-column="22" selection-end-line="14" selection-end-column="22" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="JellyFish.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/edu/ucsb/cs56/projects/games/fish_animation/JellyFish.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="-840">
+              <caret line="11" column="13" lean-forward="false" selection-start-line="11" selection-start-column="13" selection-end-line="11" selection-end-column="13" />
               <folding />
             </state>
           </provider>
@@ -441,11 +444,10 @@
         <state relative-caret-position="2058">
           <caret line="108" column="61" lean-forward="true" selection-start-line="108" selection-start-column="61" selection-end-line="108" selection-end-column="61" />
           <folding>
-            <element signature="e#2810#2816#0" expanded="true" />
-            <element signature="e#2876#2885#0" expanded="true" />
-            <element signature="e#2944#2955#0" expanded="true" />
-            <element signature="e#3049#3056#0" expanded="true" />
-            <element signature="e#20484#20494#0" expanded="true" />
+            <element signature="e#2807#2813#0" expanded="true" />
+            <element signature="e#2873#2882#0" expanded="true" />
+            <element signature="e#2941#2952#0" expanded="true" />
+            <element signature="e#21028#21038#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -487,11 +489,10 @@
         <state relative-caret-position="2226">
           <caret line="106" column="77" lean-forward="false" selection-start-line="106" selection-start-column="77" selection-end-line="106" selection-end-column="77" />
           <folding>
-            <element signature="e#2810#2816#0" expanded="true" />
-            <element signature="e#2876#2885#0" expanded="true" />
-            <element signature="e#2944#2955#0" expanded="true" />
-            <element signature="e#3049#3056#0" expanded="true" />
-            <element signature="e#20484#20494#0" expanded="true" />
+            <element signature="e#2807#2813#0" expanded="true" />
+            <element signature="e#2873#2882#0" expanded="true" />
+            <element signature="e#2941#2952#0" expanded="true" />
+            <element signature="e#21028#21038#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -500,14 +501,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="546">
           <caret line="49" column="3" lean-forward="true" selection-start-line="49" selection-start-column="3" selection-end-line="49" selection-end-column="3" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/edu/ucsb/cs56/projects/games/fish_animation/JellyFish.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="231">
-          <caret line="11" column="13" lean-forward="false" selection-start-line="11" selection-start-column="13" selection-end-line="11" selection-end-column="13" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -612,16 +605,23 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/edu/ucsb/cs56/projects/games/fish_animation/JellyFish.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-840">
+          <caret line="11" column="13" lean-forward="false" selection-start-line="11" selection-start-column="13" selection-end-line="11" selection-end-column="13" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/edu/ucsb/cs56/projects/games/fish_animation/FishAnimationEnvironment.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="274">
-          <caret line="497" column="18" lean-forward="false" selection-start-line="497" selection-start-column="18" selection-end-line="497" selection-end-column="18" />
+        <state relative-caret-position="105">
+          <caret line="507" column="61" lean-forward="false" selection-start-line="507" selection-start-column="61" selection-end-line="507" selection-end-column="61" />
           <folding>
-            <element signature="e#2810#2816#0" expanded="true" />
-            <element signature="e#2876#2885#0" expanded="true" />
-            <element signature="e#2944#2955#0" expanded="true" />
-            <element signature="e#3049#3056#0" expanded="true" />
-            <element signature="e#20484#20494#0" expanded="true" />
+            <element signature="e#2807#2813#0" expanded="true" />
+            <element signature="e#2873#2882#0" expanded="true" />
+            <element signature="e#2941#2952#0" expanded="true" />
+            <element signature="e#21028#21038#0" expanded="true" />
           </folding>
         </state>
       </provider>
