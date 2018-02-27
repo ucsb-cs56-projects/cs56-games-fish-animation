@@ -596,7 +596,7 @@ public class FishAnimationEnvironment extends JFrame implements Serializable {
 					 * screen and increment eaten if true
 					 */
 					if (facingRight) {
-                        if ((xf > posX - 100 && xf < posX) && (yf > posY && yf < posY + 100)) {
+                        if ((xf > posX - 100 && xf < posX) && (yf > posY - 50 && yf < posY)) {
                             info.add(new FishInfo(fishPanel.getWidth(), Math.random() * maxY, wf, hf));
                             if (health < maxHealth) {
                                 if (character_type) {
@@ -612,7 +612,7 @@ public class FishAnimationEnvironment extends JFrame implements Serializable {
                         }
                     }
                     else {
-                        if ((xf > posX - 200 && xf < posX - 100) && (yf > posY && yf < posY + 100)) {
+                        if ((xf > posX - 300 && xf < posX - 200) && (yf > posY - 50 && yf < posY)) {
                             info.add(new FishInfo(fishPanel.getWidth(), Math.random() * maxY, wf, hf));
                             if (health < maxHealth) {
                                 if (character_type) {
