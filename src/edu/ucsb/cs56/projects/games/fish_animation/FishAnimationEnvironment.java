@@ -534,7 +534,8 @@ public class FishAnimationEnvironment extends JFrame implements Serializable {
 			// display the points of health inside the health bar
 			g.setFont(new Font("Corsiva Hebrew", Font.PLAIN, 20));
 			g.setColor(Color.WHITE);
-			String heal = "Health: " + health + "/50";
+			String maxHealthString = (maxHealth == 50) ? "/50" : "/100";
+			String heal = "Health: " + health + maxHealthString;
 			g.drawString(heal, 135, 112);
 			
 			// displays the current elapsed time of the game in seconds
