@@ -690,6 +690,8 @@ public class FishAnimationEnvironment extends JFrame implements Serializable {
 						// prevent score below 0
 					    if (eaten - 5 >= 0)
 							eaten -= 5;
+					    else
+					        eaten = 0;
 						health -= 10;
 						SoundEffect.JELLYFISH.playEffects();
 						// reset jellyfish position
