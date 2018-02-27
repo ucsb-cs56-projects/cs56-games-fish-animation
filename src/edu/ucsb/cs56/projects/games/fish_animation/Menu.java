@@ -15,7 +15,8 @@ import java.io.*;
 /**
  * Implements a GUI that allows the user to choose diffculty, find instructions,
  * or exit the menu.
- * 
+ *
+ * @author Bryan Wu
  * @author Casey Barbello
  * @author Daryl Pham
  * @author Jenna Cryan

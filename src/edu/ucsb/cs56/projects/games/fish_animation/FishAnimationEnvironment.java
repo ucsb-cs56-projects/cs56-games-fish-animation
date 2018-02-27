@@ -687,7 +687,9 @@ public class FishAnimationEnvironment extends JFrame implements Serializable {
 					// check if shark is touching a jellyfish and delete
 					// jellyfish and penalize if true
 					if ((xj - 20 > posX - 200 && xj + 20 < posX + 40) && (yj + 60 > posY - 60 && yj < posY + 25)) {
-						eaten -= 5;
+						// prevent score below 0
+					    if (eaten - 5 >= 0)
+							eaten -= 5;
 						health -= 10;
 						SoundEffect.JELLYFISH.playEffects();
 						// reset jellyfish position
