@@ -81,7 +81,9 @@ public class FishAnimationEnvironment extends JFrame implements Serializable {
 	private ArrayList<Fish> fishArray = new ArrayList<Fish>();
 	private ArrayList<Bubbles> bubblesArray = new ArrayList<Bubbles>();
 	private ArrayList<JellyFish> jellyfish = new ArrayList<JellyFish>();
-	private ArrayList<Plankton> plankton = new ArrayList<Plankton>();
+
+	// ArrayList of bonus snack sprites
+    private ArrayList<Bonus> bonuses = new ArrayList<Bonus>();
 
 	// ArrayList of various seaweed and rock sprites
     private List<String> seaFloorSpriteFileNames = Arrays.asList("fishTile_014.png", "fishTile_015.png", "fishTile_016.png",
@@ -279,8 +281,8 @@ public class FishAnimationEnvironment extends JFrame implements Serializable {
 				for (int i = 0; i < numPlankton; i++) {
 					int x = os.readInt();
 					int y = os.readInt();
-					Plankton p = new Plankton(x, y, true);
-					plankton.add(p);
+					Bonus p = new Bonus(x, y, true);
+					bonuses.add(p);
 				}
 				os.close();
 			} catch (Exception ex) {
@@ -313,9 +315,9 @@ public class FishAnimationEnvironment extends JFrame implements Serializable {
 
 		if (!load) {
 			for (int i = 0; i < numPlankton; i++) {
-				Plankton p = new Plankton((int) (Math.random() * 12345) % maxX, (int) (Math.random() * 12345) % maxY,
+				Bonus p = new Bonus((int) (Math.random() * 12345) % maxX, (int) (Math.random() * 12345) % maxY,
 						true);
-				plankton.add(p);
+				bonuses.add(p);
 			}
 		}
 
@@ -485,10 +487,15 @@ public class FishAnimationEnvironment extends JFrame implements Serializable {
 				}
 			}
 
-			// sets green for plankton
+			// sets green for bonuses
 			g2.setColor(Color.GREEN);
-			for (int i = 0; i < plankton.size(); i++) {
-				g2.draw(plankton.get(i));
+            URL bonus = getClass().getResource("/resources/yp_beer.png");
+                    //+ fishSpriteFileNames.get(randomFish)));
+            Image bonus_image = new ImageIcon(bonus).getImage();
+            //fishImageList.add(fishImage);
+			for (int i = 0; i < bonuses.size(); i++) {
+                g2.drawImage(bonus_image, (int) bonuses.get(i).getXPos(), (int)bonuses.get(i).getYPos(), this);
+				//g2.draw(bonuses.get(i));
 			}
 			
 			g2.setStroke(new BasicStroke(2));
@@ -665,17 +672,17 @@ public class FishAnimationEnvironment extends JFrame implements Serializable {
 					}
 				}
 
-				for (int i = 0; i < plankton.size(); i++) {
-					int xp = (int) plankton.get(i).getXPos();
-					int yp = (int) plankton.get(i).getYPos();
+				for (int i = 0; i < bonuses.size(); i++) {
+					int xp = (int) bonuses.get(i).getXPos();
+					int yp = (int) bonuses.get(i).getYPos();
 
 					if ((xp - 20 > posX - 200 && xp + 20 < posX + 40) && (yp + 60 > posY - 60 && yp < posY + 25)) {
 						eaten += 5;
-						// reset plankton position
+						// reset bonuses position
 						int newx = ((int) ((Math.random() * 12345) % fishPanel.getWidth()));
 						int newy = (int) ((Math.random() * 12345) % maxY);
-						Plankton newp = new Plankton(newx, newy, true);
-						plankton.set(i, newp);
+						Bonus newp = new Bonus(newx, newy, true);
+						bonuses.set(i, newp);
 					}
 				}
 				fishArray.clear();
@@ -711,13 +718,13 @@ public class FishAnimationEnvironment extends JFrame implements Serializable {
 					jellyfish.get(i).setCount();
 				}
 
-				for (int i = 0; i < plankton.size(); i++) {
-					if (plankton.get(i).moveLeft() == true) {
-						Plankton newp = new Plankton(plankton.get(i).getXPos() - 5, plankton.get(i).getYPos(), false);
-						plankton.set(i, newp);
+				for (int i = 0; i < bonuses.size(); i++) {
+					if (bonuses.get(i).moveLeft() == true) {
+						Bonus newp = new Bonus(bonuses.get(i).getXPos() - 5, bonuses.get(i).getYPos(), false);
+						bonuses.set(i, newp);
 					} else {
-						Plankton newp = new Plankton(plankton.get(i).getXPos() + 5, plankton.get(i).getYPos(), true);
-						plankton.set(i, newp);
+						Bonus newp = new Bonus(bonuses.get(i).getXPos() + 5, bonuses.get(i).getYPos(), true);
+						bonuses.set(i, newp);
 					}
 				}
 
@@ -838,10 +845,6 @@ public class FishAnimationEnvironment extends JFrame implements Serializable {
 	 */
 	public class MouseHandler extends MouseInputAdapter {
         int previousX;
-
-		public void mouseClicked(MouseEvent e) {
-			// present to avoid compiler error
-		}
 
 		public void mousePressed(MouseEvent e) {
 			// present to avoid compiler error
@@ -984,8 +987,8 @@ public class FishAnimationEnvironment extends JFrame implements Serializable {
 						os.writeDouble(jellyfish.get(i).getSpeed());
 					}
 					for (int i = 0; i < numPlankton; i++) {
-						int toWriteX = (int) plankton.get(i).getXPos();
-						int toWriteY = (int) plankton.get(i).getYPos();
+						int toWriteX = (int) bonuses.get(i).getXPos();
+						int toWriteY = (int) bonuses.get(i).getYPos();
 						os.writeInt(toWriteX);
 						os.writeInt(toWriteY);
 					}
