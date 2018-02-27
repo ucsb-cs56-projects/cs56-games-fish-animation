@@ -44,29 +44,29 @@ public class Bonus extends ScumOfTheSea{
 	count = 0;
 
 	bonuses = new ArrayList<>();
-
-	Ellipse2D.Double body =
-	    new Ellipse2D.Double(xPos - body_width, yPos - body_height,
-				 2*body_width, 2*body_height);
-	Line2D.Double larm =
-	    new Line2D.Double(xPos - body_width, yPos,
-			      xPos - body_width - body_width/2, yPos - body_height/2);
-	Line2D.Double rarm =
-	    new Line2D.Double(xPos + body_width, yPos,
-			      xPos + body_width + body_width/2, yPos - body_height/2);
-	Line2D.Double lfoot =
-	    new Line2D.Double(xPos - body_width/2, yPos + 3*body_height/4,
-			      xPos - body_width/2, yPos + 5*body_height/4);
-	Line2D.Double rfoot =
-	    new Line2D.Double(xPos + body_width/2, yPos + 3*body_height/4,
-			      xPos + body_width/2, yPos + 5*body_height/4);
-
-	GeneralPath wPlank = this.get();
-	wPlank.append(body, false);
-	wPlank.append(larm, false);
-	wPlank.append(rarm, false);
-	wPlank.append(lfoot, false);
-	wPlank.append(rfoot, false);
+	// Deprecated Plankton drawing code
+//	Ellipse2D.Double body =
+//	    new Ellipse2D.Double(xPos - body_width, yPos - body_height,
+//				 2*body_width, 2*body_height);
+//	Line2D.Double larm =
+//	    new Line2D.Double(xPos - body_width, yPos,
+//			      xPos - body_width - body_width/2, yPos - body_height/2);
+//	Line2D.Double rarm =
+//	    new Line2D.Double(xPos + body_width, yPos,
+//			      xPos + body_width + body_width/2, yPos - body_height/2);
+//	Line2D.Double lfoot =
+//	    new Line2D.Double(xPos - body_width/2, yPos + 3*body_height/4,
+//			      xPos - body_width/2, yPos + 5*body_height/4);
+//	Line2D.Double rfoot =
+//	    new Line2D.Double(xPos + body_width/2, yPos + 3*body_height/4,
+//			      xPos + body_width/2, yPos + 5*body_height/4);
+//
+//	GeneralPath wPlank = this.get();
+//	wPlank.append(body, false);
+//	wPlank.append(larm, false);
+//	wPlank.append(rarm, false);
+//	wPlank.append(lfoot, false);
+//	wPlank.append(rfoot, false);
     }
     
     /**
