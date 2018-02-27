@@ -504,7 +504,7 @@ public class FishAnimationEnvironment extends JFrame implements Serializable {
 
             //fishImageList.add(fishImage);
 			for (int i = 0; i < bonuses.size(); i++) {
-                g2.drawImage(bonusImageList.get(i%bonuses.size()), (int) bonuses.get(i).getXPos(),
+                g2.drawImage(bonusImageList.get(i%bonusImageList.size()), (int) bonuses.get(i).getXPos(),
                         (int)bonuses.get(i).getYPos(), this);
 			}
 			
