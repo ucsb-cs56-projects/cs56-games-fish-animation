@@ -730,10 +730,10 @@ public class FishAnimationEnvironment extends JFrame implements Serializable {
 
 				for (int i = 0; i < bonuses.size(); i++) {
 					if (bonuses.get(i).moveLeft() == true) {
-						Bonus newp = new Bonus(bonuses.get(i).getXPos() - 5, bonuses.get(i).getYPos(), false);
+						Bonus newp = new Bonus(bonuses.get(i).getXPos(), bonuses.get(i).getYPos() - 5, false);
 						bonuses.set(i, newp);
 					} else {
-						Bonus newp = new Bonus(bonuses.get(i).getXPos() + 5, bonuses.get(i).getYPos(), true);
+						Bonus newp = new Bonus(bonuses.get(i).getXPos(), bonuses.get(i).getYPos() + 5, true);
 						bonuses.set(i, newp);
 					}
 				}
@@ -799,15 +799,15 @@ public class FishAnimationEnvironment extends JFrame implements Serializable {
 				if (System.currentTimeMillis() - lastPress > 2) {
 					int press = e.getKeyCode();
 					if (press == KeyEvent.VK_LEFT) {
-						dx = -25;
+						dx = -10;
 						facingRight = false;
 					} else if (press == KeyEvent.VK_RIGHT) {
-						dx = 25;
+						dx = 10;
 						facingRight = true;
 					} else if (press == KeyEvent.VK_DOWN) {
-						dy = 25;
+						dy = 10;
 					} else if (press == KeyEvent.VK_UP) {
-						dy = -25;
+						dy = -10;
 					}
 					posX += dx;
 					posY += dy;

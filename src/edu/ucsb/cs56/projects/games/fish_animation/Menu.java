@@ -299,8 +299,8 @@ class Menu implements ActionListener {
 		Shark = new JButton();
 		Kwhale = new JButton();
 		try {
-			Image shark = ImageIO.read(getClass().getResource("/resources/shark.jpg"));
-			Image killerwhale = ImageIO.read(getClass().getResource("/resources/kwhale.gif"));
+			Image shark = ImageIO.read(getClass().getResource("/resources/shark_right.jpg"));
+			Image killerwhale = ImageIO.read(getClass().getResource("/resources/whale_right.png"));
 			Shark.setIcon(new ImageIcon(shark));
 			Kwhale.setIcon(new ImageIcon(killerwhale));
 		} catch (IOException e) {
