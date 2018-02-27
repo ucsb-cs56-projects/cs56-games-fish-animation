@@ -462,16 +462,22 @@ public class FishAnimationEnvironment extends JFrame implements Serializable {
 				if (jellyfish.get(i).checkJellyFish() == true) {
 					// Draws the Body of the JellyFish
 					g2.fillArc(jNewXPos, jNewYPos, 50, 40, 0, 180);
+					g2.setColor(Color.BLACK);
+					g2.drawArc(jNewXPos, jNewYPos, 50, 40, 0, 180);
 
 					// Draws the Tentacles of the JellyFish
+                    g2.setColor(Color.PINK);
 					for (int j = (int) jellyfish.get(i).getXPos() + 5; j < jellyfish.get(i).getXPos() + 50; j += 5) {
 						g2.drawLine(j, jNewYPos + 75, j, jNewYPos + 10);
 					}
 				} else {
 					// Draws the Body of the JellyFish
 					g2.fillArc(jNewXPos + 5, jNewYPos, 40, 50, 0, 180);
+                    g2.setColor(Color.BLACK);
+                    g2.drawArc(jNewXPos + 5, jNewYPos, 40, 50, 0, 180);
 
 					// Draws the Tentacles of the JellyFish
+                    g2.setColor(Color.PINK);
 					for (int j = (int) jellyfish.get(i).getXPos() + 10; j < jellyfish.get(i).getXPos() + 45; j += 5) {
 						g2.drawLine(j, jNewYPos + 95, j, jNewYPos + 10);
 					}
