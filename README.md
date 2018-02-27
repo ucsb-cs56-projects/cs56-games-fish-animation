@@ -1,4 +1,4 @@
-cs56-fish-animation
+# cs56-fish-animation
 ## Javadoc: https://bryan-wu.github.io/cs56-games-fish-animation/javadoc/
 ===================
 
