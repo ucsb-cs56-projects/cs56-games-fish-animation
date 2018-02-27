@@ -631,36 +631,50 @@ public class FishAnimationEnvironment extends JFrame implements Serializable {
 					 * check if each fish is at sharks mouth and remove from
 					 * screen and increment eaten if true
 					 */
-					if (facingRight) {
-                        if ((xf > posX - 100 && xf < posX) && (yf > posY - 65 && yf < posY)) {
-                            info.add(new FishInfo(fishPanel.getWidth(), Math.random() * maxY, wf, hf));
-                            if (health < maxHealth) {
-                                if (character_type) {
-                                    health += 2;
-                                } else {
-                                    health += 1;
-                                }
+					if (character_type) {
+                        if (facingRight) {
+                            if ((xf > posX - 100 && xf < posX - 50) && (yf > posY - 65 && yf < posY)) {
+                                info.add(new FishInfo(fishPanel.getWidth(), Math.random() * maxY, wf, hf));
+                                if (health < maxHealth)
+                                        health += 2;
+                                eaten++;
+                                SoundEffect.FISH.playEffects();
+                            } else {
+                                info.add(new FishInfo(xf, yf, wf, hf));
                             }
-                            eaten++;
-                            SoundEffect.FISH.playEffects();
                         } else {
-                            info.add(new FishInfo(xf, yf, wf, hf));
+                            if ((xf > posX - 200 && xf < posX - 150) && (yf > posY - 65 && yf < posY)) {
+                                info.add(new FishInfo(fishPanel.getWidth(), Math.random() * maxY, wf, hf));
+                                if (health < maxHealth)
+                                        health += 2;
+                                eaten++;
+                                SoundEffect.FISH.playEffects();
+                            } else {
+                                info.add(new FishInfo(xf, yf, wf, hf));
+                            }
                         }
                     }
                     else {
-                        if ((xf > posX - 200 && xf < posX - 150) && (yf > posY - 65 && yf < posY)) {
-                            info.add(new FishInfo(fishPanel.getWidth(), Math.random() * maxY, wf, hf));
-                            if (health < maxHealth) {
-                                if (character_type) {
-                                    health += 2;
-                                } else {
-                                    health += 1;
-                                }
+                        if (facingRight) {
+                            if ((xf > posX - 200 && xf < posX - 100) && (yf > posY - 65 && yf < posY)) {
+                                info.add(new FishInfo(fishPanel.getWidth(), Math.random() * maxY, wf, hf));
+                                if (health < maxHealth)
+                                        health += 1;
+                                eaten++;
+                                SoundEffect.FISH.playEffects();
+                            } else {
+                                info.add(new FishInfo(xf, yf, wf, hf));
                             }
-                            eaten++;
-                            SoundEffect.FISH.playEffects();
                         } else {
-                            info.add(new FishInfo(xf, yf, wf, hf));
+                            if ((xf > posX - 300 && xf < posX - 200) && (yf > posY - 65 && yf < posY)) {
+                                info.add(new FishInfo(fishPanel.getWidth(), Math.random() * maxY, wf, hf));
+                                if (health < maxHealth)
+                                        health += 1;
+                                eaten++;
+                                SoundEffect.FISH.playEffects();
+                            } else {
+                                info.add(new FishInfo(xf, yf, wf, hf));
+                            }
                         }
                     }
 				}
