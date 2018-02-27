@@ -100,17 +100,20 @@ public class FishAnimationEnvironment extends JFrame implements Serializable {
 
     // Images in the game
 	//difficulty1
-	private URL reefURL1 = getClass().getResource("/resources/CoralReef1.jpg");
+	private URL reefURL1 = getClass().getResource("/resources/temp_reef.png");
 	private Image reef1 = new ImageIcon(reefURL1).getImage();
 	//difficulty2
-	private URL reefURL2 = getClass().getResource("/resources/CoralReef2.jpg");
-	private Image reef2 = new ImageIcon(reefURL2).getImage();
+	//private URL reefURL2 = getClass().getResource("/resources/CoralReef2.jpg");
+	//private Image reef2 = new ImageIcon(reefURL2).getImage();
+    private Image reef2 = reef1;
 	//difficulty3
-	private URL reefURL3 = getClass().getResource("/resources/CoralReef3.jpg");
-	private Image reef3 = new ImageIcon(reefURL3).getImage();
+	//private URL reefURL3 = getClass().getResource("/resources/CoralReef3.jpg");
+	//private Image reef3 = new ImageIcon(reefURL3).getImage();
+    private Image reef3 = reef1;
 	//difficulty4
-	private URL reefURL4 = getClass().getResource("/resources/CoralReef4.jpg");
-	private Image reef4 = new ImageIcon(reefURL4).getImage();
+	//private URL reefURL4 = getClass().getResource("/resources/CoralReef4.jpg");
+	//private Image reef4 = new ImageIcon(reefURL4).getImage();
+    private Image reef4 = reef1;
 
 	// miscellaneous
 	private Image seaFloorObjectImage;
@@ -386,7 +389,8 @@ public class FishAnimationEnvironment extends JFrame implements Serializable {
 
 			// Draws the fish based off the fish info array
 			for (int i = 0; i < fishArray.size(); i++) {
-				g2.drawImage(fishImageList.get(i%fishImageList.size()), (int)fishArray.get(i).getXPos(), (int)fishArray.get(i).getYPos(), this);
+				g2.drawImage(fishImageList.get(i%fishImageList.size()), (int)fishArray.get(i).getXPos(),
+                        (int)fishArray.get(i).getYPos(), this);
 			}
 
 			// Draws the image of the boat and also animates it
