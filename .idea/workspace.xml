@@ -28,14 +28,14 @@
       <file leaf-file-name="FishAnimationEnvironment.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/edu/ucsb/cs56/projects/games/fish_animation/FishAnimationEnvironment.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="238">
-              <caret line="386" column="59" lean-forward="false" selection-start-line="386" selection-start-column="59" selection-end-line="386" selection-end-column="59" />
+            <state relative-caret-position="386">
+              <caret line="383" column="76" lean-forward="false" selection-start-line="383" selection-start-column="76" selection-end-line="383" selection-end-column="76" />
               <folding>
                 <element signature="e#2766#2772#0" expanded="true" />
                 <element signature="e#2832#2841#0" expanded="true" />
                 <element signature="e#2900#2911#0" expanded="true" />
                 <element signature="e#2968#2978#0" expanded="true" />
-                <element signature="e#19575#19585#0" expanded="true" />
+                <element signature="e#19637#19647#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -415,7 +415,7 @@
             <element signature="e#2832#2841#0" expanded="true" />
             <element signature="e#2900#2911#0" expanded="true" />
             <element signature="e#2968#2978#0" expanded="true" />
-            <element signature="e#19575#19585#0" expanded="true" />
+            <element signature="e#19637#19647#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -461,7 +461,7 @@
             <element signature="e#2832#2841#0" expanded="true" />
             <element signature="e#2900#2911#0" expanded="true" />
             <element signature="e#2968#2978#0" expanded="true" />
-            <element signature="e#19575#19585#0" expanded="true" />
+            <element signature="e#19637#19647#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -539,14 +539,14 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/edu/ucsb/cs56/projects/games/fish_animation/FishAnimationEnvironment.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="238">
-          <caret line="386" column="59" lean-forward="false" selection-start-line="386" selection-start-column="59" selection-end-line="386" selection-end-column="59" />
+        <state relative-caret-position="386">
+          <caret line="383" column="76" lean-forward="false" selection-start-line="383" selection-start-column="76" selection-end-line="383" selection-end-column="76" />
           <folding>
             <element signature="e#2766#2772#0" expanded="true" />
             <element signature="e#2832#2841#0" expanded="true" />
             <element signature="e#2900#2911#0" expanded="true" />
             <element signature="e#2968#2978#0" expanded="true" />
-            <element signature="e#19575#19585#0" expanded="true" />
+            <element signature="e#19637#19647#0" expanded="true" />
           </folding>
         </state>
       </provider>

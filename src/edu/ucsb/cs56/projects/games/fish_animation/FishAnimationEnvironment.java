@@ -381,12 +381,12 @@ public class FishAnimationEnvironment extends JFrame implements Serializable {
 
 			// Draws the seaweed at the specified points
 			for (int i = 0; i < this.getWidth(); i += 64) {
-                g.drawImage(seaFloorObjectImage, i, this.getHeight() - 64, this);
+                g.drawImage(seaFloorImageList.get(i%seaFloorImageList.size()), i, this.getHeight() - 64, this);
 			}
 
 			// Draws the fish based off the fish info array
 			for (int i = 0; i < fishArray.size(); i++) {
-				g2.drawImage(fishImage, (int)fishArray.get(i).getXPos(), (int)fishArray.get(i).getYPos(), this);
+				g2.drawImage(fishImageList.get(i%fishImageList.size()), (int)fishArray.get(i).getXPos(), (int)fishArray.get(i).getYPos(), this);
 			}
 
 			// Draws the image of the boat and also animates it
