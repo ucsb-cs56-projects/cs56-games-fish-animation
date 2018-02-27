@@ -89,6 +89,7 @@ public class FishAnimationEnvironment extends JFrame implements Serializable {
             "fishTile_085.png");
     private ArrayList<URL> seaFloorURLList = new ArrayList<>();
 
+    // ArrayList of various fish sprites
     private List<String> fishSpriteFileNames = Arrays.asList("fishTile_073.png", "fishTile_075.png", "fishTile_077.png",
             "fishTile_079.png", "fishTile_081.png");
 	private ArrayList<URL> fishURLList = new ArrayList<>();
@@ -106,14 +107,25 @@ public class FishAnimationEnvironment extends JFrame implements Serializable {
 	//difficulty4
 	private URL reefURL4 = getClass().getResource("/resources/CoralReef4.jpg");
 	private Image reef4 = new ImageIcon(reefURL4).getImage();
-	private URL sharkURL = getClass().getResource("/resources/shark.jpg");
-	private Image shark = new ImageIcon(sharkURL).getImage();
 	private Image seaFloorObjectImage;
 	private Image fishImage;
 	private URL boatURL = getClass().getResource("/resources/cartoon-boat.png");
 	private Image boat = new ImageIcon(boatURL).getImage();
-	private URL kwhaleURL = getClass().getResource("/resources/kwhale.gif");
-	private Image kwhale = new ImageIcon(kwhaleURL).getImage();
+
+	// whale left and right images
+    private URL whale_right_URL = getClass().getResource("/resources/whale_right.png");
+    private Image whale_right_image = new ImageIcon(whale_right_URL).getImage();
+    private URL whale_left_URL = getClass().getResource("/resources/whale_left.png");
+    private Image whale_left_image = new ImageIcon(whale_left_URL).getImage();
+
+    // shark left and right images
+    private URL shark_right_URL = getClass().getResource("/resources/shark_right.png");
+    private Image shark_right_image = new ImageIcon(shark_right_URL).getImage();
+    private URL shark_left_URL = getClass().getResource("/resources/shark_left.png");
+    private Image shark_left_image = new ImageIcon(shark_left_URL).getImage();
+
+    // boolean for keeping track of direction fish is facing
+    private boolean facingRight = true;
 
 	private int difficulty;
 	
@@ -395,10 +407,16 @@ public class FishAnimationEnvironment extends JFrame implements Serializable {
 			int newYPos = (int) s.getYPos() - 130;
 
 			if (character_type){
-				g2.drawImage(shark, newXPos, newYPos, this);
+			    if (facingRight)
+				    g2.drawImage(shark_right_image, newXPos, newYPos, this);
+                else
+                    g2.drawImage(shark_left_image, newXPos, newYPos, this);
 			}
 			else{
-				g2.drawImage(kwhale, newXPos, newYPos, this);
+                if (facingRight)
+				    g2.drawImage(whale_right_image, newXPos, newYPos, this);
+                else
+                    g2.drawImage(whale_left_image, newXPos, newYPos, this);
 			}
 
 			// Draws the bubbles with the blue gradient
@@ -729,8 +747,10 @@ public class FishAnimationEnvironment extends JFrame implements Serializable {
 					int press = e.getKeyCode();
 					if (press == KeyEvent.VK_LEFT) {
 						dx = -25;
+						facingRight = false;
 					} else if (press == KeyEvent.VK_RIGHT) {
 						dx = 25;
+						facingRight = true;
 					} else if (press == KeyEvent.VK_DOWN) {
 						dy = 25;
 					} else if (press == KeyEvent.VK_UP) {
