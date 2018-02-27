@@ -14,21 +14,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="375">
-      <file leaf-file-name="Menu.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/edu/ucsb/cs56/projects/games/fish_animation/Menu.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="0">
-              <caret line="35" column="0" lean-forward="false" selection-start-line="35" selection-start-column="0" selection-end-line="35" selection-end-column="0" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file leaf-file-name="FishAnimationEnvironment.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/edu/ucsb/cs56/projects/games/fish_animation/FishAnimationEnvironment.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="710">
-              <caret line="866" column="40" lean-forward="false" selection-start-line="866" selection-start-column="40" selection-end-line="866" selection-end-column="40" />
+            <state relative-caret-position="626">
+              <caret line="865" column="39" lean-forward="false" selection-start-line="865" selection-start-column="39" selection-end-line="865" selection-end-column="39" />
               <folding>
                 <element signature="e#2766#2772#0" expanded="true" />
                 <element signature="e#2832#2841#0" expanded="true" />
@@ -36,6 +26,26 @@
                 <element signature="e#2968#2978#0" expanded="true" />
                 <element signature="e#20063#20073#0" expanded="true" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="MouseMotionListener.java" pinned="false" current-in-tab="false">
+        <entry file="jar://C:/Program Files/Java/jdk-9.0.1/lib/src.zip!/java.desktop/java/awt/event/MouseMotionListener.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="539">
+              <caret line="67" column="16" lean-forward="false" selection-start-line="67" selection-start-column="16" selection-end-line="67" selection-end-column="16" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="MouseListener.java" pinned="false" current-in-tab="false">
+        <entry file="jar://C:/Program Files/Java/jdk-9.0.1/lib/src.zip!/java.desktop/java/awt/event/MouseListener.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="301">
+              <caret line="69" column="16" lean-forward="false" selection-start-line="69" selection-start-column="16" selection-end-line="69" selection-end-column="16" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -558,16 +568,24 @@
     </entry>
     <entry file="jar://C:/Program Files/Java/jdk-9.0.1/lib/src.zip!/java.desktop/java/awt/event/MouseListener.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="228">
-          <caret line="63" column="16" lean-forward="false" selection-start-line="63" selection-start-column="16" selection-end-line="63" selection-end-column="16" />
+        <state relative-caret-position="301">
+          <caret line="69" column="16" lean-forward="false" selection-start-line="69" selection-start-column="16" selection-end-line="69" selection-end-column="16" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://C:/Program Files/Java/jdk-9.0.1/lib/src.zip!/java.desktop/java/awt/event/MouseMotionListener.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="539">
+          <caret line="67" column="16" lean-forward="false" selection-start-line="67" selection-start-column="16" selection-end-line="67" selection-end-column="16" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/edu/ucsb/cs56/projects/games/fish_animation/FishAnimationEnvironment.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="710">
-          <caret line="866" column="40" lean-forward="false" selection-start-line="866" selection-start-column="40" selection-end-line="866" selection-end-column="40" />
+        <state relative-caret-position="626">
+          <caret line="865" column="39" lean-forward="false" selection-start-line="865" selection-start-column="39" selection-end-line="865" selection-end-column="39" />
           <folding>
             <element signature="e#2766#2772#0" expanded="true" />
             <element signature="e#2832#2841#0" expanded="true" />
