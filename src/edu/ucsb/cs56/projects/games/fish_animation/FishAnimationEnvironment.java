@@ -833,7 +833,7 @@ public class FishAnimationEnvironment extends JFrame implements Serializable {
 	 * compiler error
 	 */
 	public class MouseHandler implements MouseListener, MouseMotionListener {
-        int mouseOnPress_X;
+        int mouseOnEnter_X;
 
 		public void mouseClicked(MouseEvent e) {
 			// present to avoid compiler error
@@ -841,11 +841,11 @@ public class FishAnimationEnvironment extends JFrame implements Serializable {
 
 		public void mousePressed(MouseEvent e) {
 			// present to avoid compiler error
-            mouseOnPress_X = e.getX();
 		}
 
 		public void mouseEntered(MouseEvent e) {
 			// present to avoid compiler error
+            mouseOnEnter_X = e.getX();
 		}
 
 		public void mouseExited(MouseEvent e) {
@@ -863,7 +863,7 @@ public class FishAnimationEnvironment extends JFrame implements Serializable {
 		public void mouseDragged(MouseEvent e) {
 			if (stop == false) {
 				posX = e.getX();
-				if (posX < mouseOnPress_X)
+				if (posX < mouseOnEnter_X)
 				    facingRight = false;
 				posY = e.getY();
 			}
