@@ -11,6 +11,7 @@ import java.io.*;
 import java.net.*;
 import java.util.List;
 import javax.swing.JOptionPane;
+import javax.swing.event.MouseInputAdapter;
 
 /**
  * Creates a JFrame that animates Fish and allows for a shark to eat the fish.
@@ -831,9 +832,12 @@ public class FishAnimationEnvironment extends JFrame implements Serializable {
 	 * Class to handle mouse events. Some methods are present but not defined
 	 * because every method of the implemented class must be present to avoid
 	 * compiler error
+     *
+     * implements MouseListener, MouseMotionListener
+     *
 	 */
-	public class MouseHandler implements MouseListener, MouseMotionListener {
-        int mouseOnEnter_X;
+	public class MouseHandler extends MouseInputAdapter {
+        int previousX;
 
 		public void mouseClicked(MouseEvent e) {
 			// present to avoid compiler error
@@ -841,11 +845,11 @@ public class FishAnimationEnvironment extends JFrame implements Serializable {
 
 		public void mousePressed(MouseEvent e) {
 			// present to avoid compiler error
+            previousX = e.getX();
 		}
 
 		public void mouseEntered(MouseEvent e) {
 			// present to avoid compiler error
-            mouseOnEnter_X = e.getX();
 		}
 
 		public void mouseExited(MouseEvent e) {
@@ -863,10 +867,11 @@ public class FishAnimationEnvironment extends JFrame implements Serializable {
 		public void mouseDragged(MouseEvent e) {
 			if (stop == false) {
 				posX = e.getX();
-				if (posX < mouseOnEnter_X)
+				if (posX < previousX)
 				    facingRight = false;
 				posY = e.getY();
 			}
+			previousX = posX;
 		}
 	}
 
