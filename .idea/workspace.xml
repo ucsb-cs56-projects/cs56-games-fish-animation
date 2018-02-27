@@ -3,7 +3,7 @@
   <component name="ChangeListManager">
     <list default="true" id="e9367f12-90a1-41c3-bb2f-f3b04ef16146" name="Default" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change beforePath="$PROJECT_DIR$/src/edu/ucsb/cs56/projects/games/fish_animation/Menu.java" afterPath="$PROJECT_DIR$/src/edu/ucsb/cs56/projects/games/fish_animation/Menu.java" />
+      <change beforePath="$PROJECT_DIR$/src/edu/ucsb/cs56/projects/games/fish_animation/FishAnimationEnvironment.java" afterPath="$PROJECT_DIR$/src/edu/ucsb/cs56/projects/games/fish_animation/FishAnimationEnvironment.java" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -28,8 +28,8 @@
       <file leaf-file-name="FishAnimationEnvironment.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/edu/ucsb/cs56/projects/games/fish_animation/FishAnimationEnvironment.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-58">
-              <caret line="841" column="26" lean-forward="false" selection-start-line="841" selection-start-column="26" selection-end-line="841" selection-end-column="26" />
+            <state relative-caret-position="-352">
+              <caret line="635" column="66" lean-forward="false" selection-start-line="635" selection-start-column="66" selection-end-line="635" selection-end-column="66" />
               <folding>
                 <element signature="e#2807#2813#0" expanded="true" />
                 <element signature="e#2873#2882#0" expanded="true" />
@@ -161,8 +161,8 @@
         <option value="$PROJECT_DIR$/src/edu/ucsb/cs56/projects/games/fish_animation/Fish.java" />
         <option value="$PROJECT_DIR$/src/edu/ucsb/cs56/projects/games/fish_animation/Plankton.java" />
         <option value="$PROJECT_DIR$/src/edu/ucsb/cs56/projects/games/fish_animation/Bonus.java" />
-        <option value="$PROJECT_DIR$/src/edu/ucsb/cs56/projects/games/fish_animation/FishAnimationEnvironment.java" />
         <option value="$PROJECT_DIR$/src/edu/ucsb/cs56/projects/games/fish_animation/Menu.java" />
+        <option value="$PROJECT_DIR$/src/edu/ucsb/cs56/projects/games/fish_animation/FishAnimationEnvironment.java" />
       </list>
     </option>
   </component>
@@ -619,8 +619,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/edu/ucsb/cs56/projects/games/fish_animation/FishAnimationEnvironment.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-58">
-          <caret line="841" column="26" lean-forward="false" selection-start-line="841" selection-start-column="26" selection-end-line="841" selection-end-column="26" />
+        <state relative-caret-position="-352">
+          <caret line="635" column="66" lean-forward="false" selection-start-line="635" selection-start-column="66" selection-end-line="635" selection-end-column="66" />
           <folding>
             <element signature="e#2807#2813#0" expanded="true" />
             <element signature="e#2873#2882#0" expanded="true" />
