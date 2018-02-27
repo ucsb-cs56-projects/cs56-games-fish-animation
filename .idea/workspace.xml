@@ -2,14 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="e9367f12-90a1-41c3-bb2f-f3b04ef16146" name="Default" comment="">
-      <change beforePath="" afterPath="$PROJECT_DIR$/.idea/uiDesigner.xml" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change beforePath="$PROJECT_DIR$/docs/javadoc/edu/ucsb/cs56/projects/games/fish_animation/Plankton.html" afterPath="$PROJECT_DIR$/docs/javadoc/edu/ucsb/cs56/projects/games/fish_animation/Plankton.html" />
-      <change beforePath="$PROJECT_DIR$/docs/javadoc/edu/ucsb/cs56/projects/games/fish_animation/class-use/Plankton.html" afterPath="$PROJECT_DIR$/docs/javadoc/edu/ucsb/cs56/projects/games/fish_animation/class-use/Plankton.html" />
-      <change beforePath="$PROJECT_DIR$/resources/whale_left.png" afterPath="$PROJECT_DIR$/resources/whale_left.png" />
-      <change beforePath="$PROJECT_DIR$/resources/whale_right.png" afterPath="$PROJECT_DIR$/resources/whale_right.png" />
-      <change beforePath="$PROJECT_DIR$/src/edu/ucsb/cs56/projects/games/fish_animation/FishAnimationEnvironment.java" afterPath="$PROJECT_DIR$/src/edu/ucsb/cs56/projects/games/fish_animation/FishAnimationEnvironment.java" />
-      <change beforePath="$PROJECT_DIR$/src/edu/ucsb/cs56/projects/games/fish_animation/Plankton.java" afterPath="$PROJECT_DIR$/src/edu/ucsb/cs56/projects/games/fish_animation/Bonus.java" />
+      <change beforePath="$PROJECT_DIR$/resources/cartoon-boat.png" afterPath="$PROJECT_DIR$/resources/cartoon-boat.png" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
