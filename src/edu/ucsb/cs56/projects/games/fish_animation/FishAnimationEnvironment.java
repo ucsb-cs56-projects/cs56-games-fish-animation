@@ -595,21 +595,38 @@ public class FishAnimationEnvironment extends JFrame implements Serializable {
 					 * check if each fish is at sharks mouth and remove from
 					 * screen and increment eaten if true
 					 */
-					if ((xf > posX - 40 && xf < posX + 40) && (yf > posY - 25 && yf < posY + 25)) {
-						info.add(new FishInfo(fishPanel.getWidth(), Math.random() * maxY, wf, hf));
-						if (health < maxHealth){
-							if (character_type){
-								health += 2;
-							}
-							else {
-								health += 1;
-							}
-						}
-						eaten++;
-						SoundEffect.FISH.playEffects();
-					} else {
-						info.add(new FishInfo(xf, yf, wf, hf));
-					}
+					if (facingRight) {
+                        if ((xf > posX - 40 && xf < posX + 40) && (yf > posY - 25 && yf < posY + 25)) {
+                            info.add(new FishInfo(fishPanel.getWidth(), Math.random() * maxY, wf, hf));
+                            if (health < maxHealth) {
+                                if (character_type) {
+                                    health += 2;
+                                } else {
+                                    health += 1;
+                                }
+                            }
+                            eaten++;
+                            SoundEffect.FISH.playEffects();
+                        } else {
+                            info.add(new FishInfo(xf, yf, wf, hf));
+                        }
+                    }
+                    else {
+                        if ((xf > posX - 120 && xf < posX - 40) && (yf > posY - 25 && yf < posY + 25)) {
+                            info.add(new FishInfo(fishPanel.getWidth(), Math.random() * maxY, wf, hf));
+                            if (health < maxHealth) {
+                                if (character_type) {
+                                    health += 2;
+                                } else {
+                                    health += 1;
+                                }
+                            }
+                            eaten++;
+                            SoundEffect.FISH.playEffects();
+                        } else {
+                            info.add(new FishInfo(xf, yf, wf, hf));
+                        }
+                    }
 				}
 
 				for (int i = 0; i < jellyfish.size(); i++) {
