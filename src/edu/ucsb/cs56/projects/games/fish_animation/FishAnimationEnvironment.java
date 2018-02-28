@@ -834,14 +834,8 @@ public class FishAnimationEnvironment extends JFrame implements Serializable {
 						dx = 10;
 						facingRight = true;
 					} else if (press == KeyEvent.VK_DOWN) {
-						if (posY + 10 >= fishPanel.getHeight())
-						    dy = 0;
-					    else
 						    dy = 10;
 					} else if (press == KeyEvent.VK_UP) {
-                        if (posY - 10 <= 0)
-                            dy = 0;
-                        else
 						    dy = -10;
 					}
 					posX += dx;
