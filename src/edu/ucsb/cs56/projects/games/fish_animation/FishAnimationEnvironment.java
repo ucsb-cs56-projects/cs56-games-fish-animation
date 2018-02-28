@@ -141,6 +141,11 @@ public class FishAnimationEnvironment extends JFrame implements Serializable {
     private URL shark_left_URL = getClass().getResource("/resources/shark_left.png");
     private Image shark_left_image = new ImageIcon(shark_left_URL).getImage();
 
+	Toolkit toolkit = Toolkit.getDefaultToolkit();
+	Image image = toolkit.getImage("resources/yp_beer.png");
+	Cursor c = toolkit.createCustomCursor(image , new Point(fishPanel.getX(), 
+           	fishPanel.getY()), "img");
+
     // boolean for keeping track of direction fish is facing
     private boolean facingRight = true;
 
@@ -331,6 +336,7 @@ public class FishAnimationEnvironment extends JFrame implements Serializable {
 		animate.start();
 		animation.setDefaultCloseOperation(EXIT_ON_CLOSE);
 		animation.setSize(maxX, maxY);
+		animation.setCursor(c);
 		animation.setVisible(true);
 		GameMenu game = new GameMenu();
 		game.makemenu();
@@ -558,6 +564,9 @@ public class FishAnimationEnvironment extends JFrame implements Serializable {
 			MouseHandler handler = new MouseHandler();
 			fishPanel.addMouseListener(handler);
 			fishPanel.addMouseMotionListener(handler);
+
+			// IN PROGRESS
+			fishPanel.setCursor (c);
 
 			// Starts the Key Listener to listen for key events in the panel
 			KeyHandler keyH = new KeyHandler();
