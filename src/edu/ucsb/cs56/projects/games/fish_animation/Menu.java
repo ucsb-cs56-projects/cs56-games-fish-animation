@@ -433,7 +433,7 @@ class Menu implements ActionListener {
 			FishAnimationEnvironment f = new FishAnimationEnvironment(character_type, 30, false);
 		}
 		if (event.getSource() == Resume) {
-			File saveFile = new File("saved.ser")
+			File saveFile = new File("saved.ser");
 			if (saveFile.exists())
 				frame.setVisible(false);
 				FishAnimationEnvironment f = new FishAnimationEnvironment(character_type, 0, true);
