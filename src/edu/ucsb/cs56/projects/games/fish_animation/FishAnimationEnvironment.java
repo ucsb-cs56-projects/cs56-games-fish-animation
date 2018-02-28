@@ -929,6 +929,7 @@ public class FishAnimationEnvironment extends JFrame implements Serializable {
 		private URL playURL = getClass().getResource("/resources/PlayButton.png");
 		private ImageIcon pause = new ImageIcon(pauseURL);
 		private ImageIcon play = new ImageIcon(playURL);
+		private JEditorPane resumeError = new JEditorPane();
 
 		private JButton Save = new JButton("Save & Exit");
 		private JButton Exit = new JButton("Exit");
