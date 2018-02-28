@@ -901,6 +901,8 @@ public class FishAnimationEnvironment extends JFrame implements Serializable {
 				posX = e.getX();
 				if (posX < previousX)
 				    facingRight = false;
+				else
+					facingRight = true;
 				posY = e.getY();
 			}
 			previousX = posX;
