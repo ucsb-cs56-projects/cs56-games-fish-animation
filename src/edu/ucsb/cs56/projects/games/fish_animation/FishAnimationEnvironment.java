@@ -142,7 +142,7 @@ public class FishAnimationEnvironment extends JFrame implements Serializable {
     private Image shark_left_image = new ImageIcon(shark_left_URL).getImage();
 
 	Toolkit toolkit = Toolkit.getDefaultToolkit();
-	Image image = toolkit.getImage("resources/yp_beer.png");
+	Image image = toolkit.getImage("resources/left_ptr.png");
 	Cursor c = toolkit.createCustomCursor(image , new Point(fishPanel.getX(), 
            	fishPanel.getY()), "img");
 
@@ -565,7 +565,6 @@ public class FishAnimationEnvironment extends JFrame implements Serializable {
 			fishPanel.addMouseListener(handler);
 			fishPanel.addMouseMotionListener(handler);
 
-			// IN PROGRESS
 			fishPanel.setCursor (c);
 
 			// Starts the Key Listener to listen for key events in the panel
