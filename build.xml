@@ -9,13 +9,13 @@
   
   <property environment="env" /> 
   <!--  load the environment variables 
-  -->   
+  -->
   <property name="webRoot" value="${env.HOME}/public_html/cs56" />
   <property name="webBaseURL" value="http://www.cs.ucsb.edu/~${env.USER}/cs56" />
   <property name="project" value="cs56_games_fish_animation" />
   <property name="fullPkg" value="edu.ucsb.cs56.projects.games.fish_animation"/>
   <property name="javadocDest" value="${webRoot}/${project}/docs/javadoc" />
-  <property name="javadocURL" value="${webBaseURL}/${project}/docs/javadoc" /> 
+  <property name="javadocURL" value="${webBaseURL}/${project}/docs/javadoc" />
   <property name="mainClass" value="${fullPkg}/Menu" />
   <property name="envClass" value="${fullPkg}/FishEnvironment" />
  
