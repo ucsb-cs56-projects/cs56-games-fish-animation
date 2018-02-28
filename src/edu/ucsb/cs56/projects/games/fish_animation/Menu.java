@@ -434,10 +434,12 @@ class Menu implements ActionListener {
 		}
 		if (event.getSource() == Resume) {
 			File saveFile = new File("saved.ser");
-			if (saveFile.exists())
-				frame.setVisible(false);
-				FishAnimationEnvironment f = new FishAnimationEnvironment(character_type, 0, true);
-			System.out.println("No saved.ser found");
+			if (saveFile.exists()) {
+                frame.setVisible(false);
+                FishAnimationEnvironment f = new FishAnimationEnvironment(character_type, 0, true);
+            }
+			else
+			    System.out.println("No saved.ser found");
 		}
 		if (event.getSource() == Shark) {
 			character_type = true;
