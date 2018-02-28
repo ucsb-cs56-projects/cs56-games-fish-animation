@@ -141,9 +141,11 @@ public class FishAnimationEnvironment extends JFrame implements Serializable {
     private URL shark_left_URL = getClass().getResource("/resources/shark_left.png");
     private Image shark_left_image = new ImageIcon(shark_left_URL).getImage();
 
-	Toolkit toolkit = Toolkit.getDefaultToolkit();
-	Image image = toolkit.getImage("resources/left_ptr.png");
-	Cursor c = toolkit.createCustomCursor(image , new Point(fishPanel.getX(), 
+	private Toolkit toolkit = Toolkit.getDefaultToolkit();
+	private URL cursorURL = getClass().getResource("/resources/cursor.png");
+	private Image cursorImage = new ImageIcon(cursorURL).getImage();
+			//toolkit.getImage("resources/left_ptr.png");
+	private Cursor c = toolkit.createCustomCursor(cursorImage , new Point(fishPanel.getX(),
            	fishPanel.getY()), "img");
 
     // boolean for keeping track of direction fish is facing
