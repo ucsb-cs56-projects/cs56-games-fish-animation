@@ -187,7 +187,7 @@ public class FishAnimationEnvironment extends JFrame implements Serializable {
 					Menu game = new Menu();
 					SoundEffect.FINISH.stop();
 					SoundEffect.BGM.play();
-					game.makegui();
+					game.setDifficulty();
 					animation.setVisible(false);
 				} else {
 					gameover = true;
