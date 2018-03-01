@@ -17,6 +17,7 @@ import java.io.*;
  * or exit the menu.
  *
  * @author Bryan Wu
+ * @author Xiaocheng Stephen Hu
  * @author Casey Barbello
  * @author Daryl Pham
  * @author Jenna Cryan
@@ -24,7 +25,7 @@ import java.io.*;
  * @author Abhijit Kulkarni
  * @author Angela Yung
  * @author Yuhao Zhang
- * @version for CS56, Winter 16, UCSB
+ * @version for CS56, Winter 2018, UCSB
  */
 
 class Menu implements ActionListener {
@@ -271,6 +272,7 @@ class Menu implements ActionListener {
 		p2.add(Crazy);
 		p2.add(Resume);
 		p2.add(diff);
+
 		frame.setContentPane(p2);
 		frame.setVisible(true);
 	}
@@ -485,6 +487,8 @@ class Menu implements ActionListener {
 					+ "<li> &#x2190 arrow moves the shark left for a short distance</li>"
 					+ "<li> &#x2192 arrow moves the shark right for a short distance</li>"
 					+ "<li> &#x2193 arrow moves the shark downward for a short distance</li>"
+					+ "<li> - (minus) key reduces in-game volume</li>"
+					+ "<li> +/= (plus/equal) key increases in-game volume</li>"
 					+ "</ul>"
 					+ "</p></html>";
 			

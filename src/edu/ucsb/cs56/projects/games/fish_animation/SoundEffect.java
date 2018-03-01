@@ -10,6 +10,7 @@ import javax.sound.sampled.*;
  * 
  * @author: Huiyang He
  * @author: Ziheng Zhang
+ * @author: Xiaocheng Stephen Hu
 */
 
 
@@ -69,6 +70,20 @@ public enum SoundEffect{
 		if(clip.isRunning())
 			clip.stop();
 		clip.setFramePosition(0);
+	}
+
+	public void reduceVolume(){
+		if(clip.isRunning()) {
+			FloatControl gainControl = (FloatControl) clip.getControl(FloatControl.Type.MASTER_GAIN);
+			gainControl.setValue(gainControl.getValue()-2.0f);
+		}
+	}
+
+	public void increaseVolume(){
+		if(clip.isRunning()) {
+			FloatControl gainControl = (FloatControl) clip.getControl(FloatControl.Type.MASTER_GAIN);
+			gainControl.setValue(gainControl.getValue()+2.0f);
+		}
 	}
 	
 	public boolean isRunning(){

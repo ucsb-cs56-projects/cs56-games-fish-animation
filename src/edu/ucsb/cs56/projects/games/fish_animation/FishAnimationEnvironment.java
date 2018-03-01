@@ -18,6 +18,7 @@ import javax.swing.event.MouseInputAdapter;
  * Tracks the amount of fish eaten with an elapsed amount of time.
  *
  * @author Bryan Wu
+ * @author Xiaocheng Stephen Hu
  * @author Lawrence Khuu
  * @author Casey Barbello
  * @author Daryl Pham
@@ -29,7 +30,7 @@ import javax.swing.event.MouseInputAdapter;
  * @author Angela Yung
  * @author Ziheng Song
  * @author Yuhao Zhang
- * @version for CS56, Fall 2017, UCSB
+ * @version for CS56, Winter 2018, UCSB
  */
 
 public class FishAnimationEnvironment extends JFrame implements Serializable {
@@ -837,6 +838,16 @@ public class FishAnimationEnvironment extends JFrame implements Serializable {
 						    dy = 10;
 					} else if (press == KeyEvent.VK_UP) {
 						    dy = -10;
+					} else if (press == KeyEvent.VK_MINUS) {
+						 SoundEffect.BGM.reduceVolume();
+						 SoundEffect.FISH.reduceVolume();
+						 SoundEffect.JELLYFISH.reduceVolume();
+						 SoundEffect.FINISH.reduceVolume();
+					} else if (press == KeyEvent.VK_EQUALS) {
+						 SoundEffect.BGM.increaseVolume();
+						 SoundEffect.FISH.increaseVolume();
+						 SoundEffect.JELLYFISH.increaseVolume();
+						 SoundEffect.FINISH.increaseVolume();
 					}
 					posX += dx;
 					posY += dy;
