@@ -14,8 +14,8 @@
   <property name="webBaseURL" value="http://www.cs.ucsb.edu/~${env.USER}/cs56" />
   <property name="project" value="cs56_games_fish_animation" />
   <property name="fullPkg" value="edu.ucsb.cs56.projects.games.fish_animation"/>
-  <property name="javadocDest" value="${webRoot}/${project}/javadoc" />
-  <property name="javadocURL" value="${webBaseURL}/${project}/javadoc" /> 
+  <property name="javadocDest" value="${webRoot}/${project}/docs/javadoc" />
+  <property name="javadocURL" value="${webBaseURL}/${project}/docs/javadoc" /> 
   <property name="mainClass" value="${fullPkg}/Menu" />
   <property name="envClass" value="${fullPkg}/FishEnvironment" />
  
@@ -78,8 +78,8 @@
   </target>
   
   <target name="javadoc" depends="compile" description="publish javadoc">
-    <delete dir="javadoc" quiet="true" />
-    <javadoc destdir="javadoc" author="true" version="true" use="true" >
+    <delete dir="docs/javadoc" quiet="true" />
+    <javadoc destdir="docs/javadoc" author="true" version="true" use="true" >
       <fileset dir="src" includes="**/*.java"/>
       <classpath refid="project.class.path" />
       
@@ -88,7 +88,7 @@
     <delete quiet="true" dir="${javadocDest}" />
     
     <copy todir="${javadocDest}" >
-      <fileset dir="javadoc"/>
+      <fileset dir="docs/javadoc"/>
     </copy>
     
     <chmod dir="${javadocDest}" perm="755" type="dir" includes="**" />
