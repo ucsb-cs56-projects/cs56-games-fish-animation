@@ -33,6 +33,8 @@ public enum SoundEffect{
 			AudioInputStream audioInputStream = AudioSystem.getAudioInputStream(url);
 			clip = AudioSystem.getClip();
 			clip.open(audioInputStream);
+			FloatControl gainControl = (FloatControl) clip.getControl(FloatControl.Type.MASTER_GAIN);
+			gainControl.setValue(-5.0f);
 		} catch(UnsupportedAudioFileException e) {
 			e.printStackTrace();
 		} catch(IOException e) {
@@ -75,14 +77,14 @@ public enum SoundEffect{
 	public void reduceVolume(){
 		if(clip.isRunning()) {
 			FloatControl gainControl = (FloatControl) clip.getControl(FloatControl.Type.MASTER_GAIN);
-			gainControl.setValue(gainControl.getValue()-2.0f);
+			gainControl.setValue(gainControl.getValue()-3.0f);
 		}
 	}
 
 	public void increaseVolume(){
 		if(clip.isRunning()) {
 			FloatControl gainControl = (FloatControl) clip.getControl(FloatControl.Type.MASTER_GAIN);
-			gainControl.setValue(gainControl.getValue()+2.0f);
+			gainControl.setValue(gainControl.getValue()+3.0f);
 		}
 	}
 	

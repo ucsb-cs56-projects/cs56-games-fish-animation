@@ -30,7 +30,7 @@ import java.io.*;
 
 class Menu implements ActionListener {
 
-	private JButton Play, Instruction, Exit, Resume, Easy, Medium, Hard, Back, Menu, PlayBGM, PauseBGM, HighScore, NextPage, Crazy;
+	private JButton Play, Instruction, Exit, Resume, Easy, Medium, Hard, Back, Menu, PlayBGM, PauseBGM, MinusBGM, PlusBGM, HighScore, NextPage, Crazy;
 	private JButton Character, CMenu, Kwhale, Shark;
 	private JTextField Credit;
 	private JFrame instruct;
@@ -108,14 +108,23 @@ class Menu implements ActionListener {
 		// Adds image icon to control BGM
 		PlayBGM = new JButton();
 		PauseBGM = new JButton();
+		MinusBGM = new JButton();
+		PlusBGM = new JButton();
 
 		try {
 			Image imgPlay = ImageIO.read(getClass().getResource("/resources/play.png")).getScaledInstance(50, 50,
 					java.awt.Image.SCALE_SMOOTH);
 			Image imgPause = ImageIO.read(getClass().getResource("/resources/pause.png")).getScaledInstance(50, 50,
 					java.awt.Image.SCALE_SMOOTH);
+			Image audioMinus = ImageIO.read(getClass().getResource("/resources/audio_minus.png")).getScaledInstance(50, 50,
+					java.awt.Image.SCALE_SMOOTH);
+			Image audioPlus = ImageIO.read(getClass().getResource("/resources/audio_plus.png")).getScaledInstance(50, 50,
+					java.awt.Image.SCALE_SMOOTH);
+
 			PlayBGM.setIcon(new ImageIcon(imgPlay));
 			PauseBGM.setIcon(new ImageIcon(imgPause));
+			MinusBGM.setIcon(new ImageIcon(audioMinus));
+			PlusBGM.setIcon(new ImageIcon(audioPlus));
 		} catch (IOException ex) {
 		}
 
@@ -128,6 +137,8 @@ class Menu implements ActionListener {
 		Character.setBounds(25, 125, 150, 75);
 		PlayBGM.setBounds(625, 100, 50, 50);
 		PauseBGM.setBounds(685, 100, 50, 50);
+		MinusBGM.setBounds(625, 170, 50, 50);
+		PlusBGM.setBounds(685, 170, 50, 50);
 
 		// Adds the action listeners to the buttons
 		Play.addActionListener(this);
@@ -138,6 +149,9 @@ class Menu implements ActionListener {
 		Character.addActionListener(this);
 		PlayBGM.addActionListener(this);
 		PauseBGM.addActionListener(this);
+		MinusBGM.addActionListener(this);
+		PlusBGM.addActionListener(this);
+
 
 		// HighScore
 		setButtonStyle(HighScore, Color.white);
@@ -150,6 +164,14 @@ class Menu implements ActionListener {
 		// PauseBGM
 		setButtonStyle(PauseBGM, Color.black);
 		buttonAddListener(PauseBGM, Color.white, Color.black);
+
+		// MinusBGM
+		setButtonStyle(MinusBGM, Color.black);
+		buttonAddListener(MinusBGM, Color.white, Color.black);
+
+		// PlusBGM
+		setButtonStyle(PlusBGM, Color.black);
+		buttonAddListener(PlusBGM, Color.white, Color.black);
 
 		// Play
 		setButtonStyle(Play, Color.white);
@@ -190,6 +212,8 @@ class Menu implements ActionListener {
 		pane.add(Character);
 		pane.add(PlayBGM);
 		pane.add(PauseBGM);
+		pane.add(MinusBGM);
+		pane.add(PlusBGM);
 		frame.setContentPane(pane);
 		frame.setVisible(true);
 	}
@@ -458,6 +482,13 @@ class Menu implements ActionListener {
 			SoundEffect.volume = SoundEffect.Volume.MEDIUM;
 			SoundEffect.BGM.play();
 		}
+		if (event.getSource() == MinusBGM) {
+			SoundEffect.BGM.reduceVolume();
+		}
+		if (event.getSource() == PlusBGM) {
+			SoundEffect.BGM.increaseVolume();
+		}
+
 		if (event.getSource() == Play) {
 			frame.remove(Play);
 			frame.remove(Instruction);
