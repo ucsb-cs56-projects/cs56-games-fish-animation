@@ -468,9 +468,15 @@ class Menu implements ActionListener {
 			    System.out.println("No saved.ser found");
 		}
 		if (event.getSource() == Shark) {
+			Shark.setBorder(BorderFactory.createLineBorder(Color.yellow));
+			Shark.setForeground(Color.white);
+			Kwhale.setForeground(Color.gray);
 			character_type = true;
 		}
 		if (event.getSource() == Kwhale) {
+			Kwhale.setBorder(BorderFactory.createLineBorder(Color.yellow));
+			Kwhale.setForeground(Color.white);
+			Shark.setForeground(Color.gray);
 			character_type = false;
 		}
 
