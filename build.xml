@@ -38,7 +38,7 @@
   
   <target name="compile" description="compiles my code">
     <mkdir dir="build" />
-    <javac srcdir="src" source = "1.8.0_151" target="1.8.0_151" destdir="build" debug="true" debuglevel="lines,source" includeantruntime="false">
+    <javac srcdir="src" destdir="build" debug="true" debuglevel="lines,source" includeantruntime="false">
       <classpath refid="project.class.path"/>
     </javac>
     <copy todir="build/resources">
