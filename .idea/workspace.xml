@@ -58,8 +58,8 @@
       <file leaf-file-name="FishAnimationEnvironment.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/edu/ucsb/cs56/projects/games/fish_animation/FishAnimationEnvironment.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="280">
-              <caret line="441" column="34" lean-forward="true" selection-start-line="441" selection-start-column="34" selection-end-line="441" selection-end-column="34" />
+            <state relative-caret-position="238">
+              <caret line="837" column="59" lean-forward="false" selection-start-line="837" selection-start-column="59" selection-end-line="837" selection-end-column="59" />
               <folding />
             </state>
           </provider>
@@ -858,8 +858,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/edu/ucsb/cs56/projects/games/fish_animation/FishAnimationEnvironment.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="280">
-          <caret line="441" column="34" lean-forward="true" selection-start-line="441" selection-start-column="34" selection-end-line="441" selection-end-column="34" />
+        <state relative-caret-position="238">
+          <caret line="837" column="59" lean-forward="false" selection-start-line="837" selection-start-column="59" selection-end-line="837" selection-end-column="59" />
           <folding />
         </state>
       </provider>

@@ -438,10 +438,10 @@ public class FishAnimationEnvironment extends JFrame implements Serializable {
 				posX = maxX;
 			else if (posX > maxX)
 				posX = 30;
-//			if (posY < 30)
-//				posY = maxY - 100;
-//			else if (posY > maxY - 100)
-//				posY = 30;
+			if (posY < 30)
+				posY = 30;
+			else if (posY > maxY - 100)
+				posY = maxY - 100;
 			Shark s = new Shark(posX, posY);
 			int newXPos = (int) s.getXPos() - 160;
 			int newYPos = (int) s.getYPos() - 130;
@@ -836,13 +836,9 @@ public class FishAnimationEnvironment extends JFrame implements Serializable {
 						dx = 10;
 						facingRight = true;
 					} else if (press == KeyEvent.VK_DOWN) {
-						System.out.println("Current y VK_DOWN: " + posY);
-						if (posY + 10 < 660)
 							dy = 10;
 					} else if (press == KeyEvent.VK_UP) {
-						if (posY - 10 > 35)
 							dy = -10;
-						System.out.println("Current y VK_UP: " + posY);
 					} else if (press == KeyEvent.VK_MINUS) {
 						 SoundEffect.BGM.reduceVolume();
 						 SoundEffect.FISH.reduceVolume();
