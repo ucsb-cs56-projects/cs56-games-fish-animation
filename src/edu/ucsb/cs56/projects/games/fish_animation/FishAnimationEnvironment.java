@@ -837,11 +837,11 @@ public class FishAnimationEnvironment extends JFrame implements Serializable {
 						facingRight = true;
 					} else if (press == KeyEvent.VK_DOWN) {
 						System.out.println("Current y VK_DOWN: " + posY);
-						if (posY + 10 < 670)
+						if (posY + 10 < 660)
 							dy = 10;
 					} else if (press == KeyEvent.VK_UP) {
 						if (posY - 10 > 35)
-						 dy = -10;
+							dy = -10;
 						System.out.println("Current y VK_UP: " + posY);
 					} else if (press == KeyEvent.VK_MINUS) {
 						 SoundEffect.BGM.reduceVolume();
