@@ -3,6 +3,55 @@
   <component name="ChangeListManager">
     <list default="true" id="e9367f12-90a1-41c3-bb2f-f3b04ef16146" name="Default" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change beforePath="$PROJECT_DIR$/build.xml" afterPath="$PROJECT_DIR$/build.xml" />
+      <change beforePath="$PROJECT_DIR$/docs/javadoc/allclasses-frame.html" afterPath="$PROJECT_DIR$/docs/javadoc/allclasses-frame.html" />
+      <change beforePath="$PROJECT_DIR$/docs/javadoc/allclasses-noframe.html" afterPath="$PROJECT_DIR$/docs/javadoc/allclasses-noframe.html" />
+      <change beforePath="$PROJECT_DIR$/docs/javadoc/constant-values.html" afterPath="$PROJECT_DIR$/docs/javadoc/constant-values.html" />
+      <change beforePath="$PROJECT_DIR$/docs/javadoc/deprecated-list.html" afterPath="$PROJECT_DIR$/docs/javadoc/deprecated-list.html" />
+      <change beforePath="$PROJECT_DIR$/docs/javadoc/edu/ucsb/cs56/projects/games/fish_animation/Bubbles.html" afterPath="$PROJECT_DIR$/docs/javadoc/edu/ucsb/cs56/projects/games/fish_animation/Bubbles.html" />
+      <change beforePath="$PROJECT_DIR$/docs/javadoc/edu/ucsb/cs56/projects/games/fish_animation/Character.html" afterPath="$PROJECT_DIR$/docs/javadoc/edu/ucsb/cs56/projects/games/fish_animation/Character.html" />
+      <change beforePath="$PROJECT_DIR$/docs/javadoc/edu/ucsb/cs56/projects/games/fish_animation/Fish.html" afterPath="$PROJECT_DIR$/docs/javadoc/edu/ucsb/cs56/projects/games/fish_animation/Fish.html" />
+      <change beforePath="$PROJECT_DIR$/docs/javadoc/edu/ucsb/cs56/projects/games/fish_animation/FishAnimationEnvironment.KeyHandler.html" afterPath="$PROJECT_DIR$/docs/javadoc/edu/ucsb/cs56/projects/games/fish_animation/FishAnimationEnvironment.KeyHandler.html" />
+      <change beforePath="$PROJECT_DIR$/docs/javadoc/edu/ucsb/cs56/projects/games/fish_animation/FishAnimationEnvironment.MouseHandler.html" afterPath="$PROJECT_DIR$/docs/javadoc/edu/ucsb/cs56/projects/games/fish_animation/FishAnimationEnvironment.MouseHandler.html" />
+      <change beforePath="$PROJECT_DIR$/docs/javadoc/edu/ucsb/cs56/projects/games/fish_animation/FishAnimationEnvironment.html" afterPath="$PROJECT_DIR$/docs/javadoc/edu/ucsb/cs56/projects/games/fish_animation/FishAnimationEnvironment.html" />
+      <change beforePath="$PROJECT_DIR$/docs/javadoc/edu/ucsb/cs56/projects/games/fish_animation/GeneralPathWrapper.html" afterPath="$PROJECT_DIR$/docs/javadoc/edu/ucsb/cs56/projects/games/fish_animation/GeneralPathWrapper.html" />
+      <change beforePath="$PROJECT_DIR$/docs/javadoc/edu/ucsb/cs56/projects/games/fish_animation/JellyFish.html" afterPath="$PROJECT_DIR$/docs/javadoc/edu/ucsb/cs56/projects/games/fish_animation/JellyFish.html" />
+      <change beforePath="$PROJECT_DIR$/docs/javadoc/edu/ucsb/cs56/projects/games/fish_animation/Plankton.html" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/docs/javadoc/edu/ucsb/cs56/projects/games/fish_animation/Score.html" afterPath="$PROJECT_DIR$/docs/javadoc/edu/ucsb/cs56/projects/games/fish_animation/Score.html" />
+      <change beforePath="$PROJECT_DIR$/docs/javadoc/edu/ucsb/cs56/projects/games/fish_animation/ScoreComparer.html" afterPath="$PROJECT_DIR$/docs/javadoc/edu/ucsb/cs56/projects/games/fish_animation/ScoreComparer.html" />
+      <change beforePath="$PROJECT_DIR$/docs/javadoc/edu/ucsb/cs56/projects/games/fish_animation/ScoreManager.html" afterPath="$PROJECT_DIR$/docs/javadoc/edu/ucsb/cs56/projects/games/fish_animation/ScoreManager.html" />
+      <change beforePath="$PROJECT_DIR$/docs/javadoc/edu/ucsb/cs56/projects/games/fish_animation/ScumOfTheSea.html" afterPath="$PROJECT_DIR$/docs/javadoc/edu/ucsb/cs56/projects/games/fish_animation/ScumOfTheSea.html" />
+      <change beforePath="$PROJECT_DIR$/docs/javadoc/edu/ucsb/cs56/projects/games/fish_animation/Shark.html" afterPath="$PROJECT_DIR$/docs/javadoc/edu/ucsb/cs56/projects/games/fish_animation/Shark.html" />
+      <change beforePath="$PROJECT_DIR$/docs/javadoc/edu/ucsb/cs56/projects/games/fish_animation/SoundEffect.Volume.html" afterPath="$PROJECT_DIR$/docs/javadoc/edu/ucsb/cs56/projects/games/fish_animation/SoundEffect.Volume.html" />
+      <change beforePath="$PROJECT_DIR$/docs/javadoc/edu/ucsb/cs56/projects/games/fish_animation/SoundEffect.html" afterPath="$PROJECT_DIR$/docs/javadoc/edu/ucsb/cs56/projects/games/fish_animation/SoundEffect.html" />
+      <change beforePath="$PROJECT_DIR$/docs/javadoc/edu/ucsb/cs56/projects/games/fish_animation/class-use/Bubbles.html" afterPath="$PROJECT_DIR$/docs/javadoc/edu/ucsb/cs56/projects/games/fish_animation/class-use/Bubbles.html" />
+      <change beforePath="$PROJECT_DIR$/docs/javadoc/edu/ucsb/cs56/projects/games/fish_animation/class-use/Character.html" afterPath="$PROJECT_DIR$/docs/javadoc/edu/ucsb/cs56/projects/games/fish_animation/class-use/Character.html" />
+      <change beforePath="$PROJECT_DIR$/docs/javadoc/edu/ucsb/cs56/projects/games/fish_animation/class-use/Fish.html" afterPath="$PROJECT_DIR$/docs/javadoc/edu/ucsb/cs56/projects/games/fish_animation/class-use/Fish.html" />
+      <change beforePath="$PROJECT_DIR$/docs/javadoc/edu/ucsb/cs56/projects/games/fish_animation/class-use/FishAnimationEnvironment.KeyHandler.html" afterPath="$PROJECT_DIR$/docs/javadoc/edu/ucsb/cs56/projects/games/fish_animation/class-use/FishAnimationEnvironment.KeyHandler.html" />
+      <change beforePath="$PROJECT_DIR$/docs/javadoc/edu/ucsb/cs56/projects/games/fish_animation/class-use/FishAnimationEnvironment.MouseHandler.html" afterPath="$PROJECT_DIR$/docs/javadoc/edu/ucsb/cs56/projects/games/fish_animation/class-use/FishAnimationEnvironment.MouseHandler.html" />
+      <change beforePath="$PROJECT_DIR$/docs/javadoc/edu/ucsb/cs56/projects/games/fish_animation/class-use/FishAnimationEnvironment.html" afterPath="$PROJECT_DIR$/docs/javadoc/edu/ucsb/cs56/projects/games/fish_animation/class-use/FishAnimationEnvironment.html" />
+      <change beforePath="$PROJECT_DIR$/docs/javadoc/edu/ucsb/cs56/projects/games/fish_animation/class-use/GeneralPathWrapper.html" afterPath="$PROJECT_DIR$/docs/javadoc/edu/ucsb/cs56/projects/games/fish_animation/class-use/GeneralPathWrapper.html" />
+      <change beforePath="$PROJECT_DIR$/docs/javadoc/edu/ucsb/cs56/projects/games/fish_animation/class-use/JellyFish.html" afterPath="$PROJECT_DIR$/docs/javadoc/edu/ucsb/cs56/projects/games/fish_animation/class-use/JellyFish.html" />
+      <change beforePath="$PROJECT_DIR$/docs/javadoc/edu/ucsb/cs56/projects/games/fish_animation/class-use/Plankton.html" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/docs/javadoc/edu/ucsb/cs56/projects/games/fish_animation/class-use/Score.html" afterPath="$PROJECT_DIR$/docs/javadoc/edu/ucsb/cs56/projects/games/fish_animation/class-use/Score.html" />
+      <change beforePath="$PROJECT_DIR$/docs/javadoc/edu/ucsb/cs56/projects/games/fish_animation/class-use/ScoreComparer.html" afterPath="$PROJECT_DIR$/docs/javadoc/edu/ucsb/cs56/projects/games/fish_animation/class-use/ScoreComparer.html" />
+      <change beforePath="$PROJECT_DIR$/docs/javadoc/edu/ucsb/cs56/projects/games/fish_animation/class-use/ScoreManager.html" afterPath="$PROJECT_DIR$/docs/javadoc/edu/ucsb/cs56/projects/games/fish_animation/class-use/ScoreManager.html" />
+      <change beforePath="$PROJECT_DIR$/docs/javadoc/edu/ucsb/cs56/projects/games/fish_animation/class-use/ScumOfTheSea.html" afterPath="$PROJECT_DIR$/docs/javadoc/edu/ucsb/cs56/projects/games/fish_animation/class-use/ScumOfTheSea.html" />
+      <change beforePath="$PROJECT_DIR$/docs/javadoc/edu/ucsb/cs56/projects/games/fish_animation/class-use/Shark.html" afterPath="$PROJECT_DIR$/docs/javadoc/edu/ucsb/cs56/projects/games/fish_animation/class-use/Shark.html" />
+      <change beforePath="$PROJECT_DIR$/docs/javadoc/edu/ucsb/cs56/projects/games/fish_animation/class-use/SoundEffect.Volume.html" afterPath="$PROJECT_DIR$/docs/javadoc/edu/ucsb/cs56/projects/games/fish_animation/class-use/SoundEffect.Volume.html" />
+      <change beforePath="$PROJECT_DIR$/docs/javadoc/edu/ucsb/cs56/projects/games/fish_animation/class-use/SoundEffect.html" afterPath="$PROJECT_DIR$/docs/javadoc/edu/ucsb/cs56/projects/games/fish_animation/class-use/SoundEffect.html" />
+      <change beforePath="$PROJECT_DIR$/docs/javadoc/edu/ucsb/cs56/projects/games/fish_animation/package-frame.html" afterPath="$PROJECT_DIR$/docs/javadoc/edu/ucsb/cs56/projects/games/fish_animation/package-frame.html" />
+      <change beforePath="$PROJECT_DIR$/docs/javadoc/edu/ucsb/cs56/projects/games/fish_animation/package-summary.html" afterPath="$PROJECT_DIR$/docs/javadoc/edu/ucsb/cs56/projects/games/fish_animation/package-summary.html" />
+      <change beforePath="$PROJECT_DIR$/docs/javadoc/edu/ucsb/cs56/projects/games/fish_animation/package-tree.html" afterPath="$PROJECT_DIR$/docs/javadoc/edu/ucsb/cs56/projects/games/fish_animation/package-tree.html" />
+      <change beforePath="$PROJECT_DIR$/docs/javadoc/edu/ucsb/cs56/projects/games/fish_animation/package-use.html" afterPath="$PROJECT_DIR$/docs/javadoc/edu/ucsb/cs56/projects/games/fish_animation/package-use.html" />
+      <change beforePath="$PROJECT_DIR$/docs/javadoc/help-doc.html" afterPath="$PROJECT_DIR$/docs/javadoc/help-doc.html" />
+      <change beforePath="$PROJECT_DIR$/docs/javadoc/index-all.html" afterPath="$PROJECT_DIR$/docs/javadoc/index-all.html" />
+      <change beforePath="$PROJECT_DIR$/docs/javadoc/index.html" afterPath="$PROJECT_DIR$/docs/javadoc/index.html" />
+      <change beforePath="$PROJECT_DIR$/docs/javadoc/overview-tree.html" afterPath="$PROJECT_DIR$/docs/javadoc/overview-tree.html" />
+      <change beforePath="$PROJECT_DIR$/docs/javadoc/script.js" afterPath="$PROJECT_DIR$/docs/javadoc/script.js" />
+      <change beforePath="$PROJECT_DIR$/docs/javadoc/serialized-form.html" afterPath="$PROJECT_DIR$/docs/javadoc/serialized-form.html" />
+      <change beforePath="$PROJECT_DIR$/docs/javadoc/stylesheet.css" afterPath="$PROJECT_DIR$/docs/javadoc/stylesheet.css" />
+      <change beforePath="$PROJECT_DIR$/src/edu/ucsb/cs56/projects/games/fish_animation/FishAnimationEnvironment.java" afterPath="$PROJECT_DIR$/src/edu/ucsb/cs56/projects/games/fish_animation/FishAnimationEnvironment.java" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -17,8 +66,8 @@
       <file leaf-file-name="Menu.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/edu/ucsb/cs56/projects/games/fish_animation/Menu.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="8904">
-              <caret line="434" column="39" lean-forward="false" selection-start-line="434" selection-start-column="33" selection-end-line="434" selection-end-column="39" />
+            <state relative-caret-position="9450">
+              <caret line="460" column="39" lean-forward="false" selection-start-line="460" selection-start-column="39" selection-end-line="460" selection-end-column="39" />
               <folding />
             </state>
           </provider>
@@ -54,11 +103,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="FishAnimationEnvironment.java" pinned="false" current-in-tab="false">
+      <file leaf-file-name="FishAnimationEnvironment.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/edu/ucsb/cs56/projects/games/fish_animation/FishAnimationEnvironment.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="210">
-              <caret line="172" column="31" lean-forward="false" selection-start-line="172" selection-start-column="23" selection-end-line="172" selection-end-column="31" />
+            <state relative-caret-position="327">
+              <caret line="838" column="61" lean-forward="false" selection-start-line="838" selection-start-column="61" selection-end-line="838" selection-end-column="61" />
               <folding />
             </state>
           </provider>
@@ -84,11 +133,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="SoundEffect.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="SoundEffect.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/edu/ucsb/cs56/projects/games/fish_animation/SoundEffect.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="273">
-              <caret line="15" column="12" lean-forward="false" selection-start-line="15" selection-start-column="12" selection-end-line="15" selection-end-column="12" />
+            <state relative-caret-position="-147">
+              <caret line="26" column="0" lean-forward="true" selection-start-line="26" selection-start-column="0" selection-end-line="26" selection-end-column="0" />
               <folding />
             </state>
           </provider>
@@ -227,9 +276,9 @@
           <select />
         </subPane>
       </pane>
-      <pane id="Scope" />
       <pane id="Scratches" />
       <pane id="AndroidView" />
+      <pane id="Scope" />
       <pane id="PackagesPane" />
     </panes>
   </component>
@@ -373,6 +422,7 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="-9" y="-9" width="1938" height="1048" extended-state="6" />
+    <editor active="true" />
     <layout>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
@@ -386,10 +436,10 @@
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3293979" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.1933405" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.041353382" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Learn" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.24973147" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.09237379" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Theme Preview" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
@@ -806,14 +856,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/edu/ucsb/cs56/projects/games/fish_animation/GeneralPathWrapper.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="462">
-          <caret line="31" column="13" lean-forward="false" selection-start-line="31" selection-start-column="13" selection-end-line="31" selection-end-column="13" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/edu/ucsb/cs56/projects/games/fish_animation/Score.class">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
@@ -822,26 +864,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/edu/ucsb/cs56/projects/games/fish_animation/ScumOfTheSea.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="14" lean-forward="false" selection-start-line="0" selection-start-column="14" selection-end-line="0" selection-end-column="14" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/edu/ucsb/cs56/projects/games/fish_animation/Menu.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="8904">
-          <caret line="434" column="39" lean-forward="false" selection-start-line="434" selection-start-column="33" selection-end-line="434" selection-end-column="39" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/edu/ucsb/cs56/projects/games/fish_animation/FishAnimationEnvironment.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="210">
-          <caret line="172" column="31" lean-forward="false" selection-start-line="172" selection-start-column="23" selection-end-line="172" selection-end-column="31" />
+        <state relative-caret-position="9450">
+          <caret line="460" column="39" lean-forward="false" selection-start-line="460" selection-start-column="39" selection-end-line="460" selection-end-column="39" />
           <folding />
         </state>
       </provider>
@@ -856,8 +882,32 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/edu/ucsb/cs56/projects/games/fish_animation/SoundEffect.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="273">
-          <caret line="15" column="12" lean-forward="false" selection-start-line="15" selection-start-column="12" selection-end-line="15" selection-end-column="12" />
+        <state relative-caret-position="-147">
+          <caret line="26" column="0" lean-forward="true" selection-start-line="26" selection-start-column="0" selection-end-line="26" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/edu/ucsb/cs56/projects/games/fish_animation/GeneralPathWrapper.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="462">
+          <caret line="31" column="13" lean-forward="false" selection-start-line="31" selection-start-column="13" selection-end-line="31" selection-end-column="13" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/edu/ucsb/cs56/projects/games/fish_animation/ScumOfTheSea.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="14" lean-forward="false" selection-start-line="0" selection-start-column="14" selection-end-line="0" selection-end-column="14" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/edu/ucsb/cs56/projects/games/fish_animation/FishAnimationEnvironment.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="327">
+          <caret line="838" column="61" lean-forward="false" selection-start-line="838" selection-start-column="61" selection-end-line="838" selection-end-column="61" />
           <folding />
         </state>
       </provider>
