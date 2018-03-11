@@ -438,10 +438,10 @@ public class FishAnimationEnvironment extends JFrame implements Serializable {
 				posX = maxX;
 			else if (posX > maxX)
 				posX = 30;
-			if (posY < 30)
-				posY = maxY - 100;
-			else if (posY > maxY - 100)
-				posY = 30;
+//			if (posY < 30)
+//				posY = maxY - 100;
+//			else if (posY > maxY - 100)
+//				posY = 30;
 			Shark s = new Shark(posX, posY);
 			int newXPos = (int) s.getXPos() - 160;
 			int newYPos = (int) s.getYPos() - 130;
