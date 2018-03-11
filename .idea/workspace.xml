@@ -2,7 +2,6 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="e9367f12-90a1-41c3-bb2f-f3b04ef16146" name="Default" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change beforePath="$PROJECT_DIR$/src/edu/ucsb/cs56/projects/games/fish_animation/FishAnimationEnvironment.java" afterPath="$PROJECT_DIR$/src/edu/ucsb/cs56/projects/games/fish_animation/FishAnimationEnvironment.java" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
@@ -58,8 +57,8 @@
       <file leaf-file-name="FishAnimationEnvironment.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/edu/ucsb/cs56/projects/games/fish_animation/FishAnimationEnvironment.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="461">
-              <caret line="842" column="42" lean-forward="false" selection-start-line="842" selection-start-column="42" selection-end-line="842" selection-end-column="42" />
+            <state relative-caret-position="419">
+              <caret line="840" column="36" lean-forward="true" selection-start-line="840" selection-start-column="36" selection-end-line="840" selection-end-column="36" />
               <folding />
             </state>
           </provider>
@@ -858,8 +857,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/edu/ucsb/cs56/projects/games/fish_animation/FishAnimationEnvironment.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="461">
-          <caret line="842" column="42" lean-forward="false" selection-start-line="842" selection-start-column="42" selection-end-line="842" selection-end-column="42" />
+        <state relative-caret-position="419">
+          <caret line="840" column="36" lean-forward="true" selection-start-line="840" selection-start-column="36" selection-end-line="840" selection-end-column="36" />
           <folding />
         </state>
       </provider>
