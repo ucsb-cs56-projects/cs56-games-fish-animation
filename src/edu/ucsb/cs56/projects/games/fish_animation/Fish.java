@@ -4,25 +4,25 @@ import java.awt.geom.GeneralPath; // combinations of lines and curves
 import java.awt.geom.Line2D; 
 
 /**
-   A vector drawing of a Fish that implements
-   the Shape interface, and so can be drawn, as well as
-   rotated, scaled, etc.
-      
-   @author Lawrence Khuu
-   @author Josephine Vo
-   @author Jenna Cryan
-   @author Abhijit Kulkarni
-   @author Angela Yung
-   @version for CS56, Winter 2016, UCSB
-   
+ * A vector drawing of a Fish that implements
+ * the Shape interface, and so can be drawn, as well as
+ * rotated, scaled, etc.
+ *    
+ * @author Lawrence Khuu
+ * @author Josephine Vo
+ * @author Jenna Cryan
+ * @author Abhijit Kulkarni
+ * @author Angela Yung
+ * @version for CS56, Winter 2016, UCSB
+ * 
 */
 public class Fish extends ScumOfTheSea{
     /** 
-	Constructor
-	@param x x coord of the middle of the Fish
-	@param y y coord of the middle of the Fish
-	@param width of the Fish
-	@param height of the Fish
+	* Constructor
+	* @param x x coord of the middle of the Fish
+	* @param y y coord of the middle of the Fish
+	* @param width of the Fish
+	* @param height of the Fish
     */
     
     double xPos;
@@ -30,9 +30,9 @@ public class Fish extends ScumOfTheSea{
     double width;
     double height;
     
-    /**
-       draws the specified fish
-    */
+    
+    //draws the specified fish
+    
     public Fish(double x, double y, double width, double height) {
 	this.xPos = x;
 	this.yPos = y;
@@ -81,53 +81,39 @@ public class Fish extends ScumOfTheSea{
         }
     }
     
-    /**
-       gets the xLocation of the fish
-    */
+    //gets the xLocation of the fish
     @Override 
     public double getXPos() {
 	return xPos;
     }
     
-    /**
-       gets the yLocation of the fish
-    */
+    //gets the yLocation of the fish
     @Override 
     public double getYPos() {
         return yPos;
     }
     
-    /**
-       X is set in the constructor
-    */
+    //X is set in the constructor
     @Override 
     public void setX(double x) {
     }
 
-    /**
-       Y is set in the constructor
-    */
+    //Y is set in the constructor
     @Override 
     public void setY(double y) {
     }
     
-    /**
-       gets the Width of the fish
-    */
+    //gets the Width of the fish
     public double getWidth() {
         return width;
     }
     
-    /**
-       gets the height of the fish
-    */
+    //gets the height of the fish
     public double getHeight() {
         return height;
     }
 
-    /**
-       fish moves in constructor
-    */
+    //fish moves in constructor
     @Override 
     public void move(double m) {
     }

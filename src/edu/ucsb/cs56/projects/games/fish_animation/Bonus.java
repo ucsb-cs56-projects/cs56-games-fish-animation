@@ -6,25 +6,24 @@ import java.awt.geom.Ellipse2D;
 import java.util.ArrayList;
 
 /**
-   A vector drawing of a Fish that implements
-   the Shape interface, and so can be drawn, as well as
-   rotated, scaled, etc.
-      
-   @author Lawrence Khuu
-   @author Josephine Vo
-   @author Jenna Cryan
-   @author Abhijit Kulkarni
-   @author Angela Yung
-   @version for CS56, Winter 2016, UCSB
-   
+ * A vector drawing of a Fish that implements
+ * the Shape interface, and so can be drawn, as well as
+ * rotated, scaled, etc.
+ *    
+ * @author Lawrence Khuu
+ * @author Josephine Vo
+ * @author Jenna Cryan
+ * @author Abhijit Kulkarni
+ * @author Angela Yung
+ * @version for CS56, Winter 2016, UCSB 
 */
 public class Bonus extends ScumOfTheSea{
     /**
-	Constructor
-	@param x x coord of the middle of the Fish
-	@param y y coord of the middle of the Fish
-	@param width of the Fish
-	@param height of the Fish
+	* Constructor
+	* @param x x coord of the middle of the Fish
+	* @param y y coord of the middle of the Fish
+	* @param width of the Fish
+	* @param height of the Fish
     */
     
     private double xPos,yPos;
@@ -34,9 +33,8 @@ public class Bonus extends ScumOfTheSea{
     private double body_width = 5, body_height = 10;
     private double larm_x, larm_y, rarm_x, rarm_y, lfoot_x, lfoot_y, rfoot_x, rfoot_y;
     private ArrayList<Bonus> bonuses;
-    /**
-       draws the specified fish
-    */
+    //draws the specified fish
+    
     public Bonus(double x, double y, boolean moveL) {
 	this.xPos = x;
 	this.yPos = y;
@@ -69,42 +67,34 @@ public class Bonus extends ScumOfTheSea{
 //	wPlank.append(rfoot, false);
     }
     
-    /**
-       gets the xLocation of the fish
-    */
+    //gets the xLocation of the fish
     @Override 
     public double getXPos() {
 	return xPos;
     }
     
-    /**
-       gets the yLocation of the fish
-    */
+    //gets the yLocation of the fish
     @Override 
     public double getYPos() {
         return yPos;
     }
     
-    /**
-       X is set in the constructor
-    */
+    //X is set in the constructor
     @Override 
     public void setX(double x) {
 	this.xPos = x;
     }
 
-    /**
-       Y is set in the constructor
-    */
+    //Y is set in the constructor
+
     @Override 
     public void setY(double y) {
 	this.yPos = y;
     }
     
 
-    /**
-       plankton moves in constructor
-    */
+    //plankton moves in constructor
+    
     @Override 
     public void move(double m) {
 	moveL = !(moveL);
