@@ -73,13 +73,13 @@ class Menu implements ActionListener {
 
 	// Mouse listener for the hover effect
 	private void buttonAddListener(JButton b, Color c1, Color c2){
-		b.addMouseListener(new java.awt.event.MouseAdapter() {
-			public void mouseEntered(java.awt.event.MouseEvent evt) {
+		b.addMouseListener(new MouseAdapter() {
+			public void mouseEntered(MouseEvent evt) {
 				b.setForeground(c1);
 				b.setBorder(BorderFactory.createLineBorder(c1));
 			}
 
-			public void mouseExited(java.awt.event.MouseEvent evt) {
+			public void mouseExited(MouseEvent evt) {
 				b.setForeground(Color.white);
 				b.setBorder(BorderFactory.createLineBorder(c2));
 			}
@@ -427,7 +427,7 @@ class Menu implements ActionListener {
 		instruct.setVisible(true);
 	}
 	
-	public void HighScores(){
+	public void highScores(){
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		
 		ScoreManager highscore = new ScoreManager();
@@ -519,7 +519,7 @@ class Menu implements ActionListener {
 			howToPlay();
 		}if (event.getSource() == HighScore) {
 
-			HighScores();
+			highScores();
 		}
 		if(event.getSource() == NextPage){
 			textLabel = new JLabel();

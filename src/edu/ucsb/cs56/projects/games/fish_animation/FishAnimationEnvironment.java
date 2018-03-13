@@ -760,7 +760,7 @@ public class FishAnimationEnvironment extends JFrame implements Serializable {
 				}
 
 				for (int i = 0; i < bonuses.size(); i++) {
-					if (bonuses.get(i).moveLeft() == true) {
+					if (bonuses.get(i).moveLeft()) {
 						Bonus newp = new Bonus(bonuses.get(i).getXPos(), bonuses.get(i).getYPos() - 5, false);
 						bonuses.set(i, newp);
 					} else {
@@ -826,7 +826,7 @@ public class FishAnimationEnvironment extends JFrame implements Serializable {
 	public class KeyHandler implements KeyListener {
 		public void keyPressed(KeyEvent e) {
 
-			if (stop == false) {
+			if (!stop) {
 				if (System.currentTimeMillis() - lastPress > 2) {
 					int press = e.getKeyCode();
 					if (press == KeyEvent.VK_LEFT) {

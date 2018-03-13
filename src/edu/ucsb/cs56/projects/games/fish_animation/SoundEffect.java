@@ -13,7 +13,6 @@ import javax.sound.sampled.*;
  * @author: Xiaocheng Stephen Hu
 */
 
-
 public enum SoundEffect{
 	JELLYFISH("resources/jellyfish.wav"),
 	FISH("resources/fish.wav"),
@@ -24,6 +23,8 @@ public enum SoundEffect{
 	public static enum Volume{
 		MUTE, LOW, MEDIUM, HIGH
 	}
+
+	private Clip clip;
 
 	public static Volume volume = Volume.MEDIUM;
 	
@@ -43,10 +44,6 @@ public enum SoundEffect{
 			e.printStackTrace();
 		}
 	}
-
-
-
-	private Clip clip;
 	
 	public void play(){
 		if (volume != Volume.MUTE) {
