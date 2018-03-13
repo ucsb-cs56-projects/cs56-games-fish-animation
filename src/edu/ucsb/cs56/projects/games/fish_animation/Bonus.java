@@ -9,7 +9,8 @@ import java.util.ArrayList;
  * A vector drawing of a Fish that implements
  * the Shape interface, and so can be drawn, as well as
  * rotated, scaled, etc.
- *    
+ *
+ * @author Bryan Wu
  * @author Lawrence Khuu
  * @author Josephine Vo
  * @author Jenna Cryan
