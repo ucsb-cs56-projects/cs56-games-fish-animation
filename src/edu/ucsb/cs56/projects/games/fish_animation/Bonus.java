@@ -1,7 +1,7 @@
 package edu.ucsb.cs56.projects.games.fish_animation;
 
-import java.awt.geom.GeneralPath; // combinations of lines and curves
-import java.awt.geom.Line2D; 
+//import java.awt.geom.GeneralPath; // combinations of lines and curves
+//import java.awt.geom.Line2D; 
 import java.awt.geom.Ellipse2D;
 import java.util.ArrayList;
 
@@ -29,10 +29,10 @@ public class Bonus extends ScumOfTheSea{
     
     private double xPos,yPos;
     private boolean moveL;
-    private int count;
+    //private int count;
 
     private double body_width = 5, body_height = 10;
-    private double larm_x, larm_y, rarm_x, rarm_y, lfoot_x, lfoot_y, rfoot_x, rfoot_y;
+    //private double larm_x, larm_y, rarm_x, rarm_y, lfoot_x, lfoot_y, rfoot_x, rfoot_y;
     private ArrayList<Bonus> bonuses;
     //draws the specified fish
     
@@ -40,7 +40,7 @@ public class Bonus extends ScumOfTheSea{
 	this.xPos = x;
 	this.yPos = y;
 	this.moveL = moveL;
-	count = 0;
+	//count = 0;
 
 	bonuses = new ArrayList<>();
 	// Deprecated Plankton drawing code

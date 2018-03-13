@@ -28,7 +28,7 @@ public class Fish extends ScumOfTheSea{
     double xPos;
     double yPos;
     double width;
-    double height;
+    private double height;
     
     
     //draws the specified fish
@@ -116,5 +116,6 @@ public class Fish extends ScumOfTheSea{
     //fish moves in constructor
     @Override 
     public void move(double m) {
+        //empty method body
     }
 }
