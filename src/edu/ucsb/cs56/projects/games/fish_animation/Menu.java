@@ -309,7 +309,7 @@ class Menu implements ActionListener {
 		 * = getClass().getResource("/resources/killerwhale.png"); ImageIcon
 		 * killerwhale = new ImageIcon(killerwhale).getImage();
 		 */
-
+		Color light_blue = new Color(75, 255, 255);
 		// set the background
 		URL back = getClass().getResource("/resources/background.jpeg");
 		ImageIcon bg = new ImageIcon(back);
@@ -319,7 +319,7 @@ class Menu implements ActionListener {
 		// text to choose character
 		JLabel diff = new JLabel("<html><div style='text-align:center; '>Choose your<br>character</html>");
 		diff.setFont(new Font("Century Gothic", Font.BOLD, 28));
-		diff.setForeground(new Color(75, 255, 255));
+		diff.setForeground(light_blue);
 		diff.setBounds(75, 75, 400, 200);
 
 		// create the buttons
@@ -341,22 +341,36 @@ class Menu implements ActionListener {
 		// Shark
 		Shark.setOpaque(false);
 		Shark.setContentAreaFilled(false);
-		Shark.setBorder(BorderFactory.createLineBorder(Color.white));
+		//Shark.setBorder(BorderFactory.createLineBorder(Color.white));
 		Shark.setForeground(Color.white);
 
-		buttonAddListener(Shark, new Color(75, 255, 255), Color.white);
+		buttonAddListener(Shark, light_blue, Color.white);
+		Shark.addMouseListener(new MouseAdapter() {
+		  public void mousePressed(MouseEvent e) {
+		    Shark.setBorder(BorderFactory.createLineBorder(light_blue));
+		    Kwhale.setBorder(null);
+		  }
+		});
 
 		// Kwhale
 		Kwhale.setOpaque(false);
 		Kwhale.setContentAreaFilled(false);
-		Kwhale.setBorder(BorderFactory.createLineBorder(Color.white));
+		//Kwhale.setBorder(BorderFactory.createLineBorder(Color.white));
 		Kwhale.setForeground(Color.white);
 
-		buttonAddListener(Kwhale, new Color(75, 255, 255), Color.white);
+		buttonAddListener(Kwhale, light_blue, Color.white);
+
+		//This MouseAdapter code might be factored in the future
+		Kwhale.addMouseListener(new MouseAdapter() {
+		  public void mousePressed(MouseEvent e) {
+		    Kwhale.setBorder(BorderFactory.createLineBorder(light_blue));
+		    Shark.setBorder(null);
+		  }
+		});
 
 		// CMenu
 		setButtonStyle(CMenu, Color.white);
-		buttonAddListener(CMenu, new Color(75, 255, 255), Color.white);
+		buttonAddListener(CMenu, light_blue, Color.white);
 
 
 		CMenu.addActionListener(this);
@@ -468,15 +482,9 @@ class Menu implements ActionListener {
 			    System.out.println("No saved.ser found");
 		}
 		if (event.getSource() == Shark) {
-			Shark.setBorder(BorderFactory.createLineBorder(Color.yellow));
-			Shark.setForeground(Color.white);
-			Kwhale.setForeground(Color.gray);
 			character_type = true;
 		}
 		if (event.getSource() == Kwhale) {
-			Kwhale.setBorder(BorderFactory.createLineBorder(Color.yellow));
-			Kwhale.setForeground(Color.white);
-			Shark.setForeground(Color.gray);
 			character_type = false;
 		}
 
