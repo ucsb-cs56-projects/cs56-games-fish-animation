@@ -11,6 +11,7 @@ import java.util.ArrayList;
  * rotated, scaled, etc.
  *
  * @author Bryan Wu
+ * @author Xiaocheng Stephen Hu
  * @author Lawrence Khuu
  * @author Josephine Vo
  * @author Jenna Cryan
@@ -33,7 +34,7 @@ public class Bonus extends ScumOfTheSea{
 
     private double body_width = 5, body_height = 10;
     //private double larm_x, larm_y, rarm_x, rarm_y, lfoot_x, lfoot_y, rfoot_x, rfoot_y;
-    private ArrayList<Bonus> bonuses;
+    //private ArrayList<Bonus> bonuses;
     //draws the specified fish
     
     public Bonus(double x, double y, boolean moveL) {
@@ -42,7 +43,7 @@ public class Bonus extends ScumOfTheSea{
 	this.moveL = moveL;
 	//count = 0;
 
-	bonuses = new ArrayList<>();
+	//bonuses = new ArrayList<>();
 	// Deprecated Plankton drawing code
 //	Ellipse2D.Double body =
 //	    new Ellipse2D.Double(xPos - body_width, yPos - body_height,

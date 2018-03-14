@@ -36,10 +36,10 @@ class Menu implements ActionListener {
 	private JFrame instruct;
 	public static JFrame frame;
 
-	JLabel textLabel, pane, p2;
+	private JLabel textLabel, pane, p2;
 
 	boolean character_type = true; // true = shark, false = kwhale
-	URL back = getClass().getResource("/resources/background.gif");
+	private URL back = getClass().getResource("/resources/background.gif");
 
 	public static void main(String[] args) {
 		
