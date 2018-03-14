@@ -487,7 +487,7 @@ public class FishAnimationEnvironment extends JFrame implements Serializable {
 			for (int i = 0; i < jellyfish.size(); i++) {
 				int jNewXPos = (int) jellyfish.get(i).getXPos();
 				int jNewYPos = (int) jellyfish.get(i).getYPos();
-				if (jellyfish.get(i).checkJellyFish() == true) {
+				if (jellyfish.get(i).checkJellyFish()) {
 					// Draws the Body of the JellyFish
 					g2.fillArc(jNewXPos, jNewYPos, 50, 40, 0, 180);
 					g2.setColor(Color.BLACK);
@@ -826,48 +826,48 @@ public class FishAnimationEnvironment extends JFrame implements Serializable {
 	public class KeyHandler implements KeyListener {
 		public void keyPressed(KeyEvent e) {
 
-			if (!stop) {
-				if (System.currentTimeMillis() - lastPress > 2) {
-					int press = e.getKeyCode();
-					if (press == KeyEvent.VK_LEFT) {
-						dx = -10;
-						facingRight = false;
-					} else if (press == KeyEvent.VK_RIGHT) {
-						dx = 10;
-						facingRight = true;
-					} else if (press == KeyEvent.VK_DOWN) {
-							dy = 10;
-					} else if (press == KeyEvent.VK_UP) {
-							dy = -10;
-					} else if (press == KeyEvent.VK_MINUS) {
-						 SoundEffect.BGM.reduceVolume();
-						 SoundEffect.FISH.reduceVolume();
-						 SoundEffect.JELLYFISH.reduceVolume();
-						 SoundEffect.FINISH.reduceVolume();
-					} else if (press == KeyEvent.VK_EQUALS) {
-						 SoundEffect.BGM.increaseVolume();
-						 SoundEffect.FISH.increaseVolume();
-						 SoundEffect.JELLYFISH.increaseVolume();
-						 SoundEffect.FINISH.increaseVolume();
-					}
-					posX += dx;
-					posY += dy;
-					// switch(press){
-					// case KeyEvent.VK_LEFT:
-					// posX-=dx;
-					// break;
-					// case KeyEvent.VK_RIGHT:
-					// posX+=dx;
-					// break;
-					// case KeyEvent.VK_UP:
-					// posY-=dy;
-					// break;
-					// case KeyEvent.VK_DOWN:
-					// posY+=dy;
-					// break;
-					// }
-					lastPress = System.currentTimeMillis();
+			if (!stop && (System.currentTimeMillis() - lastPress > 2)) {
+			
+				int press = e.getKeyCode();
+				if (press == KeyEvent.VK_LEFT) {
+					dx = -10;
+					facingRight = false;
+				} else if (press == KeyEvent.VK_RIGHT) {
+					dx = 10;
+					facingRight = true;
+				} else if (press == KeyEvent.VK_DOWN) {
+						dy = 10;
+				} else if (press == KeyEvent.VK_UP) {
+						dy = -10;
+				} else if (press == KeyEvent.VK_MINUS) {
+					 SoundEffect.BGM.reduceVolume();
+					 SoundEffect.FISH.reduceVolume();
+					 SoundEffect.JELLYFISH.reduceVolume();
+					 SoundEffect.FINISH.reduceVolume();
+				} else if (press == KeyEvent.VK_EQUALS) {
+					 SoundEffect.BGM.increaseVolume();
+					 SoundEffect.FISH.increaseVolume();
+					 SoundEffect.JELLYFISH.increaseVolume();
+					 SoundEffect.FINISH.increaseVolume();
 				}
+				posX += dx;
+				posY += dy;
+				// switch(press){
+				// case KeyEvent.VK_LEFT:
+				// posX-=dx;
+				// break;
+				// case KeyEvent.VK_RIGHT:
+				// posX+=dx;
+				// break;
+				// case KeyEvent.VK_UP:
+				// posY-=dy;
+				// break;
+				// case KeyEvent.VK_DOWN:
+				// posY+=dy;
+				// break;
+				// }
+				lastPress = System.currentTimeMillis();
+			
 			}
 		}
 

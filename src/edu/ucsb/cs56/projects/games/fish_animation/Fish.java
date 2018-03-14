@@ -96,11 +96,13 @@ public class Fish extends ScumOfTheSea{
     //X is set in the constructor
     @Override 
     public void setX(double x) {
+        //empty method body
     }
 
     //Y is set in the constructor
     @Override 
     public void setY(double y) {
+        //empty method body
     }
     
     //gets the Width of the fish
