@@ -6,4 +6,4 @@
 * Make the fish swim in different directions instead of only right to left (150 pts)
 * Improve controls (fine tune) so that movement is smoother (200 pts)
 * Add different bonus effects for different bonuses. (200 pts)
-* Add a shop for players to buy things like apparel, temporary power-ups, permanent perks, etc. by accumulating a currency earned from playing the game. (400 pts)
+* Add a shop for players to buy things like apparel, temporary power-ups, permanent perks, etc. by accumulating a currency earned from playing the game. This may include making a character customization screen for users to equip/unequip shop purchases. (400 pts)
