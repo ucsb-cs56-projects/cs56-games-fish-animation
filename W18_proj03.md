@@ -1,7 +1,7 @@
 # BRYAN WU & XIAOCHENG STEPHEN HU
 * Change bonuses so that they are stationary instead of jolting around. (25 pts) https://github.com/ucsb-cs56-projects/cs56-games-fish-animation/issues/114
-* On the character selection screen, change it so that hovering over the character sprites highlights the button border (25 pts)
-* Add button to return to main menu in-game (50 pts?) https://github.com/ucsb-cs56-projects/cs56-games-fish-animation/issues/116
+* On the character selection screen, change it so that hovering over the character sprites highlights the button border (25 pts) https://github.com/ucsb-cs56-projects/cs56-games-fish-animation/issues/116
+* Add button to return to main menu in-game (50 pts?) https://github.com/ucsb-cs56-projects/cs56-games-fish-animation/issues/115
 * Remodel character selection to enums instead of booleans (true/false) (50 pts) https://github.com/ucsb-cs56-projects/cs56-games-fish-animation/issues/117
 * Add more characters -- maybe with different play styles (e.g. a character with smaller size, faster speed, but low max health) (100 pts) https://github.com/ucsb-cs56-projects/cs56-games-fish-animation/issues/118
 * Make the fish swim in different directions instead of only right to left (150 pts) https://github.com/ucsb-cs56-projects/cs56-games-fish-animation/issues/119
