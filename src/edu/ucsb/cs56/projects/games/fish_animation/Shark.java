@@ -5,37 +5,35 @@ import java.awt.*;
 import java.awt.event.*;
 
 /**
-   A shark class that creates a shark that faces 
-   in the opposite direction of the fish moving
-   across the screen.
-      
-   @author Casey Barbello
-   @author Daryl Pham
-   @author Jenna Cryan
-   @author Josephine Vo
-   @version for CS56, Winter 2014, UCSB
+ * A shark class that creates a shark that faces 
+ * in the opposite direction of the fish moving
+ * across the screen.
+ *    
+ * @author Casey Barbello
+ * @author Daryl Pham
+ * @author Jenna Cryan
+ * @author Josephine Vo
+ * @version for CS56, Winter 2014, UCSB
 */
 
 public class Shark extends ScumOfTheSea {
     /**
-       Constructor
-       @param xPos x coord of the middle of the Shark
-       @param yPos y coord of the middle of the Shark
+      * Constructor
+      * @param xPos x coord of the middle of the Shark
+      * @param yPos y coord of the middle of the Shark
     */
 
     private double xPos, yPos;
 
-    /**
-       Holds the shark's position on the Panel
-    */
+    //Holds the shark's position on the Panel
     public Shark(double x, double y) {
 	this.xPos = x;
 	this.yPos = y;
     }
 
     /**
-       Gets the xLocation of the shark
-       @return the x position of the shark
+     * Gets the xLocation of the shark
+     * @return the x position of the shark
     */
     @Override 
     public double getXPos() {
@@ -43,8 +41,8 @@ public class Shark extends ScumOfTheSea {
     }
 
     /**
-       Gets the yLocation of the shark
-       @return the y position of the shark
+     * Gets the yLocation of the shark
+     * @return the y position of the shark
     */
     @Override 
     public double getYPos() {
@@ -52,8 +50,8 @@ public class Shark extends ScumOfTheSea {
     }
     
     /**
-       Sets the xLocation of the shark
-       @return set the x position of the shark
+     * Sets the xLocation of the shark
+     * @return set the x position of the shark
     */
     @Override 
     public void setX(double x) {
@@ -61,8 +59,8 @@ public class Shark extends ScumOfTheSea {
     }
 	
     /**
-       Sets the yLocation of the shark
-       @return set the y position of the shark
+     * Sets the yLocation of the shark
+     * @return set the y position of the shark
     */
     @Override 
     public void setY(double y) {
@@ -70,9 +68,9 @@ public class Shark extends ScumOfTheSea {
     }
     
     /**
-       Override abstract method in ScumOfTheSea
-       shark does mot move by calling this method,
-       shark movement dictated by mouse events
+     * Override abstract method in ScumOfTheSea
+     * shark does mot move by calling this method,
+     * shark movement dictated by mouse events
     */
     @Override 
     public void move(double m){

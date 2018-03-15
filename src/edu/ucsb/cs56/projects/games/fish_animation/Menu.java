@@ -15,7 +15,9 @@ import java.io.*;
 /**
  * Implements a GUI that allows the user to choose diffculty, find instructions,
  * or exit the menu.
- * 
+ *
+ * @author Bryan Wu
+ * @author Xiaocheng Stephen Hu
  * @author Casey Barbello
  * @author Daryl Pham
  * @author Jenna Cryan
@@ -23,21 +25,21 @@ import java.io.*;
  * @author Abhijit Kulkarni
  * @author Angela Yung
  * @author Yuhao Zhang
- * @version for CS56, Winter 16, UCSB
+ * @version for CS56, Winter 2018, UCSB
  */
 
 class Menu implements ActionListener {
 
-	private JButton Play, Instruction, Exit, Resume, Easy, Medium, Hard, Back, Menu, PlayBGM, PauseBGM, HighScore, NextPage, Crazy;
+	private JButton Play, Instruction, Exit, Resume, Easy, Medium, Hard, Back, Menu, PlayBGM, PauseBGM, MinusBGM, PlusBGM, HighScore, NextPage, Crazy;
 	private JButton Character, CMenu, Kwhale, Shark;
 	private JTextField Credit;
 	private JFrame instruct;
 	public static JFrame frame;
 
-	JLabel textLabel, pane, p2;
+	private JLabel textLabel, pane, p2;
 
 	boolean character_type = true; // true = shark, false = kwhale
-	URL back = getClass().getResource("/resources/background.gif");
+	private URL back = getClass().getResource("/resources/background.gif");
 
 	public static void main(String[] args) {
 		
@@ -71,13 +73,13 @@ class Menu implements ActionListener {
 
 	// Mouse listener for the hover effect
 	private void buttonAddListener(JButton b, Color c1, Color c2){
-		b.addMouseListener(new java.awt.event.MouseAdapter() {
-			public void mouseEntered(java.awt.event.MouseEvent evt) {
+		b.addMouseListener(new MouseAdapter() {
+			public void mouseEntered(MouseEvent evt) {
 				b.setForeground(c1);
 				b.setBorder(BorderFactory.createLineBorder(c1));
 			}
 
-			public void mouseExited(java.awt.event.MouseEvent evt) {
+			public void mouseExited(MouseEvent evt) {
 				b.setForeground(Color.white);
 				b.setBorder(BorderFactory.createLineBorder(c2));
 			}
@@ -106,14 +108,23 @@ class Menu implements ActionListener {
 		// Adds image icon to control BGM
 		PlayBGM = new JButton();
 		PauseBGM = new JButton();
+		MinusBGM = new JButton();
+		PlusBGM = new JButton();
 
 		try {
 			Image imgPlay = ImageIO.read(getClass().getResource("/resources/play.png")).getScaledInstance(50, 50,
 					java.awt.Image.SCALE_SMOOTH);
 			Image imgPause = ImageIO.read(getClass().getResource("/resources/pause.png")).getScaledInstance(50, 50,
 					java.awt.Image.SCALE_SMOOTH);
+			Image audioMinus = ImageIO.read(getClass().getResource("/resources/audio_minus.png")).getScaledInstance(50, 50,
+					java.awt.Image.SCALE_SMOOTH);
+			Image audioPlus = ImageIO.read(getClass().getResource("/resources/audio_plus.png")).getScaledInstance(50, 50,
+					java.awt.Image.SCALE_SMOOTH);
+
 			PlayBGM.setIcon(new ImageIcon(imgPlay));
 			PauseBGM.setIcon(new ImageIcon(imgPause));
+			MinusBGM.setIcon(new ImageIcon(audioMinus));
+			PlusBGM.setIcon(new ImageIcon(audioPlus));
 		} catch (IOException ex) {
 		}
 
@@ -126,6 +137,8 @@ class Menu implements ActionListener {
 		Character.setBounds(25, 125, 150, 75);
 		PlayBGM.setBounds(625, 100, 50, 50);
 		PauseBGM.setBounds(685, 100, 50, 50);
+		MinusBGM.setBounds(625, 170, 50, 50);
+		PlusBGM.setBounds(685, 170, 50, 50);
 
 		// Adds the action listeners to the buttons
 		Play.addActionListener(this);
@@ -136,6 +149,9 @@ class Menu implements ActionListener {
 		Character.addActionListener(this);
 		PlayBGM.addActionListener(this);
 		PauseBGM.addActionListener(this);
+		MinusBGM.addActionListener(this);
+		PlusBGM.addActionListener(this);
+
 
 		// HighScore
 		setButtonStyle(HighScore, Color.white);
@@ -148,6 +164,14 @@ class Menu implements ActionListener {
 		// PauseBGM
 		setButtonStyle(PauseBGM, Color.black);
 		buttonAddListener(PauseBGM, Color.white, Color.black);
+
+		// MinusBGM
+		setButtonStyle(MinusBGM, Color.black);
+		buttonAddListener(MinusBGM, Color.white, Color.black);
+
+		// PlusBGM
+		setButtonStyle(PlusBGM, Color.black);
+		buttonAddListener(PlusBGM, Color.white, Color.black);
 
 		// Play
 		setButtonStyle(Play, Color.white);
@@ -188,6 +212,8 @@ class Menu implements ActionListener {
 		pane.add(Character);
 		pane.add(PlayBGM);
 		pane.add(PauseBGM);
+		pane.add(MinusBGM);
+		pane.add(PlusBGM);
 		frame.setContentPane(pane);
 		frame.setVisible(true);
 	}
@@ -270,6 +296,7 @@ class Menu implements ActionListener {
 		p2.add(Crazy);
 		p2.add(Resume);
 		p2.add(diff);
+
 		frame.setContentPane(p2);
 		frame.setVisible(true);
 	}
@@ -282,7 +309,7 @@ class Menu implements ActionListener {
 		 * = getClass().getResource("/resources/killerwhale.png"); ImageIcon
 		 * killerwhale = new ImageIcon(killerwhale).getImage();
 		 */
-
+		Color light_blue = new Color(75, 255, 255);
 		// set the background
 		URL back = getClass().getResource("/resources/background.jpeg");
 		ImageIcon bg = new ImageIcon(back);
@@ -292,15 +319,15 @@ class Menu implements ActionListener {
 		// text to choose character
 		JLabel diff = new JLabel("<html><div style='text-align:center; '>Choose your<br>character</html>");
 		diff.setFont(new Font("Century Gothic", Font.BOLD, 28));
-		diff.setForeground(new Color(75, 255, 255));
+		diff.setForeground(light_blue);
 		diff.setBounds(75, 75, 400, 200);
 
 		// create the buttons
 		Shark = new JButton();
 		Kwhale = new JButton();
 		try {
-			Image shark = ImageIO.read(getClass().getResource("/resources/shark.jpg"));
-			Image killerwhale = ImageIO.read(getClass().getResource("/resources/kwhale.gif"));
+			Image shark = ImageIO.read(getClass().getResource("/resources/shark_right.png"));
+			Image killerwhale = ImageIO.read(getClass().getResource("/resources/whale_right.png"));
 			Shark.setIcon(new ImageIcon(shark));
 			Kwhale.setIcon(new ImageIcon(killerwhale));
 		} catch (IOException e) {
@@ -314,22 +341,36 @@ class Menu implements ActionListener {
 		// Shark
 		Shark.setOpaque(false);
 		Shark.setContentAreaFilled(false);
-		Shark.setBorder(BorderFactory.createLineBorder(Color.white));
+		//Shark.setBorder(BorderFactory.createLineBorder(Color.white));
 		Shark.setForeground(Color.white);
 
-		buttonAddListener(Shark, new Color(75, 255, 255), Color.white);
+		buttonAddListener(Shark, light_blue, Color.white);
+		Shark.addMouseListener(new MouseAdapter() {
+		  public void mousePressed(MouseEvent e) {
+		    Shark.setBorder(BorderFactory.createLineBorder(light_blue));
+		    Kwhale.setBorder(null);
+		  }
+		});
 
 		// Kwhale
 		Kwhale.setOpaque(false);
 		Kwhale.setContentAreaFilled(false);
-		Kwhale.setBorder(BorderFactory.createLineBorder(Color.white));
+		//Kwhale.setBorder(BorderFactory.createLineBorder(Color.white));
 		Kwhale.setForeground(Color.white);
 
-		buttonAddListener(Kwhale, new Color(75, 255, 255), Color.white);
+		buttonAddListener(Kwhale, light_blue, Color.white);
+
+		//This MouseAdapter code might be factored in the future
+		Kwhale.addMouseListener(new MouseAdapter() {
+		  public void mousePressed(MouseEvent e) {
+		    Kwhale.setBorder(BorderFactory.createLineBorder(light_blue));
+		    Shark.setBorder(null);
+		  }
+		});
 
 		// CMenu
 		setButtonStyle(CMenu, Color.white);
-		buttonAddListener(CMenu, new Color(75, 255, 255), Color.white);
+		buttonAddListener(CMenu, light_blue, Color.white);
 
 
 		CMenu.addActionListener(this);
@@ -386,7 +427,7 @@ class Menu implements ActionListener {
 		instruct.setVisible(true);
 	}
 	
-	public void HighScores(){
+	public void highScores(){
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		
 		ScoreManager highscore = new ScoreManager();
@@ -432,8 +473,13 @@ class Menu implements ActionListener {
 			FishAnimationEnvironment f = new FishAnimationEnvironment(character_type, 30, false);
 		}
 		if (event.getSource() == Resume) {
-			frame.setVisible(false);
-			FishAnimationEnvironment f = new FishAnimationEnvironment(character_type, 0, true);
+			File saveFile = new File("saved.ser");
+			if (saveFile.exists()) {
+                frame.setVisible(false);
+                FishAnimationEnvironment f = new FishAnimationEnvironment(character_type, 0, true);
+            }
+			else
+			    System.out.println("No saved.ser found");
 		}
 		if (event.getSource() == Shark) {
 			character_type = true;
@@ -450,6 +496,13 @@ class Menu implements ActionListener {
 			SoundEffect.volume = SoundEffect.Volume.MEDIUM;
 			SoundEffect.BGM.play();
 		}
+		if (event.getSource() == MinusBGM) {
+			SoundEffect.BGM.reduceVolume();
+		}
+		if (event.getSource() == PlusBGM) {
+			SoundEffect.BGM.increaseVolume();
+		}
+
 		if (event.getSource() == Play) {
 			frame.remove(Play);
 			frame.remove(Instruction);
@@ -466,7 +519,7 @@ class Menu implements ActionListener {
 			howToPlay();
 		}if (event.getSource() == HighScore) {
 
-			HighScores();
+			highScores();
 		}
 		if(event.getSource() == NextPage){
 			textLabel = new JLabel();
@@ -479,6 +532,8 @@ class Menu implements ActionListener {
 					+ "<li> &#x2190 arrow moves the shark left for a short distance</li>"
 					+ "<li> &#x2192 arrow moves the shark right for a short distance</li>"
 					+ "<li> &#x2193 arrow moves the shark downward for a short distance</li>"
+					+ "<li> - (minus) key reduces in-game volume</li>"
+					+ "<li> +/= (plus/equal) key increases in-game volume</li>"
 					+ "</ul>"
 					+ "</p></html>";
 			

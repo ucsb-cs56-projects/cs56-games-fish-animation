@@ -28,6 +28,7 @@ YES | mastergberry | jovo123, jcryan | A fish animation
 ### How to Play
 * To eat the fish
 * click on the shark/whale and hold down the mouse button to move your shark/whale's mouth to the fish.
+* use -(minus) key to reduce in-game volume, or +/= (plus/equal) key to increase in-game volume.
 * You can also use the arrow keys to move the shark/whale as well.
 
 

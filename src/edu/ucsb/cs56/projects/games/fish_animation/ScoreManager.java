@@ -10,6 +10,7 @@ public class ScoreManager {
     private static final String EASY_SCORE_FILE = "easy_scores.dat"; //file of saved scores
     private static final String MEDIUM_SCORE_FILE = "medium_scores.dat";
     private static final String HARD_SCORE_FILE = "hard_scores.dat";
+    private static final String CRAZY_SCORE_FILE = "crazy_scores.dat";
     ObjectOutputStream outputStream = null;
     ObjectInputStream inputStream = null;
 
@@ -51,6 +52,9 @@ public class ScoreManager {
 	    case 14:
 		inputStream = new ObjectInputStream(new FileInputStream(HARD_SCORE_FILE));
 		break;
+        case 30:
+        inputStream = new ObjectInputStream(new FileInputStream(CRAZY_SCORE_FILE));
+        break;
 	    }
             scores = (ArrayList<Score>) inputStream.readObject();
         } catch (FileNotFoundException e) {
@@ -85,6 +89,9 @@ public class ScoreManager {
 	    case 14:
 		outputStream = new ObjectOutputStream(new FileOutputStream(HARD_SCORE_FILE));
 		break;
+        case 30:
+        outputStream = new ObjectOutputStream(new FileOutputStream(CRAZY_SCORE_FILE));
+        break;
 	    }
             outputStream.writeObject(scores);
         } catch (FileNotFoundException e) {

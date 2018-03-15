@@ -10,8 +10,8 @@ import javax.sound.sampled.*;
  * 
  * @author: Huiyang He
  * @author: Ziheng Zhang
+ * @author: Xiaocheng Stephen Hu
 */
-
 
 public enum SoundEffect{
 	JELLYFISH("resources/jellyfish.wav"),
@@ -24,6 +24,8 @@ public enum SoundEffect{
 		MUTE, LOW, MEDIUM, HIGH
 	}
 
+	private Clip clip;
+
 	public static Volume volume = Volume.MEDIUM;
 	
 	private SoundEffect(String fileName) {
@@ -32,6 +34,8 @@ public enum SoundEffect{
 			AudioInputStream audioInputStream = AudioSystem.getAudioInputStream(url);
 			clip = AudioSystem.getClip();
 			clip.open(audioInputStream);
+			FloatControl gainControl = (FloatControl) clip.getControl(FloatControl.Type.MASTER_GAIN);
+			gainControl.setValue(-5.0f);
 		} catch(UnsupportedAudioFileException e) {
 			e.printStackTrace();
 		} catch(IOException e) {
@@ -40,10 +44,6 @@ public enum SoundEffect{
 			e.printStackTrace();
 		}
 	}
-
-
-
-	private Clip clip;
 	
 	public void play(){
 		if (volume != Volume.MUTE) {
@@ -69,6 +69,20 @@ public enum SoundEffect{
 		if(clip.isRunning())
 			clip.stop();
 		clip.setFramePosition(0);
+	}
+
+	public void reduceVolume(){
+		if(clip.isRunning()) {
+			FloatControl gainControl = (FloatControl) clip.getControl(FloatControl.Type.MASTER_GAIN);
+			gainControl.setValue(gainControl.getValue()-3.0f);
+		}
+	}
+
+	public void increaseVolume(){
+		if(clip.isRunning()) {
+			FloatControl gainControl = (FloatControl) clip.getControl(FloatControl.Type.MASTER_GAIN);
+			gainControl.setValue(gainControl.getValue()+3.0f);
+		}
 	}
 	
 	public boolean isRunning(){

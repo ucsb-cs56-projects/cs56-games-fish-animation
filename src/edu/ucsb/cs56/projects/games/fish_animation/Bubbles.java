@@ -2,14 +2,14 @@ package edu.ucsb.cs56.projects.games.fish_animation;
 
 
 /**
-   Creates a Bubbles object to hold X position, 
-   Y position, and diamter of Bubble
-
-   @author Christina Morris
-   @author Mathew Glodack
-   @author Josephine Vo
-   @author Jenna Cryan
-   @version CS56, Winter 2014, UCSB
+ * Creates a Bubbles object to hold X position, 
+ * Y position, and diamter of Bubble
+ * 
+ * @author Christina Morris
+ * @author Mathew Glodack
+ * @author Josephine Vo
+ * @author Jenna Cryan
+ * @version CS56, Winter 2014, UCSB
  */
 
 
@@ -19,10 +19,10 @@ public class Bubbles extends ScumOfTheSea
     private int diameter;
     
     /** 
-	Bubbles Constructor
-	@param x sets the x position
-	@param y sets the y position
-	@param diameter sets the diameter of the Bubble
+	* Bubbles Constructor
+	* @param x sets the x position
+	* @param y sets the y position
+	* @param diameter sets the diameter of the Bubble
     */
     Bubbles(double x, double y, int diameter) {
 	this.x = x;
@@ -31,8 +31,8 @@ public class Bubbles extends ScumOfTheSea
     }
 
     /** 
-	Gets the X position of the Bubble
-	@return X the position of the Bubble
+	* Gets the X position of the Bubble
+	* @return X the position of the Bubble
     */
     @Override 
     public double getXPos() {
@@ -40,8 +40,8 @@ public class Bubbles extends ScumOfTheSea
     }
     
     /** 
-	Gets the Y position of the Bubble
-	@return Y the position of the Bubble
+	* Gets the Y position of the Bubble
+	* @return Y the position of the Bubble
     */
     @Override 
     public double getYPos() {
@@ -49,16 +49,16 @@ public class Bubbles extends ScumOfTheSea
     }
     
     /** 
-	Gets the Diameter
-	@return Returns the diameter of the object
+	* Gets the Diameter
+	* @return Returns the diameter of the object
     */
     int getDiameter() {
 	return diameter;
     }
     
     /** 
-	Sets the X position of the Bubbles object
-	@param x sets the X position of the Bubbles ojbect
+	* Sets the X position of the Bubbles object
+	* @param x sets the X position of the Bubbles ojbect
     */
     @Override 
     public void setX(double x) {
@@ -66,8 +66,8 @@ public class Bubbles extends ScumOfTheSea
     }
     
     /** 
-	Sets the Y position of the Bubbles object
-	@param y sets the Y position of the Bubbles object
+	* Sets the Y position of the Bubbles object
+	* @param y sets the Y position of the Bubbles object
     */
     @Override 
     public void setY(double y) {
@@ -75,8 +75,8 @@ public class Bubbles extends ScumOfTheSea
     }
     
     /** 
-	Changes the position of the Bubble
-	@param m changes the position of the Bubbles object
+	* Changes the position of the Bubble
+	* @param m changes the position of the Bubbles object
     */
     @Override 
     public void move(double m) {

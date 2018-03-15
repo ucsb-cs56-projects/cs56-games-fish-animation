@@ -14,17 +14,17 @@ import java.awt.geom.AffineTransform;
 
 
 /**
- Because GeneralPath is declared as "final", we can't extend it.
- That's inconvenient, because if we can declare shapes that
- extend GeneralPath, we get all of the methods of GeneralPath that
- implement the Shape interface.
-
- That allows us to do graphics transformations like
- translating, rotating and scaling (the Affine transforms).
-
- So, GeneralPathWrapper is a wrapper around a GeneralPath object
- that we can extend
-
+ * Because GeneralPath is declared as "final", we can't extend it.
+ * That's inconvenient, because if we can declare shapes that
+ * extend GeneralPath, we get all of the methods of GeneralPath that
+ * implement the Shape interface.
+ * 
+ * That allows us to do graphics transformations like
+ * translating, rotating and scaling (the Affine transforms).
+ * 
+ * So, GeneralPathWrapper is a wrapper around a GeneralPath object
+ * that we can extend
+ * 
  * @author P. Conrad  
  * @version CS56, Winter 2011, UCSB
  */
@@ -38,10 +38,7 @@ public class GeneralPathWrapper implements Shape
     /** If we already have a GeneralPath, we can wrap it. */
     public GeneralPathWrapper(GeneralPath gp) {this.gp = gp;}
 
-    /**
-       Tests if the specified coordinates are inside the boundary of the
-       Shape.
-    */
+    //Tests if the specified coordinates are inside the boundary of the Shape.
    
     public GeneralPath get() {return gp;}
     public void set(GeneralPath gp) {this.gp = gp;}
@@ -61,8 +58,8 @@ public class GeneralPathWrapper implements Shape
     public boolean contains(Point2D p) { return gp.contains(p); }
     
     /** 
-     Tests if the interior of the Shape entirely contains the
-     specified Rectangle2D.  
+     * Tests if the interior of the Shape entirely contains the
+     * specified Rectangle2D.  
     */
     
     public boolean contains(Rectangle2D r) { return gp.contains(r); }
