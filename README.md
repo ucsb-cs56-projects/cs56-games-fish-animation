@@ -15,11 +15,12 @@ YES | mastergberry | jovo123, jcryan | A fish animation
 # W18 final remarks
 * Things to know for continuing the project:
   * What the code does: Run a game described by F17 update.
-  * Potential features to be added:
-  * Bugs:
+  * What has been improved: Better graphics and animation in the game, as well as added bonus objects.
+  * Potential features to be added: See w18_proj03.md
+  * Bugs: As suggested in w18_proj03.md, and the build.xml (see #22 for details)
   * Opportunities for refactoring: FishAnimationEnvironment.java
     * This file virtually contains all of the code for the game. It's a messy heap of code!
-  * Advice for working on code:
+  * Advice for working on code: Refactoring and cleaning up the code would be really a game-changer! Try to embrace challenges of adding new features, for example: after eating a number of fish, the main character might grow in size; there can also be larger fish which can eat the main character. An excellent example of this would be "Feeding Frenzy", which may provide great inspiration. Good luck!
 
 # F17 update
 
