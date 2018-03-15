@@ -15,11 +15,11 @@ YES | mastergberry | jovo123, jcryan | A fish animation
 # W18 final remarks
 * Things to know for continuing the project:
   * What the code does: Run a game described by F17 update.
-  * What features could be added,
-  * What bugs exist
+  * Potential features to be added:
+  * Bugs:
   * Opportunities for refactoring: FishAnimationEnvironment.java
-  * This file virtually contains all of the code for the game. It's a messy heap of code!
-  * Advice for working on code
+    * This file virtually contains all of the code for the game. It's a messy heap of code!
+  * Advice for working on code:
 
 # F17 update
 
